@@ -19,6 +19,7 @@
     background-color: #6DA2C1;
     border-color: black;
 }
+
 .logo{
     margin-block-start: -6em;
 }
@@ -43,4 +44,25 @@
 
 .custom-col-main{
     background: white;
+}
+
+.custom-iniciarSesion{
+    margin-top: -3.5em;
+}
+
+.buton-iniciar-sesion{
+    background-color: #DCD2BA;
+    color: black;
+    border-color: black;
+    font-weight: bold;
+    border: 0.1em solid black;
+}
+
+.buton-iniciar-sesion:hover{
+    background-color: #6DA2C1;
+    border-color: black;
+}
+
+.border-input{
+    border: 1px solid black;
 }
