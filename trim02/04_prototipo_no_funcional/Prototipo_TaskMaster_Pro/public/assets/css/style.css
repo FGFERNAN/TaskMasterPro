@@ -1,0 +1,21 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #E4E2DD;
+}
+.buton-inicio{
+    background-color: #DCD2BA;
+    padding: 1.5em;
+    color: black;
+    border-color: black;
+    margin-block-start: -5em;
+    font-weight: bold;
+    border: 0.1em solid black;
+}
+
+.buton-inicio:hover{
+    background-color: #6DA2C1;
+    border-color: black;
+}
+.logo{
+    margin-block-start: -6em;
+}
