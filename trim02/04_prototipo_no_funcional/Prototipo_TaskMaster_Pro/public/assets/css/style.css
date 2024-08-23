@@ -1,5 +1,8 @@
 *{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+.bg-custom{
     background-color: #E4E2DD;
 }
 .buton-inicio{
@@ -18,4 +21,26 @@
 }
 .logo{
     margin-block-start: -6em;
+}
+ .custom-col{
+    border-right: 0.1em solid black;
+    min-height: 100vh;
+    background-color:#E4E2DD
+ }
+
+ .logo-inicio{
+    margin-block-start: -3em;
+ }
+
+ .mi-link{
+    color: black;
+ }
+ 
+ .custom-dropdown .dropdown-menu {
+    transform: translateX(10px) translateY(42px) !important;
+    background-color: white;
+}
+
+.custom-col-main{
+    background: white;
 }
