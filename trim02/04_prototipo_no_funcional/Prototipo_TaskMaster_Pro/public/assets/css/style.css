@@ -37,7 +37,7 @@
  }
  
  .custom-dropdown .dropdown-menu {
-    transform: translateX(10px) translateY(42px) !important;
+    transform: translateX(15px) translateY(42px) !important;
     background-color: white;
 }
 
