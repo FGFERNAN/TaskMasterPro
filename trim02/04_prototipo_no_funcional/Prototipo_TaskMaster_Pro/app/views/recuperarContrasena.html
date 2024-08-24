@@ -8,19 +8,20 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="../../public/assets/css/style.css">
-    <title>Iniciar Sesión</title>
+    <title>Recuperar Contraseña</title>
 </head>
 
 <body class="bg-custom">
+
     <div class="container">
         <div class="row justify-content-center">
 
             <div class="col-md-6">
                 <div class="text-center">
-                    <img src="../../public/assets/img/logos/logotipo.png" class="img-fluid mx-auto d-block logo"
-                        width="400">
+                    <h1 class="d-block mt-3">Recuperar Contraseña</h1>
                 </div>
-                <form class="mx-auto needs-validation custom-iniciarSesion" novalidate>
+                <form action="cambiarContrasena.html" class="mx-auto needs-validation custom-recuperarContraseña"
+                    novalidate>
                     <div class="mb-3">
                         <label for="floatingInputGroup1" class="form-label">Correo Electronico</label>
                         <div class="input-group mb-3 has-validation">
@@ -37,30 +38,42 @@
 
                     </div>
                     <div class="mb-3 mt-4">
-                        <label for="floatingInputGroup2" class="form-label">Contraseña</label>
+                        <label for="floatingInputGroup2" class="form-label">Codigo Enviado</label>
                         <div class="input-group mb-3 has-validation">
-                            <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                            <span class="input-group-text"><i class="fa-solid fa-hashtag"></i></span>
                             <div class="form-floating">
-                                <input type="password" class="form-control border-input" id="floatingInputGroup2"
-                                    placeholder="Username" maxlength="20" minlength="8" required>
-                                <label for="floatingInputGroup2">Password</label>
+                                <input type="number" min="100000" max="999999" maxlength="6"
+                                    class="form-control border-input" id="floatingInputGroup2" placeholder="Username"
+                                    required>
+                                <label for="floatingInputGroup2">Code</label>
                                 <div class="invalid-feedback">
-                                    Por favor ingrese su contraseña (mínimo 8 caracteres).
+                                    Por favor ingrese su codigo (6 caracteres).
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                        <button class="btn btn-primary mt-3 buton-iniciar-sesion" type="submit">Iniciar Sesión</button>
-                        <button class="btn btn-primary mt-2 mb-4 buton-iniciar-sesion"
-                            onclick="location.href='./recuperarContrasena.html'">Recuperar Contraseña</button>
+                    <div class="d-grid gap-2 col-4 mx-auto">
+                        <button class="btn btn-primary mt-3 buton-recuperar-contraseña" type="submit">Siguiente</button>
                     </div>
                 </form>
 
             </div>
         </div>
     </div>
+    <script>
+        const codigoInput = document.getElementById('floatingInputGroup2');
+
+        codigoInput.addEventListener('input', () => {
+            // Eliminar cualquier carácter que no sea un número
+            codigoInput.value = codigoInput.value.replace(/[^0-9]/g, '');
+
+            // Limitar la longitud a 6 dígitos
+            if (codigoInput.value.length > 6) {
+                codigoInput.value = codigoInput.value.slice(0, 6);
+            }
+        });
+    </script>
     <script>
         (() => {
             'use strict'
