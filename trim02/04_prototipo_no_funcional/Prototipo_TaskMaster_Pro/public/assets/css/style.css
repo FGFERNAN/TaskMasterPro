@@ -5,20 +5,6 @@
 .bg-custom{
     background-color: #E4E2DD;
 }
-.buton-inicio{
-    background-color: #DCD2BA;
-    padding: 1.5em;
-    color: black;
-    border-color: black;
-    margin-block-start: -5em;
-    font-weight: bold;
-    border: 0.1em solid black;
-}
-
-.buton-inicio:hover{
-    background-color: #6DA2C1;
-    border-color: black;
-}
 
 .logo{
     margin-block-start: -6em;
@@ -53,7 +39,7 @@
 }
 
 .buton-iniciar-sesion{
-    background-color: #DCD2BA;
+    background-color: #DAF5E3;
     color: black;
     border-color: black;
     font-weight: bold;
@@ -74,7 +60,7 @@
 }
 
 .buton-recuperar-contraseña{
-    background-color: #DCD2BA;
+    background-color: #DAF5E3;
     color: black;
     border-color: black;
     font-weight: bold;
@@ -101,4 +87,8 @@ h1 {
     width: 80%;
     height: 5px;
     background-color: #000; 
+  }
+  
+  .ver-contraseña{
+    margin-inline-start: 73%;
   }
