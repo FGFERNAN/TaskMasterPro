@@ -26,7 +26,8 @@
  .custom-col{
     border-right: 0.1em solid black;
     min-height: 100vh;
-    background-color:#E4E2DD
+    background-color:#E4E2DD;
+    width: 350px;
  }
 
  .logo-inicio{
@@ -44,6 +45,7 @@
 
 .custom-col-main{
     background: white;
+    
 }
 
 .custom-iniciarSesion{
