@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajes Directos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="./public/css/messages.css" rel="stylesheet">
+    <style>
+        .logo {
+            position: absolute;
+            top: 10px;
+            right: 110px;
+            width: 150px; /* Ajusta el tamaño del logo */
+        }
+        .container {
+            margin-top: 60px; /* Ajusta la distancia desde la parte superior */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Aquí agregas el logo -->
+    <img src="img/logos/logotipo.png" alt="Logo" class="logo">
+
+    <div class="container">
+        <div class="sidebar">
+            <h2>📧 Mensajes Directos</h2>
+            <input type="text" placeholder="Buscar mensaje" class="search-bar">
+            <ul class="message-list">
+                <li class="message-item">
+                    Nikole Bernal <span class="date">12 Julio</span>
+                </li>
+                <li class="message-item">
+                    Felipe Garcia <span class="date">12 Julio</span>
+                </li>
+                <li class="message-item">
+                    Erika Triana <span class="date">12 Julio</span>
+                </li>
+                <li class="message-item">
+                    Andres Garzon <span class="date">12 Julio</span>
+                </li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h3>Selecciona un mensaje</h3>
+            <p>El contenido del mensaje aparecerá aquí.</p>
+            <textarea placeholder="Introducir texto..."></textarea>
+            <div class="formatting-buttons">
+                <button class="btn btn-light"><b>B</b></button>
+                <button class="btn btn-light"><i>I</i></button>
+                <button class="btn btn-light"><u>U</u></button>
+                <button class="btn btn-light"><s>S</s></button>
+                <button class="btn btn-light">style</button>
+                <button class="btn btn-light"><i class="bi bi-card-image"></i></button>
+                <button class="btn btn-light"><i class="bi bi-emoji-smile"></i></button>
+                <button class="btn btn-light"><i class="bi bi-link"></i></button>
+                <button class="btn btn-light"><i class="bi bi-justify-left"></i></button>
+                <button class="btn btn-light"><i class="bi bi-justify-right"></i></button>
+                <button class="btn btn-light"><i class="bi bi-file-earmark-code"></i></button>
+                <button class="btn btn-light"><i class="bi bi-emoji-smile-fill"></i></button>
+            </div>
+            <button class="btn btn-primary send-button">Enviar</button>
+        </div>
+    </div>
+    <button class="btn regresar-button">Regresar</button>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script2.js"></script>
+</body>
+</html>

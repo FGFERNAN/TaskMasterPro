@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.content {
+    padding: 20px;
+}
+.content h3 {
+    margin-bottom: 20px;
+}
+.content .member-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+.content .member-card img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+.content .member-card input[type="radio"] {
+    margin-right: 5px;
+}
+.content .right-section {
+    border-left: 1px solid #ccc;
+    padding-left: 20px;
+}
+.header {
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.header button {
+    margin-right: 10px;
+}
+.header a {
+    text-decoration: none;
+    color: #000;
+}
