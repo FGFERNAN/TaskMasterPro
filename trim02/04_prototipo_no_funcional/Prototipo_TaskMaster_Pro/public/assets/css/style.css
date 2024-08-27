@@ -115,9 +115,11 @@ h1 {
   }
 
   .form-create-project{
-    margin-block-start: 8em;
+    margin-block-start: 7em;
     max-width: 50%;
-
+    background-color: #DCD2BA;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
 
   .buton-regresar{
@@ -133,4 +135,7 @@ h1 {
     background-color: #204b42;
     border-color: black; 
     color: #ffffff;
+  }
+  .input-nombre{
+    margin-top: 2em;
   }

@@ -8,10 +8,10 @@ function agregarMiembro(nombre, imagen) {
         <p><input type="radio" name="user"> ${nombre}</p>
         <button class="btn-eliminar">Eliminar Usuario</button>
     `;
-    
+
     // Agregar el nuevo miembro al contenedor
     memberCardContainer.appendChild(memberCard);
-    
+
     // Mostrar una alerta
     alert(`${nombre} ha sido agregado como miembro.`);
 
@@ -28,26 +28,30 @@ function agregarEventoEliminar(memberCard, nombre) {
     });
 }
 
+// Función para obtener una imagen aleatoria
+function obtenerImagenAleatoria() {
+    const imagenes = [
+        '../../public/assets/img/User234.jpg',
+        '../../public/assets/img/user53720.jpg',
+        '../../public/assets/img/mariposa34.jpg',
+        '../../public/assets/img/img1.jpg',
+        '../../public/assets/img/messielmejor.jpg',
+        '../../public/assets/img/sml16.jpg'
+    ];
+    const indiceAleatorio = Math.floor(Math.random() * imagenes.length);
+    return imagenes[indiceAleatorio];
+}
+
 // Función para manejar los clics en "Agregar"
 function setupAgregarMiembros() {
     const linksAgregar = document.querySelectorAll('.text-primary');
 
-    // Definir las imágenes de los usuarios
-    const imagenesUsuarios = {
-        'User234': '../../public/assets/img/User234.jpg',
-        'User53720': '../../public/assets/img/user53720.jpg',
-        'Mariposa34': '../../public/assets/img/mariposa34.jpg',
-        'Unicornio56': '../../public/assets/img/img1.jpg',
-        'Messielmejor': '../../public/assets/messielmejor.jpg',
-        'SML16': '../../public/assets/img/sml16.jpg',
-    };
-    
     linksAgregar.forEach(link => {
         link.addEventListener('click', (event) => {
             event.preventDefault();
             const nombre = event.target.parentNode.textContent.trim();
-            const imagen = imagenesUsuarios[nombre] || '../../public/assets/img/imagen.jpg';
-            agregarMiembro(nombre, imagen); 
+            const imagen = obtenerImagenAleatoria(); // Selecciona una imagen aleatoria
+            agregarMiembro(nombre, imagen);
         });
     });
 }
@@ -59,7 +63,7 @@ function buscarMiembros() {
 
     searchInput.addEventListener('input', () => {
         const searchTerm = searchInput.value.toLowerCase();
-        
+
         memberCards.forEach(card => {
             const memberName = card.querySelector('p').textContent.toLowerCase();
             if (memberName.includes(searchTerm)) {
