@@ -34,20 +34,20 @@ function setupAgregarMiembros() {
 
     // Definir las imágenes de los usuarios
     const imagenesUsuarios = {
-        'User234': 'img/User234.jpg',
-        'User53720': 'img/user53720.jpg',
-        'Mariposa34': 'img/mariposa34.jpg',
-        'Unicornio56': 'img/img1.jpg',
-        'Messielmejor': 'img/messielmejor.jpg',
-        'SML16': 'img/sml16.jpg',
+        'User234': '../../public/assets/img/User234.jpg',
+        'User53720': '../../public/assets/img/user53720.jpg',
+        'Mariposa34': '../../public/assets/img/mariposa34.jpg',
+        'Unicornio56': '../../public/assets/img/img1.jpg',
+        'Messielmejor': '../../public/assets/messielmejor.jpg',
+        'SML16': '../../public/assets/img/sml16.jpg',
     };
     
     linksAgregar.forEach(link => {
         link.addEventListener('click', (event) => {
             event.preventDefault();
             const nombre = event.target.parentNode.textContent.trim();
-            const imagen = imagenesUsuarios[nombre] || 'img/default.jpg';
-            agregarMiembro(nombre, imagen);
+            const imagen = imagenesUsuarios[nombre] || '../../public/assets/img/imagen.jpg';
+            agregarMiembro(nombre, imagen); 
         });
     });
 }

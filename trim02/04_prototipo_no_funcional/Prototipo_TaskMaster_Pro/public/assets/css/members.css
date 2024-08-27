@@ -3,7 +3,8 @@
     color: white;
 }
 .btn-regresar:hover {
-    background-color: #235B4D;
+    background-color: #204b42;
+    color: white;
 }
 .btn-cerrar-sesion {
     background-color: #DAF5E3;

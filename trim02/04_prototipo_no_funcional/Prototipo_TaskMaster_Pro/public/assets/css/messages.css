@@ -1,17 +1,19 @@
-le>
-        .logo {
-            position: absolute;
-            top: 10px;
-            right: 110px;
-            width: 150px; /* Ajusta el tamaño del logo */
-        }
-        .container {
-            margin-top: 60px; /* Ajusta la distancia desde la parte superior */
-        }
+.logo {
+    position: absolute;
+    top: 10px;
+    right: 110px;
+    width: 150px;
+    /* Ajusta el tamaño del logo */
+}
+
+.container {
+    margin-top: 60px;
+    /* Ajusta la distancia desde la parte superior */
+}
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #E4E2DD;
     margin: 0;
     padding: 0;
     display: flex;
@@ -144,5 +146,6 @@ textarea {
 }
 
 .regresar-button:hover {
-    background-color: #25564c;
+    background-color: #204b42;
+    color: white;
 }

@@ -126,10 +126,11 @@ h1 {
     border-color: black;
     font-weight: bold;
     border: 0.2em solid black;
+    margin-block-end: 1em;
   }
 
   .buton-regresar:hover{
-    background-color: #6DA2C1;
+    background-color: #204b42;
     border-color: black; 
-    color: #000;
+    color: #ffffff;
   }

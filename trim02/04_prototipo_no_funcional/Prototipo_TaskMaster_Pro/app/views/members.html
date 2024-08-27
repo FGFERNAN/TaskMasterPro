@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskMaster</title>
+    <title>Miembros</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
-    <link href="./public/css/style.css" rel="stylesheet">
-    <link href="./public/css/members.css" rel="stylesheet">
-    
+    <link href="../../public/assets/css/style.css" rel="stylesheet">
+    <link href="../../public/assets/css/members.css" rel="stylesheet">
+
 </head>
+
 <body>
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar Menu -->
             <div class="col-md-3 custom-col">
-                <img src="img/logos/logotipo.png" class="logo-inicio" width="300" alt="Logo">
+                <img src="../../public/assets/img/logos/logotipo.png" class="logo-inicio" width="300" alt="Logo">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link mi-link" href="#"><i class="fa-solid fa-folder-plus me-1"></i> Crear Proyecto</a>
+                        <a class="nav-link mi-link" href="creacionProyecto.html"><i class="fa-solid fa-folder-plus me-1"></i> Crear
+                            Proyecto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mi-link" href="#"><i class="fa-solid fa-folder-tree me-1"></i> Utilizar Plantillas de Proyecto</a>
+                        <a class="nav-link mi-link" href="#"><i class="fa-solid fa-folder-tree me-1"></i> Utilizar
+                            Plantillas de Proyecto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mi-link" href="#"><i class="fa-solid fa-list-check me-1"></i> Mis Tareas</a>
                     </li>
                     <li class="nav-item dropdown custom-dropdown">
-                        <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-expanded="false">
                             <i class="fa-solid fa-folder-minus me-1"></i> Proyectos
                         </a>
                         <ul class="dropdown-menu">
@@ -35,8 +40,10 @@
                                 <div class="d-flex align-items-center">
                                     <a class="dropdown-item align-items-center" href="#">
                                         <i class="fa-regular fa-folder-open"></i> Veterinaria
-                                        <a href="/editar" class="link-secondary ms-1 mi-link"><i class="fa-solid fa-edit"></i></a>
-                                        <a href="/eliminar" class="link-secondary ms-2 mi-link"><i class="fa-solid fa-trash me-3"></i></a>
+                                        <a href="/editar" class="link-secondary ms-1 mi-link"><i
+                                                class="fa-solid fa-edit"></i></a>
+                                        <a href="/eliminar" class="link-secondary ms-2 mi-link"><i
+                                                class="fa-solid fa-trash me-3"></i></a>
                                     </a>
                                 </div>
                             </li>
@@ -47,7 +54,7 @@
                     </li>
                 </ul>
             </div>
-            
+
             <!-- Main Content -->
             <div class="col custom-col-main">
                 <!-- Header -->
@@ -61,7 +68,7 @@
                         <a href="#" class="btn btn-perfil">Perfil</a>
                     </div>
                 </div>
-                
+
                 <!-- Members Section -->
                 <div class="row mt-4">
                     <div class="col-md-8">
@@ -70,14 +77,14 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="member-card">
-                                        <img src="img/img1.jpg" alt="User Avatar">
+                                        <img src="../../public/assets/img/img1.jpg" alt="User Avatar">
                                         <p><input type="radio" name="user"> Fgferman02</p>
                                         <button class="btn-eliminar">Eliminar Usuario</button>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="member-card">
-                                        <img src="img/img2.jpg" alt="User Avatar">
+                                        <img src="../../public/assets/img/img2.jpg" alt="User Avatar">
                                         <p><input type="radio" name="user"> ErikaTriana01</p>
                                         <button class="btn-eliminar">Eliminar Usuario</button>
                                     </div>
@@ -86,14 +93,14 @@
                             <div class="row mt-4">
                                 <div class="col-md-6">
                                     <div class="member-card">
-                                        <img src="img/img3.jpg" alt="User Avatar">
+                                        <img src="../../public/assets/img/img3.jpg" alt="User Avatar">
                                         <p><input type="radio" name="user"> AndresG567</p>
                                         <button class="btn-eliminar">Eliminar Usuario</button>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="member-card">
-                                        <img src="img/img4.jpg" alt="User Avatar">
+                                        <img src="../../public/assets/img/img4.jpg" alt="User Avatar">
                                         <p><input type="radio" name="user"> Nikob1030_</p>
                                         <button class="btn-eliminar">Eliminar Usuario</button>
                                     </div>
@@ -122,5 +129,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-<script src="script.js"></script>
+<script src="../../public/assets/js/script.js"></script>
+
 </html>
