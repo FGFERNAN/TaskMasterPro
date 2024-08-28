@@ -63,30 +63,38 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <h3><span class="badge text-bg-secondary p-4">¿Que Proyecto Crearemos Hoy?</span></h3>
+                        <h3><span class="badge  p-4 color-badge">¿Que Proyecto Crearemos Hoy?</span></h3>
                     </div>
                 </header>
                 <section>
                     <div class="container grid project-container">
                         <div class="row">
                             <div class="col text-center">
-                                <div class="project-box"></div>
-                                <input type="radio" name="project" id="project1">
-                                <label for="project1">Ambiental</label>
+                                <div class="project-box">
+                                    <img class="img-fluid" src="../../public/assets/img/proyecto_ambiental.jfif">
+                                </div>
+                                <div class="mt-3">
+                                    <input class="form-check-input" type="radio" name="project" id="project1">
+                                    <label class=" form-check-label label-project " for="project1">Ambiental</label>  
+                                </div>                        
                             </div>
                             <div class="col text-center">
                                 <div class="project-box">
                                     <img class="img-fluid" src="../../public/assets/img/proyecto_finanzas.jfif">
                                 </div>
-                                <input type="radio" class="proyecto" name="project" id="project2">
-                                <label for="project2">Finanzas</label>
+                                <div class="mt-3">
+                                    <input class="form-check-input" type="radio" name="project" id="project2">
+                                    <label class=" form-check-label label-project " for="project2">Finanzas</label>  
+                                </div> 
                             </div>
                             <div class="col text-center">
                                 <div class="project-box">
                                     <img class="img-fluid" src="../../public/assets/img/proyecto_software.jfif">
                                 </div>
-                                <input type="radio" class="proyecto" name="project" id="project3">
-                                <label for="project3">Software</label>
+                                <div class="mt-3">
+                                    <input class="form-check-input" type="radio" name="project" id="project3">
+                                    <label class=" form-check-label label-project " for="project3">Software</label>  
+                                </div> 
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -94,22 +102,28 @@
                                 <div class="project-box">
                                     <img class="img-fluid" src="../../public/assets/img/proyecto_social.jfif">
                                 </div>
-                                <input type="radio" name="project" id="project4">
-                                <label for="project4">Social</label>
+                                <div class="mt-3">
+                                    <input class="form-check-input" type="radio" name="project" id="project4">
+                                    <label class=" form-check-label label-project " for="project4">Social</label>  
+                                </div> 
                             </div>
                             <div class="col text-center">
                                 <div class="project-box">
                                     <img class="img-fluid" src="../../public/assets/img/proyecto_construccion.jfif">
                                 </div>
-                                <input type="radio" name="project" id="project5">
-                                <label for="project5">Construcción</label>
+                                <div class="mt-3">
+                                    <input class="form-check-input" type="radio" name="project" id="project5">
+                                    <label class=" form-check-label label-project " for="project5">Construcción</label>  
+                                </div> 
                             </div>
                             <div class="col text-center">
                                 <div class="project-box">
                                     <img class="img-fluid" src="../../public/assets/img/proyecto_investigacion.jfif">
                                 </div>
-                                <input type="radio" name="project" id="project6">
-                                <label for="project6">Investigación</label>
+                                <div class="mt-3">
+                                    <input class="form-check-input" type="radio" name="project" id="project6">
+                                    <label class=" form-check-label label-project " for="project6">Investigación</label>  
+                                </div> 
                             </div>
                         </div>
                         <!-- Botón Crear en la esquina inferior derecha -->
@@ -119,10 +133,9 @@
                             <div class="col">
                             </div>
                             <div class="col">
-                                <a href="#" class="create-button margen-buton-crear">
-                                    <i class="fa-solid fa-plus"></i>
-                                    <span>Crear</span>
-                                </a>
+                                <button onclick="window.location.href='creacionProyecto.html'" class="btn btn-primary rounded-circle buton-crear" >
+                                    <i class="fa-solid fa-plus "></i>
+                                </button>
                             </div>
                         </div>
                     </div>

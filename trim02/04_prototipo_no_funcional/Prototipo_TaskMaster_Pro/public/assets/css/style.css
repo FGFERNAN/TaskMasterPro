@@ -127,15 +127,15 @@ h2::after {
 .buton-regresar {
   background-color: #2E7060;
   color: white;
-  border-color: black;
+  border-color: #2E7060;
   font-weight: bold;
-  border: 0.2em solid black;
+  border-color: #000;
   margin-block-end: 1em;
 }
 
 .buton-regresar:hover {
   background-color: #204b42;
-  border-color: black;
+  border-color: #2E7060 ;
   color: #ffffff;
 }
 
@@ -161,6 +161,7 @@ h2::after {
 .btn-cerrar-sesion {
   background-color: #DAF5E3;
   color: black;
+ 
 }
 
 .btn-cerrar-sesion:hover {
@@ -170,15 +171,17 @@ h2::after {
 .btn-perfil {
   background-color: #6DA2C2;
   color: white;
+  
 }
 
 .btn-perfil:hover {
-  background-color: #568CA8;
+  background-color: #508199;
+  color: white;
 }
 
 .project-box {
   border: 2px solid #000; /* Borde negro */
-  height: 160px; /* Altura del cuadro */
+  height: 170px; /* Altura del cuadro */
   margin-bottom: 10px;
   display: flex;
   align-items: center;
@@ -192,15 +195,56 @@ h2::after {
   object-fit: cover; /* Hace que la imagen se ajuste sin deformarse */
 }
 
-.project-box span {
-  margin-top: 5px; /* Separación entre el cuadro y el texto */
+.label-project {
+  cursor: pointer;
+  color: #000;
+}
+
+.label-project:hover {
+  color: #6DA2C1;
+  font-weight: bold;
 }
 
 .project-container {
   border: 2px solid #000; /* Borde del contenedor principal */
   padding: 20px;
-  background-color: #e9ecef; /* Color de fondo para diferenciar el contenedor */
+  background-color: #DCD2BA; /* Color de fondo para diferenciar el contenedor */
   margin-block-end: 3em;
   margin-top: 2em;
 }
 
+.color-badge{
+  background-color: #2E7060;
+  box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.3);;
+}
+
+input[type="radio"]{
+  border: 1px solid #bebebe;
+  margin-inline-end: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+input[type="radio"]:checked{
+  background-color: #204b42;
+}
+
+.buton-crear{
+  margin-inline-start: 80%;
+  width: 50px;
+  height: 50px;
+  background-color: #2E7060;
+  border-color: #000;
+}
+
+.buton-crear:hover{
+  background-color: #DAF5E3;
+  color: black;
+  border-color: black;
+}
+
+.btn-primary{
+  --bs-btn-active-color: black;
+  --bs-btn-active-bg: #DAF5E3;
+  --bs-btn-active-border-color: #DAF5E3;
+}
