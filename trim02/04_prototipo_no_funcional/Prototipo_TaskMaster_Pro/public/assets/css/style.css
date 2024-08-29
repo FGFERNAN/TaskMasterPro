@@ -218,6 +218,11 @@ h2::after {
   box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.3);;
 }
 
+.color-badge-plantillas{
+  background-color: #6DA2C1;
+  box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.3);;
+}
+
 input[type="radio"]{
   border: 1px solid #bebebe;
   margin-inline-end: 5px;
@@ -247,4 +252,15 @@ input[type="radio"]:checked{
   --bs-btn-active-color: black;
   --bs-btn-active-bg: #DAF5E3;
   --bs-btn-active-border-color: #DAF5E3;
+}
+
+.btn-regresar {
+  background-color: #2E7060;
+  color: white;
+  border-color: #2E7060;
+}
+.btn-regresar:hover {
+  background-color: #204b42;
+  border-color: #204b42;
+  color: white;
 }
