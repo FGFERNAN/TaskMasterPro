@@ -2,7 +2,7 @@
     position: absolute;
     top: 10px;
     right: 110px;
-    width: 150px;
+    width: 200px;
     /* Ajusta el tamaño del logo */
 }
 
@@ -136,12 +136,12 @@ textarea {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    padding: 10px 20px;
+    padding: 8px 15px;
     background-color: #2E7060;
     color: white;
     font-weight: bold;
     border: none;
-    border-radius: 4px;
+    border-radius: 7px;
     cursor: pointer;
 }
 

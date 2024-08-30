@@ -8,7 +8,7 @@
   }
   
   .logo {
-    margin-block-start: -6em;
+    margin-block-start: -1em;
   }
   
   .custom-col {
@@ -160,7 +160,9 @@
   .btn-cerrar-sesion {
     background-color: #DAF5E3;
     color: black;
-   
+    margin-block-start: -3em;
+    font-weight: bold;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   }
   
   .btn-cerrar-sesion:hover {
@@ -263,5 +265,31 @@
     border-color: #204b42;
     color: white;
   }
+  
+  
+  .custom-container{
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
+    
+  }
+  
+  .border-img{
+    border: 2px solid black;
+  }
+
+  .buton-perfil{
+    background-color: #6DA2C1;
+    font-weight: bold;
+    border-color: black;
+  }
+
+  .buton-perfil:hover{
+    background-color: #DAF5E3;
+    border-color: #DAF5E3;
+    color: black;
+  }
+
+  
   
   

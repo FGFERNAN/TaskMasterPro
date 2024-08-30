@@ -263,5 +263,42 @@
     border-color: #204b42;
     color: white;
   }
+
+  .btn-secondary{
+    --bs-btn-active-color: black;
+    --bs-btn-active-bg: #DAF5E3;
+    --bs-btn-active-border-color: #DAF5E3;
+  }
+  
+  .buton-mensaje, .buton-miembros{
+    background-color: #6DA2C1;
+  }
+
+  .buton-mensaje:hover, .buton-miembros:hover{
+    background-color: #DAF5E3;
+    color: black;
+  }
+
+  .accordion-button:not(.collapsed) {
+    color: var(--bs-accordion-active-color);
+    background-color: #DAF5E3;
+  }
+  
+  .container {
+    border: 2px solid #000; /* Borde del contenedor principal */
+    padding: 20px;
+    background-color: white; /* Color de fondo para diferenciar el contenedor */
+    margin-block-end: 3em;
+    margin-top: 2em;
+  }
+
+  .dropdown-menu{
+    --bs-dropdown-link-hover-bg: #DAF5E3;
+    --bs-dropdown-link-active-bg: #6DA2C1;
+  }
+
+ 
+
+  
   
   

@@ -263,5 +263,13 @@
     border-color: #204b42;
     color: white;
   }
+
+  .container {
+    border: 2px solid #000; /* Borde del contenedor principal */
+    padding: 20px;
+    background-color: white; /* Color de fondo para diferenciar el contenedor */
+    margin-block-end: 3em;
+    margin-top: 2em;
+  }
   
   

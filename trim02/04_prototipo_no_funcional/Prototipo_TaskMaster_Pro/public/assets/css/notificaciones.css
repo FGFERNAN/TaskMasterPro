@@ -59,7 +59,7 @@ body {
 
 .notification-count:hover {
     background-color: #6DA2C1;
-    border-color: #6DA2C1 ;
+    border-color: #6DA2C1;
 }
 
 .notification-item {
@@ -90,7 +90,7 @@ body {
     background-color: #2E7060;
     color: white;
     border-color: #2E7060;
-    font-weight: bold; 
+    font-weight: bold;
     margin-block-end: 1em;
 }
 
@@ -109,8 +109,13 @@ span {
     margin-block-start: -6em;
 }
 
-.btn-primary{
+.btn-primary {
     --bs-btn-active-color: black;
     --bs-btn-active-bg: #DAF5E3;
     --bs-btn-active-border-color: #DAF5E3;
-  }
+}
+
+.notificaciones{
+    margin-block-start: 10em;
+}
+
