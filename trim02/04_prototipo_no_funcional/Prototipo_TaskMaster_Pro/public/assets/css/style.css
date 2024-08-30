@@ -107,7 +107,6 @@ h2 {
 }
 
 h2::after {
-  content: "";
   position: absolute;
   bottom: -60px;
   left: 0%;
@@ -264,3 +263,4 @@ input[type="radio"]:checked{
   border-color: #204b42;
   color: white;
 }
+

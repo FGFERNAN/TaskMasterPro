@@ -14,14 +14,17 @@
 
 <body>
     <div class="container1">
-        <button class="btn btn-primary me-md-2 mt-4 buton-regresar" onclick="location.href='../views/#'"><svg
-                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+        <button class="btn btn-primary me-md-2 mt-4 buton-regresar" onclick="history.back()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-caret-left-fill" viewBox="0 0 16 16">
                 <path
                     d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
-            </svg> Regresar</button>
+            </svg>
+            Regresar
+        </button>
+    </div>
         <div class="header1">
-            <h2>Veterinaria <br>
+            <a><h2>Veterinaria <br>
                 Notificaciones <button type="button" class="btn btn-primary rounded-circle notification-count">
                      <i class="fas fa-bell"></i><span class="badge text-bg-secondary">4</span>
                   </button>
