@@ -8,10 +8,11 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="../../public/assets/css/miPerfil.css">
-    <title>Mi Perfil</title>
+    <title>Interfaz Principal</title>
 </head>
 
 <body class="bg-custom">
+
     </div>
     <header>
         <div class="row align-items-center mb-3">
@@ -21,104 +22,47 @@
                     <img src="../../public/assets/img/mariposa34.jpg" alt="Perfil" class="img-fluid">
                 </div>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-8 text-center">
                 <h2>MI PERFIL</h2>
             </div>
-        </div>
-        <div class="header d-flex justify-content-end align-items-center p-3">
-            <div class="d-flex align-items-center">
-                <button class="btn btn-cerrar-sesion">Cerrar Sesión</button>
+            <div class="col-md-2 d-flex justify-content-end">
+                <button class="btn btn-cerrar-sesion me-3">Cerrar Sesión</button>
             </div>
         </div>
-        </div>
-        </div>
-
-        <div class="container">
-            <div class="header">
-                <div></div>
-                <div class="notifications">
-                    <div></div>
+    </header>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div class="container">
+        <div class="col custom-col-main">
+            <section class="container">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2>Configuración de Perfil</h2>
                 </div>
-            </div>
-            <div class="col custom-col-main">
-                <header>
-                    <div class="header d-flex justify-content-end align-items-center p-3">
-                        <div class="d-flex align-items-center">
-                            <a href="notificaciones.html" class="me-2">
-                                <i class="fas fa-bell"></i> <!-- Icono de notificaciones -->
-                            </a>
-                            <button class="btn btn-cerrar-sesion">Cerrar Sesión</button>
-                            <a href="miPerfil.html" class="btn btn-perfil">Perfil</a>
-                        </div>
+                <hr style="height:5px; background-color:#000; margin-top:-10px;">
+                <div class="d-flex justify-content-between align-items-start">
+                    <!-- Botones pequeños en columna -->
+                    <div class="d-flex flex-column">
+                        <button class="btn btn-sm btn-success mb-2">Editar Perfil</button>
+                        <button class="btn btn-sm btn-success mb-2">gestionar Roles</button>
+                        <button class="btn btn-sm btn-success mb-2">Gestionar Usuarios</button>
+                        <button class="btn btn-sm btn-success mb-2">Cancelar Cuenta/button>
+                        <button class="btn btn-sm btn-success">Ver Datos</button>
                     </div>
-                    <section class="container">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h2>Mis Tareas</h2>
-                        </div>
-                        <hr style="height:5px; background-color:#000; margin-top:-10px;">
-                        <div class="d-flex justify-content-between mb-3">
-                            <button class="btn btn-success">Crear Tarea</button>
-                            <button class="btn btn-success">Filtrar</button>
-                        </div>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Nombre Tarea</th>
-                                    <th>Fecha de Entrega</th>
-                                    <th>Proyecto</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Tarea 1</td>
-                                    <td>17 de Agosto</td>
-                                    <td>Veterinaria</td>
-                                </tr>
-                                <tr>
-                                    <td>Tarea 2</td>
-                                    <td>20 Julio</td>
-                                    <td>Veterinaria</td>
-                                </tr>
-                                <tr>
-                                    <td>Tarea 3</td>
-                                    <td>2 de Agosto</td>
-                                    <td>Veterinaria</td>
-                                </tr>
-                                <tr>
-                                    <td>Tarea 4</td>
-                                    <td>2 de Junio</td>
-                                    <td>Veterinaria</td>
-                                </tr>
-                                <tr>
-                                    <td>Tarea 5</td>
-                                    <td>17 de Agosto</td>
-                                    <td>TaskMaster</td>
-                                </tr>
-                                <tr>
-                                    <td>Tarea 6</td>
-                                    <td>20 Julio</td>
-                                    <td>TaskMaster</td>
-                                </tr>
-                                <tr>
-                                    <td>Tarea 7</td>
-                                    <td>23 de Agosto</td>
-                                    <td>TaskMaster</td>
-                                </tr>
-                                <tr>
-                                    <td>Tarea 8</td>
-                                    <td>2 de Junio</td>
-                                    <td>TaskMaster</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </section>
-                </header>
-            </div>
+                    <!-- Logo al lado de los botones -->
+                    <div class="ms-4">
+                        <img src="../../public/assets/img/logotipo.png" alt="Logo" class="img-fluid">
+                    </div>
+                </div>
+            </section>
         </div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-            crossorigin="anonymous"></script>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
