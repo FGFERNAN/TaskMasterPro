@@ -1,6 +1,7 @@
 /* Fondo blanco para el body */
 body {
     background-color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Ajuste de tamaño para inputs y selects */
@@ -40,14 +41,13 @@ body {
 
 .main-content-container {
     padding: 5%; /* Ajuste de padding */
-    position: relative; /* Necesario para los botones en la parte superior derecha */
-    margin-left: 9%; /* Añade margen para que no esté pegado al menú */
-    width: 60%; /* Ajusta el ancho del container */
+    margin-left: 5%; /* Añade margen para que no esté pegado al menú */
+    margin-right: 5%;
+    width: 90%; /* Ajusta el ancho del container */
     margin-top: 4%; /* Añade margen superior para centrar verticalmente */
-    height: 85vh; /* Ajusta la altura del container para hacerlo más largo hacia abajo */
-    margin-bottom: 20px; /* Añade margen en la parte inferior del contenedor */
+    height: 85%; /* Ajusta la altura del container para hacerlo más largo hacia abajo */
     background-color: #E4E2DD;
-   
+    border: 2px solid #000;
 }
 
 .top-right-buttons {
@@ -71,18 +71,28 @@ body {
     margin-bottom: 20px;
 }
 
-.task-buttons .btn {
+.task-buttons .btn-tarea {
     background-color: #DAF5E3;
     color: black;
     border: none;
     font-weight: bold;
+    cursor: auto;
+    font-size: 1.5em;
+    border-radius: 5px;
 }
 
 .task-buttons .btn-danger {
     background-color: #2E7060;
     color: white;
     border: none;
-    font-weight: bold;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px 15px;
+    
+}
+
+.btn-danger:hover{
+    background-color:  #204b42;
 }
 
 .form-label {
@@ -134,29 +144,39 @@ body {
 }
 
 /* Ajustes para los botones de la parte superior derecha */
-.btn {
+.main-content-container .btn {
     border-radius: 5px;
     padding: 10px 15px;
     font-size: 14px;
     font-weight: bold;
 }
 
+.main-content-container .btn:hover{
+    background-color: #6DA2C1;
+    border: none;
+    color: white;
+}
+
 .btn-primary {
     background-color: #DCD2BA;
     border: none;
     color: black;
+    border: 1px solid black;
 }
 
-.btn-outline-primary {
-    border-color: #007bff;
-    color: #007bff;
-}
-
-.btn-outline-primary:hover {
+.btn-primary:hover {
     background-color: #6DA2C1;
+    border: none;
     color: white;
+    border: 1px solid #6DA2C1;
 }
 
+.btn-primary{
+    --bs-btn-active-color: black;
+    --bs-btn-active-bg: #DAF5E3;
+    --bs-btn-active-border-color: #DAF5E3;
+  }
+  
 .top-buttons {
     position: fixed;
     top: 0;
@@ -171,7 +191,6 @@ body {
 .top-buttons .icon {
     font-size: 150%; /* Tamaño del ícono */
     color: black; /* Color del ícono */
-
     text-decoration: none; /* Elimina el subrayado del enlace */
     display: flex; /* Alinea el contenido */
     align-items: center; /* Centra el contenido verticalmente */
@@ -181,8 +200,6 @@ body {
    
     
 }
-
-
 
 .top-buttons .btn-logout {
     background-color: #DAF5E3;
@@ -196,3 +213,4 @@ body {
     opacity: 0.9; /* Efecto de hover */
     background-color: #6DA2C1;
 }
+
