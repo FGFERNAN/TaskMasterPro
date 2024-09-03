@@ -1,0 +1,57 @@
+.container-custom {
+    width: 100%;
+    height: 25%;
+    /* Usa 100% de la altura de la pantalla */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    position: absolute;
+    right: 4%;
+    width: 20%;
+    height: 20%;
+
+}
+
+h1 {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+
+.file-preview {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+}
+
+.upload-area {
+    padding: 20px;
+    border: 2px dashed #333;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+}
+
+.upload-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    cursor: pointer; /* Muestra el cursor de mano para indicar que es clicable */   
+}
+
+.upload-box .plus-icon {
+    font-size: 48px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
