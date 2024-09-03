@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="../../public/assets/css/style.css">
+    <title>Editar Campo</title>
+</head>
+
+<body class="bg-custom">
+    <div>
+        <h2 class="text-center mt-4">Editar Campo</h2>
+        <img src="../../public/assets/img/logos/logotipo.png" class="rounded float-end me-4 logo-creacion" width="270">
+    </div>
+    <form action="campoAgregado.html" class="container form-create-project needs-validation" novalidate>
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-2 col-form-label input-nombre">Nombre:</label>
+            <div class="col-sm-10 has-validation input-nombre">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-input-cursor" viewBox="0 0 16 16">
+                        <path d="M10 5h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4v1h4a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-4zM6 5V4H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v-1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/>
+                        <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v13a.5.5 0 0 1-1 0v-13A.5.5 0 0 1 8 1"/>
+                      </svg></span>
+                    <input type="text" class="form-control border-input" placeholder="Name" value="Presupuesto" aria-label="Username"
+                        aria-describedby="basic-addon1" maxlength="50" required>
+                    <div class="invalid-feedback">
+                        Por favor ingrese el nombre (maximo 50 caracteres).
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Tipo:</label>
+            <div class="col-sm-10">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                      </svg></span>
+                    <select class="form-select border-input" id="tipo-campo" required>
+                        <option value="" style="display: none;"><label>Seleccionar</label></option>
+                        <option value="text">Texto</option>
+                        <option selected value="number">Numero</option>
+                        <option value="date">Fecha</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Por favor seleccione un tipo.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Valor:</label>
+            <div class="col-sm-10 has-validation">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-braces" viewBox="0 0 16 16">
+                        <path d="M2.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C3.25 2 2.49 2.759 2.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6M13.886 7.9v.163c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456V7.332c-1.114 0-1.49-.362-1.49-1.456V4.352C13.51 2.759 12.75 2 11.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6"/>
+                      </svg></span>
+                    <input type="text" class="form-control border-input" id="valor-campo" placeholder="Value" aria-label="Username"
+                        aria-describedby="basic-addon1" value="1.200.000" required>
+                    <div class="invalid-feedback">
+                        Por favor ingrese el valor.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-primary buton-iniciar-sesion mb-4" type="submit">Guardar</button>
+        </div>
+    </form>
+    <footer>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-primary me-md-2 mt-5 buton-regresar" onclick="history.back()"><svg xmlns="http://www.w3.org/2000/svg"
+                    width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                    <path
+                        d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                </svg> Regresar</button>
+        </div>
+    </footer>
+    <script>
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    let resultado = confirm('¿Deseas modificar el campo personalizado?');
+                    if(resultado){
+                        if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }
+                    }
+                    , false)
+            })
+        })()
+    </script>
+    <script src="../../public/assets/js/campoPersonalizado.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
