@@ -14,9 +14,16 @@
 <body>
     <!-- Contenedor de encabezado -->
     <div class="container-custom">
+        <button class="btn btn-primary mt-2 buton-regresar" onclick="history.back()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                <path
+                    d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+            </svg>
+            Regresar
+        </button>
         <h1>
-            <i class="bi bi-chat-left-dots"></i> <!-- Ícono de comentario de Bootstrap -->
-            Adjuntar Archivos
+            <i class="fa-regular fa-file me-1"></i> Adjuntar Archivos
         </h1>
         <img src="../../public/assets/img/logotipo.png" alt="Logo" class="logo">
     </div>
@@ -25,34 +32,34 @@
         <div class="row mt-3">
             <div class="col-md-4">
                 <div class="file-preview text-center">
-                    <img src="archivo1.jpg" alt="Archivo 1" class="img-fluid">
+                    <img src="../../public/assets/img/pdf.png" alt="Archivo 1" class="img-fluid">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="file-preview text-center">
-                    <img src="archivo2.jpg" alt="Archivo 2" class="img-fluid">
+                    <img src="../../public/assets/img/png.png" alt="Archivo 2" class="img-fluid">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="file-preview text-center">
-                    <img src="archivo3.jpg" alt="Archivo 3" class="img-fluid">
+                    <img src="../../public/assets/img/word.png" alt="Archivo 3" class="img-fluid">
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="upload-area mt-4 text-center">
+            <div class="upload-area mt-4 text-center" id="upload-area">
                 <div class="upload-box" id="upload-box">
                     <input type="file" id="fileInput" class="d-none" multiple>
-                    <span class="plus-icon">+</span>
-                    <h3>Arrastre o adjunte archivos</h3>
+                    <span class="plus-icon"><i class="fa-solid fa-square-plus"></i></span>
+                    <h3>Arrastre o Adjunte Archivos</h3>
                 </div>
             </div>
         </div>
     </div>
     <script>
-        document.getElementById('upload-box').addEventListener('click', function () {
-            document.getElementById('fileInput').click();
+        document.getElementById('upload-area').addEventListener('click', function () {
+        document.getElementById('fileInput').click();
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
