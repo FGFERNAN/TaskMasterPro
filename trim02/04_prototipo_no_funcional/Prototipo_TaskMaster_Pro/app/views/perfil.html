@@ -24,7 +24,9 @@
                 <h2>Mi Perfil</h2>
             </div>
             <div class="col-md-2 d-flex justify-content-end">
-                <button class="btn btn-cerrar-sesion me-3"><i class="fa-solid fa-right-to-bracket me-1"></i> Cerrar Sesión</button>
+            <button class="btn btn-cerrar-sesion me-3" onclick="confirmarCerrarSesion()">
+                <i class="fa-solid fa-right-to-bracket me-1"></i> Cerrar Sesión
+            </button>
             </div>
         </div>
     </header>
@@ -64,6 +66,13 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
         <script src="perfil.js"></script>
+        <script>
+            function confirmarCerrarSesion() {
+                if (confirm("¿Seguro que quieres cerrar sesión?")) {
+                    window.location.href = '../../public/index.html'; 
+                }
+            }
+        </script>
     </body>
 </body>
 
