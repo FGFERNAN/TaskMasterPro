@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -7,312 +7,16 @@
     <title>TaskMaster - Registrar Tiempo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <style>
-        
-       
-        body {
-    background-color: #E4E2DD;
-}
-
-        .registrar-tiempo-content {
-            width: 100%;
-    height: 15%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4%;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .registrar-tiempo-content img {
-            position: absolute;
-    left: 4%;
-    width: 20%;
-    height: 40%;
-}
-        
-
-        .registrar-tiempo-content h2 {
-            margin: 0;
-            font-size: 3rem;
-             margin-right: -7%; /* Ajusta este valor según lo necesario */
-        }
-
-        .registrar-tiempo-content .clock-icon {
-            font-size: 2rem;
-        }
-
-        .clock-container {
-            width: 300px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            margin-top: 5%;
-            margin-left: 8%;
-        }
-
-        .time-display {
-            font-size: 24px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .time-display span {
-            margin-left: 5px;
-            font-size: 14px;
-        }
-
-        .clock {
-            position: relative;
-            width: 250px;
-            height: 250px;
-            margin: 0 auto;
-            border: 1px solid #ddd;
-            border-radius: 50%;
-            background-color: #E4E2DD;
-        }
-
-        .number {
-            position: absolute;
-            font-size: 16px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .number12 {
-            top: 2%;
-            left: 49%;
-            transform: translateX(-50%);
-        }
-
-        .number1 {
-            top: 11%;
-            left: 78%;
-            transform: translateX(-50%);
-        }
-
-        .number2 {
-            top: 27%;
-            left: 93%;
-            transform: translateX(-50%);
-        }
-
-        .number3 {
-            top: 50%;
-            left: 95%;
-            transform: translate(-50%, -50%);
-        }
-
-        .number4 {
-            top: 64%;
-            left: 93%;
-            transform: translateX(-50%);
-        }
-
-        .number5 {
-            top: 82%;
-            left: 79%;
-            transform: translateX(-50%);
-        }
-
-        .number6 {
-            top: 90%;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .number7 {
-            top: 80%;
-            left: 20%;
-            transform: translateX(-50%);
-        }
-
-        .number8 {
-            top: 65%;
-            left: 9%;
-            transform: translateX(-50%);
-        }
-
-        .number9 {
-            top: 52%;
-            left: 5%;
-            transform: translate(-50%, -50%);
-        }
-
-        .number10 {
-            top: 29%;
-            left: 8%;
-            transform: translateX(-50%);
-        }
-
-        .number11 {
-            top: 12%;
-            left: 20%;
-            transform: translateX(-50%);
-        }
-
-        .hand {
-            position: absolute;
-            width: 4px;
-            height: 90px;
-            background-color: #6DA2C1;
-            top: 20px;
-            left: 50%;
-            transform-origin: bottom;
-            border-radius: 2px;
-            transform: rotate(180deg);
-        }
-
-        .buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        .buttons a {
-            color: #6DA2C1;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .buttons a:hover {
-            text-decoration: underline;
-        }
-
-        .flatpickr-calendar {
-            display: block !important;
-        }
-
-        .calendar-wrapper {
-            width: 18%;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            margin-top: -18%;
-            margin-left: 30%;
-        }
-
-        /* Estilos para la lista de tareas */
-        .task-list-container {
-            position: absolute;
-            right: 0%;
-            top: 35%;
-            width: 25%;
-            padding: 20px;
-            right: 10%;
-            border-radius: 8px;
-            
-        }
-
-        .task-list-container h3 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            text-align: center;
-           
-        }
-
-        .task-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .task-list li {
-    display: flex;
-    justify-content: space-between; /* Espacio entre el contenido y el botón */
-    align-items: center; /* Centrar verticalmente el contenido */
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  margin-left: -25%;
-  width: 120%;
-   padding: 8%;
-}
-
-.btn-action {
-    margin-left: auto; /* Empuja el botón a la derecha */
-    background-color: #6DA2C1;
-    color:black;
-    font-weight: bold;
-    border-color: #DCD2BA;
-}
-.btn-action:hover {
-    background-color: #DCD2BA; /* Cambia el fondo a azul al pasar el mouse */
-}
-
-
-        .task-details p {
-            font-size: 120%;
-            margin: 0;
-        }
-      
-        .lista {
-    background-color: #DAF5E3;
-    margin-right: -20%;
-    border-radius: 5px;
-    width: 50%; /* Ajusta el ancho para que sea más pequeño */
-    height: 30%; /* Ajusta la altura para que sea más pequeño */
-    justify-content: center;
-    font-weight: bold;
-        }
-        .btn-guardar {
-            position: center;
-            background-color: #6DA2C1;
-            margin: 2% auto;
-            padding: 10px 20px;
-            margin-left: -70%;
-        }
-        .btn-regresar {
-    background-color: #6DA2C1;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    margin-left: 90rem;
-    justify-content: right;
-    position: absolute;
-    
-    
-    transition: background-color 0.3s;
-}
-
-.btn-regresar:hover {
-    background-color: #DCD2BA; /* Cambia el color del fondo cuando se pasa el mouse */
-}
-
- 
-   
-   
-
-
-    </style>
+    <link rel="stylesheet" href="../../public/assets/css/registrarTiempo.css">
 </head>
 
 <body class="bg-custom">
-    <div class="registrar-tiempo-container">
-        <div class="registrar-tiempo-content">
-        
-            <img src="./img/logos/logotipo.png" alt="TaskMaster Logo">
-            <h2>Registrar Tiempo <i class="fas fa-clock" style="margin-left: 10px;"></i></h2> <!-- Ícono de reloj -->
-            <button class="btn btn-regresar">Regresar</button>
-        </div>
-    
-    
+    <div class="registrar-tiempo-content">
+        <img src="../../public/assets/img/logos/logotipo.png" alt="TaskMaster Logo">
+        <h2>Registrar Tiempo <i class="fas fa-clock" style="margin-left: 10px;"></i></h2> <!-- Ícono de reloj -->
+        <button class="btn btn-regresar justify-content-end">Regresar</button>
     </div>
 
     <div class="clock-container">
@@ -382,13 +86,11 @@
     </div>
     <div class="text-center mt-4">
         <button class="btn btn-guardar btn-action">Guardar registro</button>
-       
-  
     </div>
-    
-  
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeo6lKq2lrSx5dsXM5l7E6Z9WjrvdGm6UcbxBJN+YqDmeZ0p5JBwr+0ztzsezTq6D5YB7+BV9Klr15WeFq"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
@@ -397,50 +99,50 @@
             inline: true,
             dateFormat: "d-m-Y",
         });
-    
+
         // Inicializa las manecillas del reloj
         function initializeClock() {
             const hourHand = document.getElementById("hour-hand");
             const minuteHand = document.getElementById("minute-hand");
             let currentHour = new Date().getHours();
             let currentMinute = new Date().getMinutes();
-    
+
             function updateClock() {
                 const hourDegrees = (currentHour % 12) * 30 + (currentMinute / 60) * 30;
                 const minuteDegrees = currentMinute * 6;
-    
+
                 hourHand.style.transform = `rotate(${hourDegrees}deg)`;
                 minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
-    
+
                 document.getElementById("time").textContent = `${currentHour < 10 ? "0" : ""}${currentHour}:${currentMinute < 10 ? "0" : ""}${currentMinute}`;
                 document.getElementById("am-pm").textContent = currentHour >= 12 ? "PM" : "AM";
             }
-    
+
             updateClock();
             setInterval(updateClock, 1000);
-    
+
             // Funciones para arrastrar las manecillas
             let isDraggingHour = false;
             let isDraggingMinute = false;
-    
+
             hourHand.addEventListener("mousedown", () => {
                 isDraggingHour = true;
             });
-    
+
             minuteHand.addEventListener("mousedown", () => {
                 isDraggingMinute = true;
             });
-    
+
             document.addEventListener("mousemove", (event) => {
                 if (isDraggingHour || isDraggingMinute) {
                     const rect = hourHand.parentElement.getBoundingClientRect();
                     const centerX = rect.left + rect.width / 2;
                     const centerY = rect.top + rect.height / 2;
-    
+
                     const mouseX = event.clientX - centerX;
                     const mouseY = event.clientY - centerY;
                     const angle = Math.atan2(mouseY, mouseX) * (180 / Math.PI) + 90;
-    
+
                     if (isDraggingHour) {
                         hourHand.style.transform = `rotate(${angle}deg)`;
                     } else if (isDraggingMinute) {
@@ -448,7 +150,7 @@
                     }
                 }
             });
-    
+
             document.addEventListener("mouseup", () => {
                 if (isDraggingHour) {
                     const hourDegrees = parseFloat(hourHand.style.transform.replace("rotate(", "").replace("deg)", ""));
@@ -460,28 +162,27 @@
                     currentMinute = Math.round((minuteDegrees / 6) % 60);
                     updateClock();
                 }
-    
+
                 isDraggingHour = false;
                 isDraggingMinute = false;
             });
         }
-    
+
         // Inicializa el reloj
         initializeClock();
-    
+
         // Función para mostrar alerta cuando se registre el tiempo
-        document.querySelector(".btn-guardar").addEventListener("click", function() {
+        document.querySelector(".btn-guardar").addEventListener("click", function () {
             // Obtén la hora actual seleccionada en el reloj
             const selectedTime = document.getElementById("time").textContent + " " + document.getElementById("am-pm").textContent;
-            
+
             // Obtén la fecha seleccionada en el calendario
             const selectedDate = document.querySelector(".flatpickr-day.selected").ariaLabel;
-    
+
             // Muestra el mensaje de alerta
             alert(`Se registró su tiempo exitosamente:\nFecha: ${selectedDate}\nHora: ${selectedTime}`);
         });
     </script>
-    
-</body>
 
+</body>
 </html>
