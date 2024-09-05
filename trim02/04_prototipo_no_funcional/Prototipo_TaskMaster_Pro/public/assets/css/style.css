@@ -191,7 +191,7 @@ h1 {
 
 .project-box {
   border: 2px solid #000; /* Borde negro */
-  height: 13em; /* Altura del cuadro */
+  height: 200px; /* Altura del cuadro */
   margin-bottom: 5%;
   display: flex;
   align-items: center;
