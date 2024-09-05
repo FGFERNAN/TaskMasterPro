@@ -18,10 +18,11 @@
                 <img src="../../public/assets/img/logos/logotipo.png" class="logo-inicio" width="300">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link mi-link" href="inicio.html"><i class="fa-solid fa-home me-1"></i> Inicio</a>
+                        <a class="nav-link mi-link" href="perfil.html"><i class="fa-solid fa-home me-1"></i> Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mi-link" href="roles.html"><i class="fa-solid fa-user-cog me-1"></i> Roles</a>
+                        <a class="nav-link mi-link" href="administracionRoles.html"><i
+                                class="fa-solid fa-user-cog me-1"></i> Roles</a>
                     </li>
                 </ul>
             </div>
@@ -41,7 +42,8 @@
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div class="d-flex align-items-center">
                             <h2>Roles</h2>
-                            <button class="btn btn-success ms-3"><i class="fa-solid fa-plus me-1"></i></button>
+                            <button class="btn btn-success ms-3" onclick="location.href='crearRol.html'"><i
+                                    class="fa-solid fa-plus me-1"></i></button>
                         </div>
                         <div class="d-flex align-items-center">
                             <input type="text" class="form-control" placeholder="Buscar Roles">
@@ -57,56 +59,56 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr id="fila-admin">
                                 <td><input type="radio" name="role"> Administrador</td>
                                 <td>Descripción del rol</td>
                                 <td>
                                     <input type="checkbox"> Permiso 1
-                                    <input type="checkbox"> Permiso 2
-                                    <input type="checkbox"> Permiso 3
                                 </td>
                                 <td>
-                                    <button class="btn btn-sm btn-secondary"><i class="fa-solid fa-pen"></i></button>
-                                    <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                    <button class="btn btn-sm btn-secondary" onclick="location.href='editarRol.html'"><i
+                                            class="fa-solid fa-pen"></i></button>
+                                    <button class="btn btn-sm btn-danger btn-eliminar"><i
+                                            class="fa-solid fa-trash"></i></button>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr id="fila-lider">
                                 <td><input type="radio" name="role"> Líder Proyecto</td>
                                 <td>Descripción del rol</td>
                                 <td>
-                                    <input type="checkbox"> Permiso 1
                                     <input type="checkbox"> Permiso 2
-                                    <input type="checkbox"> Permiso 3
                                 </td>
                                 <td>
-                                    <button class="btn btn-sm btn-secondary"><i class="fa-solid fa-pen"></i></button>
-                                    <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                    <button class="btn btn-sm btn-secondary" onclick="location.href='editarRol.html'"><i
+                                            class="fa-solid fa-pen"></i></button>
+                                    <button class="btn btn-sm btn-danger btn-eliminar"><i
+                                            class="fa-solid fa-trash"></i></button>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr id="fila-miembro">
                                 <td><input type="radio" name="role"> Miembro Proyecto</td>
                                 <td>Descripción del rol</td>
                                 <td>
-                                    <input type="checkbox"> Permiso 1
-                                    <input type="checkbox"> Permiso 2
                                     <input type="checkbox"> Permiso 3
                                 </td>
                                 <td>
-                                    <button class="btn btn-sm btn-secondary"><i class="fa-solid fa-pen"></i></button>
-                                    <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                    <button class="btn btn-sm btn-secondary" onclick="location.href='editarRol.html'"><i
+                                            class="fa-solid fa-pen"></i></button>
+                                    <button class="btn btn-sm btn-danger btn-eliminar"><i
+                                            class="fa-solid fa-trash"></i></button>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr id="fila-stakeholder">
                                 <td><input type="radio" name="role"> StakeHolder</td>
                                 <td>Descripción del rol</td>
                                 <td>
-                                    <input type="checkbox"> Permiso 1
-                                    <input type="checkbox"> Permiso 2
-                                    <input type="checkbox"> Permiso 3
+                                    <input type="checkbox"> Permiso 4
                                 </td>
                                 <td>
-                                    <button class="btn btn-sm btn-secondary"><i class="fa-solid fa-pen"></i></button>
-                                    <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                    <button class="btn btn-sm btn-secondary" onclick="location.href='editarRol.html'"><i
+                                            class="fa-solid fa-pen"></i></button>
+                                    <button class="btn btn-sm btn-danger btn-eliminar"><i
+                                            class="fa-solid fa-trash"></i></button>
                                 </td>
                             </tr>
                         </tbody>
@@ -115,6 +117,26 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Seleccionamos todos los botones con la clase 'btn-eliminar'
+            const botonesEliminar = document.querySelectorAll('.btn-eliminar');
+
+            // Agregamos un evento click a cada botón de eliminar
+            botonesEliminar.forEach((boton) => {
+                boton.addEventListener('click', (event) => {
+                    // Confirmar antes de eliminar
+                    let resultado = confirm('¿Estas seguro que deseas eliminar el rol?');
+                    if (resultado) {
+                        // Eliminar la fila correspondiente
+                        const fila = event.target.closest('tr');
+                        fila.remove();
+                    }
+                });
+            });
+        });
+
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

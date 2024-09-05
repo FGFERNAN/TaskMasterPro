@@ -278,7 +278,7 @@
   }
 
   .btn-regresar {
-      background-color: #6DA2C1;
+      background-color: #2E7060;
       color: white;
       font-weight: bold;
       border: none;
@@ -291,6 +291,8 @@
   }
 
   .btn-regresar:hover {
-      background-color: #DCD2BA;
+    background-color: #204b42;
+    border-color: #204b42;
+    color: white;
       /* Cambia el color del fondo cuando se pasa el mouse */
   }
