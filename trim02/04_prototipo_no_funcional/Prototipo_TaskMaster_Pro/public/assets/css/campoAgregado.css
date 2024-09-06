@@ -22,9 +22,21 @@
     margin-block-start: -3em;
   }
   
+  .logo-header {
+    position: absolute;
+    right: 4%;
+    width: 20%;
+    height: 20%;
+  
+  }
+  
   .mi-link {
-    color: black;
+    color: rgb(75, 75, 75);
     cursor: pointer;
+  }
+  
+  .mi-link:hover{
+    color: black;
   }
   
   .custom-dropdown .dropdown-menu {
@@ -54,6 +66,18 @@
     border-color: black;
   }
   
+  .buton-form{
+    background-color: #2E7060;
+    color: white;
+    border-color: #2E7060;
+    font-weight: bold;
+  }
+  
+  .buton-form:hover{
+    background-color: #6DA2C1;
+    border-color: #6DA2C1;
+  }
+  
   .border-input {
     border: 1px solid black;
   }
@@ -76,20 +100,25 @@
     border-color: black;
   }
   
-  h1 {
-    position: relative;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  .container-custom {
+    width: 100%;
+    height: 15%;
+    /* Usa 100% de la altura de la pantalla */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   }
   
-  h1::after {
-    content: "";
-    position: absolute;
-    bottom: -9px;
-    left: 10%;
-    width: 80%;
-    height: 5px;
-    background-color: #000;
+  
+  h1 {
+    position: relative;
+    margin: 0;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
   
   .ver-contraseña {
@@ -100,36 +129,21 @@
     margin-top: -9.5em;
   }
   
-  h2 {
-    position: relative;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    font-size: calc(1.375rem + 1.5vw);
-  }
-  
-  h2::after {
-    position: absolute;
-    bottom: -60px;
-    left: 0%;
-    width: 100%;
-    height: 5px;
-    background-color: #000;
-  }
-  
   .form-create-project {
-    margin-block-start: 7em;
+    margin-block-start: 4em;
     max-width: 50%;
-    background-color: #DCD2BA;
+    padding-left: 3%;
+    padding-right: 3%;
+    background-color: #DAF5E3;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.2);
   }
   
   .buton-regresar {
     background-color: #2E7060;
     color: white;
     border-color: #2E7060;
-    font-weight: bold;
-    border-color: #000;
+    font-weight: bold;  
     margin-block-end: 1em;
   }
   
@@ -181,7 +195,7 @@
   
   .project-box {
     border: 2px solid #000; /* Borde negro */
-    height: 170px; /* Altura del cuadro */
+    height: 200px; /* Altura del cuadro */
     margin-bottom: 10px;
     display: flex;
     align-items: center;
@@ -264,13 +278,6 @@
     border-color: #204b42;
     color: white;
   }
-
-  .container {
-    border: 2px solid #000; /* Borde del contenedor principal */
-    padding: 20px;
-    background-color: white; /* Color de fondo para diferenciar el contenedor */
-    margin-block-end: 3em;
-    margin-top: 2em;
-  }
+  
   
   

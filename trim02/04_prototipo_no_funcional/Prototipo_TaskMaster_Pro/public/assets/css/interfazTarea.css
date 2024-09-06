@@ -11,6 +11,10 @@ body {
     max-width: 40%; /* Limita el ancho máximo si es necesario */
 }
 
+.mi-form{
+    max-width: 100%;
+}
+
 .input-icon-container {
     display: flex;
     align-items: center; /* Centra verticalmente el contenido del contenedor */
@@ -35,10 +39,6 @@ body {
     outline: none;
 }
 
-.collapse-content {
-    display: none;
-}
-
 .main-content-container {
     padding: 5%; /* Ajuste de padding */
     margin-left: 5%; /* Añade margen para que no esté pegado al menú */
@@ -58,7 +58,7 @@ body {
     gap: 10px;
 }
 
-.top-right-buttons .btn {
+.top-right-buttons .btn1 {
     background-color: #DCD2BA;
     color: black;
     border: none;
@@ -144,14 +144,14 @@ body {
 }
 
 /* Ajustes para los botones de la parte superior derecha */
-.main-content-container .btn {
+.main-content-container .btn1 {
     border-radius: 5px;
     padding: 10px 15px;
     font-size: 14px;
     font-weight: bold;
 }
 
-.main-content-container .btn:hover{
+.main-content-container .btn1:hover{
     background-color: #6DA2C1;
     border: none;
     color: white;
@@ -214,3 +214,27 @@ body {
     background-color: #6DA2C1;
 }
 
+.buton-descargar{
+    border: none;
+    background-color: white;
+}
+
+.buton-descargar:hover{
+    color: #6DA2C1 !important;
+    text-decoration: underline;
+}
+
+.mi-card:hover{
+    border-radius: 4px;
+    border: 1px solid black
+}
+
+.mi-buton{
+    background-color: #6DA2C1;
+    border-color: #6DA2C1;
+}
+
+.mi-buton:hover{
+    background-color: #DAF5E3;
+    color: black;
+}

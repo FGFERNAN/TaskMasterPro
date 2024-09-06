@@ -8,26 +8,27 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="../../public/assets/css/style.css">
-    <title>Crear Tarea</title>
+    <title>Crear Rol</title>
 </head>
 
 <body class="bg-custom">
-   <div class="container-custom">
-        <h1> <!-- Ícono de comentario de Bootstrap -->
-            Creación de Tarea
+    <!-- Contenedor de encabezado -->
+    <div class="container-custom">
+        <h1><i class="fa-solid fa-user-plus me-2"></i> <!-- Ícono de comentario de Bootstrap -->
+            Creación de Rol
         </h1>
         <img src="../../public/assets/img/logotipo.png" alt="Logo" class="logo-header">
     </div>
-    <form action="interfazProyecto.html" class="container form-create-project needs-validation" novalidate>
+    <form action="administracionRoles.html" class="container form-create-project needs-validation" novalidate>
         <div class="row mb-3">
             <label for="inputEmail3" class="col-sm-2 col-form-label input-nombre">Nombre:</label>
-            <div class="col-sm-10 has-validation input-nombre">
+            <div class="col-sm-10 has-validation  input-nombre">
                 <div class="input-group mb-3">
-                    <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-list-check"></i></span>
+                    <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-user-tag"></i></span>
                     <input type="text" class="form-control border-input" placeholder="Name" aria-label="Username"
-                        aria-describedby="basic-addon1" maxlength="30" required>
+                        aria-describedby="basic-addon1" maxlength="50" required>
                     <div class="invalid-feedback">
-                        Por favor ingrese el nombre (maximo 30 caracteres).
+                        Por favor ingrese el nombre (maximo 50 caracteres).
                     </div>
                 </div>
             </div>
@@ -46,56 +47,19 @@
             </div>
         </div>
         <div class="row mb-3">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Fecha Inicio:</label>
-            <div class="col-sm-10 mb-3 has-validation">
-                <input type="date" class="form-control border-input" id="inputEmail3" required>
-                <div class="invalid-feedback">
-                    Por favor seleccione la fecha de inicio.
-                </div>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Fecha Fin:</label>
-            <div class="col-sm-10 mb-3 has-validation">
-                <input type="date" class="form-control border-input" id="inputEmail3" required>
-                <div class="invalid-feedback">
-                    Por favor seleccione la fecha de fin.
-                </div>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Estado:</label>
+            <label for="inputEmail3" class="col-sm-2 col-form-label ">Permisos:</label>
             <div class="col-sm-10">
                 <div class="input-group mb-3">
-                    <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-chart-simple"></i></span>
+                    <span class="input-group-text border-input" id="basic-addon1 "><i class="fa-solid fa-users-gear"></i></span>
                     <select class="form-select border-input" id="inputGroupSelect01" required>
                         <option value="" style="display: none;"><label>Seleccionar</label></option>
-                        <option value="1">Pendiente</option>
-                        <option value="2">En Curso</option>
-                        <option value="3">Terminada</option>
+                        <option value="1">Permisos 1</option>
+                        <option value="2">Permisos 2</option>
+                        <option value="3">Permisos 3</option>
+                        <option value="4">Permisos 4</option>
                     </select>
                     <div class="invalid-feedback">
                         Por favor seleccione un estado.
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Prioridad:</label>
-            <div class="col-sm-10">
-                <div class="input-group mb-3">
-                    <span class="input-group-text border-input" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-kanban" viewBox="0 0 16 16">
-                        <path d="M13.5 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm-11-1a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
-                        <path d="M6.5 3a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1zm-4 0a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1zm8 0a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1z"/>
-                      </svg></span>
-                    <select class="form-select border-input" id="inputGroupSelect01" required>
-                        <option value="" style="display: none;"><label>Seleccionar</label></option>
-                        <option value="1">Alta</option>
-                        <option value="2">Media</option>
-                        <option value="3">Baja</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Por favor selecione la prioridad.
                     </div>
                 </div>
             </div>
