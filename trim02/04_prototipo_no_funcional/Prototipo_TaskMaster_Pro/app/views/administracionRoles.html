@@ -66,6 +66,7 @@
                                     <input type="checkbox"> Permiso 1
                                 </td>
                                 <td>
+                                    <button class="btn btn-sm btn-secondary buton-form" onclick="location.href='asignarRol.html'"><i class="fa-solid fa-user-plus"></i></button>
                                     <button class="btn btn-sm btn-secondary" onclick="location.href='editarRol.html'"><i
                                             class="fa-solid fa-pen"></i></button>
                                     <button class="btn btn-sm btn-danger btn-eliminar"><i
@@ -79,6 +80,7 @@
                                     <input type="checkbox"> Permiso 2
                                 </td>
                                 <td>
+                                    <button class="btn btn-sm btn-secondary buton-form" onclick="location.href='asignarRol.html'"><i class="fa-solid fa-user-plus"></i></button>
                                     <button class="btn btn-sm btn-secondary" onclick="location.href='editarRol.html'"><i
                                             class="fa-solid fa-pen"></i></button>
                                     <button class="btn btn-sm btn-danger btn-eliminar"><i
@@ -92,6 +94,7 @@
                                     <input type="checkbox"> Permiso 3
                                 </td>
                                 <td>
+                                    <button class="btn btn-sm btn-secondary buton-form" onclick="location.href='asignarRol.html'"><i class="fa-solid fa-user-plus"></i></button>
                                     <button class="btn btn-sm btn-secondary" onclick="location.href='editarRol.html'"><i
                                             class="fa-solid fa-pen"></i></button>
                                     <button class="btn btn-sm btn-danger btn-eliminar"><i
@@ -105,6 +108,7 @@
                                     <input type="checkbox"> Permiso 4
                                 </td>
                                 <td>
+                                    <button class="btn btn-sm btn-secondary buton-form" onclick="location.href='asignarRol.html'"><i class="fa-solid fa-user-plus"></i></button>
                                     <button class="btn btn-sm btn-secondary" onclick="location.href='editarRol.html'"><i
                                             class="fa-solid fa-pen"></i></button>
                                     <button class="btn btn-sm btn-danger btn-eliminar"><i
@@ -136,6 +140,14 @@
             });
         });
 
+    </script>
+    <script>
+        const radioButtons = document.querySelectorAll('input[type="radio"]');
+        radioButtons.forEach(radio => {
+            radio.addEventListener('click', () => {
+                window.location.href = 'editarRol.html';
+            });
+        });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

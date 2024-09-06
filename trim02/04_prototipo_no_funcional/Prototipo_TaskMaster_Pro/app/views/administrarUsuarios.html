@@ -63,12 +63,12 @@
                         <tbody>
                             <tr id="fila-admin">
                                 <td><input type="radio" name="nombre">Johan Garcia</td>
-                                <td>1054544267</td>
-                                <td>3243850895</td>
+                                <td>1030533364</td>
+                                <td>3107847573</td>
                                 <td>*************</td>
                                 <td>
-                                    <select class="form-select">
-                                        <option>Administrador</option>
+                                    <select class="form-select" disabled>
+                                        <option selected>Administrador</option>
                                         <option>Líder Proyecto</option>
                                         <option>Miembro Proyecto</option>
                                         <option>StakeHolder</option>
@@ -83,14 +83,14 @@
                             </tr>
                             <tr id="fila-lider">
                                 <td><input type="radio" name="nombre">Erika Triana</td>
-                                <td>1054544267</td>
-                                <td>3243850895</td>
+                                <td>1234567890</td>
+                                <td>3103110309</td>
                                 <td>*************</td>
                                 <td>
                                     <!-- Menú desplegable en cada fila -->
-                                    <select class="form-select">
+                                    <select class="form-select" disabled>
                                         <option>Administrador</option>
-                                        <option>Líder Proyecto</option>
+                                        <option selected>Líder Proyecto</option>
                                         <option>Miembro Proyecto</option>
                                         <option>StakeHolder</option>
                                     </select>
@@ -109,10 +109,10 @@
                                 <td>*************</td>
                                 <td>
                                     <!-- Menú desplegable en cada fila -->
-                                    <select class="form-select">
+                                    <select class="form-select" disabled>
                                         <option>Administrador</option>
                                         <option>Líder Proyecto</option>
-                                        <option>Miembro Proyecto</option>
+                                        <option selected>Miembro Proyecto</option>
                                         <option>StakeHolder</option>
                                     </select>
                                 </td>
@@ -125,16 +125,16 @@
                             </tr>
                             <tr id="fila-stakeholder">
                                 <td><input type="radio" name="nombre">Nikole Bernal</td>
-                                <td>1054544267</td>
-                                <td>3243850895</td>
+                                <td>1083486290</td>
+                                <td>3102963881</td>
                                 <td>*************</td>
                                 <td>
                                     <!-- Menú desplegable en cada fila -->
-                                    <select class="form-select">
+                                    <select class="form-select" disabled>
                                         <option>Administrador</option>
                                         <option>Líder Proyecto</option>
                                         <option>Miembro Proyecto</option>
-                                        <option>StakeHolder</option>
+                                        <option selected>StakeHolder</option>
                                     </select>
                                 </td>
                                 <td>
@@ -166,6 +166,14 @@
                         fila.remove();
                     }
                 });
+            });
+        });
+    </script>
+      <script>
+        const radioButtons = document.querySelectorAll('input[type="radio"]');
+        radioButtons.forEach(radio => {
+            radio.addEventListener('click', () => {
+                window.location.href = 'editarUsuario.html';
             });
         });
     </script>
