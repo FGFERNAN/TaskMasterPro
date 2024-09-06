@@ -297,8 +297,8 @@
     --bs-dropdown-link-active-bg: #6DA2C1;
   }
 
- 
-
-  
-  
-  
+  .sticker {
+    position: absolute;
+    right: 10%;
+    height: 50px;
+}
