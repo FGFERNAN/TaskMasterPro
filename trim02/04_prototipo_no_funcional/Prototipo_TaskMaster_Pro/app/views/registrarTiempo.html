@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -9,47 +9,300 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../../public/assets/css/registrarTiempo.css">
+
+    <style>
+        
+       
+        body {
+    background-color: #E4E2DD;
+}
+
+        .registrar-tiempo-content {
+            width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .registrar-tiempo-content img {
+            position: absolute;
+    left: 4%;
+    width: 20%;
+    height: 40%;
+}
+        
+
+        .registrar-tiempo-content h2 {
+            margin: 0;
+            font-size: 3rem;
+             margin-right: -7%; /* Ajusta este valor según lo necesario */
+        }
+
+        .registrar-tiempo-content .clock-icon {
+            font-size: 2rem;
+        }
+
+        #clock-container {
+            background-color: #2e323a;
+            padding: 10px; /* Reducido el padding */
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 120px; /* Reducido el ancho */
+            margin-top: 20px; /* Espacio superior */
+        }
+
+        #clock {
+            font-size: 30px; /* Reducido el tamaño de la fuente */
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+       
+
+        .hand {
+            position: absolute;
+            width: 4px;
+            height: 90px;
+            background-color: #6DA2C1;
+            top: 20px;
+            left: 50%;
+            transform-origin: bottom;
+            border-radius: 2px;
+            transform: rotate(180deg);
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .buttons a {
+            color: #6DA2C1;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .buttons a:hover {
+            text-decoration: underline;
+        }
+
+        .flatpickr-calendar {
+            display: block !important;
+        }
+
+        .calendar-wrapper {
+            width: 16%;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin-top: -15%;
+            margin-left: 30%;
+        }
+
+        /* Estilos para la lista de tareas */
+        .task-list-container {
+            position: absolute;
+            right: 0%;
+            top: 35%;
+            width: 25%;
+            padding: 20px;
+            right: 10%;
+            border-radius: 8px;
+            
+        }
+
+        .task-list-container h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            text-align: center;
+            margin-top: -10%;
+           
+        }
+
+        .task-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .task-list li {
+    display: flex;
+    justify-content: space-between; /* Espacio entre el contenido y el botón */
+    align-items: center; /* Centrar verticalmente el contenido */
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  margin-left: -25%;
+  width: 120%;
+   padding: 8%;
+}
+
+.btn-action {
+    margin-left: auto; /* Empuja el botón a la derecha */
+    background-color: #6DA2C1;
+    color:black;
+    font-weight: bold;
+    border-color: #DCD2BA;
+}
+.btn-action:hover {
+    background-color: #DCD2BA; /* Cambia el fondo a azul al pasar el mouse */
+}
+
+
+        .task-details p {
+            font-size: 120%;
+            margin: 0;
+        }
+      
+        .lista {
+    background-color: #DAF5E3;
+    margin-right: -20%;
+    border-radius: 5px;
+    width: 50%; /* Ajusta el ancho para que sea más pequeño */
+    height: 30%; /* Ajusta la altura para que sea más pequeño */
+    justify-content: center;
+    font-weight: bold;
+        }
+        
+        .btn-regresar {
+    background-color: #2E7060;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-left: 120rem;
+    justify-content: right;
+    position: absolute;
+    
+    
+    transition: background-color 0.3s;
+}
+
+.btn-regresar:hover {
+    background-color: #DCD2BA; 
+}
+
+ 
+#clock-container {
+            background-color: #6DA2C1;
+            padding: 4%; /* Reducido el padding */
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width:23%;
+            margin-top: 5%;
+            margin-left: 5%;
+        } 
+        #clock {
+            font-size: 50px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        #day {
+            color: #88a1b9;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .day-active {
+            color: #43c0f6;
+        }
+        #theme-btn {
+            background-color: #2E7060;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: black;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+        #theme-btn:hover {
+            background-color: #E4E2DD;
+        }
+   
+    </style>
 </head>
 
 <body class="bg-custom">
-    <div class="registrar-tiempo-content">
-        <img src="../../public/assets/img/logos/logotipo.png" alt="TaskMaster Logo">
-        <h2>Registrar Tiempo <i class="fas fa-clock" style="margin-left: 10px;"></i></h2> <!-- Ícono de reloj -->
-        <button class="btn btn-regresar justify-content-end" onclick="history.back()"><svg
-            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-            class="bi bi-caret-left-fill" viewBox="0 0 16 16">
-            <path
-                d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
-        </svg> Regresar</button>
-    </div>
-
-    <div class="clock-container">
-        <div class="time-display">
-            <div id="time">6:40</div>
-            <span id="am-pm">AM</span>
+    <div class="registrar-tiempo-container">
+        <div class="registrar-tiempo-content">
+        
+            <img src="../../public/assets/img/logos/logotipo.png" alt="TaskMaster Logo">
+            <h2>Registrar Tiempo <i class="fas fa-clock" style="margin-left: 10px;"></i></h2> <!-- Ícono de reloj -->
+            <button class="btn btn-regresar">Regresar</button>
+        
         </div>
-        <div class="clock" id="clock">
-            <div class="hand" id="hour-hand"></div>
-            <div class="hand" id="minute-hand"></div>
-            <div class="hand-circle"></div>
-            <div class="number number12">12</div>
-            <div class="number number1">1</div>
-            <div class="number number2">2</div>
-            <div class="number number3">3</div>
-            <div class="number number4">4</div>
-            <div class="number number5">5</div>
-            <div class="number number6">6</div>
-            <div class="number number7">7</div>
-            <div class="number number8">8</div>
-            <div class="number number9">9</div>
-            <div class="number number10">10</div>
-            <div class="number number11">11</div>
+      
+        <div id="clock-container">
+            
+    
+            <!-- Reloj -->
+            <div id="clock" data-bs-toggle="modal" data-bs-target="#timeModal">06:16:06 PM</div>
+    
+            <!-- Botón para cambiar el tema -->
+            <button id="theme-btn">Registrar tiempo</button>
         </div>
-        <div class="buttons">
-            <a href="#" id="cancel">CANCEL</a>
-            <a href="#" id="ok">OK</a>
+    
+        <!-- Modal para seleccionar la hora -->
+        <div class="modal fade" id="timeModal" tabindex="-1" aria-labelledby="timeModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="timeModalLabel">Selecciona la Hora</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <label for="hourInput" class="form-label">Hora</label>
+                                <input type="number" class="form-control" id="hourInput" min="1" max="12" value="6">
+                            </div>
+                            <div class="col">
+                                <label for="minuteInput" class="form-label">Minutos</label>
+                                <input type="number" class="form-control" id="minuteInput" min="0" max="59" value="16">
+                            </div>
+                            <div class="col">
+                                <label for="secondInput" class="form-label">Segundos</label>
+                                <input type="number" class="form-control" id="secondInput" min="0" max="59" value="6">
+                            </div>
+                        </div>
+                        <div class="form-check mt-3">
+                            <input class="form-check-input" type="radio" name="amPmRadios" id="amRadio" value="AM">
+                            <label class="form-check-label" for="amRadio">AM</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="amPmRadios" id="pmRadio" value="PM" checked>
+                            <label class="form-check-label" for="pmRadio">PM</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" id="saveTimeBtn" data-bs-dismiss="modal">Guardar</button>
+                    </div>
+                </div>
+            </div>
         </div>
+    
+        <!-- Bootstrap JS and Popper.js -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    
+    
     </div>
     <div class="calendar-wrapper">
         <div id="calendar"></div>
@@ -86,108 +339,18 @@
                 </div>
                 <button class="btn btn-primary btn-action">Descargar </button>
             </li>
-            <!-- Agrega más tareas aquí si es necesario -->
+           
         </ul>
     </div>
-    <div class="text-center mt-4">
-        <button class="btn btn-guardar btn-action">Guardar registro</button>
-    </div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeo6lKq2lrSx5dsXM5l7E6Z9WjrvdGm6UcbxBJN+YqDmeZ0p5JBwr+0ztzsezTq6D5YB7+BV9Klr15WeFq"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
-        // Inicializa el calendario de Flatpickr
-        flatpickr("#calendar", {
-            inline: true,
-            dateFormat: "d-m-Y",
-        });
-
-        // Inicializa las manecillas del reloj
-        function initializeClock() {
-            const hourHand = document.getElementById("hour-hand");
-            const minuteHand = document.getElementById("minute-hand");
-            let currentHour = new Date().getHours();
-            let currentMinute = new Date().getMinutes();
-
-            function updateClock() {
-                const hourDegrees = (currentHour % 12) * 30 + (currentMinute / 60) * 30;
-                const minuteDegrees = currentMinute * 6;
-
-                hourHand.style.transform = `rotate(${hourDegrees}deg)`;
-                minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
-
-                document.getElementById("time").textContent = `${currentHour < 10 ? "0" : ""}${currentHour}:${currentMinute < 10 ? "0" : ""}${currentMinute}`;
-                document.getElementById("am-pm").textContent = currentHour >= 12 ? "PM" : "AM";
-            }
-
-            updateClock();
-            setInterval(updateClock, 1000);
-
-            // Funciones para arrastrar las manecillas
-            let isDraggingHour = false;
-            let isDraggingMinute = false;
-
-            hourHand.addEventListener("mousedown", () => {
-                isDraggingHour = true;
-            });
-
-            minuteHand.addEventListener("mousedown", () => {
-                isDraggingMinute = true;
-            });
-
-            document.addEventListener("mousemove", (event) => {
-                if (isDraggingHour || isDraggingMinute) {
-                    const rect = hourHand.parentElement.getBoundingClientRect();
-                    const centerX = rect.left + rect.width / 2;
-                    const centerY = rect.top + rect.height / 2;
-
-                    const mouseX = event.clientX - centerX;
-                    const mouseY = event.clientY - centerY;
-                    const angle = Math.atan2(mouseY, mouseX) * (180 / Math.PI) + 90;
-
-                    if (isDraggingHour) {
-                        hourHand.style.transform = `rotate(${angle}deg)`;
-                    } else if (isDraggingMinute) {
-                        minuteHand.style.transform = `rotate(${angle}deg)`;
-                    }
-                }
-            });
-
-            document.addEventListener("mouseup", () => {
-                if (isDraggingHour) {
-                    const hourDegrees = parseFloat(hourHand.style.transform.replace("rotate(", "").replace("deg)", ""));
-                    currentHour = Math.round((hourDegrees / 30) % 12);
-                    if (currentHour === 0) currentHour = 12; // Ajustar para mostrar 12 en lugar de 0
-                    updateClock();
-                } else if (isDraggingMinute) {
-                    const minuteDegrees = parseFloat(minuteHand.style.transform.replace("rotate(", "").replace("deg)", ""));
-                    currentMinute = Math.round((minuteDegrees / 6) % 60);
-                    updateClock();
-                }
-
-                isDraggingHour = false;
-                isDraggingMinute = false;
-            });
-        }
-
-        // Inicializa el reloj
-        initializeClock();
-
-        // Función para mostrar alerta cuando se registre el tiempo
-        document.querySelector(".btn-guardar").addEventListener("click", function () {
-            // Obtén la hora actual seleccionada en el reloj
-            const selectedTime = document.getElementById("time").textContent + " " + document.getElementById("am-pm").textContent;
-
-            // Obtén la fecha seleccionada en el calendario
-            const selectedDate = document.querySelector(".flatpickr-day.selected").ariaLabel;
-
-            // Muestra el mensaje de alerta
-            alert(`Se registró su tiempo exitosamente:\nFecha: ${selectedDate}\nHora: ${selectedTime}`);
-        });
-    </script>
-
+    <script src="../../public/assets/js/tiempo.js"></script>
+    
+    
+    
 </body>
+
 </html>
