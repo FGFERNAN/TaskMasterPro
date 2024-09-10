@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Ingreso a la Plataforma</title>
+</head>
+
+<body>
+    <div class="caja1">
+        <form action="login.php" method="post">
+            <div class="formtlo">Iniciar Sesión</div>
+            <div class="ub1">&#128273;Ingresar Usuario</div>
+            <input type="text" name="usuario">
+            <div class="ub1">&#128274;Ingresar Password</div>
+            <input type="password" name="password" id="password">
+            <div class="ub1">
+                <input type="checkbox" onclick="verPassword()">Mostrar Contraseña
+            </div>
+            <div class="ub1">Rol</div>
+            <select name="rol">
+                <option value="0" style="display: none;"><label>Seleccionar</label></option>
+                <option value="Usuario">Usuario</option>
+                <option value="Administrador">Administrador</option>
+            </select>
+            <div align="center">
+                <input type="submit" value="Ingresar">
+                <input type="reset" value="Cancelar">
+            </div>
+        </form>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
