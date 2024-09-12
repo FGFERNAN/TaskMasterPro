@@ -1,31 +1,37 @@
+flatpickr("#time-start", {
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "h:i K",
+    time_24hr: false
+});
 
-    // Inicializa el calendario de Flatpickr
-    let selectedDate = ""; // Variable para almacenar la fecha seleccionada
-    flatpickr("#calendar", {
-        inline: true,
-        dateFormat: "d-m-Y",
-        onChange: function(selectedDates, dateStr, instance) {
-            selectedDate = dateStr; // Actualiza la fecha seleccionada
-        }
-    });
+flatpickr("#time-end", {
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "h:i K",
+    time_24hr: false
+});
 
-    // Guarda la hora seleccionada en el reloj
-    document.getElementById('saveTimeBtn').addEventListener('click', function () {
-        const hour = document.getElementById('hourInput').value.padStart(2, '0');
-        const minute = document.getElementById('minuteInput').value.padStart(2, '0');
-        const second = document.getElementById('secondInput').value.padStart(2, '0');
-        const amPm = document.querySelector('input[name="amPmRadios"]:checked').value;
+const datePicker = flatpickr("#date-picker", {
+    dateFormat: "Y-m-d",
+    onChange: function (selectedDates, dateStr, instance) {}
+});
 
-        document.getElementById('clock').textContent = `${hour}:${minute}:${second} ${amPm}`;
-    });
+document.getElementById('calendar-icon-title').addEventListener('click', () => {
+    const datePickerInput = document.getElementById('date-picker');
+    datePickerInput.style.display = datePickerInput.style.display === 'none' ? 'block' : 'none';
+    datePicker.open();
+});
 
-    // Mostrar un alert con la fecha y hora seleccionadas cuando se haga clic en "Registrar tiempo"
-    document.getElementById('theme-btn').addEventListener('click', function() {
-        const selectedTime = document.getElementById('clock').textContent;
-        
-        if (selectedDate) {
-            alert(`Fecha seleccionada: ${selectedDate}\nHora seleccionada: ${selectedTime}`);
-        } else {
-            alert('Por favor selecciona una fecha.');
-        }
-    });
+document.getElementById('btn-registrar').addEventListener('click', () => {
+    const startTime = document.getElementById('time-start').value;
+    const endTime = document.getElementById('time-end').value;
+    const selectedDate = document.getElementById('date-picker').value;
+
+    if (!startTime || !endTime || !selectedDate) {
+        alert('Por favor, selecciona la fecha y ambas horas antes de registrar el tiempo.');
+        return;
+    }
+
+    alert(`Fecha: ${selectedDate}\nHora de Inicio: ${startTime}\nHora de Fin: ${endTime}`);
+});
