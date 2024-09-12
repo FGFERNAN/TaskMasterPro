@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../public/assets/css/interfazProyecto.css">
     <title>Interfaz Proyecto</title>
 </head>
+
 <body class="bg-custom">
     <div class="container-fluid">
         <div class="row">
@@ -47,11 +48,12 @@
                             </li>
                         </ul>
                     </li>
-                  
+
                     <li class="nav-item">
-                        <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
-                        <div class="etiqueta"onclick="window.location.href='etiquetas.html'">
-                            Etiquetasss
+                        <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i>
+                            Etiquetas</a>
+                        <div class="etiqueta" onclick="window.location.href='etiquetas.html'">
+                            Etiquetas
                         </div>
                     </li>
                 </ul>
@@ -63,19 +65,22 @@
                             <a href="notificaciones.html" class="me-2">
                                 <i class="fas fa-bell"></i> <!-- Icono de notificaciones -->
                             </a>
-                            <button class="btn btn-cerrar-sesion" onclick="confirmarCerrarSesion()"><i class="fa-solid fa-right-to-bracket me-1"></i> Cerrar Sesión</button>
-                            <a href="perfil.html" class="btn btn-perfil"><i class="fa-solid fa-user me-1"></i> Perfil</a>
+                            <button class="btn btn-cerrar-sesion" onclick="confirmarCerrarSesion()"><i
+                                    class="fa-solid fa-right-to-bracket me-1"></i> Cerrar Sesión</button>
+                            <a href="perfil.html" class="btn btn-perfil"><i class="fa-solid fa-user me-1"></i>
+                                Perfil</a>
                         </div>
                     </div>
+                </header>
                     <section class="container">
-                        <div class="d-flex  align-items-center mb-3">
-                            <a href="etiquietas.html" class="ms-3">
-                               
-                            </a>
-                            <h2>Veterinaria</h2><button class="btn btn-secondary ms-5 buton-miembros"
-                                onclick="location.href='../../app/views/members.html'"><i
-                                    class="fa-regular fa-user me-1"></i> Miembros</button>
-                            <div class="dropdown ms-2">
+                        <div class="d-flex align-items-center mb-3">
+                            <a class="ms-3"></a>
+                            <h2 class="col-3">Veterinaria</h2>
+                            <button class=" btn btn-secondary  buton-miembros"
+                                onclick="location.href='../../app/views/members.html'">
+                                <i class="fa-regular fa-user me-1"></i> Miembros
+                            </button>
+                            <div class="col-2 dropdown ms-2">
                                 <button class="btn btn-secondary dropdown-toggle buton-mensaje ms-1" type="button"
                                     id="dropdownMessage" data-bs-toggle="dropdown" aria-expanded="false"><i
                                         class="fa-regular fa-message me-1"></i>
@@ -90,10 +95,15 @@
                                     </li>
                                 </ul>
                             </div>
+                            <div class="col-4 progress" role="progressbar" aria-label="Success example" aria-valuenow="25"
+                                aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar bg-success" style="width: 80%">80%</div>
+                            </div>
                         </div>
                         <hr style="height:5px; background-color:#000; margin-top:-10px;">
                         <div class="d-flex justify-content-between mb-3">
-                            <button onclick="window.location.href='crearTarea.html'" class="btn btn-success"><i class="fa-solid fa-plus me-1"></i> Agregar Tarea</button>
+                            <button onclick="window.location.href='crearTarea.html'" class="btn btn-success"><i
+                                    class="fa-solid fa-plus me-1"></i> Agregar Tarea</button>
                             <button class="btn btn-success"><i class="fa-solid fa-filter me-1"></i> Filtrar</button>
                         </div>
                         <div class="accordion accordion-flush table-container" id="accordionExample">
@@ -119,7 +129,8 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td><a class="nav-link mi-link" href="interfazTarea.html">Tarea 1</a></td>
+                                                    <td><a class="nav-link mi-link" href="interfazTarea.html">Tarea
+                                                            1</a></td>
                                                     <td>17 de Agosto</td>
                                                     <td>Veterinaria</td>
                                                     <td>Andres Garzon</td>
@@ -307,7 +318,6 @@
                             </div>
                         </div>
                     </section>
-                </header>
             </div>
         </div>
     </div>
@@ -315,7 +325,7 @@
     <script>
         function confirmarCerrarSesion() {
             if (confirm("¿Seguro que quieres cerrar sesión ?")) {
-                window.location.href = '../../public/index.html'; 
+                window.location.href = '../../public/index.html';
             }
         }
     </script>
