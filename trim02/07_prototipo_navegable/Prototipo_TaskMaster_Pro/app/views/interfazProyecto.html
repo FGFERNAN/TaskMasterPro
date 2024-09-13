@@ -10,31 +10,35 @@
     <link rel="stylesheet" href="../../public/assets/css/interfazProyecto.css">
     <title>Interfaz Proyecto</title>
 </head>
-<style>
-    .custom-search-input {
-        max-width: 150px; /* Ajusta el tamaño según tus necesidades */
-        width: 100%; /* Asegura que el input se ajuste al contenedor */
-    }
-    /* Alinea el enlace a la derecha */
 
-
-    
-</style>
 <body class="bg-custom">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3 custom-col">
-                <img src="../../public/assets/img/logos/logotipo.png" class="logo-inicio" width="300">
+        <!-- Navbar for mobile -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light d-md-none">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
+                    aria-controls="offcanvasMenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="#">Menú</a>
+            </div>
+        </nav>
+
+        <!-- Offcanvas for mobile menu -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menú</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link mi-link" href="creacionProyecto.html"><i
-                                class="fa-solid fa-folder-plus me-1"></i> Crear
-                            Proyecto</a>
+                                class="fa-solid fa-folder-plus me-1"></i> Crear Proyecto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mi-link" href="plantillasProyecto.html"><i
-                                class="fa-solid fa-folder-tree me-1"></i> Utilizar
-                            Plantillas de Proyecto</a>
+                                class="fa-solid fa-folder-tree me-1"></i> Utilizar Plantillas de Proyecto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i>
@@ -46,7 +50,7 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <div class="d-flex align-items-center" id="sub-menu-proyectos">
-                                    <a class="dropdown-item  align-items-center" href="interfazProyecto.html">
+                                    <a class="dropdown-item align-items-center" href="interfazProyecto.html">
                                         <i class="fa-regular fa-folder-open"></i> Veterinaria
                                         <a href="editarProyecto.html" class="link-secondary ms-1 mi-link"><i
                                                 class="fa-solid fa-edit"></i></a>
@@ -57,17 +61,56 @@
                             </li>
                         </ul>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i>
                             Etiquetas</a>
-                            
-                            <div class="etiqueta" onclick="window.location.href='etiquetas.html'">
-                                Etiquetas
-                            </div>
                     </li>
                 </ul>
             </div>
+        </div>
+
+        <!-- Sidebar for desktop -->
+        <div class="row">
+            <div class="col-md-3 custom-col d-none d-md-block">
+                <img src="../../public/assets/img/logos/logotipo.png" class="logo-inicio" width="300">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link mi-link" href="creacionProyecto.html"><i
+                                class="fa-solid fa-folder-plus me-1"></i> Crear Proyecto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mi-link" href="plantillasProyecto.html"><i
+                                class="fa-solid fa-folder-tree me-1"></i> Utilizar Plantillas de Proyecto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i>
+                            Mis Tareas</a>
+                    </li>
+                    <li class="nav-item dropdown custom-dropdown">
+                        <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-expanded="false"><i class="fa-solid fa-folder-minus me-1"></i> Proyectos</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="d-flex align-items-center" id="sub-menu-proyectos">
+                                    <a class="dropdown-item align-items-center" href="interfazProyecto.html">
+                                        <i class="fa-regular fa-folder-open"></i> Veterinaria
+                                        <a href="editarProyecto.html" class="link-secondary ms-1 mi-link"><i
+                                                class="fa-solid fa-edit"></i></a>
+                                        <a id="buton-eliminar" class="link-secondary ms-2 mi-link"><i
+                                                class="fa-solid fa-trash me-3"></i></a>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i>
+                            Etiquetas</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Main Content Area -->
             <div class="col custom-col-main">
                 <header>
                     <div class="header d-flex justify-content-end align-items-center p-3">
@@ -81,309 +124,237 @@
                                 Perfil</a>
                         </div>
                     </div>
-                </header>
-                    <section class="container">
-                        <div class="d-flex align-items-center mb-3">
-                            <a class="ms-3"></a>
-                            <h2 class="col-3">Veterinaria</h2>
-                            <button class="btn btn-secondary buton-miembros"
-                                onclick="location.href='../../app/views/members.html'">
-                                <i class="fa-regular fa-user me-1"></i> Miembros
-                            </button>
-                            <div class="col-2 dropdown ms-2">
-                                <button class="btn btn-secondary dropdown-toggle buton-mensaje ms-1" type="button"
-                                    id="dropdownMessage" data-bs-toggle="dropdown" aria-expanded="false"><i
-                                        class="fa-regular fa-message me-1"></i>
-                                    Mensaje
+                    <div class="accordion accordion-flush table-container" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Tareas Pendientes
                                 </button>
-                                <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMessage">
-                                    <li><a href="mensajesDirectos.html" class="dropdown-item"><i
-                                                class="fa-solid fa-user me-1"></i> <label
-                                                for="directo">Directo</label></a></li>
-                                    <li><a href="mensajesGrupales.html" class="dropdown-item"><i
-                                                class="fa-solid fa-users"></i> <label for="grupal">Grupal</label></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-4 progress" role="progressbar" aria-label="Success example" aria-valuenow="25"
-                                aria-valuemin="0" aria-valuemax="100">
-                                <div class="progress-bar bg-success" style="width: 80%">80%</div>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show"
+                                aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre Tarea</th>
+                                                <th>Fecha de Entrega</th>
+                                                <th>Proyecto</th>
+                                                <th>Responsable</th>
+                                                <th>Prioridad</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><a class="nav-link mi-link" href="interfazTarea.html">Tarea 1</a></td>
+                                                <td>17 de Agosto</td>
+                                                <td>Veterinaria</td>
+                                                <td>Andres Garzon</td>
+                                                <td>Alta</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tarea 2</td>
+                                                <td>20 Julio</td>
+                                                <td>Veterinaria</td>
+                                                <td>Johan Garcia</td>
+                                                <td>Media</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tarea 3</td>
+                                                <td>2 de Agosto</td>
+                                                <td>Veterinaria</td>
+                                                <td>Erika Daniela</td>
+                                                <td>Alta</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tarea 4</td>
+                                                <td>2 de Junio</td>
+                                                <td>Veterinaria</td>
+                                                <td>Andres Garzon</td>
+                                                <td>Baja</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tarea 5</td>
+                                                <td>17 de Agosto</td>
+                                                <td>TaskMaster</td>
+                                                <td>Johan Garcia</td>
+                                                <td>Baja</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tarea 6</td>
+                                                <td>20 Julio</td>
+                                                <td>TaskMaster</td>
+                                                <td>Andres Garzon</td>
+                                                <td>Alta</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tarea 7</td>
+                                                <td>23 de Agosto</td>
+                                                <td>TaskMaster</td>
+                                                <td>Johan Garcia</td>
+                                                <td>Media</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tarea 8</td>
+                                                <td>2 de Junio</td>
+                                                <td>TaskMaster</td>
+                                                <td>Nikole Camila</td>
+                                                <td>Alta</td>
+                                            </tr>
+                                            <!-- Más filas según sea necesario -->
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                        <hr style="height:5px; background-color:#000; margin-top:-10px;">
-                        <div class="d-flex justify-content-between mb-3">
-                            <button onclick="window.location.href='crearTarea.html'" class="btn btn-success"><i
-                                    class="fa-solid fa-plus me-1"></i> Agregar Tarea</button>
-                                
-                        </div>
-                        <div class="accordion accordion-flush table-container" id="accordionExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Tareas Pendientes
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <input class="form-control custom-search-input mb-2" type="search" placeholder="Buscar en Tareas Pendientes" onkeyup="filterPendingTasks()">
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>Nombre Tarea</th>
-                                                    <th>Fecha de Entrega</th>
-                                                    <th>Proyecto</th>
-                                                    <th>Responsable</th>
-                                                    <th>Prioridad</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="pendingTasks">
-                                                <tr>
-                                                    <td><a class="nav-link mi-link" href="interfazTarea.html">Tarea 1</a></td>
-                                                    <td>17 de Agosto</td>
-                                                    <td>Veterinaria</td>
-                                                    <td>Andres Garzon</td>
-                                                    <td>Alta</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tarea 2</td>
-                                                    <td>20 Julio</td>
-                                                    <td>Veterinaria</td>
-                                                    <td>Johan Garcia</td>
-                                                    <td>Media</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tarea 3</td>
-                                                    <td>2 de Agosto</td>
-                                                    <td>Veterinaria</td>
-                                                    <td>Erika Daniela</td>
-                                                    <td>Alta</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tarea 4</td>
-                                                    <td>2 de Junio</td>
-                                                    <td>Veterinaria</td>
-                                                    <td>Andres Garzon</td>
-                                                    <td>Baja</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tarea 5</td>
-                                                    <td>17 de Agosto</td>
-                                                    <td>TaskMaster</td>
-                                                    <td>Johan Garcia</td>
-                                                    <td>Baja</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tarea 6</td>
-                                                    <td>20 Julio</td>
-                                                    <td>TaskMaster</td>
-                                                    <td>Andres Garzon</td>
-                                                    <td>Alta</td
-                                                        <td>Alta</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Tarea 7</td>
-                                                        <td>23 de Agosto</td>
-                                                        <td>TaskMaster</td>
-                                                        <td>Johan Garcia</td>
-                                                        <td>Media</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Tarea 8</td>
-                                                        <td>2 de Junio</td>
-                                                        <td>TaskMaster</td>
-                                                        <td>Nikole Camila</td>
-                                                        <td>Alta</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingTwo">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            Tareas En Curso
-                                        </button>
-                                    </h2>
-                                    <div id="collapseTwo" class="accordion-collapse collapse"
-                                        aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <input class="form-control custom-search-input mb-2" type="search" placeholder="Buscar en Tareas En Curso" onkeyup="filterInProgressTasks()">
-                                            <table class="table table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Nombre Tarea</th>
-                                                        <th>Fecha de Entrega</th>
-                                                        <th>Proyecto</th>
-                                                        <th>Responsable</th>
-                                                        <th>Prioridad</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="inProgressTasks">
-                                                    <tr>
-                                                        <td>Tarea 9</td>
-                                                        <td>25 de Agosto</td>
-                                                        <td>Veterinaria/td>
-                                                        <td>Johan Garcia</td>
-                                                        <td>Baja</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Tarea 10</td>
-                                                        <td>23 de Diciembre</td>
-                                                        <td>Parqueadero</td>
-                                                        <td>Juan Garnica</td>
-                                                        <td>Media</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Tarea 11</td>
-                                                        <td>18 de Julio</td>
-                                                        <td>Parqueadero/td>
-                                                        <td>Felipe Lugo</td>
-                                                        <td>Alta</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Tarea 12</td>
-                                                        <td>23 de Agosto</td>
-                                                        <td>TaskMaster</td>
-                                                        <td>Johan Garcia</td>
-                                                        <td>Media</td>
-                                                    </tr>
-                                                    <!-- Más filas según sea necesario -->
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingThree">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            Tareas Terminadas
-                                        </button>
-                                    </h2>
-                                    <div id="collapseThree" class="accordion-collapse collapse"
-                                        aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <input class="form-control custom-search-input mb-2" type="search" placeholder="Buscar en Tareas Terminadas" onkeyup="filterCompletedTasks()">
-                                            <table class="table table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Nombre Tarea</th>
-                                                        <th>Fecha de Entrega</th>
-                                                        <th>Proyecto</th>
-                                                        <th>Responsable</th>
-                                                        <th>Prioridad</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="completedTasks">
-                                                    <tr>
-                                                        <td>Tarea 13</td>
-                                                        <td>15 de Abril</td>
-                                                        <td>Licoreria</td>
-                                                        <td>Harold Hernandez</td>
-                                                        <td>Media</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Tarea 14</td>
-                                                        <td>12 de Septiembre</td>
-                                                        <td>Licoreria</td>
-                                                        <td>Kevin Zabogal</td>
-                                                        <td>Alta</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Tarea 15</td>
-                                                        <td>29 de Agosto</td>
-                                                        <td>Veterinaria</td>
-                                                        <td>Camilo Perez</td>
-                                                        <td>Baja</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Tarea 16</td>
-                                                        <td>22 de Noviembre</td>
-                                                        <td>Danzas</td>
-                                                        <td>Daniel Cerinza</td>
-                                                        <td>Baja</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Tarea 17</td>
-                                                        <td>15 de Agosto</td>
-                                                        <td>Parqueadero/td>
-                                                        <td>Yamid Rodriguez</td>
-                                                        <td>Media</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Tarea 18</td>
-                                                        <td>19 de Octubre</td>
-                                                        <td>Licoreria</td>
-                                                        <td>Harold Hernandez</td>
-                                                        <td>Alta</td>
-                                                    </tr>
-                                                    <!-- Más filas según sea necesario -->
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Tareas en Curso
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre Tarea</th>
+                                                <th>Fecha de Entrega</th>
+                                                <th>Proyecto</th>
+                                                <th>Responsable</th>
+                                                <th>Prioridad</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Tarea 9</td>
+                                                <td>25 de Agosto</td>
+                                                <td>Veterinaria/td>
+                                                <td>Johan Garcia</td>
+                                                <td>Baja</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tarea 10</td>
+                                                <td>23 de Diciembre</td>
+                                                <td>Parqueadero</td>
+                                                <td>Juan Garnica</td>
+                                                <td>Media</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tarea 11</td>
+                                                <td>18 de Julio</td>
+                                                <td>Parqueadero/td>
+                                                <td>Felipe Lugo</td>
+                                                <td>Alta</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tarea 12</td>
+                                                <td>23 de Agosto</td>
+                                                <td>TaskMaster</td>
+                                                <td>Johan Garcia</td>
+                                                <td>Media</td>
+                                            </tr>
+                                            <!-- Más filas según sea necesario -->
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                        </section>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">
+                                    Tareas Terminadas
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse"
+                                aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre Tarea</th>
+                                                <th>Fecha de Entrega</th>
+                                                <th>Proyecto</th>
+                                                <th>Responsable</th>
+                                                <th>Prioridad</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Tarea 13</td>
+                                                <td>15 de Abril</td>
+                                                <td>Licoreria</td>
+                                                <td>Harold Hernandez</td>
+                                                <td>Media</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tarea 14</td>
+                                                <td>12 de Septiembre</td>
+                                                <td>Licoreria</td>
+                                                <td>Kevin Zabogal</td>
+                                                <td>Alta</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tarea 15</td>
+                                                <td>29 de Agosto</td>
+                                                <td>Veterinaria</td>
+                                                <td>Camilo Perez</td>
+                                                <td>Baja</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tarea 16</td>
+                                                <td>22 de Noviembre</td>
+                                                <td>Danzas</td>
+                                                <td>Daniel Cerinza</td>
+                                                <td>Baja</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tarea 17</td>
+                                                <td>15 de Agosto</td>
+                                                <td>Parqueadero/td>
+                                                <td>Yamid Rodriguez</td>
+                                                <td>Media</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tarea 18</td>
+                                                <td>19 de Octubre</td>
+                                                <td>Licoreria</td>
+                                                <td>Harold Hernandez</td>
+                                                <td>Alta</td>
+                                            </tr>
+                                            <!-- Más filas según sea necesario -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                    integrity="sha384-Yf12G+STdQ7RpF3FmS9l9P3c5V1Iabz3sd1UPP/BOA/3uBFrIFcKxdDwZC61qI1B"
-                    crossorigin="anonymous"></script>
-                <script>
-                    function filterTasks() {
-                        const input = document.getElementById("searchInput").value.toLowerCase();
-                        const allRows = document.querySelectorAll("#pendingTasks tr, #inProgressTasks tr, #completedTasks tr");
-                        allRows.forEach(row => {
-                            const taskName = row.cells[0].innerText.toLowerCase();
-                            row.style.display = taskName.includes(input) ? "" : "none";
-                        });
-                    }
-    
-                    function filterPendingTasks() {
-                        const input = document.querySelector("#collapseOne .custom-search-input").value.toLowerCase();
-                        const rows = document.querySelectorAll("#pendingTasks tr");
-                        rows.forEach(row => {
-                            const taskName = row.cells[0].innerText.toLowerCase();
-                            row.style.display = taskName.includes(input) ? "" : "none";
-                        });
-                    }
-    
-                    function filterInProgressTasks() {
-                        const input = document.querySelector("#collapseTwo .custom-search-input").value.toLowerCase();
-                        const rows = document.querySelector("#inProgressTasks").querySelectorAll("tr");
-                        rows.forEach(row => {
-                            const taskName = row.cells[0].innerText.toLowerCase();
-                            row.style.display = taskName.includes(input) ? "" : "none";
-                        });
-                    }
-    
-                    function filterCompletedTasks() {
-                        const input = document.querySelector("#collapseThree .custom-search-input").value.toLowerCase();
-                        const rows = document.querySelector("#completedTasks").querySelectorAll("tr");
-                        rows.forEach(row => {
-                            const taskName = row.cells[0].innerText.toLowerCase();
-                            row.style.display = taskName.includes(input) ? "" : "none";
-                        });
-                    }
-    
-                    function confirmarCerrarSesion() {
-                        if (confirm("¿Estás seguro de que deseas cerrar sesión?")) {
-                            // Aquí va el código para cerrar sesión
-                            window.location.href = "login.html"; // Redirigir a la página de inicio de sesión
-                        }
-                    }
-                </script>
-    
-    
-    
+                </section>
+            </header>
+        </div>
+    </div>
+</div>
+                </header>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script src="../../public/assets/js/main.js"></script>
+    <script>
+        function confirmarCerrarSesion() {
+            if (confirm("¿Seguro que quieres cerrar sesión ?")) {
+                window.location.href = '../../public/index.html';
+            }
+        }
+    </script>
 </body>
 
 </html>
