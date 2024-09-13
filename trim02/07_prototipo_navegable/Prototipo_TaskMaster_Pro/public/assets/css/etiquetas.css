@@ -114,3 +114,13 @@ h1 {
   h3{
     font-weight: bold;
   }
+
+.buton-descargar{
+    border: none;
+    background-color: white;
+}
+
+.buton-descargar:hover{
+    color: #6DA2C1 !important;
+    text-decoration: underline;
+}

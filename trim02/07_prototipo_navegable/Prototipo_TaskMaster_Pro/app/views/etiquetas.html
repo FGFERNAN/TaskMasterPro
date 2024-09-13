@@ -30,7 +30,7 @@
     <div class="container">
         <div class="row g-5">
         <div class="col-md-6">
-            <form action="#" class="form-create-project needs-validation" novalidate>
+            <form class="form-create-project">
                 <div class="row mb-3">
                     <label for="inputEmail3" class="col-sm-2 col-form-label input-nombre">Nombre:</label>
                     <div class="col-sm-10 has-validation input-nombre">
@@ -46,7 +46,7 @@
                 </div>
                 <div class="row mb-3">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Color:</label>
-                    <div class="col-sm-10 has-validation">
+                    <div class="col-sm-10">
                         <div class="mb-3">
                             <input type="color" class="form-control form-control-color border-input" id="exampleColorInput"
                                 value="#6DA2C1" title="Choose your color" required>
@@ -57,15 +57,15 @@
                     </div>
                 </div>
                 <div class="d-grid gap-2 col-3 mx-auto">
-                    <button class="btn btn-primary buton-iniciar-sesion mb-4" type="submit" id="guardar-etiqueta">Guardar</button>
+                    <button class="btn btn-primary buton-iniciar-sesion mb-4" type="button" id="guardar-etiqueta">Guardar</button>
                 </div>
             </form>
         </div>
         <div class="col-md-6 d-none" id="divEditar">
-            <form action="#" class=" form-create-project needs-validation" novalidate>
+            <form class=" form-create-project" >
                 <div class="row mb-3">
                     <label for="inputEmail3" class="col-sm-2 col-form-label input-nombre">Nombre:</label>
-                    <div class="col-sm-10 has-validation input-nombre">
+                    <div class="col-sm-10 input-nombre">
                         <div class="input-group mb-3">
                             <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-tag"></i></span>
                             <input type="text" class="form-control border-input" placeholder="Name" aria-label="Username"
@@ -78,7 +78,7 @@
                 </div>
                 <div class="row mb-3">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Color:</label>
-                    <div class="col-sm-10 has-validation">
+                    <div class="col-sm-10 ">
                         <div class="mb-3">
                             <input type="color" class="form-control form-control-color border-input" id="exampleColorInput"
                                 value="#b30b00" title="Choose your color" required>
@@ -89,7 +89,7 @@
                     </div>
                 </div>
                 <div class="d-grid gap-2 col-3 mx-auto">
-                    <button class="btn btn-primary buton-iniciar-sesion mb-4" type="submit" id="guardar-editar">Guardar</button>
+                    <button class="btn btn-primary buton-iniciar-sesion mb-4" type="button" id="guardar-editar">Guardar</button>
                 </div>
             </form>
 
@@ -108,6 +108,12 @@
                     value="Revisar" disabled>
             </div>
             <div class="col-auto">
+                <button type="button" class="btn btn-primary mi-buton collapse-toggle" data-bs-toggle="modal"
+                data-bs-target="#modal-etiquetas">
+                <i class="fa-solid fa-tag"></i>
+            </button>
+            </div>
+            <div class="col-auto">
                 <button type="button" class="btn btn-primary mi-buton" id="editar-etiqueta"><i
                         class="fa-solid fa-pen-to-square"></i></button>
             </div>
@@ -117,25 +123,49 @@
             </div>
         </div>
     </div>
+    <!-- Modal Archivos -->
+    <div class="modal fade" id="modal-etiquetas" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-3" id="exampleModalLabel">Lista de Proyectos</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card" style="width: 100%;">
+                    <div class="card-body mi-card" data-bs-placement="top" >
+                        <h5 class="card-title">Veterinaria</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary"><button onclick="agregarEtiqueta()" class="buton-descargar text-body-secondary">Asignar</button></h6>
+                    </div>
+                </div>
+                <div class="card mt-3" style="width: 100%;">
+                    <div class="card-body mi-card"  data-bs-placement="top">
+                        <h5 class="card-title">Software</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary"><button onclick="agregarEtiqueta()"  class="buton-descargar text-body-secondary">Asignar</button></h6>
+                    </div>
+                </div>
+                <div class="card mt-3" style="width: 100%;">
+                    <div class="card-body mi-card" data-bs-placement="top">
+                        <h5 class="card-title">Construcción</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary"><button onclick="agregarEtiqueta()"  class="buton-descargar text-body-secondary">Asignar</button></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary mi-buton"
+                    data-bs-dismiss="modal">Cerrar</button>
 
+            </div>
+        </div>
+    </div>
+</div>
     <script>
-        (() => {
-            'use strict'
-
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            const forms = document.querySelectorAll('.needs-validation')
-
-            // Loop over them and prevent submission
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-                    form.classList.add('was-validated')
-                }, false)
-            })
-        })()
+        function agregarEtiqueta(){
+            alert('Etiqueta agregada exitosamente')
+            window.location.href = 'interfazProyecto.html'
+        };
     </script>
     <script src="../../public/assets/js/agregarEtiqueta.js"></script>
     <script src="../../public/assets/js/editarEtiqueta.js"></script>
