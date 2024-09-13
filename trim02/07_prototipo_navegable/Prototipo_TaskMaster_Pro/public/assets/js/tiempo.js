@@ -1,4 +1,4 @@
-latpickr("#time-start", {
+flatpickr("#time-start", {
     enableTime: true,
     noCalendar: true,
     dateFormat: "h:i K",
