@@ -1,42 +1,39 @@
-flatpickr("#time-start", {
-    enableTime: true,
-    noCalendar: true,
-    dateFormat: "h:i K",
-    time_24hr: false
-});
+document.addEventListener('DOMContentLoaded', function () {
+    // Flatpickr para las horas de inicio y fin (formato 12 horas)
+    flatpickr("#time-start", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "h:i K", // Formato 12 horas
+        time_24hr: false // Formato AM/PM
+    });
 
-flatpickr("#time-end", {
-    enableTime: true,
-    noCalendar: true,
-    dateFormat: "h:i K",
-    time_24hr: false
-});
+    flatpickr("#time-end", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "h:i K",
+        time_24hr: false
+    });
 
-const datePicker = flatpickr("#date-picker", {
-    dateFormat: "Y-m-d",
-    static: true // Hace que el calendario no se mueva cuando se abre.
-});
+    // Flatpickr para el calendario
+    flatpickr("#static-date-picker", {
+        inline: true,
+        dateFormat: "d/m/Y", // Formato de fecha
+        onChange: function (selectedDates) {
+            const date = selectedDates[0] ? flatpickr.formatDate(selectedDates[0], "d/m/Y") : "";
+            document.getElementById('static-date-picker').dataset.date = date;
+        }
+    });
 
-// Evento para mostrar/ocultar el calendario solo cuando se hace clic en el icono
-document.getElementById('calendar-icon-title').addEventListener('click', () => {
-    const datePickerInput = document.getElementById('date-picker');
-    if (datePickerInput.style.display === 'none') {
-        datePickerInput.style.display = 'block'; // Muestra el calendario
-        datePicker.open(); // Abre el selector de Flatpickr
-    } else {
-        datePickerInput.style.display = 'none'; // Oculta el calendario si ya estaba visible
-    }
-});
+    // Funcionalidad del botón "Registrar Tiempo"
+    document.getElementById("btn-registrar").addEventListener("click", function () {
+        const timeStart = document.getElementById("time-start").value;
+        const timeEnd = document.getElementById("time-end").value;
+        const selectedDate = document.getElementById('static-date-picker').dataset.date;
 
-document.getElementById('btn-registrar').addEventListener('click', () => {
-    const startTime = document.getElementById('time-start').value;
-    const endTime = document.getElementById('time-end').value;
-    const selectedDate = document.getElementById('date-picker').value;
-
-    if (!startTime || !endTime || !selectedDate) {
-        alert('Por favor, selecciona la fecha y ambas horas antes de registrar el tiempo.');
-        return;
-    }
-
-    alert(`Fecha: ${selectedDate}\nHora de Inicio: ${startTime}\nHora de Fin: ${endTime}`);
+        if (timeStart && timeEnd && selectedDate) {
+            alert(`Has registrado el tiempo:\nFecha: ${selectedDate}\nHora de Inicio: ${timeStart}\nHora de Fin: ${timeEnd}`);
+        } else {
+            alert("Por favor selecciona la hora de inicio, fin y la fecha.");
+        }
+    });
 });
