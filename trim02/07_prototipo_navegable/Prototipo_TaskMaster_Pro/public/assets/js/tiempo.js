@@ -1,4 +1,4 @@
-flatpickr("#time-start", {
+latpickr("#time-start", {
     enableTime: true,
     noCalendar: true,
     dateFormat: "h:i K",
@@ -14,13 +14,18 @@ flatpickr("#time-end", {
 
 const datePicker = flatpickr("#date-picker", {
     dateFormat: "Y-m-d",
-    onChange: function (selectedDates, dateStr, instance) {}
+    static: true // Hace que el calendario no se mueva cuando se abre.
 });
 
+// Evento para mostrar/ocultar el calendario solo cuando se hace clic en el icono
 document.getElementById('calendar-icon-title').addEventListener('click', () => {
     const datePickerInput = document.getElementById('date-picker');
-    datePickerInput.style.display = datePickerInput.style.display === 'none' ? 'block' : 'none';
-    datePicker.open();
+    if (datePickerInput.style.display === 'none') {
+        datePickerInput.style.display = 'block'; // Muestra el calendario
+        datePicker.open(); // Abre el selector de Flatpickr
+    } else {
+        datePickerInput.style.display = 'none'; // Oculta el calendario si ya estaba visible
+    }
 });
 
 document.getElementById('btn-registrar').addEventListener('click', () => {

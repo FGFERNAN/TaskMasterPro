@@ -18,14 +18,14 @@ body {
 .registrar-tiempo-content img {
     position: absolute;
     left: 4%;
-    width: 150px; /* Tamaño por defecto en pantallas grandes */
+    width: 150px;
     height: auto;
 }
 
 .registrar-tiempo-content h2 {
     margin: 0;
     font-size: 3rem;
-    margin-left: 180px; /* Ajuste para separar el título del logo */
+    margin-left: 180px;
 }
 
 .btn-regresar {
@@ -61,7 +61,7 @@ body {
 /* Responsiveness for logo and other elements */
 @media (max-width: 768px) {
     .registrar-tiempo-content img {
-        width: 100px; /* Tamaño reducido para tablets */
+        width: 100px;
     }
 
     .btn-regresar {
@@ -76,18 +76,18 @@ body {
 
     .registrar-tiempo-content h2 {
         font-size: 2rem;
-        margin-left: 120px; /* Ajuste en tablets */
+        margin-left: 120px;
     }
 }
 
 @media (max-width: 576px) {
     .registrar-tiempo-content h2 {
         font-size: 1.5rem;
-        margin-left: 80px; /* Ajuste en móviles */
+        margin-left: 80px;
     }
 
     .registrar-tiempo-content img {
-        width: 70px; /* Tamaño aún más reducido para móviles */
+        width: 70px;
     }
 
     .btn-regresar {
@@ -110,7 +110,7 @@ body {
     width: 100%;
     max-width: 400px;
     margin-left: 0;
-    margin-right: auto; /* Mueve el contenedor hacia la izquierda */
+    margin-right: auto;
     margin-top: 50px;
 }
 
@@ -123,7 +123,7 @@ h2 {
 
 .time-picker-input {
     background-color: white;
-    color: #000; /* Corregido el color del texto */
+    color: #000;
     border: none;
     padding: 10px;
     border-radius: 5px;
@@ -135,4 +135,13 @@ h2 {
     margin-left: 10px;
     font-size: 1.5rem;
     cursor: pointer;
+    position: relative;
+}
+
+#date-picker {
+    display: none;
+    position: absolute;
+    top: 50px; /* Ajustar según la posición donde quieras que aparezca el calendario */
+    left: 0;
+    z-index: 10;
 }
