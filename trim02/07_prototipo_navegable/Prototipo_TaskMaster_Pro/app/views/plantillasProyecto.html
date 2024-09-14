@@ -12,9 +12,64 @@
 </head>
 
 <body class="bg-custom">
+     <!-- Navbar for mobile -->
+     <nav class="navbar navbar-expand-lg navbar-light bg-light d-lg-none">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
+                aria-controls="offcanvasMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">Menú</a>
+        </div>
+    </nav>
+
+    <!-- Offcanvas for mobile menu -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menú</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link mi-link" href="creacionProyecto.html"><i
+                            class="fa-solid fa-folder-plus me-1"></i> Crear Proyecto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mi-link" href="plantillasProyecto.html"><i
+                            class="fa-solid fa-folder-tree me-1"></i> Utilizar Plantillas de Proyecto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i>
+                        Mis Tareas</a>
+                </li>
+                <li class="nav-item dropdown custom-dropdown">
+                    <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#" role="button"
+                        aria-expanded="false"><i class="fa-solid fa-folder-minus me-1"></i> Proyectos</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="d-flex align-items-center" id="sub-menu-proyectos">
+                                <a class="dropdown-item align-items-center" href="interfazProyecto.html">
+                                    <i class="fa-regular fa-folder-open"></i> Veterinaria
+                                    <a href="editarProyecto.html" class="link-secondary ms-1 mi-link"><i
+                                            class="fa-solid fa-edit"></i></a>
+                                    <a id="buton-eliminar" class="link-secondary ms-2 mi-link"><i
+                                            class="fa-solid fa-trash me-3"></i></a>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i>
+                        Etiquetas</a>
+                </li>
+            </ul>
+        </div>
+    </div>
     <div class="container-fluid ">
         <div class="row">
-            <div class="col-md-3 custom-col">
+            <div class="col-md-3 custom-col d-none d-lg-block">
                 <img src="../../public/assets/img/logos/logotipo.png" class="logo-inicio" width="300">
                 <ul class="nav flex-column">
                     <li class="nav-item">
@@ -67,7 +122,7 @@
                     </div>
                 </header>
                 <section>
-                    <div class="container grid project-container">
+                    <div class="container-fluid grid project-container">
                         <div class="row">
                             <div class="col text-center">
                                 <div class="project-box">
