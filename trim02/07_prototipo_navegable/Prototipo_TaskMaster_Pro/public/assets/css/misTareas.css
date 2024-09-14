@@ -265,7 +265,7 @@
     color: white;
   }
 
-  .container {
+  .mi-container {
     border: 2px solid #000; /* Borde del contenedor principal */
     padding: 20px;
     background-color: white; /* Color de fondo para diferenciar el contenedor */
