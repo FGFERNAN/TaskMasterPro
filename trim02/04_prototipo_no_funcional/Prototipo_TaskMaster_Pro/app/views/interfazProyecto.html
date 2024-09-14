@@ -113,25 +113,63 @@
             <!-- Main Content Area -->
             <div class="col custom-col-main">
                 <header>
-                    <div class="header d-flex justify-content-end align-items-center p-3">
-                        <div class="d-flex align-items-center">
-                            <a href="notificaciones.html" class="me-2">
-                                <i class="fas fa-bell"></i> <!-- Icono de notificaciones -->
-                            </a>
-                            <button class="btn btn-cerrar-sesion" onclick="confirmarCerrarSesion()"><i
-                                    class="fa-solid fa-right-to-bracket me-1"></i> Cerrar Sesión</button>
-                            <a href="perfil.html" class="btn btn-perfil"><i class="fa-solid fa-user me-1"></i>
-                                Perfil</a>
-                        </div>
-                    </div>
-                    <div class="accordion accordion-flush table-container" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Tareas Pendientes
+                    <section class="container">
+                        <div class="d-flex align-items-center mb-3 flex-wrap">
+                            <!-- Veterinaria title -->
+                            <h2 class="col-12 col-md-3">Veterinaria</h2>
+                            
+                            <!-- Miembros button -->
+                            <button class="btn btn-secondary buton-miembros ms-3 mt-2 mt-md-0"
+                                onclick="location.href='../../app/views/members.html'">
+                                <i class="fa-regular fa-user me-1"></i> Miembros
+                            </button>
+                            
+                            <!-- Mensaje dropdown -->
+                            <div class="dropdown ms-2 mt-2 mt-md-0">
+                                <button class="btn btn-secondary dropdown-toggle buton-mensaje ms-1" type="button"
+                                    id="dropdownMessage" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-regular fa-message me-1"></i> Mensaje
                                 </button>
-                            </h2>
+                                <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMessage">
+                                    <li><a href="mensajesDirectos.html" class="dropdown-item">
+                                            <i class="fa-solid fa-user me-1"></i> <label for="directo">Directo</label>
+                                        </a>
+                                    </li>
+                                    <li><a href="mensajesGrupales.html" class="dropdown-item">
+                                            <i class="fa-solid fa-users"></i> <label for="grupal">Grupal</label>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Progress bar -->
+                            <div class="col-12 col-md-4 mt-3 mt-md-0">
+                                <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="80"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-success" style="width: 80%">80%</div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <hr style="height:5px; background-color:#000; margin-top:-10px;">
+                    
+                        <div class="d-flex justify-content-between mb-3 flex-wrap">
+                            <!-- Agregar Tarea button -->
+                            <button onclick="window.location.href='crearTarea.html'" class="btn btn-success mt-2">
+                                <i class="fa-solid fa-plus me-1"></i> Agregar Tarea
+                            </button>
+                        </div>
+                    
+                        <!-- Accordion -->
+                        <div class="accordion accordion-flush table-container" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Tareas Pendientes
+                                    </button>
+                                </h2>
+                    
                             <div id="collapseOne" class="accordion-collapse collapse show"
                                 aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">

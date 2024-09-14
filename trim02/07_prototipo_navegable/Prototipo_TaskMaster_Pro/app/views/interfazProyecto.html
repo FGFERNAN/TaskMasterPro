@@ -10,31 +10,77 @@
     <link rel="stylesheet" href="../../public/assets/css/interfazProyecto.css">
     <title>Interfaz Proyecto</title>
 </head>
-<style>
-    .custom-search-input {
-        max-width: 150px; /* Ajusta el tamaño según tus necesidades */
-        width: 100%; /* Asegura que el input se ajuste al contenedor */
-    }
-    /* Alinea el enlace a la derecha */
 
-
-    
-</style>
 <body class="bg-custom">
     <div class="container-fluid">
+        <!-- Navbar for mobile -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light d-md-none">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
+                    aria-controls="offcanvasMenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="#">Menú</a>
+            </div>
+        </nav>
+
+        <!-- Offcanvas for mobile menu -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menú</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link mi-link" href="creacionProyecto.html"><i
+                                class="fa-solid fa-folder-plus me-1"></i> Crear Proyecto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mi-link" href="plantillasProyecto.html"><i
+                                class="fa-solid fa-folder-tree me-1"></i> Utilizar Plantillas de Proyecto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i>
+                            Mis Tareas</a>
+                    </li>
+                    <li class="nav-item dropdown custom-dropdown">
+                        <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-expanded="false"><i class="fa-solid fa-folder-minus me-1"></i> Proyectos</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="d-flex align-items-center" id="sub-menu-proyectos">
+                                    <a class="dropdown-item align-items-center" href="interfazProyecto.html">
+                                        <i class="fa-regular fa-folder-open"></i> Veterinaria
+                                        <a href="editarProyecto.html" class="link-secondary ms-1 mi-link"><i
+                                                class="fa-solid fa-edit"></i></a>
+                                        <a id="buton-eliaminar" class="link-secondary ms-2 mi-link"><i
+                                                class="fa-solid fa-trash me-3"></i></a>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i>
+                            Etiquetas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Sidebar for desktop -->
         <div class="row">
-            <div class="col-md-3 custom-col">
+            <div class="col-md-3 custom-col d-none d-md-block">
                 <img src="../../public/assets/img/logos/logotipo.png" class="logo-inicio" width="300">
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link mi-link" href="creacionProyecto.html"><i
-                                class="fa-solid fa-folder-plus me-1"></i> Crear
-                            Proyecto</a>
+                                class="fa-solid fa-folder-plus me-1"></i> Crear Proyecto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mi-link" href="plantillasProyecto.html"><i
-                                class="fa-solid fa-folder-tree me-1"></i> Utilizar
-                            Plantillas de Proyecto</a>
+                                class="fa-solid fa-folder-tree me-1"></i> Utilizar Plantillas de Proyecto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i>
@@ -57,65 +103,75 @@
                             </li>
                         </ul>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i>
                             Etiquetas</a>
-                            
-                            <div class="etiqueta" onclick="window.location.href='etiquetas.html'">
-                                Etiquetas
-                            </div>
                     </li>
                 </ul>
             </div>
+
+            <!-- Main Content Area -->
             <div class="col custom-col-main">
-                <header>
-                    <div class="header d-flex justify-content-end align-items-center p-3">
-                        <div class="d-flex align-items-center">
-                            <a href="notificaciones.html" class="me-2">
-                                <i class="fas fa-bell"></i> <!-- Icono de notificaciones -->
-                            </a>
-                            <button class="btn btn-cerrar-sesion" onclick="confirmarCerrarSesion()"><i
-                                    class="fa-solid fa-right-to-bracket me-1"></i> Cerrar Sesión</button>
-                            <a href="perfil.html" class="btn btn-perfil"><i class="fa-solid fa-user me-1"></i>
-                                Perfil</a>
-                        </div>
+                <div class="header d-flex justify-content-end align-items-center p-3">
+                    <div class="d-flex align-items-center">
+                        <a href="notificaciones.html" class="me-2">
+                            <i class="fas fa-bell"></i> <!-- Icono de notificaciones -->
+                        </a>
+                        <button class="btn btn-cerrar-sesion" onclick="confirmarCerrarSesion()"><i
+                                class="fa-solid fa-right-to-bracket me-1"></i> Cerrar Sesión</button>
+                        <a href="perfil.html" class="btn btn-perfil"><i class="fa-solid fa-user me-1"></i>
+                            Perfil</a>
                     </div>
-                </header>
+                </div>
+                <header>
                     <section class="container">
-                        <div class="d-flex align-items-center mb-3">
-                            <a class="ms-3"></a>
-                            <h2 class="col-3">Veterinaria</h2>
-                            <button class="btn btn-secondary buton-miembros"
+                        <div class="d-flex align-items-center mb-3 flex-wrap">
+                            <!-- Veterinaria title -->
+                            <h2 class="col-12 col-md-3">Veterinaria</h2>
+                            
+                            <!-- Miembros button -->
+                            <button class="btn btn-secondary buton-miembros ms-3 mt-2 mt-md-0"
                                 onclick="location.href='../../app/views/members.html'">
                                 <i class="fa-regular fa-user me-1"></i> Miembros
                             </button>
-                            <div class="col-2 dropdown ms-2">
+                            
+                            <!-- Mensaje dropdown -->
+                            <div class="dropdown ms-2 mt-2 mt-md-0">
                                 <button class="btn btn-secondary dropdown-toggle buton-mensaje ms-1" type="button"
-                                    id="dropdownMessage" data-bs-toggle="dropdown" aria-expanded="false"><i
-                                        class="fa-regular fa-message me-1"></i>
-                                    Mensaje
+                                    id="dropdownMessage" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-regular fa-message me-1"></i> Mensaje
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMessage">
-                                    <li><a href="mensajesDirectos.html" class="dropdown-item"><i
-                                                class="fa-solid fa-user me-1"></i> <label
-                                                for="directo">Directo</label></a></li>
-                                    <li><a href="mensajesGrupales.html" class="dropdown-item"><i
-                                                class="fa-solid fa-users"></i> <label for="grupal">Grupal</label></a>
+                                    <li><a href="mensajesDirectos.html" class="dropdown-item">
+                                            <i class="fa-solid fa-user me-1"></i> <label for="directo">Directo</label>
+                                        </a>
+                                    </li>
+                                    <li><a href="mensajesGrupales.html" class="dropdown-item">
+                                            <i class="fa-solid fa-users"></i> <label for="grupal">Grupal</label>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="col-4 progress" role="progressbar" aria-label="Success example" aria-valuenow="25"
-                                aria-valuemin="0" aria-valuemax="100">
-                                <div class="progress-bar bg-success" style="width: 80%">80%</div>
+                            
+                            <!-- Progress bar -->
+                            <div class="col-12 col-md-4 mt-3 mt-md-0">
+                                <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="80"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-success" style="width: 80%">80%</div>
+                                </div>
                             </div>
                         </div>
+                    
                         <hr style="height:5px; background-color:#000; margin-top:-10px;">
-                        <div class="d-flex justify-content-between mb-3">
-                            <button onclick="window.location.href='crearTarea.html'" class="btn btn-success"><i
-                                    class="fa-solid fa-plus me-1"></i> Agregar Tarea</button>
-                                
+                    
+                        <div class="d-flex justify-content-between mb-3 flex-wrap">
+                            <!-- Agregar Tarea button -->
+                            <button onclick="window.location.href='crearTarea.html'" class="btn btn-success mt-2">
+                                <i class="fa-solid fa-plus me-1"></i> Agregar Tarea
+                            </button>
                         </div>
+                    
+                        <!-- Accordion -->
                         <div class="accordion accordion-flush table-container" id="accordionExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
@@ -128,60 +184,61 @@
                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <input class="form-control custom-search-input mb-2" type="search" placeholder="Buscar en Tareas Pendientes" onkeyup="filterPendingTasks()">
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>Nombre Tarea</th>
-                                                    <th>Fecha de Entrega</th>
-                                                    <th>Proyecto</th>
-                                                    <th>Responsable</th>
-                                                    <th>Prioridad</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="pendingTasks">
-                                                <tr>
-                                                    <td><a class="nav-link mi-link" href="interfazTarea.html">Tarea 1</a></td>
-                                                    <td>17 de Agosto</td>
-                                                    <td>Veterinaria</td>
-                                                    <td>Andres Garzon</td>
-                                                    <td>Alta</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tarea 2</td>
-                                                    <td>20 Julio</td>
-                                                    <td>Veterinaria</td>
-                                                    <td>Johan Garcia</td>
-                                                    <td>Media</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tarea 3</td>
-                                                    <td>2 de Agosto</td>
-                                                    <td>Veterinaria</td>
-                                                    <td>Erika Daniela</td>
-                                                    <td>Alta</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tarea 4</td>
-                                                    <td>2 de Junio</td>
-                                                    <td>Veterinaria</td>
-                                                    <td>Andres Garzon</td>
-                                                    <td>Baja</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tarea 5</td>
-                                                    <td>17 de Agosto</td>
-                                                    <td>TaskMaster</td>
-                                                    <td>Johan Garcia</td>
-                                                    <td>Baja</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tarea 6</td>
-                                                    <td>20 Julio</td>
-                                                    <td>TaskMaster</td>
-                                                    <td>Andres Garzon</td>
-                                                    <td>Alta</td>
-                                            
-                                                </tr>
+                                        <!-- Responsive table wrapper -->
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nombre Tarea</th>
+                                                        <th>Fecha de Entrega</th>
+                                                        <th>Proyecto</th>
+                                                        <th>Responsable</th>
+                                                        <th>Prioridad</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><a class="nav-link mi-link" href="interfazTarea.html">Tarea 1</a></td>
+                                                        <td>17 de Agosto</td>
+                                                        <td>Veterinaria</td>
+                                                        <td>Andres Garzon</td>
+                                                        <td>Alta</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Tarea 2</td>
+                                                        <td>20 Julio</td>
+                                                        <td>Veterinaria</td>
+                                                        <td>Johan Garcia</td>
+                                                        <td>Media</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Tarea 3</td>
+                                                        <td>2 de Agosto</td>
+                                                        <td>Veterinaria</td>
+                                                        <td>Erika Daniela</td>
+                                                        <td>Alta</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Tarea 4</td>
+                                                        <td>2 de Junio</td>
+                                                        <td>Veterinaria</td>
+                                                        <td>Andres Garzon</td>
+                                                        <td>Baja</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Tarea 5</td>
+                                                        <td>17 de Agosto</td>
+                                                        <td>TaskMaster</td>
+                                                        <td>Johan Garcia</td>
+                                                        <td>Baja</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Tarea 6</td>
+                                                        <td>20 Julio</td>
+                                                        <td>TaskMaster</td>
+                                                        <td>Andres Garzon</td>
+                                                        <td>Alta</td>
+                                                    </tr>
                                                     <tr>
                                                         <td>Tarea 7</td>
                                                         <td>23 de Agosto</td>
@@ -196,22 +253,27 @@
                                                         <td>Nikole Camila</td>
                                                         <td>Alta</td>
                                                     </tr>
+                                                    <!-- Más filas según sea necesario -->
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingTwo">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            Tareas En Curso
-                                        </button>
-                                    </h2>
-                                    <div id="collapseTwo" class="accordion-collapse collapse"
-                                        aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <input class="form-control custom-search-input mb-2" type="search" placeholder="Buscar en Tareas En Curso" onkeyup="filterInProgressTasks()">
+                            </div>
+                    
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Tareas En Curso
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse"
+                                    aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <input class="form-control custom-search-input mb-2" type="search" placeholder="Buscar en Tareas En Curso" onkeyup="filterInProgressTasks()">
+                                        <!-- Responsive table wrapper -->
+                                        <div class="table-responsive">
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
@@ -222,11 +284,11 @@
                                                         <th>Prioridad</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody id="inProgressTasks">
+                                                <tbody>
                                                     <tr>
                                                         <td>Tarea 9</td>
                                                         <td>25 de Agosto</td>
-                                                        <td>Veterinaria</td>
+                                                        <td>Veterinaria/td>
                                                         <td>Johan Garcia</td>
                                                         <td>Baja</td>
                                                     </tr>
@@ -240,7 +302,7 @@
                                                     <tr>
                                                         <td>Tarea 11</td>
                                                         <td>18 de Julio</td>
-                                                        <td>Parqueadero</td>
+                                                        <td>Parqueadero/td>
                                                         <td>Felipe Lugo</td>
                                                         <td>Alta</td>
                                                     </tr>
@@ -257,17 +319,21 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingThree">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            Tareas Terminadas
-                                        </button>
-                                    </h2>
-                                    <div id="collapseThree" class="accordion-collapse collapse"
-                                        aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <input class="form-control custom-search-input mb-2" type="search" placeholder="Buscar en Tareas Terminadas" onkeyup="filterCompletedTasks()">
+                            </div>
+                    
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Tareas Terminadas
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <input class="form-control custom-search-input mb-2" type="search" placeholder="Buscar en Tareas Terminadas" onkeyup="filterCompletedTasks()">
+                                        <!-- Responsive table wrapper -->
+                                        <div class="table-responsive">
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
@@ -278,7 +344,7 @@
                                                         <th>Prioridad</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody id="completedTasks">
+                                                <tbody>
                                                     <tr>
                                                         <td>Tarea 13</td>
                                                         <td>15 de Abril</td>
@@ -310,7 +376,7 @@
                                                     <tr>
                                                         <td>Tarea 17</td>
                                                         <td>15 de Agosto</td>
-                                                        <td>Parqueadero</td>
+                                                        <td>Parqueadero/td>
                                                         <td>Yamid Rodriguez</td>
                                                         <td>Media</td>
                                                     </tr>
@@ -328,7 +394,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                        </div>
+                    </section>
+                    
                     </div>
                 </div>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
