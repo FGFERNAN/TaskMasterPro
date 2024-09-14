@@ -118,10 +118,6 @@
                     <li class="nav-item">
                         <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i>
                             Etiquetas</a>
-
-                        <div class="etiqueta" onclick="window.location.href='etiquetas.html'">
-                            Etiquetas
-                        </div>
                     </li>
                 </ul>
             </div>
@@ -186,77 +182,79 @@
                                 <div class="accordion-body">
                                     <input class="form-control custom-search-input mb-2" type="search"
                                         placeholder="Buscar en Tareas Pendientes" onkeyup="filterPendingTasks()">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Nombre Tarea</th>
-                                                <th>Fecha de Entrega</th>
-                                                <th>Proyecto</th>
-                                                <th>Responsable</th>
-                                                <th>Prioridad</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="pendingTasks">
-                                            <tr>
-                                                <td><a class="nav-link mi-link" href="interfazTarea.html">Tarea 1</a>
-                                                </td>
-                                                <td>17 de Agosto</td>
-                                                <td>Veterinaria</td>
-                                                <td>Andres Garzon</td>
-                                                <td>Alta</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tarea 2</td>
-                                                <td>20 Julio</td>
-                                                <td>Veterinaria</td>
-                                                <td>Johan Garcia</td>
-                                                <td>Media</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tarea 3</td>
-                                                <td>2 de Agosto</td>
-                                                <td>Veterinaria</td>
-                                                <td>Erika Daniela</td>
-                                                <td>Alta</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tarea 4</td>
-                                                <td>2 de Junio</td>
-                                                <td>Veterinaria</td>
-                                                <td>Andres Garzon</td>
-                                                <td>Baja</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tarea 5</td>
-                                                <td>17 de Agosto</td>
-                                                <td>TaskMaster</td>
-                                                <td>Johan Garcia</td>
-                                                <td>Baja</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tarea 6</td>
-                                                <td>20 Julio</td>
-                                                <td>TaskMaster</td>
-                                                <td>Andres Garzon</td>
-                                                <td>Alta</td>
+                              <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre Tarea</th>
+                                            <th>Fecha de Entrega</th>
+                                            <th>Proyecto</th>
+                                            <th>Responsable</th>
+                                            <th>Prioridad</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="pendingTasks">
+                                        <tr>
+                                            <td><a class="nav-link mi-link" href="interfazTarea.html">Tarea 1</a>
+                                            </td>
+                                            <td>17 de Agosto</td>
+                                            <td>Veterinaria</td>
+                                            <td>Andres Garzon</td>
+                                            <td>Alta</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tarea 2</td>
+                                            <td>20 Julio</td>
+                                            <td>Veterinaria</td>
+                                            <td>Johan Garcia</td>
+                                            <td>Media</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tarea 3</td>
+                                            <td>2 de Agosto</td>
+                                            <td>Veterinaria</td>
+                                            <td>Erika Daniela</td>
+                                            <td>Alta</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tarea 4</td>
+                                            <td>2 de Junio</td>
+                                            <td>Veterinaria</td>
+                                            <td>Andres Garzon</td>
+                                            <td>Baja</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tarea 5</td>
+                                            <td>17 de Agosto</td>
+                                            <td>TaskMaster</td>
+                                            <td>Johan Garcia</td>
+                                            <td>Baja</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tarea 6</td>
+                                            <td>20 Julio</td>
+                                            <td>TaskMaster</td>
+                                            <td>Andres Garzon</td>
+                                            <td>Alta</td>
 
-                                            </tr>
-                                            <tr>
-                                                <td>Tarea 7</td>
-                                                <td>23 de Agosto</td>
-                                                <td>TaskMaster</td>
-                                                <td>Johan Garcia</td>
-                                                <td>Media</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tarea 8</td>
-                                                <td>2 de Junio</td>
-                                                <td>TaskMaster</td>
-                                                <td>Nikole Camila</td>
-                                                <td>Alta</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                        </tr>
+                                        <tr>
+                                            <td>Tarea 7</td>
+                                            <td>23 de Agosto</td>
+                                            <td>TaskMaster</td>
+                                            <td>Johan Garcia</td>
+                                            <td>Media</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tarea 8</td>
+                                            <td>2 de Junio</td>
+                                            <td>TaskMaster</td>
+                                            <td>Nikole Camila</td>
+                                            <td>Alta</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                              </div>
                                 </div>
                             </div>
                         </div>
@@ -272,48 +270,50 @@
                                 <div class="accordion-body">
                                     <input class="form-control custom-search-input mb-2" type="search"
                                         placeholder="Buscar en Tareas En Curso" onkeyup="filterInProgressTasks()">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Nombre Tarea</th>
-                                                <th>Fecha de Entrega</th>
-                                                <th>Proyecto</th>
-                                                <th>Responsable</th>
-                                                <th>Prioridad</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="inProgressTasks">
-                                            <tr>
-                                                <td>Tarea 9</td>
-                                                <td>25 de Agosto</td>
-                                                <td>Veterinaria</td>
-                                                <td>Johan Garcia</td>
-                                                <td>Baja</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tarea 10</td>
-                                                <td>23 de Diciembre</td>
-                                                <td>Parqueadero</td>
-                                                <td>Juan Garnica</td>
-                                                <td>Media</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tarea 11</td>
-                                                <td>18 de Julio</td>
-                                                <td>Parqueadero</td>
-                                                <td>Felipe Lugo</td>
-                                                <td>Alta</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tarea 12</td>
-                                                <td>23 de Agosto</td>
-                                                <td>TaskMaster</td>
-                                                <td>Johan Garcia</td>
-                                                <td>Media</td>
-                                            </tr>
-                                            <!-- Más filas según sea necesario -->
-                                        </tbody>
-                                    </table>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre Tarea</th>
+                                                    <th>Fecha de Entrega</th>
+                                                    <th>Proyecto</th>
+                                                    <th>Responsable</th>
+                                                    <th>Prioridad</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="inProgressTasks">
+                                                <tr>
+                                                    <td>Tarea 9</td>
+                                                    <td>25 de Agosto</td>
+                                                    <td>Veterinaria</td>
+                                                    <td>Johan Garcia</td>
+                                                    <td>Baja</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tarea 10</td>
+                                                    <td>23 de Diciembre</td>
+                                                    <td>Parqueadero</td>
+                                                    <td>Juan Garnica</td>
+                                                    <td>Media</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tarea 11</td>
+                                                    <td>18 de Julio</td>
+                                                    <td>Parqueadero</td>
+                                                    <td>Felipe Lugo</td>
+                                                    <td>Alta</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tarea 12</td>
+                                                    <td>23 de Agosto</td>
+                                                    <td>TaskMaster</td>
+                                                    <td>Johan Garcia</td>
+                                                    <td>Media</td>
+                                                </tr>
+                                                <!-- Más filas según sea necesario -->
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -329,62 +329,64 @@
                                 <div class="accordion-body">
                                     <input class="form-control custom-search-input mb-2" type="search"
                                         placeholder="Buscar en Tareas Terminadas" onkeyup="filterCompletedTasks()">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Nombre Tarea</th>
-                                                <th>Fecha de Entrega</th>
-                                                <th>Proyecto</th>
-                                                <th>Responsable</th>
-                                                <th>Prioridad</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="completedTasks">
-                                            <tr>
-                                                <td>Tarea 13</td>
-                                                <td>15 de Abril</td>
-                                                <td>Licoreria</td>
-                                                <td>Harold Hernandez</td>
-                                                <td>Media</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tarea 14</td>
-                                                <td>12 de Septiembre</td>
-                                                <td>Licoreria</td>
-                                                <td>Kevin Zabogal</td>
-                                                <td>Alta</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tarea 15</td>
-                                                <td>29 de Agosto</td>
-                                                <td>Veterinaria</td>
-                                                <td>Camilo Perez</td>
-                                                <td>Baja</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tarea 16</td>
-                                                <td>22 de Noviembre</td>
-                                                <td>Danzas</td>
-                                                <td>Daniel Cerinza</td>
-                                                <td>Baja</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tarea 17</td>
-                                                <td>15 de Agosto</td>
-                                                <td>Parqueadero</td>
-                                                <td>Yamid Rodriguez</td>
-                                                <td>Media</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tarea 18</td>
-                                                <td>19 de Octubre</td>
-                                                <td>Licoreria</td>
-                                                <td>Harold Hernandez</td>
-                                                <td>Alta</td>
-                                            </tr>
-                                            <!-- Más filas según sea necesario -->
-                                        </tbody>
-                                    </table>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre Tarea</th>
+                                                    <th>Fecha de Entrega</th>
+                                                    <th>Proyecto</th>
+                                                    <th>Responsable</th>
+                                                    <th>Prioridad</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="completedTasks">
+                                                <tr>
+                                                    <td>Tarea 13</td>
+                                                    <td>15 de Abril</td>
+                                                    <td>Licoreria</td>
+                                                    <td>Harold Hernandez</td>
+                                                    <td>Media</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tarea 14</td>
+                                                    <td>12 de Septiembre</td>
+                                                    <td>Licoreria</td>
+                                                    <td>Kevin Zabogal</td>
+                                                    <td>Alta</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tarea 15</td>
+                                                    <td>29 de Agosto</td>
+                                                    <td>Veterinaria</td>
+                                                    <td>Camilo Perez</td>
+                                                    <td>Baja</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tarea 16</td>
+                                                    <td>22 de Noviembre</td>
+                                                    <td>Danzas</td>
+                                                    <td>Daniel Cerinza</td>
+                                                    <td>Baja</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tarea 17</td>
+                                                    <td>15 de Agosto</td>
+                                                    <td>Parqueadero</td>
+                                                    <td>Yamid Rodriguez</td>
+                                                    <td>Media</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tarea 18</td>
+                                                    <td>19 de Octubre</td>
+                                                    <td>Licoreria</td>
+                                                    <td>Harold Hernandez</td>
+                                                    <td>Alta</td>
+                                                </tr>
+                                                <!-- Más filas según sea necesario -->
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
