@@ -24,6 +24,7 @@
   
   .mi-link {
     color: black;
+    cursor: pointer;
   }
   
   .custom-dropdown .dropdown-menu {
