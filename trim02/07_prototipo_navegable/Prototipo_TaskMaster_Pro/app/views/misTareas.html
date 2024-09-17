@@ -9,6 +9,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="../../public/assets/css/misTareas.css">
     <title>Mis Tareas</title>
+    <style>
+        .custom-search-input {
+            max-width: 15%;
+            /* Ajusta el tamaño según tus necesidades */
+            width: 100%;
+        }
+
+        .input-group .form-control {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .input-group .input-group-text {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            background-color: #fff; /* Fondo blanco para el ícono */
+            border: 1px solid #ced4da; /* Color del borde */
+        }
+
+        .input-group .fa-search {
+            color: #6c757d; /* Color del ícono */
+        }
+    </style>
 </head>
 
 <body class="bg-custom">
@@ -67,6 +90,7 @@
             </ul>
         </div>
     </div>
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 custom-col d-none d-lg-block">
@@ -106,6 +130,7 @@
                     </li>
                 </ul>
             </div>
+
             <div class="col custom-col-main">
                 <header>
                     <div class="header d-flex justify-content-end align-items-center p-3">
@@ -122,78 +147,103 @@
                             <h2>Mis Tareas</h2>
                         </div>
                         <hr style="height:5px; background-color:#000; margin-top:-10px;">
-                        <div class="d-flex justify-content-end mb-3">
-                            <button class="btn btn-success"><i class="fa-solid fa-filter me-1"></i> Filtrar</button>
+                        <div class="input-group mb-2 custom-search-input">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa-solid fa-search"></i>
+                            </span>
+                            <input type="text" class="form-control" placeholder="Buscar en Tareas "
+                                aria-label="Buscar" aria-describedby="basic-addon1" id="searchInput" onkeyup="filterTasks()">
                         </div>
-                       <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Nombre Tarea</th>
-                                    <th>Fecha de Entrega</th>
-                                    <th>Proyecto</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><a class="nav-link mi-link" href="interfazTarea.html">Tarea 1</a></td>
-                                    <td>17 de Agosto</td>
-                                    <td>Veterinaria</td>
-                                </tr>
-                                <tr>
-                                    <td>Tarea 2</td>
-                                    <td>20 Julio</td>
-                                    <td>Veterinaria</td>
-                                </tr>
-                                <tr>
-                                    <td>Tarea 3</td>
-                                    <td>2 de Agosto</td>
-                                    <td>Veterinaria</td>
-                                </tr>
-                                <tr>
-                                    <td>Tarea 4</td>
-                                    <td>2 de Junio</td>
-                                    <td>Veterinaria</td>
-                                </tr>
-                                <tr>
-                                    <td>Tarea 5</td>
-                                    <td>17 de Agosto</td>
-                                    <td>TaskMaster</td>
-                                </tr>
-                                <tr>
-                                    <td>Tarea 6</td>
-                                    <td>20 Julio</td>
-                                    <td>TaskMaster</td>
-                                </tr>
-                                <tr>
-                                    <td>Tarea 7</td>
-                                    <td>23 de Agosto</td>
-                                    <td>TaskMaster</td>
-                                </tr>
-                                <tr>
-                                    <td>Tarea 8</td>
-                                    <td>2 de Junio</td>
-                                    <td>TaskMaster</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                       </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre Tarea</th>
+                                        <th>Fecha de Entrega</th>
+                                        <th>Proyecto</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tasksTableBody">
+                                    <tr>
+                                        <td><a class="nav-link mi-link" href="interfazTarea.html">Tarea 1</a></td>
+                                        <td>17 de Agosto</td>
+                                        <td>Veterinaria</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tarea 2</td>
+                                        <td>20 de Agosto</td>
+                                        <td>Veterinaria</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tarea 3</td>
+                                        <td>2 de Agosto</td>
+                                        <td>Veterinaria</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tarea 4</td>
+                                        <td>2 de Junio</td>
+                                        <td>Veterinaria</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tarea 5</td>
+                                        <td>17 de Agosto</td>
+                                        <td>TaskMaster</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tarea 6</td>
+                                        <td>20 de Julio</td>
+                                        <td>TaskMaster</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tarea 7</td>
+                                        <td>23 de Agosto</td>
+                                        <td>TaskMaster</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tarea 8</td>
+                                        <td>2 de Junio</td>
+                                        <td>TaskMaster</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </section>
                 </header>
             </div>
         </div>
     </div>
-    <script src="../../public/assets/js/main.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-oBqDVmMz4fnFO9gg6p6Y58H1oB8N1Z8+8zIapB4H0L1jpR5gH9bShd5cxoswZIpF5" crossorigin="anonymous"></script>
     <script>
         function confirmarCerrarSesion() {
             if (confirm("¿Seguro que quieres cerrar sesión ?")) {
-                window.location.href = '../../public/index.html'; 
+                window.location.href = '../../public/index.html';
+            }
+        }
+
+        function filterTasks() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById('tasksTableBody');
+            const rows = table.getElementsByTagName('tr');
+
+            for (let i = 0; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName('td');
+                let found = false;
+
+                for (let j = 0; j < cells.length; j++) {
+                    const cell = cells[j];
+                    if (cell.textContent.toLowerCase().includes(filter)) {
+                        found = true;
+                        break;
+                    }
+                }
+
+                rows[i].style.display = found ? '' : 'none';
             }
         }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>
