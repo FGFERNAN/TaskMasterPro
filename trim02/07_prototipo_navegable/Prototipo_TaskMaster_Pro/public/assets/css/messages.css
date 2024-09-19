@@ -154,6 +154,7 @@ textarea {
     --bs-btn-active-color: black;
     --bs-btn-active-bg: #DAF5E3;
     --bs-btn-active-border-color: #DAF5E3;
+    margin-top: 4%;
   }
   
     /* Estilo general del contenedor */
