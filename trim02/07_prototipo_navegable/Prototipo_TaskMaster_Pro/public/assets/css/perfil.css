@@ -290,6 +290,18 @@
     color: black;
   }
 
-  
+  /* Ajuste solo para la imagen de perfil */
+  img.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Opcional: Estilo para asegurar que la imagen mantenga proporciones en pantallas pequeñas */
+@media (max-width: 768px) {
+    img.img-fluid {
+        width: 100%;
+        max-width: 200px; /* Puedes ajustar el tamaño máximo si lo deseas */
+    }
+}
   
   
