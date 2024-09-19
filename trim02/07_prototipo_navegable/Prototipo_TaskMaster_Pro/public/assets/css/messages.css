@@ -156,3 +156,77 @@ textarea {
     --bs-btn-active-border-color: #DAF5E3;
   }
   
+    /* Estilo general del contenedor */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Ajuste del logo */
+.logo {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Barra lateral (sidebar) */
+.sidebar {
+    width: 30%; /* Asignamos el 30% de ancho */
+    padding: 20px;
+}
+
+/* Contenido principal */
+.main-content {
+    width: 65%; /* Asignamos el 65% de ancho */
+    padding: 20px;
+}
+
+/* Responsividad para pantallas medianas */
+@media (max-width: 992px) {
+    .sidebar, .main-content {
+        width: 100%; /* Ancho completo en pantallas pequeñas */
+        padding: 10px;
+    }
+
+    .logo {
+        max-width: 120px; /* Reducción del logo en pantallas medianas */
+    }
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .logo {
+        max-width: 100px; /* Aún más pequeño en pantallas pequeñas */
+    }
+
+    .sidebar, .main-content {
+        width: 100%; /* Ancho completo */
+        padding: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo {
+        max-width: 80px;
+    }
+
+    .sidebar {
+        margin-bottom: 20px; /* Espacio entre barra lateral y contenido en pantallas pequeñas */
+    }
+
+    .main-content {
+        padding: 0 10px;
+    }
+}
+
+
+  
