@@ -13,16 +13,28 @@
 
 <body class="bg-custom">
     <!-- Contenedor de encabezado -->
-    <div class="container-custom">
-        <h1><i class="fa-solid fa-user-pen me-2"></i> <!-- Ícono de comentario de Bootstrap -->
+    <div class="row no-gutters header-custom">
+        <div class="col-12 d-flex align-items-center justify-content-between p-3">
+            <button class="btn btn-primary buton-regresar" onclick="history.back()">
+                <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                    <path
+                        d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                </svg>
+                <span class="button-text">Regresar</span>
+            </button>
+            <h1 class="mb-0 text-center flex-grow-1">
+                <i class="fa-solid fa-user-pen me-2"></i> <!-- Ícono de comentario de Bootstrap -->
             Editar Rol
-        </h1>
-        <img src="../../public/assets/img/logotipo.png" alt="Logo" class="logo-header">
+            </h1>
+            <img src="../../public/assets/img/logotipo.png" alt="Logo" class="img-fluid logo ">
+        </div>
     </div>
     <form action="administracionRoles.html" class="container form-create-project needs-validation" novalidate>
+        <div class="row mb-4"></div>
         <div class="row mb-3">
-            <label for="inputEmail3" class="col-sm-2 col-form-label input-nombre">Nombre:</label>
-            <div class="col-sm-10 has-validation  input-nombre">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre:</label>
+            <div class="col-sm-10 has-validation">
                 <div class="input-group mb-3">
                     <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-user-tag"></i></span>
                     <input type="text" class="form-control border-input" placeholder="Name" aria-label="Username"
@@ -68,15 +80,7 @@
             <button class="btn btn-primary buton-form mb-4" type="submit">Guardar</button>
         </div>
     </form>
-    <footer>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-primary me-md-2 mt-4 buton-regresar" onclick="history.back()"><svg xmlns="http://www.w3.org/2000/svg"
-                    width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
-                    <path
-                        d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
-                </svg> Regresar</button>
-        </div>
-    </footer>
+    
     <script>
         (() => {
             'use strict'

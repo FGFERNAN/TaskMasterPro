@@ -331,7 +331,7 @@ input[type="radio"]:checked{
 .form-create-project{
   max-width: 60%;
 }
-svg{
+.svg{
   width: 20px;
   height: 30px;
 }
@@ -342,7 +342,7 @@ svg{
     --bs-btn-padding-y: 0.475rem;
     --bs-btn-font-size: 1.3rem;
 }
-svg{
+.svg{
   width: 20px;
   height: 30px;
 }
