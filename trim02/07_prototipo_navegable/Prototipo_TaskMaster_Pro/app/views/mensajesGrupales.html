@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mensajes Grupales</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
@@ -14,85 +13,81 @@
 
 <body>
     <div class="container-fluid">
-        <!-- Logo -->
-    <div class="row no-gutters header-custom">
-        <div class="col-12 d-flex align-items-center justify-content-between p-3">
-            <button class="btn btn-primary buton-regresar" onclick="history.back()">
-                <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-caret-left-fill" viewBox="0 0 16 16">
-                    <path
-                        d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
-                </svg>
-                <span class="button-text">Regresar</span>
-            </button>
-            <img src="../../public/assets/img/logotipo.png" alt="Logo" class="img-fluid logo ">
-        </div>
-    </div>
-
-    <div class="container mt-5">
-        <div class="sidebar">
-            <h2>📧 Mensajes Grupales</h2>
-            <input type="text" placeholder="Buscar miembro" class="search-bar" onkeyup="filterMembers()">
-            <ul class="message-list" id="message-list">
-                <li class="message-item" onclick="showMessage('Nikole Bernal')">
-                    Nikole Bernal <span class="date">12 Julio</span>
-                </li>
-                <li class="message-item" onclick="showMessage('Felipe Garcia')">
-                    Felipe Garcia <span class="date">12 Julio</span>
-                </li>
-                <li class="message-item" onclick="showMessage('Erika Triana')">
-                    Erika Triana <span class="date">12 Julio</span>
-                </li>
-                <li class="message-item" onclick="showMessage('Andres Garzon')">
-                    Andres Garzon <span class="date">12 Julio</span>
-                </li>
-            </ul>
-        </div>
-        <div class="main-content">
-            <h3 id="message-title">Selecciona un mensaje</h3>
-            <p id="message-content">El contenido del mensaje aparecerá aquí.</p>
-            <div id="editor-container">
-                <div id="toolbar">
-                    <!-- Botones para la barra de herramientas -->
-                    <button class="ql-bold btn btn-light"><b>B</b></button>
-                    <button class="ql-italic btn btn-light"><i>I</i></button>
-                    <button class="ql-underline btn btn-light"><u>U</u></button>
-                    <button class="ql-strike btn btn-light"><s>S</s></button>
-                    <button class="ql-blockquote btn btn-light">""</button>
-                    <button class="ql-link btn btn-light"><i class="bi bi-link"></i></button>
-                    <button class="ql-image btn btn-light"><i class="bi bi-card-image"></i></button>
-                    <button class="ql-code-block btn btn-light"><i class="bi bi-file-earmark-code"></i></button>
-                    <!-- Más botones según necesites -->
-                </div>
-                <div id="editor" class="form-control"></div>
+        <div class="row no-gutters header-custom">
+            <div class="col-12 d-flex align-items-center justify-content-between p-3">
+                <button class="btn btn-primary buton-regresar" onclick="history.back()">
+                    <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                        <path
+                            d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                    </svg>
+                    <span class="button-text">Regresar</span>
+                </button>
+                <img src="img/logotipo.png" alt="Logo" class="img-fluid logo ">
             </div>
-            <button class="btn btn-primary send-button" onclick="sendMessage()">Enviar</button>
+        </div>
+
+        <div class="container mt-5">
+            <div class="sidebar">
+                <h2>📧 Mensajes Grupales</h2>
+                <input type="text" placeholder="Buscar miembro" class="search-bar" onkeyup="filterMembers()">
+                <ul class="message-list" id="message-list">
+                    <li class="message-item" onclick="showMessage('Nikole Bernal')">Nikole Bernal <span class="date">12 Julio</span></li>
+                    <li class="message-item" onclick="showMessage('Felipe Garcia')">Felipe Garcia <span class="date">12 Julio</span></li>
+                    <li class="message-item" onclick="showMessage('Erika Triana')">Erika Triana <span class="date">12 Julio</span></li>
+                    <li class="message-item" onclick="showMessage('Andres Garzon')">Andres Garzon <span class="date">12 Julio</span></li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <h3 id="message-title">Selecciona un mensaje</h3>
+                <p id="message-content">El contenido del mensaje aparecerá aquí.</p>
+                <div id="editor-container">
+                    <div id="toolbar">
+                        <button class="ql-bold btn btn-light"><b>B</b></button>
+                        <button class="ql-italic btn btn-light"><i>I</i></button>
+                        <button class="ql-underline btn btn-light"><u>U</u></button>
+                        <button class="ql-strike btn btn-light"><s>S</s></button>
+                        <button class="ql-blockquote btn btn-light">""</button>
+                        <button class="ql-link btn btn-light"><i class="bi bi-link"></i></button>
+                        <button class="ql-image btn btn-light"><i class="bi bi-card-image"></i></button>
+                        <button class="ql-code-block btn btn-light"><i class="bi bi-file-earmark-code"></i></button>
+                    </div>
+                    <div id="editor" class="form-control" style="height: 200px;"></div>
+                </div>
+                <button class="btn btn-primary send-button" onclick="sendMessage()">Enviar</button>
+            </div>
         </div>
     </div>
-    </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
 
-    <!-- Script para manejo de mensajes -->
     <script>
         let messages = {};
-        const defaultMessage = `Buenos días compañeros\n\nLes comunico que el proyecto está un poco atrasado para que por favor adelanten lo más que puedan y así entregarlo en el día correspondiente.\n\nMuchas gracias por la atención.`;
+        const members = ['Nikole Bernal', 'Felipe Garcia', 'Erika Triana', 'Andres Garzon'];
 
-        // Cargar mensaje predeterminado en el textarea al cargar la página
+        // Inicializar Quill
+        const quill = new Quill('#editor', {
+            theme: 'snow',
+            modules: {
+                toolbar: '#toolbar'
+            }
+        });
+
+        // Cargar mensaje predeterminado
         window.onload = function() {
-            document.getElementById('message-input').value = defaultMessage;
+            quill.root.innerHTML = `Buenos días compañeros<br><br>Les comunico que el proyecto está un poco atrasado para que por favor adelanten lo más que puedan y así entregarlo en el día correspondiente.<br><br>Muchas gracias por la atención.`;
         };
 
         function sendMessage() {
-            const messageContent = document.getElementById('message-input').value;
+            const messageContent = quill.root.innerHTML;
+
             if (messageContent.trim() !== "") {
                 sendToAllMembers(messageContent);
             }
         }
 
         function sendToAllMembers(messageContent) {
-            const members = ['Nikole Bernal', 'Felipe Garcia', 'Erika Triana', 'Andres Garzon'];
             members.forEach(member => {
                 if (!messages[member]) {
                     messages[member] = [];
@@ -100,7 +95,7 @@
                 messages[member].push(messageContent);
             });
             alert('Mensaje enviado a todos los miembros.');
-            document.getElementById('message-input').value = ''; // Limpiar el input
+            quill.root.innerHTML = ''; // Limpiar el editor
         }
 
         function showMessage(memberName) {
@@ -115,31 +110,16 @@
             }
         }
 
-        // Función para filtrar miembros
         function filterMembers() {
             const searchInput = document.querySelector('.search-bar').value.toLowerCase();
             const messageItems = document.querySelectorAll('.message-item');
 
             messageItems.forEach(item => {
                 const memberName = item.textContent.toLowerCase();
-                if (memberName.includes(searchInput)) {
-                    item.style.display = '';
-                } else {
-                    item.style.display = 'none';
-                }
+                item.style.display = memberName.includes(searchInput) ? '' : 'none';
             });
         }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
-    <script>
-        var quill = new Quill('#editor', {
-            theme: 'snow',
-            modules: {
-                toolbar: '#toolbar'
-            }
-        });
-    </script>
-
 </body>
 
 </html>
