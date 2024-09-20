@@ -1,5 +1,6 @@
 {
     "vscode-pets.petType": "chicken",
     "vscode-pets.petColor": "brown",
-    "vscode-pets.throwBallWithMouse": false
+    "vscode-pets.throwBallWithMouse": false,
+    "liveServer.settings.port": 5501
 }
