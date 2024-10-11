@@ -29,8 +29,8 @@
                     <div class="col-md-6">
                         <label for="tipo_documento" class="form-label">Tipo de Documento</label>
                         <select id="tipo_documento" class="form-select" required>
-                            <option value="" selected disabled>Seleccionar</option>
-                            <option value="1">(TI) Tarteja de Identidad</option>
+                            <option value="0" selected disabled>Seleccionar</option>
+                            <option id="TI" value="1">(TI) Tarteja de Identidad</option>
                             <option value="2">(CC) Cedula de Ciudadania</option>
                             <option value="3">(CE) Cedula de Extranjeria</option>
                             <option value="4">(DNI) Documento Nacional de Identidad</option>
@@ -135,7 +135,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="correo" class="form-label">Correo Electronico</label>
-                        <input type="email" id="correo" class="form-control" required>
+                        <input type="email" id="correo" class="form-control" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" required>
                     </div>
                     <div class="col-md-6">
                         <label for="contraseña" class="form-label">Contraseña</label>

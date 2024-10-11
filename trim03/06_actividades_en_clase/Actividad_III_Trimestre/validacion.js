@@ -3,6 +3,7 @@ const apellidos = document.getElementById('apellido');
 const num_documento = document.getElementById('num_documento');
 const fecha_nacimiento = document.getElementById('fecha');
 const tipo_documento = document.getElementById('tipo_documento');
+const tarjeta_identidad = document.getElementById('TI');
 const edad = document.getElementById('edad');
 const telefono = document.getElementById('num_telefono');
 const genero = document.getElementById('genero');
@@ -47,7 +48,7 @@ class validacion {
             objResult.textResult = "Ok Data: " + textResult;
             validate = true;
         } else {
-            textResult = 'Nombre Invalido (por favor ingresar solo letras y minimo 3 caracteres)'
+            textResult = 'Nombre Invalido (por favor ingresar solo letras y minimo 3 caracteres)';
             nombres.classList.remove('is-valid');
             nombres.classList.add('is-invalid');
             objResult.validate = false;
@@ -85,69 +86,94 @@ class validacion {
 
     validarTipoDocumento(){
         if(tipo_documento.value <= 1 ){
-            alert('Tipo de Documento Invalido (No puedes seleccionar tarjeta de identidad)');
+            textResult = 'Tipo de Documento Invalido (No puedes seleccionar tarjeta de identidad)';
             tipo_documento.classList.remove('is-valid');
             tipo_documento.classList.add('is-invalid');
-            return false;
+            objResult.validate = false;
+            objResult.textResult = "Error: " + textResult;
+            validate = false;
         }else{
-            alert('Tipo de Documento Validado Exitosamente');
+            textResult = 'Tipo de Documento Validado Exitosamente';
             tipo_documento.classList.remove('is-invalid');
             tipo_documento.classList.add('is-valid');
-            return true;
+            objResult.validate = true;
+            objResult.textResult = "Ok Data: " + textResult;
+            validate = true;
         }
+        alert(JSON.stringify(objResult.textResult));
+        return validate;
     }
     validarDocumento() {
         const expDocumento = /^[0-9]{10,}$/;
         const validarDocumento = expDocumento.exec(num_documento.value);
 
         if (validarDocumento) {
-            alert('Numero de Documento Validado Exitosamente');
+            textResult = 'Numero de Documento Validado Exitosamente';
             num_documento.classList.remove('is-invalid');
             num_documento.classList.add('is-valid');
-            return true;
+            objResult.validate = true;
+            objResult.textResult = "Ok Data: " + textResult;
+            validate = true;
         } else {
-            alert('Numero de Documento Invalido (por favor ingresar solo numeros y minimo 10 caracteres)');
+            textResult = 'Numero de Documento Invalido (por favor ingresar solo numeros y minimo 10 caracteres)';
             num_documento.classList.remove('is-valid');
-            num_documento.classList.add('is-invalid');  
-            return false;
+            num_documento.classList.add('is-invalid'); 
+            objResult.validate = false;
+            objResult.textResult = "Error: " + textResult; 
+            validate = false;
         }
+        alert(JSON.stringify(objResult.textResult));
+        return validate;
     }
     validarEdad() {
         if (edad.value < 17) {
             tipo_documento.disabled = true;
             tipo_documento.value = 0;
-            alert('Edad Invalida (Debes ser mayor de edad)');
+            textResult = 'Edad Invalida (Debes ser mayor de edad)';
             edad.classList.remove('is-valid');
             edad.classList.add('is-invalid');
             tipo_documento.classList.remove('is-valid');
             tipo_documento.classList.add('is-invalid');
-            return false;
+            fecha_nacimiento.classList.remove('is-valid');
+            fecha_nacimiento.classList.add('is-invalid');
+            objResult.validate = false;
+            objResult.textResult = "Error: " + textResult;
+            validate = false;
 
         } else {
-            alert('Edad Validada Exitosamente');
+            textResult = 'Edad Validada Exitosamente';
             tipo_documento.disabled = false;
-            tipo_documento.remove(1);
+            tarjeta_identidad.remove();
             edad.classList.remove('is-invalid');
             edad.classList.add('is-valid');
-            tipo_documento.classList.remove('is-invalid');
-            tipo_documento.classList.add('is-valid');
-            return true;
-
+            fecha_nacimiento.classList.remove('is-invalid');
+            fecha_nacimiento.classList.add('is-valid');
+            objResult.validate = true;
+            objResult.textResult = "Ok Data: " + textResult;
+            validate = true;
         }
+        alert(JSON.stringify(objResult.textResult));
+        return validate;
     }
 
     validarGenero(){
         if(genero.value <= 0){
-            alert('Genero Invalido (por favor seleccionar un genero)');
+            textResult = 'Genero Invalido (por favor seleccionar un genero)';
             genero.classList.remove('is-valid');
             genero.classList.add('is-invalid');
-            return false;
+            objResult.validate = false;
+            objResult.textResult = "Error: " + textResult;
+            validate = false;
         }else{
-            alert('Genero Validado Exitosamente')
+            textResult = 'Genero Validado Exitosamente'
             genero.classList.remove('is-invalid');
             genero.classList.add('is-valid');
-            return true;
+            objResult.validate = true;
+            objResult.textResult = "Ok Data: " + textResult;
+            validate = true;
         }
+        alert(JSON.stringify(objResult.textResult));
+        return validate;
     }
 
 
@@ -156,47 +182,64 @@ class validacion {
         const validarTelefono = expTelefono.exec(telefono.value);
 
         if (validarTelefono) {
-            alert('Numero de Telefono Validado Exitosamente');
+            textResult = 'Numero de Telefono Validado Exitosamente';
             telefono.classList.remove('is-invalid');
-            telefono.classList.add('is.valid');
-            return true;
+            telefono.classList.add('is-valid');
+            objResult.validate = true;
+            objResult.textResult = "Ok Data: " + textResult;
+            validate = true;
         } else {
-            alert('Numero de Telefono Invalido (Por favor ingresar solo numeros y minimo 10 digitos)');
+            textResult = 'Numero de Telefono Invalido (Por favor ingresar solo numeros y minimo 10 digitos)';
             telefono.classList.remove('is-valid');
             telefono.classList.add('is-invalid');
-            return false;
+            objResult.validate = false;
+            objResult.textResult = "Error: " + textResult;
+            validate =  false;
         }
+        alert(JSON.stringify(objResult.textResult));
+        return validate;
     }
 
     validarHabilidades() {
         var contador = 0;
         for (var i = 0; i < habilidades.length; i++) {
         if (habilidades[i].checked)
-        contador++
+            contador++
         }
         if (contador == 0) {
-        alert('Debes eleccionar minimo una habilidad');
-        return false;
+            textResult = 'Debes seleccionar minimo una habilidad';
+            objResult.validate = false;
+            objResult.textResult = "Error: " + textResult;
+            validate =  false;
         }else{
-            alert('Habilidades Validadas Exitosamente')
-            return true;
+            textResult = 'Habilidades Validadas Exitosamente';
+            objResult.validate = true;
+            objResult.textResult = "Ok Data: " + textResult;
+            validate = true;
         }
+        alert(JSON.stringify(objResult.textResult));
+        return validate;
     }
 
     validarHobbies(){
         var contador = 0;
         for (var i = 0; i < hobbies.length; i++) {
         if (hobbies[i].checked)
-        contador++
+            contador++
         }
         if (contador == 0) {
-        alert('Debes eleccionar minimo un hobbie')
-        return false;
+            textResult = 'Debes seleccionar minimo un hobbie';
+            objResult.validate = false;
+            objResult.textResult = "Error: " + textResult;
+            validate = false;
         }else{
-            alert('Hobbies Validadas Exitosamente');
-            return true;
-            
+            textResult = 'Hobbies Validados Exitosamente';
+            objResult.validate = true;
+            objResult.textResult = "Ok Data: " + textResult;
+            validate = true;
         }
+        alert(JSON.stringify(objResult.textResult));
+        return validate;
     }
 
     validarCorreo() {
@@ -204,17 +247,22 @@ class validacion {
         const validarCorreo = expCorreo.exec(correo.value);
 
         if (validarCorreo) {
-            alert('Correo Validado Exitosamente');
+            textResult = 'Correo Validado Exitosamente';
             correo.classList.remove('is-invalid');
             correo.classList.add('is-valid');
-            return true;
+            objResult.validate = true;
+            objResult.textResult = "Ok Data: " + textResult;
+            validate = true;
         } else {
-            alert('Correo Invalido (Por favor ingresar el correo en el siguiente formato [xxxx@xxx.xxx]');
+            textResult = 'Correo Invalido (Por favor ingresar el correo en el siguiente formato [xxxx@xxx.xxx]';
             correo.classList.remove('is-valid');
             correo.classList.add('is-invalid');
-            return false;
+            objResult.validate = false;
+            objResult.textResult = "Error: " + textResult;
+            validate = false;
         }
-
+        alert(JSON.stringify(objResult.textResult));
+        return validate;
     }
 
     validarContraseña() {
@@ -222,16 +270,22 @@ class validacion {
         const validarContraseña = expContraseña.exec(contraseña.value);
 
         if (validarContraseña) {
-            alert('Contraseña Validada Exitosamente');
+            textResult = 'Contraseña Validada Exitosamente';
             contraseña.classList.remove('is-invalid');
             contraseña.classList.add('is-valid');
-            return true;
+            objResult.validate = true;
+            objResult.textResult = "Ok Data: " + textResult;
+            validate = true;
         } else {
-            alert('Contraseña Invalida, asegurate de que cumpla los requisitos minimos (tener minimo 8 caracteres, una letra mayuscula, una letra minuscula y un caracter especial (#,$,*).)');
+            textResult = 'Contraseña Invalida, asegurate de que cumpla los requisitos minimos (tener minimo 8 caracteres, una letra mayuscula, una letra minuscula y un caracter especial (#,$,*).)';
             contraseña.classList.remove('is-valid');
             contraseña.classList.add('is-invalid');
-            return false;
+            objResult.validate = false;
+            objResult.textResult = "Error: " + textResult;
+            validate = false;
         }
+        alert(JSON.stringify(objResult.textResult));
+        return validate;
     }
 }
 fecha_nacimiento.addEventListener('change', () => {
@@ -266,7 +320,7 @@ form.addEventListener("submit", (event) => {
         datos.validarContraseña()
     ]
 
-    const fullCheck = validaciones.every(validado => validado === true);
+    const fullCheck = validaciones.every(valid => valid === true);
 
     if (fullCheck) {
         alert('Todos los campos han sido validados exitosamente');
@@ -277,8 +331,16 @@ form.addEventListener("submit", (event) => {
 });
 
 limpiar.addEventListener('click', () => {
-    //window.onload;
     form.reset();
+    nombres.classList.remove('is-invalid');
+    apellidos.classList.remove('is-invalid');
+    tipo_documento.classList.remove('is-invalid');
+    tipo_documento.disabled = false;
+    num_documento.classList.remove('is-invalid');
+    fecha_nacimiento.classList.remove('is-invalid');
+    genero.classList.remove('is-invalid');
+    telefono.classList.remove('is-invalid');
+    correo.classList.remove('is-invalid');
     contraseña.classList.remove('is-invalid');
     num_edad.textContent = 0;
 })
