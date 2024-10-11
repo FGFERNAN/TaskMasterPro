@@ -8,11 +8,16 @@ const telefono = document.getElementById('num_telefono');
 const genero = document.getElementById('genero');
 const habilidades = document.getElementsByName('status');
 const hobbies = document.getElementsByName('flexRadioDefault');
+const num_edad = document.getElementById('num_edad');
 const correo = document.getElementById('correo');
 const contraseña = document.getElementById('contraseña');
 const enviar = document.getElementById('enviar');
 const limpiar = document.getElementById('limpiar');
 const form = document.getElementById('formulario');
+
+let objResult = new Object();
+let validate = false;
+let textResult = "";
 
 class validacion {
     constructor(nombres, apellidos, tipo_documento, num_documento, fecha_nacimiento, genero, edad, color_favorito, telefono, habilidades, hobbies, correo, contraseña) {
@@ -35,31 +40,60 @@ class validacion {
         const validarNombre = expNombre.exec(nombres.value);
 
         if (validarNombre) {
-            alert('Nombre Validado Exitosamente');
+            textResult = 'Nombre Validado Exitosamente'
             nombres.classList.remove('is-invalid');
             nombres.classList.add('is-valid');
-            return true;
+            objResult.validate = true;
+            objResult.textResult = "Ok Data: " + textResult;
+            validate = true;
         } else {
-            alert('Nombre Invalido (por favor ingresar solo letras y minimo 3 caracteres)');
+            textResult = 'Nombre Invalido (por favor ingresar solo letras y minimo 3 caracteres)'
             nombres.classList.remove('is-valid');
             nombres.classList.add('is-invalid');
-            return false;
+            objResult.validate = false;
+            objResult.textResult = "Error: " + textResult;
+            validate = false;
         }
+        alert(JSON.stringify(objResult.textResult));
+        return validate;
     }
     validarApellidos() {
         const expApellido = /^[A-Za-záéúíóñÑÁÉÚÍÓ\s]{3,}$/;
         const validarApellidos = expApellido.exec(apellidos.value);
 
         if (validarApellidos) {
-            alert('Apellido Validado Exitosamente');
+            textResult = 'Apellido Validado Exitosamente';
             apellidos.classList.remove('is-invalid');
             apellidos.classList.add('is-valid');
-            return true;
+            objResult.validate = true;
+            objResult.textResult = "Ok Data: " + textResult;
+            validate = true;
+            
         } else {
-            alert('Apellido Invalido (por favor ingresar solo letras y minimo 3 caracteres)');
+            textResult = 'Apellido Invalido (por favor ingresar solo letras y minimo 3 caracteres)';
             apellidos.classList.remove('is-valid');
             apellidos.classList.add('is-invalid');
+            objResult.validate = false;
+            objResult.textResult = "Error: " + textResult;
+            validate = false;
+            
+            
+        }
+        alert(JSON.stringify(objResult.textResult));
+        return validate;
+    }
+
+    validarTipoDocumento(){
+        if(tipo_documento.value <= 1 ){
+            alert('Tipo de Documento Invalido (No puedes seleccionar tarjeta de identidad)');
+            tipo_documento.classList.remove('is-valid');
+            tipo_documento.classList.add('is-invalid');
             return false;
+        }else{
+            alert('Tipo de Documento Validado Exitosamente');
+            tipo_documento.classList.remove('is-invalid');
+            tipo_documento.classList.add('is-valid');
+            return true;
         }
     }
     validarDocumento() {
@@ -142,11 +176,9 @@ class validacion {
         }
         if (contador == 0) {
         alert('Debes eleccionar minimo una habilidad');
-        
         return false;
         }else{
             alert('Habilidades Validadas Exitosamente')
-          
             return true;
         }
     }
@@ -213,17 +245,17 @@ fecha_nacimiento.addEventListener('change', () => {
     }
 
     const inputEdad = document.getElementById('edad');
-    const num_edad = document.getElementById('num_edad');
     inputEdad.value = edad;
     num_edad.textContent = edad;
 
 })
 form.addEventListener("submit", (event) => {
     event.preventDefault();
-    const datos = new validacion(nombres, apellidos, num_documento, edad, genero, telefono, habilidades, hobbies, correo, contraseña);
+    const datos = new validacion(nombres, apellidos, tipo_documento, num_documento, edad, genero, telefono, habilidades, hobbies, correo, contraseña);
     const validaciones = [
         datos.validarNombres(),
         datos.validarApellidos(),
+        datos.validarTipoDocumento(),
         datos.validarDocumento(),
         datos.validarEdad(),
         datos.validarGenero(),
@@ -245,7 +277,10 @@ form.addEventListener("submit", (event) => {
 });
 
 limpiar.addEventListener('click', () => {
-    window.onload;
+    //window.onload;
+    form.reset();
+    contraseña.classList.remove('is-invalid');
+    num_edad.textContent = 0;
 })
 
 
