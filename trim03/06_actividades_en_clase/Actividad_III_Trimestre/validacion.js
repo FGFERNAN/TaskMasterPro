@@ -15,7 +15,10 @@ const correo = document.getElementById('correo');
 const contraseña = document.getElementById('contraseña');
 const enviar = document.getElementById('enviar');
 const limpiar = document.getElementById('limpiar');
+const disabled = document.getElementById('disabled');
+const disabledEdit = document.getElementById('disabledEdit');
 const form = document.getElementById('formulario');
+
 
 //Variables globales para mensajes de retorno en formato JSON
 let objResult = new Object();
@@ -71,7 +74,7 @@ class validacion {
             validate = false;
         }
         //Alerta donde se convierte en cadena de texto el objeto, se toma como propiedad el textResult del objeto para una alerta más limpia
-        alert(JSON.stringify(objResult.textResult));
+        console.log(JSON.stringify(objResult));
         return validate;
     }
     validarApellidos() {
@@ -85,7 +88,7 @@ class validacion {
             objResult.validate = true;
             objResult.textResult = "Ok Data: " + textResult;
             validate = true;
-            
+
         } else {
             textResult = 'Apellido Invalido (por favor ingresar solo letras y minimo 3 caracteres)';
             apellidos.classList.remove('is-valid');
@@ -93,26 +96,26 @@ class validacion {
             objResult.validate = false;
             objResult.textResult = "Error: " + textResult;
             validate = false;
-            
-            
+
+
         }
-        alert(JSON.stringify(objResult.textResult));
+        console.log(JSON.stringify(objResult));
         return validate;
     }
 
     //Metodo de validación de tipo de documento
-    validarTipoDocumento(){
+    validarTipoDocumento() {
 
         //Se realiza condicional tomando el valor de la opciones del select tipo de documento, especificamente la opcion 1 que se establecio
         //en el HTML como Tarjeta de Identidad
-        if(tipo_documento.value <= 1 ){
+        if (tipo_documento.value <= 1) {
             textResult = 'Tipo de Documento Invalido (No puedes seleccionar tarjeta de identidad)';
             tipo_documento.classList.remove('is-valid');
             tipo_documento.classList.add('is-invalid');
             objResult.validate = false;
             objResult.textResult = "Error: " + textResult;
             validate = false;
-        }else{
+        } else {
             textResult = 'Tipo de Documento Validado Exitosamente';
             tipo_documento.classList.remove('is-invalid');
             tipo_documento.classList.add('is-valid');
@@ -120,7 +123,7 @@ class validacion {
             objResult.textResult = "Ok Data: " + textResult;
             validate = true;
         }
-        alert(JSON.stringify(objResult.textResult));
+        console.log(JSON.stringify(objResult));
         return validate;
     }
 
@@ -141,12 +144,12 @@ class validacion {
         } else {
             textResult = 'Numero de Documento Invalido (por favor ingresar solo numeros y minimo 10 caracteres)';
             num_documento.classList.remove('is-valid');
-            num_documento.classList.add('is-invalid'); 
+            num_documento.classList.add('is-invalid');
             objResult.validate = false;
-            objResult.textResult = "Error: " + textResult; 
+            objResult.textResult = "Error: " + textResult;
             validate = false;
         }
-        alert(JSON.stringify(objResult.textResult));
+        console.log(JSON.stringify(objResult));
         return validate;
     }
 
@@ -182,20 +185,20 @@ class validacion {
             objResult.textResult = "Ok Data: " + textResult;
             validate = true;
         }
-        alert(JSON.stringify(objResult.textResult));
+        console.log(JSON.stringify(objResult));
         return validate;
     }
 
     //Metodo validación de genero
-    validarGenero(){
-        if(genero.value <= 0){
+    validarGenero() {
+        if (genero.value <= 0) {
             textResult = 'Genero Invalido (por favor seleccionar un genero)';
             genero.classList.remove('is-valid');
             genero.classList.add('is-invalid');
             objResult.validate = false;
             objResult.textResult = "Error: " + textResult;
             validate = false;
-        }else{
+        } else {
             textResult = 'Genero Validado Exitosamente'
             genero.classList.remove('is-invalid');
             genero.classList.add('is-valid');
@@ -203,7 +206,7 @@ class validacion {
             objResult.textResult = "Ok Data: " + textResult;
             validate = true;
         }
-        alert(JSON.stringify(objResult.textResult));
+        console.log(JSON.stringify(objResult));
         return validate;
     }
 
@@ -227,9 +230,9 @@ class validacion {
             telefono.classList.add('is-invalid');
             objResult.validate = false;
             objResult.textResult = "Error: " + textResult;
-            validate =  false;
+            validate = false;
         }
-        alert(JSON.stringify(objResult.textResult));
+        console.log(JSON.stringify(objResult));
         return validate;
     }
 
@@ -239,45 +242,61 @@ class validacion {
         //Ciclo para recorrer todos lo input tipo checkbox del formulario y contar cuantos estan chequeados
         var contador = 0;
         for (var i = 0; i < habilidades.length; i++) {
-        if (habilidades[i].checked)
-            contador++
+            if (habilidades[i].checked)
+                contador++
         }
 
         //Condicional para validación de que minimo un checkbox este seleccionado
         if (contador == 0) {
             textResult = 'Debes seleccionar minimo una habilidad';
+            habilidades.forEach(habilidad => {
+                habilidad.classList.remove('is-valid');
+                habilidad.classList.add('is-invalid');
+            })
             objResult.validate = false;
             objResult.textResult = "Error: " + textResult;
-            validate =  false;
-        }else{
+            validate = false;
+        } else {
             textResult = 'Habilidades Validadas Exitosamente';
+            habilidades.forEach(habilidad => {
+                habilidad.classList.remove('is-invalid');
+                habilidad.classList.add('is-valid');
+            })
             objResult.validate = true;
             objResult.textResult = "Ok Data: " + textResult;
             validate = true;
         }
-        alert(JSON.stringify(objResult.textResult));
+        console.log(JSON.stringify(objResult));
         return validate;
     }
 
     //Metodo oara validación de Hobbies
-    validarHobbies(){
+    validarHobbies() {
         var contador = 0;
         for (var i = 0; i < hobbies.length; i++) {
-        if (hobbies[i].checked)
-            contador++
+            if (hobbies[i].checked)
+                contador++
         }
         if (contador == 0) {
             textResult = 'Debes seleccionar minimo un hobbie';
+            hobbies.forEach(hobbi => {
+                hobbi.classList.remove('is-valid');
+                hobbi.classList.add('is-invalid');
+            })
             objResult.validate = false;
             objResult.textResult = "Error: " + textResult;
             validate = false;
-        }else{
+        } else {
             textResult = 'Hobbies Validados Exitosamente';
+            hobbies.forEach(hobbi => {
+                hobbi.classList.remove('is-invalid');
+                hobbi.classList.add('is-valid');
+            })
             objResult.validate = true;
             objResult.textResult = "Ok Data: " + textResult;
             validate = true;
         }
-        alert(JSON.stringify(objResult.textResult));
+        console.log(JSON.stringify(objResult));
         return validate;
     }
 
@@ -296,18 +315,18 @@ class validacion {
             objResult.textResult = "Ok Data: " + textResult;
             validate = true;
         } else {
-            textResult = 'Correo Invalido (Por favor ingresar el correo en el siguiente formato [xxxx@xxx.xxx]';
+            textResult = 'Correo Invalido (Por favor ingresar el correo en el siguiente formato [xxxx@xxx.xxx])';
             correo.classList.remove('is-valid');
             correo.classList.add('is-invalid');
             objResult.validate = false;
             objResult.textResult = "Error: " + textResult;
             validate = false;
         }
-        alert(JSON.stringify(objResult.textResult));
+        console.log(JSON.stringify(objResult));
         return validate;
     }
 
-        //Metodo para validación de contraseña
+    //Metodo para validación de contraseña
     validarContraseña() {
 
         //Expresion regular para validación de contraseña, minimo una mayuscula, una minuscula y un caracter especial entre (#,$,*), una longitud minima de 8 caracteres
@@ -329,10 +348,105 @@ class validacion {
             objResult.textResult = "Error: " + textResult;
             validate = false;
         }
-        alert(JSON.stringify(objResult.textResult));
+        console.log(JSON.stringify(objResult));
         return validate;
     }
+
+    formClear() {
+            //Se resetan todos los datos del formulario
+            form.reset();
+
+            //Se eliminan todas las clases personalizadas de boostrap para evitar que despues de limpiar se mantenga en rojo o verde el borde de los input
+            nombres.classList.remove('is-invalid');
+            nombres.classList.remove('is-valid');
+            apellidos.classList.remove('is-invalid');
+            apellidos.classList.remove('is-valid');
+            tipo_documento.classList.remove('is-invalid');
+            tipo_documento.classList.remove('is-valid');
+            tipo_documento.disabled = false;
+            num_documento.classList.remove('is-invalid');
+            num_documento.classList.remove('is-valid');
+            fecha_nacimiento.classList.remove('is-invalid');
+            fecha_nacimiento.classList.remove('is-valid');
+            genero.classList.remove('is-invalid');
+            genero.classList.remove('is-valid')
+            telefono.classList.remove('is-invalid');
+            telefono.classList.remove('is-valid');
+            correo.classList.remove('is-invalid');
+            correo.classList.remove('is-valid');
+            contraseña.classList.remove('is-invalid');
+            contraseña.classList.remove('is-valid');
+            habilidades.forEach(habilidad =>{
+            habilidad.classList.remove('is-invalid');
+            habilidad.classList.remove('is-valid');
+           });
+           hobbies.forEach(hobbi => {
+            hobbi.classList.remove('is-invalid');
+            hobbi.classList.remove('is-valid');
+           });
+
+            //Se limpia el contenido del número que calcula el valor del input tipo rango
+            num_edad.textContent = 0;
+        
+    }
+
+    formEnabled(){
+        const inputs = document.querySelectorAll('#formulario input');
+        const selects = document.querySelectorAll('#formulario select');
+        inputs.forEach(input => {
+            input.disabled = false;
+        });
+        selects.forEach(select => {
+            select.disabled = false;
+        })
+    }
+
+    formDisabled(){
+            const inputs = document.querySelectorAll('#formulario input');
+            const selects = document.querySelectorAll('#formulario select');
+            inputs.forEach(input => {
+                input.disabled = true;
+            });
+            selects.forEach(select => {
+                select.disabled = true;
+            });
+    }
+
+    formDisableEdit(){
+        const inputs = document.querySelectorAll('#formulario input[type="date"], input[type="text"], input[type="number"]');
+        inputs.forEach(input => {
+            input.disabled = true;
+        });
+        genero.disabled = true;
+    }
 }
+
+const datos = new validacion(nombres, apellidos, tipo_documento, num_documento, edad, genero, telefono, habilidades, hobbies, correo, contraseña);
+let estado = false;
+disabled.addEventListener('click', () =>{
+    if(estado){
+        datos.formEnabled();
+        disabled.textContent = 'Deshabilitar';
+    }else{
+        datos.formDisabled();
+        disabled.textContent = 'Habilitar';
+    }
+    estado = !estado;
+});
+
+limpiar.addEventListener('click', () => {
+    datos.formClear();
+});
+
+disabledEdit.addEventListener('click', () => {
+    if(estado){
+        datos.formEnabled();
+    }else{
+        datos.formDisableEdit();
+    }
+    estado = !estado;
+})
+
 //Algoritmo para calcular la edad segun la fecha de nacimiento ingresada
 fecha_nacimiento.addEventListener('change', () => {
     var hoy = new Date();
@@ -352,17 +466,20 @@ fecha_nacimiento.addEventListener('change', () => {
     //Se modifica el numero en el cual se visualiza el valor exacto del rango
     num_edad.textContent = edad;
 
-})
+    if(fecha_nacimiento.value === ""){
+       
+    }else{
+        datos.validarEdad();
+    }
+
+});
 
 //Manejo de envio de datos
 form.addEventListener("submit", (event) => {
 
     //Se previene el envio del formulario
     event.preventDefault();
-
-    //Se instancia la clase validacion por medio de su constructor
-    const datos = new validacion(nombres, apellidos, tipo_documento, num_documento, edad, genero, telefono, habilidades, hobbies, correo, contraseña);
-
+    
     //Se almacenas las validaciones en un arreglo
     const validaciones = [
 
@@ -392,27 +509,7 @@ form.addEventListener("submit", (event) => {
     }
 });
 
-//Escuchador del boton limpiar del formulario
-limpiar.addEventListener('click', () => {
 
-    //Se resetan todos los datos del formulario
-    form.reset();
-
-    //Se eliminan todas las clases personalizadas de boostrap para evitar que despues de limpiar se mantenga en rojo el borde de los input
-    nombres.classList.remove('is-invalid');
-    apellidos.classList.remove('is-invalid');
-    tipo_documento.classList.remove('is-invalid');
-    tipo_documento.disabled = false;
-    num_documento.classList.remove('is-invalid');
-    fecha_nacimiento.classList.remove('is-invalid');
-    genero.classList.remove('is-invalid');
-    telefono.classList.remove('is-invalid');
-    correo.classList.remove('is-invalid');
-    contraseña.classList.remove('is-invalid');
-
-    //Se limpia el contenido del número que calcula el valor del input tipo rango
-    num_edad.textContent = 0;
-})
 
 
 

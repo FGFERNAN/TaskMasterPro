@@ -23,10 +23,22 @@
                     <div class="col-md-6">
                         <label for="nombre" class="form-label">Nombres</label>
                         <input type="text" class="form-control" id="nombre" minlength="3" pattern="[A-Za-záéúíóñÑÁÉÚÍÓ\s]+" title="Por favor ingresar solo letras" required>
+                        <div class="invalid-feedback">
+                            Nombre Invalido (por favor ingresar solo letras y minimo 3 caracteres).
+                        </div>
+                        <div class="valid-feedback">
+                            Nombre Validado Exitosamente.
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <label for="apellido" class="form-label">Apellidos</label>
                         <input type="text" class="form-control" id="apellido" minlength="3" pattern="[A-Za-záéúíóñÑÁÉÚÍÓ\s]+" title="Por favor ingresar solo letras" required>
+                        <div class="invalid-feedback">
+                            Apellido Invalido (por favor ingresar solo letras y minimo 3 caracteres).
+                        </div>
+                        <div class="valid-feedback">
+                            Apellido Validado Exitosamente.
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <label for="tipo_documento" class="form-label">Tipo de Documento</label>
@@ -37,14 +49,32 @@
                             <option value="3">(CE) Cedula de Extranjeria</option>
                             <option value="4">(DNI) Documento Nacional de Identidad</option>
                         </select>
+                        <div class="invalid-feedback">
+                            Tipo de Documento Invalido (No puedes seleccionar tarjeta de identidad).
+                        </div>
+                        <div class="valid-feedback">
+                            Tipo de Documento Validado Exitosamente.
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <label for="num_documento" class="form-label">Numero de Documento</label>
                         <input type="number" class="form-control" id="num_documento" min="1000000000" required>
+                        <div class="invalid-feedback">
+                            Numero de Documento Invalido (por favor ingresar solo numeros y minimo 10 caracteres).
+                        </div>
+                        <div class="valid-feedback">
+                            Numero de Documento Validado Exitosamente.
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <label for="fecha" class="form-label">Fecha de Nacimiento</label>
                         <input type="date" class="form-control" id="fecha" required>
+                        <div class="invalid-feedback">
+                            Edad Invalida (Debes ser mayor de edad).
+                        </div>
+                        <div class="valid-feedback">
+                            Edad Validada Exitosamente.
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <label for="genero" class="form-label">Genero</label>
@@ -54,20 +84,32 @@
                             <option value="2">Femenino</option>
                             <option value="3">Otro</option>
                         </select>
+                        <div class="invalid-feedback">
+                            Genero Invalido (por favor seleccionar un genero).
+                        </div>
+                        <div class="valid-feedback">
+                            Genero Validado Exitosamente.
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <label for="edad" class="form-label">Edad</label>
-                        <input type="range" class="form-range" id="edad" min="1" max="100" value="0"     required>
+                        <input type="range" class="form-range" id="edad" min="1" max="100" value="0" disabled required>
                         <span id="num_edad">0</span> años
                     </div>
                     <div class="col-md-6">
                         <label for="color" class="form-label">Color Favorito</label>
-                        <input type="color" class="form-control form-control-color" id="color">
+                        <input type="color" class="form-control form-control-color" value="#8A1C7C" id="color">
                     </div>
                     <div class="col-md-6">
                         <label for="num_telefono" class="form-label">Numero de Telefono</label>
                         <input type="tel" id="num_telefono" class="form-control" pattern="[0-9]{10,}"
                             title="Por favor ingresa al menos 10 digitos (Solo Números)" required>
+                        <div class="invalid-feedback">
+                            Numero de Telefono Invalido (Por favor ingresar solo numeros y minimo 10 digitos).
+                        </div>
+                        <div class="valid-feedback">
+                            Numero de Telefono Validado Exitosamente.
+                        </div>
                     </div>
                     <div class="col-md-3">
                         <label for="habilidades" class="form-label">Habilidades</label>
@@ -100,6 +142,12 @@
                             <label class="form-check-label" for="cocinar">
                                 Cocinar
                             </label>
+                            <div class="invalid-feedback">
+                                Debes seleccionar minimo una habilidad.
+                            </div>
+                            <div class="valid-feedback">
+                                Habilidades Validadas Exitosamente.
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -133,11 +181,23 @@
                             <label class="form-check-label" for="estudiar">
                                 Estudiar
                             </label>
+                            <div class="invalid-feedback">
+                                Debes seleccionar minimo un hobbie.
+                            </div>
+                            <div class="valid-feedback">
+                                Hobbies Validados Exitosamente.
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <label for="correo" class="form-label">Correo Electronico</label>
                         <input type="email" id="correo" class="form-control" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" required>
+                        <div class="invalid-feedback">
+                            Correo Invalido (Por favor ingresar el correo en el siguiente formato "xxxx@xxx.xxx").
+                        </div>
+                        <div class="valid-feedback">
+                            Correo Validado Exitosamente.
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <label for="contraseña" class="form-label">Contraseña</label>
@@ -147,11 +207,21 @@
                             Tu contraseña debe tener minimo 8 caracteres, una letra mayuscula, una letra minuscula
                             y un caracter especial (#,$,*).
                         </div>
+                        <div class="invalid-feedback">
+                            Contraseña Invalida, asegurate de que cumpla los requisitos minimos (tener minimo 8 caracteres, una letra mayuscula, una letra minuscula y un caracter especial (#,$,*).)
+                        </div>
+                        <div class="valid-feedback">
+                            Contraseña Validada Exitosamente.
+                        </div>
                     </div>
                     <input type="hidden" id="id" value="1">
                     <div class="d-grid gap-2 col-9 mx-auto">
                         <button class="btn btn-success" id="enviar" type="submit">Enviar</button>
-                        <button class="btn btn-danger" id="limpiar" type="reset">Limpiar</button>
+                        <div class="btn-group gap-2" role="group" aria-label="Basic mixed styles example">
+                            <button class="btn btn-danger" id="limpiar" type="button">Limpiar</button>
+                            <button class="btn btn-warning" id="disabledEdit" type="button">Editar</button>
+                            <button class="btn btn-primary" id="disabled" type="button">Inhabilitar</button>
+                        </div>
                     </div>
                 </form>
             </div>
