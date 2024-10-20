@@ -8,14 +8,16 @@ const tarjeta_identidad = document.getElementById('TI');
 const edad = document.getElementById('edad');
 const telefono = document.getElementById('num_telefono');
 const genero = document.getElementById('genero');
+const color = document.getElementById('color');
+const body = document.body;
 const habilidades = document.getElementsByName('status');
 const hobbies = document.getElementsByName('flexRadioDefault');
 const num_edad = document.getElementById('num_edad');
 const correo = document.getElementById('correo');
 const contraseña = document.getElementById('contraseña');
 const enviar = document.getElementById('enviar');
-const limpiar = document.getElementById('limpiar');
-const disabled = document.getElementById('disabled');
+// const limpiar = document.getElementById('limpiar');
+// const disabled = document.getElementById('disabled');
 const disabledEdit = document.getElementById('disabledEdit');
 const form = document.getElementById('formulario');
 
@@ -157,14 +159,12 @@ class validacion {
     validarEdad() {
 
         //Condicional para validar si la edad ingresasa es menor a 17 el tipo de documento tomara la propiedad disabled
-        if (edad.value < 17) {
-            tipo_documento.disabled = true;
+        if (edad.value < 18) {
+            this.formDisabled();
             tipo_documento.value = 0;
             textResult = 'Edad Invalida (Debes ser mayor de edad)';
             edad.classList.remove('is-valid');
             edad.classList.add('is-invalid');
-            tipo_documento.classList.remove('is-valid');
-            tipo_documento.classList.add('is-invalid');
             fecha_nacimiento.classList.remove('is-valid');
             fecha_nacimiento.classList.add('is-invalid');
             objResult.validate = false;
@@ -172,10 +172,8 @@ class validacion {
             validate = false;
 
         } else {
-
             //Si la validacion se cumple se quita la propiedad disabled del tipo de documento y se elimina el option Tarjeta de Identidad
             textResult = 'Edad Validada Exitosamente';
-            tipo_documento.disabled = false;
             tarjeta_identidad.remove();
             edad.classList.remove('is-invalid');
             edad.classList.add('is-valid');
@@ -391,7 +389,7 @@ class validacion {
     }
 
     formEnabled(){
-        const inputs = document.querySelectorAll('#formulario input');
+        const inputs = document.querySelectorAll('#formulario input:not([type="range"])');
         const selects = document.querySelectorAll('#formulario select');
         inputs.forEach(input => {
             input.disabled = false;
@@ -402,7 +400,7 @@ class validacion {
     }
 
     formDisabled(){
-            const inputs = document.querySelectorAll('#formulario input');
+            const inputs = document.querySelectorAll('#formulario input:not([type="date"])');
             const selects = document.querySelectorAll('#formulario select');
             inputs.forEach(input => {
                 input.disabled = true;
@@ -421,93 +419,93 @@ class validacion {
     }
 }
 
-const datos = new validacion(nombres, apellidos, tipo_documento, num_documento, edad, genero, telefono, habilidades, hobbies, correo, contraseña);
-let estado = false;
-disabled.addEventListener('click', () =>{
-    if(estado){
-        datos.formEnabled();
-        disabled.textContent = 'Deshabilitar';
-    }else{
-        datos.formDisabled();
-        disabled.textContent = 'Habilitar';
-    }
-    estado = !estado;
-});
+// const datos = new validacion(nombres, apellidos, tipo_documento, num_documento, edad, genero, telefono, habilidades, hobbies, correo, contraseña);
+// let estado = false;
+// disabled.addEventListener('click', () =>{
+//     if(estado){
+//         datos.formEnabled();
+//         disabled.textContent = 'Deshabilitar';
+//     }else{
+//         datos.formDisabled();
+//         disabled.textContent = 'Habilitar';
+//     }
+//     estado = !estado;
+// });
 
-limpiar.addEventListener('click', () => {
-    datos.formClear();
-});
+// limpiar.addEventListener('click', () => {
+//     datos.formClear();
+// });
 
-disabledEdit.addEventListener('click', () => {
-    if(estado){
-        datos.formEnabled();
-    }else{
-        datos.formDisableEdit();
-    }
-    estado = !estado;
-})
+// disabledEdit.addEventListener('click', () => {
+//     if(estado){
+//         datos.formEnabled();
+//     }else{
+//         datos.formDisableEdit();
+//     }
+//     estado = !estado;
+// })
 
 //Algoritmo para calcular la edad segun la fecha de nacimiento ingresada
-fecha_nacimiento.addEventListener('change', () => {
-    var hoy = new Date();
-    var cumpleanos = new Date(fecha_nacimiento.value);
-    var edad = hoy.getFullYear() - cumpleanos.getFullYear();
-    var m = hoy.getMonth() - cumpleanos.getMonth();
+// fecha_nacimiento.addEventListener('change', () => {
+//     var hoy = new Date();
+//     var cumpleanos = new Date(fecha_nacimiento.value);
+//     var edad = hoy.getFullYear() - cumpleanos.getFullYear();
+//     var m = hoy.getMonth() - cumpleanos.getMonth();
 
-    if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
-        edad--;
-    }
+//     if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+//         edad--;
+//     }
 
-    const inputEdad = document.getElementById('edad');
+//     const inputEdad = document.getElementById('edad');
 
     //Se cambia el valor de forma dinamica del input tipo rango
-    inputEdad.value = edad;
+//     inputEdad.value = edad;
 
     //Se modifica el numero en el cual se visualiza el valor exacto del rango
-    num_edad.textContent = edad;
+//     num_edad.textContent = edad;
 
-    if(fecha_nacimiento.value === ""){
+//     if(fecha_nacimiento.value === ""){
        
-    }else{
-        datos.validarEdad();
-    }
+//     }else{
+//         datos.validarEdad();
+//     }
 
-});
+// });
 
 //Manejo de envio de datos
-form.addEventListener("submit", (event) => {
+// form.addEventListener("submit", (event) => {
 
     //Se previene el envio del formulario
-    event.preventDefault();
+//     event.preventDefault();
     
     //Se almacenas las validaciones en un arreglo
-    const validaciones = [
+//     const validaciones = [
 
         //Se ejecutan los metodos de la clase
-        datos.validarNombres(),
-        datos.validarApellidos(),
-        datos.validarTipoDocumento(),
-        datos.validarDocumento(),
-        datos.validarEdad(),
-        datos.validarGenero(),
-        datos.validarTelefono(),
-        datos.validarHabilidades(),
-        datos.validarHobbies(),
-        datos.validarCorreo(),
-        datos.validarContraseña()
-    ]
+//         datos.validarNombres(),
+//         datos.validarApellidos(),
+//         datos.validarTipoDocumento(),
+//         datos.validarDocumento(),
+//         datos.validarEdad(),
+//         datos.validarGenero(),
+//         datos.validarTelefono(),
+//         datos.validarHabilidades(),
+//         datos.validarHobbies(),
+//         datos.validarCorreo(),
+//         datos.validarContraseña()
+//     ]
 
     //Se crea una variable para guardar si todas las validaciones del formulario retornaron true
-    const fullCheck = validaciones.every(valid => valid === true);
+//     const fullCheck = validaciones.every(valid => valid === true);
 
     //Condicional para validar si todo retorno true en las validaciones enviar el formulario 
-    if (fullCheck) {
-        alert('Todos los campos han sido validados exitosamente');
-        form.submit();
-    } else {
-        alert('Diligencia todos los campos con los requerimientos especificados');
-    }
-});
+//     if (fullCheck) {
+//         alert('Todos los campos han sido validados exitosamente');
+//         form.submit();
+//     } else {
+//         alert('Diligencia todos los campos con los requerimientos especificados');
+//     }
+// });
 
 
 
