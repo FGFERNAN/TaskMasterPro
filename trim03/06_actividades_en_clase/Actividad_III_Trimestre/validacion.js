@@ -158,7 +158,7 @@ class validacion {
     //Metodo para validar edad
     validarEdad() {
 
-        //Condicional para validar si la edad ingresasa es menor a 17 el tipo de documento tomara la propiedad disabled
+        //Condicional para validar si la edad ingresada es menor a 17 el tipo de documento tomara la propiedad disabled
         if (edad.value < 18) {
             this.formDisabled();
             tipo_documento.value = 0;
@@ -357,19 +357,19 @@ class validacion {
             //Se eliminan todas las clases personalizadas de boostrap para evitar que despues de limpiar se mantenga en rojo o verde el borde de los input
             nombres.classList.remove('is-invalid');
             nombres.classList.remove('is-valid');
-            apellidos.classList.remove('is-invalid');
-            apellidos.classList.remove('is-valid');
+            // apellidos.classList.remove('is-invalid');
+            // apellidos.classList.remove('is-valid');
             tipo_documento.classList.remove('is-invalid');
             tipo_documento.classList.remove('is-valid');
             tipo_documento.disabled = false;
-            num_documento.classList.remove('is-invalid');
-            num_documento.classList.remove('is-valid');
+            // num_documento.classList.remove('is-invalid');
+            // num_documento.classList.remove('is-valid');
             fecha_nacimiento.classList.remove('is-invalid');
             fecha_nacimiento.classList.remove('is-valid');
             genero.classList.remove('is-invalid');
             genero.classList.remove('is-valid')
-            telefono.classList.remove('is-invalid');
-            telefono.classList.remove('is-valid');
+            // telefono.classList.remove('is-invalid');
+            // telefono.classList.remove('is-valid');
             correo.classList.remove('is-invalid');
             correo.classList.remove('is-valid');
             contraseña.classList.remove('is-invalid');

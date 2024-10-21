@@ -59,12 +59,12 @@ form.addEventListener("submit", (event) => {
 
         //Se ejecutan los metodos de la clase
         datos.validarNombres(),
-        datos.validarApellidos(),
+        // datos.validarApellidos(),
         datos.validarTipoDocumento(),
-        datos.validarDocumento(),
+        // datos.validarDocumento(),
         datos.validarEdad(),
         datos.validarGenero(),
-        datos.validarTelefono(),
+        // datos.validarTelefono(),
         datos.validarHabilidades(),
         datos.validarHobbies(),
         datos.validarCorreo(),
