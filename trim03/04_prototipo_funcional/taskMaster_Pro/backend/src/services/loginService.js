@@ -19,7 +19,7 @@ class LoginService{
                     throw new Error("Password Error");
                 }
             } else {
-                return { message: "The user not created" };
+                throw new Error("The user not created");
             };
         } catch(err) {
             console.error('Error logging: ', err.message);
