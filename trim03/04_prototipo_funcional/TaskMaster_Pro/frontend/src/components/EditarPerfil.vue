@@ -4,13 +4,16 @@
       <div class="row no-gutters header-custom">
         <div class="col-12 d-flex align-items-center justify-content-between p-3">
           <button class="btn btn-primary buton-regresar" @click="goBack">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
-              <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+              <path
+                d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
             </svg>
             <span class="button-text">Regresar</span>
           </button>
           <h1 class="mb-0 text-center flex-grow-1">
-            <i class="fa-solid fa-user-pen me-2"></i> Editar Perfil
+            <i class="fa-solid fa-user-pen me-2"></i> <!-- Ícono de comentario de Bootstrap -->
+            Editar Perfil
           </h1>
           <img src="../assets/img/logotipo.png" alt="Logo" class="img-fluid logo" />
         </div>
@@ -18,14 +21,15 @@
 
       <form @submit="handleSubmit" class="container form-create-project needs-validation" novalidate>
         <div class="row mb-4"></div>
-        
+
         <!-- Nombre -->
         <div class="row mb-3">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre:</label>
           <div class="col-sm-10">
             <div class="input-group mb-3">
               <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
-              <input type="text" v-model="form.nombre" class="form-control border-input" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1" maxlength="50" required />
+              <input type="text" v-model="form.nombre" class="form-control border-input" placeholder="Name"
+                aria-label="Username" aria-describedby="basic-addon1" maxlength="50" required />
               <div class="invalid-feedback">
                 Por favor ingrese el nombre (máximo 50 caracteres).
               </div>
@@ -39,11 +43,14 @@
           <div class="col-sm-10">
             <div class="input-group mb-3">
               <span class="input-group-text border-input" id="basic-addon1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
-                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0" />
                 </svg>
               </span>
-              <input type="text" v-model="form.apellido" class="form-control border-input" placeholder="Last Name" aria-label="Username" aria-describedby="basic-addon1" maxlength="50" required />
+              <input type="text" v-model="form.apellido" class="form-control border-input" placeholder="Last Name"
+                aria-label="Username" aria-describedby="basic-addon1" maxlength="50" required />
               <div class="invalid-feedback">
                 Por favor ingrese el apellido (máximo 50 caracteres).
               </div>
@@ -57,7 +64,8 @@
           <div class="col-sm-10">
             <div class="input-group mb-3">
               <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-at"></i></span>
-              <input type="email" v-model="form.email" class="form-control border-input" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" maxlength="100" required />
+              <input type="email" v-model="form.email" class="form-control border-input" placeholder="Email"
+                aria-label="Username" aria-describedby="basic-addon1" maxlength="100" required />
               <div class="invalid-feedback">
                 Por favor ingrese el correo electrónico (máximo 100 caracteres).
               </div>
@@ -71,7 +79,8 @@
           <div class="col-sm-10">
             <div class="input-group mb-3">
               <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
-              <input type="password" v-model="form.password" class="form-control border-input" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" minlength="8" maxlength="20" />
+              <input type="password" v-model="form.password" class="form-control border-input" placeholder="Password"
+                aria-label="Username" aria-describedby="basic-addon1" minlength="8" maxlength="20" />
               <div class="invalid-feedback">
                 Por favor ingrese la contraseña (máximo 20 caracteres).
               </div>
@@ -85,7 +94,8 @@
           <div class="col-sm-10">
             <div class="input-group mb-3">
               <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-phone"></i></span>
-              <input type="tel" v-model="form.celular" class="form-control border-input" pattern="[0-9]{10}" placeholder="Phone number" required />
+              <input type="tel" v-model="form.celular" class="form-control border-input" pattern="[0-9]{10}"
+                placeholder="Phone number" required />
               <div class="invalid-feedback">
                 Por favor ingrese el número de celular (máximo 10 caracteres).
               </div>
@@ -120,10 +130,13 @@
           <label for="inputEmail3" class="col-sm-2 col-form-label">Número Documento:</label>
           <div class="col-sm-10">
             <div class="input-group mb-3">
-              <span class="input-group-text border-input" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-123" viewBox="0 0 16 16">
-                <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
-              </svg></span>
-              <input type="number" v-model="form.numeroDocumento" class="form-control border-input" placeholder="Número de documento" aria-label="Username" aria-describedby="basic-addon1" required />
+              <span class="input-group-text border-input" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg"
+                  width="16" height="16" fill="currentColor" class="bi bi-123" viewBox="0 0 16 16">
+                  <path
+                    d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                </svg></span>
+              <input type="number" v-model="form.numeroDocumento" class="form-control border-input"
+                placeholder="Número de documento" aria-label="Username" aria-describedby="basic-addon1" required />
               <div class="invalid-feedback">
                 Por favor ingrese el número de documento.
               </div>
@@ -149,7 +162,8 @@
           <div class="d-grid gap-2 col-3 mx-auto">
             <button class="btn btn-primary buton-form mb-4" type="submit">Confirmar</button>
           </div>
-          <button type="button" class="btn btn-danger mb-4 fw-bold" onclick="confirmarCancelacion()">Cancelar Cuenta</button>
+          <button type="button" class="btn btn-danger mb-4 fw-bold" onclick="confirmarCancelacion()">Cancelar
+            Cuenta</button>
         </div>
       </form>
     </div>
@@ -157,10 +171,7 @@
 </template>
 
 <script>
-// Importa el archivo CSS que contiene los estilos específicos para este componente
-import '../assets/img/css/EditarPerfil.css';
-
-
+import "../assets/css/EditarPerfil.css";
 
 export default {
   data() {
@@ -201,5 +212,3 @@ export default {
   },
 };
 </script>
-
-

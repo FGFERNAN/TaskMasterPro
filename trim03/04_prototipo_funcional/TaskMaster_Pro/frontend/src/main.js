@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
-import '../src/assets/img/css/perfil.css';
-import '../src/assets/img/css/misTareas.css';
-import '../src/assets/img/css/EditarPerfil.css';
+// import '../src/assets/img/css/perfil.css';
+// import '../src/assets/img/css/misTareas.css';
+// import '../src/assets/img/css/EditarPerfil.css';
 
 
 

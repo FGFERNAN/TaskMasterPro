@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="text-center">
-          <img src="../assets/img/logotipo.png" class="img-fluid mx-auto d-block logo1" width="400" alt="Logo" />
+          <img src="../assets/img/logos/logotipo.png" class="img-fluid mx-auto d-block logo1" width="400" alt="Logo" />
         </div>
         <form ref="form" @submit.prevent="handleSubmit" class="mx-auto needs-validation custom-iniciarSesion" novalidate>
           <div class="mb-3">
@@ -12,8 +12,8 @@
               <span class="input-group-text"><i class="fa-regular fa-envelope"></i></span>
               <div class="form-floating">
                 <input v-model="email" type="email" class="form-control border-input"
-                  :class="{ 'is-invalid': errors.email }" id="email" placeholder="Correo electrónico" required />
-                <label for="email">Correo Electrónico</label>
+                  :class="{ 'is-invalid': errors.email }" id="email" placeholder="Username" required />
+                <label for="email">Username</label>
                 <div class="invalid-feedback">
                   {{ errors.email || "Correo Invalido (Por favor ingresar el correo en el siguiente formato 'xxxx@xxx.xxx')." }}
                 </div>
@@ -27,9 +27,9 @@
               <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
               <div class="form-floating">
                 <input v-model="password" type="password" class="form-control border-input"
-                  :class="{ 'is-invalid': errors.password }" id="password" placeholder="Contraseña" maxlength="20"
+                  :class="{ 'is-invalid': errors.password }" id="password" placeholder="Password" maxlength="20"
                   minlength="8" required />
-                <label for="password">Contraseña</label>
+                <label for="password">Password</label>
                 <div class="invalid-feedback">
                   {{ errors.password || "Contraseña Invalida, asegurate de que cumpla los requisitos minimos (tener minimo 8 caracteres, una letra mayuscula, una letra minuscula y un caracter especial (#,$,*).)" }}
                 </div>
@@ -59,7 +59,7 @@
 </template>
 
 <script>
-
+import "../assets/css/style.css";
 import api from "@/services/api";
 
 export default {
@@ -87,6 +87,7 @@ export default {
           password: this.password,
         });
         console.log(response.data);
+        alert('Inicio de Sesion Exitoso');
         this.$router.push("/perfil-completo");
       } catch (error) {
         if (error.response && error.response.data) {
@@ -110,11 +111,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-/* Personaliza estilos aquí */
-.bg-custom {
-  background-color: #f7f7f7;
-  /* Ajusta según tu diseño */
-}
-</style>

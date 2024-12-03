@@ -5,21 +5,15 @@
         <div class="text-center">
           <h1 class="d-block mt-3">Recuperar Contraseña</h1>
         </div>
-        <form @submit.prevent="handleSubmit" class="mx-auto needs-validation custom-recuperarContraseña" >
+        <form @submit.prevent="handleSubmit" class="mx-auto needs-validation custom-recuperarContraseña">
           <!-- Campo para Correo Electrónico -->
           <div class="mb-3">
             <label for="email" class="form-label">Correo Electrónico</label>
             <div class="input-group mb-3 has-validation">
               <span class="input-group-text"><i class="fa-regular fa-envelope"></i></span>
               <div class="form-floating">
-                <input
-                  v-model="email"
-                  type="email"
-                  class="form-control border-input"
-                  id="email"
-                  placeholder="Correo electrónico"
-                  required
-                />
+                <input v-model="email" type="email" class="form-control border-input" id="email"
+                  placeholder="Correo electrónico" required />
                 <label for="email">Correo Electrónico</label>
                 <div class="invalid-feedback">
                   Por favor ingrese su correo electrónico.
@@ -34,17 +28,8 @@
             <div class="input-group mb-3 has-validation">
               <span class="input-group-text"><i class="fa-solid fa-hashtag"></i></span>
               <div class="form-floating">
-                <input
-                  v-model="code"
-                  type="number"
-                  class="form-control border-input"
-                  id="code"
-                  placeholder="Código"
-                  min="100000"
-                  max="999999"
-                  maxlength="6"
-                  required
-                />
+                <input v-model="code" type="number" class="form-control border-input" id="code" placeholder="Código"
+                  min="100000" max="999999" maxlength="6" required />
                 <label for="code">Código</label>
                 <div class="invalid-feedback">
                   Por favor ingrese su código (6 caracteres).
@@ -64,6 +49,8 @@
 </template>
 
 <script>
+import "../assets/css/style.css";
+
 export default {
   data() {
     return {
@@ -80,19 +67,3 @@ export default {
 };
 </script>
 
-<style scoped>
-/* Aquí puedes agregar estilos personalizados */
-.bg-custom {
-  background-color: #f7f7f7; /* Ajusta según tu diseño */
-}
-
-h1::after {
-  content: "";
-  position: absolute;
-  bottom: -9px;
-  left: 10%;
-  width: 80%;
-  height: 5px;
-  background-color: #000;
-}
-</style>

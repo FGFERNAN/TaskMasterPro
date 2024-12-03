@@ -31,11 +31,12 @@
               <button class="btn btn btn-primary buton-perfil mb-2" @click="goToEditProfile">Editar Perfil</button>
               <button class="btn btn btn-primary buton-perfil mb-2" @click="goToManageRoles">Gestionar Roles</button>
               <button class="btn btn btn-primary buton-perfil mb-2" @click="goToManageUsers">Gestionar Usuarios</button>
-              <button class="btn btn btn-primary buton-perfil mb-3" @click="confirmarCancelacion">Cancelar Cuenta</button>
+              <button class="btn btn btn-primary buton-perfil mb-3" @click="confirmarCancelacion">Cancelar
+                Cuenta</button>
             </div>
             <!-- Logo al lado de los botones -->
             <div class="ms-4">
-              <img  src="../assets/img/logotipo.png" alt="Logo" class="img-fluid logo" />
+              <img src="../assets/img/logotipo.png" alt="Logo" class="img-fluid logo" />
             </div>
           </div>
         </section>
@@ -45,6 +46,8 @@
 </template>
 
 <script>
+import "../assets/css/perfil.css";
+
 export default {
   name: 'PerfilCompleto',
   methods: {
@@ -75,4 +78,3 @@ export default {
   }
 }
 </script>
-

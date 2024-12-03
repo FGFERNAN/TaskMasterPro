@@ -3,7 +3,8 @@
     <!-- Navbar for mobile -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light d-lg-none">
       <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
+          aria-controls="offcanvasMenu">
           <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="#">Menú</a>
@@ -37,7 +38,7 @@
       <div class="row">
         <!-- Sidebar for larger screens -->
         <div class="col-md-3 custom-col d-none d-lg-block">
-          <img src="../assets/img/logotipo.png" class="logo-inicio" width="300" />
+          <img src="../assets/img/logos/logotipo.png" class="logo-inicio" width="300" />
           <ul class="nav flex-column">
             <li class="nav-item">
               <router-link to="/perfil-completo" class="nav-link mi-link">
@@ -69,9 +70,10 @@
               <div class="d-flex align-items-center">
                 <h2>Usuarios</h2>
                 <!-- Usamos router-link para redirigir -->
-                 <button class="btn btn-success ms-3" @click="redirectToRecoveruser"><i class="fa-solid fa-plus me-1"></i></button>
-                 
-               
+                <button class="btn btn-success ms-3" @click="redirectToRecoveruser"><i
+                    class="fa-solid fa-plus me-1"></i></button>
+
+
               </div>
             </div>
 
@@ -104,7 +106,8 @@
                     </td>
                     <td>
                       <!-- Usamos el método redirectToEditUser para redirigir a editar usuario -->
-                      <button class="btn btn-sm btn-secondary" @click="redirectToEditUser"><i class="fa-solid fa-pen"></i></button>
+                      <button class="btn btn-sm btn-secondary" @click="redirectToEditUser"><i
+                          class="fa-solid fa-pen"></i></button>
                       <button class="btn btn-sm btn-danger btn-eliminar"><i class="fa-solid fa-trash"></i></button>
                     </td>
                   </tr>
@@ -123,7 +126,8 @@
                     </td>
                     <td>
                       <!-- Usamos el método redirectToEditUser para redirigir a editar usuario -->
-                      <button class="btn btn-sm btn-secondary" @click="redirectToEditUser"><i class="fa-solid fa-pen"></i></button>
+                      <button class="btn btn-sm btn-secondary" @click="redirectToEditUser"><i
+                          class="fa-solid fa-pen"></i></button>
                       <button class="btn btn-sm btn-danger btn-eliminar"><i class="fa-solid fa-trash"></i></button>
                     </td>
                   </tr>
@@ -142,7 +146,8 @@
                     </td>
                     <td>
                       <!-- Usamos el método redirectToEditUser para redirigir a editar usuario -->
-                      <button class="btn btn-sm btn-secondary" @click="redirectToEditUser"><i class="fa-solid fa-pen"></i></button>
+                      <button class="btn btn-sm btn-secondary" @click="redirectToEditUser"><i
+                          class="fa-solid fa-pen"></i></button>
                       <button class="btn btn-sm btn-danger btn-eliminar"><i class="fa-solid fa-trash"></i></button>
                     </td>
                   </tr>
@@ -161,7 +166,8 @@
                     </td>
                     <td>
                       <!-- Usamos el método redirectToEditUser para redirigir a editar usuario -->
-                      <button class="btn btn-sm btn-secondary" @click="redirectToEditUser"><i class="fa-solid fa-pen"></i></button>
+                      <button class="btn btn-sm btn-secondary" @click="redirectToEditUser"><i
+                          class="fa-solid fa-pen"></i></button>
                       <button class="btn btn-sm btn-danger btn-eliminar"><i class="fa-solid fa-trash"></i></button>
                     </td>
                   </tr>
@@ -176,6 +182,8 @@
 </template>
 
 <script>
+import "../assets/css/misTareas.css";
+
 export default {
   methods: {
     // Redirige a la página de crear usuario
@@ -191,7 +199,3 @@ export default {
   }
 };
 </script>
-
-
-
-
