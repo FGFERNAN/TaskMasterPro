@@ -15,7 +15,7 @@
                   :class="{ 'is-invalid': errors.email }" id="email" placeholder="Username" required />
                 <label for="email">Username</label>
                 <div class="invalid-feedback">
-                  {{ errors.email || "Correo Invalido (Por favor ingresar el correo en el siguiente formato 'xxxx@xxx.xxx')." }}
+                  {{ errors.email || "Ingresa un correo electronico" }}
                 </div>
               </div>
             </div>
@@ -31,7 +31,7 @@
                   minlength="8" required />
                 <label for="password">Password</label>
                 <div class="invalid-feedback">
-                  {{ errors.password || "Contraseña Invalida, asegurate de que cumpla los requisitos minimos (tener minimo 8 caracteres, una letra mayuscula, una letra minuscula y un caracter especial (#,$,*).)" }}
+                  {{ errors.password || "Ingresa una contraseña" }}
                 </div>
               </div>
             </div>
