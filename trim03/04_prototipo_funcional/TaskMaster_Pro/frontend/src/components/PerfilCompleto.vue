@@ -36,7 +36,7 @@
             </div>
             <!-- Logo al lado de los botones -->
             <div class="ms-4">
-              <img src="../assets/img/logotipo.png" alt="Logo" class="img-fluid logo" />
+              <img src="../assets/img/logotipo.png" alt="Logo" class="img-fluid logo_perfil" />
             </div>
           </div>
         </section>
@@ -46,8 +46,6 @@
 </template>
 
 <script>
-import "../assets/css/perfil.css";
-
 export default {
   name: 'PerfilCompleto',
   methods: {
@@ -78,3 +76,6 @@ export default {
   }
 }
 </script>
+<style scoped>
+@import "@/../../assets/css/perfil.css";
+</style>

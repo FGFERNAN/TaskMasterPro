@@ -182,8 +182,6 @@
 </template>
 
 <script>
-import "../assets/css/misTareas.css";
-
 export default {
   methods: {
     // Redirige a la página de crear usuario

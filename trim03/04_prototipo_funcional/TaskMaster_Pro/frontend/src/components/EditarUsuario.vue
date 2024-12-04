@@ -22,10 +22,10 @@
               <i class="fa-solid fa-user-pen"></i>
               Editar Usuario
             </h1>
-            <img src="../assets/img/logotipo.png" alt="Logotipo" class="img-fluid logo"/>
+            <img src="../assets/img/logotipo.png" alt="Logotipo" class=" logo"/>
           </div>
         </div>
-        <form @submit.prevent="submitForm" class="container form-create-project needs-validation" novalidate>
+        <form @submit.prevent="submitForm" class="container form-create-project-editar-perfil needs-validation" novalidate>
           <div class="row mb-4"></div>
           <div class="row mb-3" v-for="(field, index) in fields" :key="index">
             <label :for="field.id" class="col-sm-2 col-form-label">{{ field.label }}</label>
@@ -70,8 +70,6 @@
   </template>
   
   <script>
-import "../assets/css/EditarPerfil.css";
-
   export default {
     data() {
       return {
@@ -181,5 +179,8 @@ import "../assets/css/EditarPerfil.css";
     },
   };
   </script>
+<style scoped>
+@import "@/../../assets/css/EditarPerfil.css";
+</style>
   
   

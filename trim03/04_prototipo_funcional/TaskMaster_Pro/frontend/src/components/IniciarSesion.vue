@@ -59,7 +59,6 @@
 </template>
 
 <script>
-import "../assets/css/style.css";
 import api from "@/services/api";
 
 export default {
@@ -111,3 +110,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+@import "@/../../assets/css/style.css";
+</style>
+
+

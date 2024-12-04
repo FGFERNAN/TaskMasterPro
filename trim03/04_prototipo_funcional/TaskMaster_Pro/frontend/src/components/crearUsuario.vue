@@ -10,16 +10,16 @@
               <path
                 d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
             </svg>
-            <span class="button-text">Regresar</span>
+            <span class="button-text"> Regresar</span>
           </button>
           <h1 class="mb-0 text-center flex-grow-1">
             <i class="fa-solid fa-user-plus me-2"></i>
             Crear Usuario
           </h1>
-          <img src="../assets/img/logotipo.png" alt="Logo" class="img-fluid logo" />
+          <img src="../assets/img/logotipo.png" alt="Logo" class="logo" />
         </div>
       </div>
-      <form @submit.prevent="submitForm" class="container form-create-project needs-validation" novalidate>
+      <form @submit.prevent="submitForm" class="container form-create-project-editar-perfil needs-validation" novalidate>
         <div class="row mb-4"></div>
         <!-- Nombre -->
         <div class="row mb-3">
@@ -158,8 +158,6 @@
 
 
 <script>
-import "../assets/css/EditarPerfil.css";
-
 export default {
   name: "CrearUsuario",
   data() {
@@ -194,3 +192,7 @@ export default {
   },
 };
 </script>
+<style scoped>
+@import "@/../../assets/css/EditarPerfil.css";
+</style>
+

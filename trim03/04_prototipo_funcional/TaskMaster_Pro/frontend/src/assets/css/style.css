@@ -56,7 +56,7 @@
   border-color: black;
 }
 
-.buton-form{
+/* .buton-form{
   background-color: #2E7060;
   color: white;
   border-color: #2E7060;
@@ -66,7 +66,7 @@
 .buton-form:hover{
   background-color: #6DA2C1;
   border-color: #6DA2C1;
-}
+} */
 
 .border-input {
   border: 1px solid black;

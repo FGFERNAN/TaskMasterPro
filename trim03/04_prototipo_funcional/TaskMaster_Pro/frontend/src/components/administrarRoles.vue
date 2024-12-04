@@ -27,7 +27,7 @@
           </li>
           <li class="nav-item">
             <router-link to="/administrar-roles" class="nav-link mi-link">
-              <i class="fa-solid fa-user-cog me-1"></i> roles
+              <i class="fa-solid fa-user-cog me-1"></i> Roles
             </router-link>
           </li>
         </ul>
@@ -48,7 +48,7 @@
             </li>
             <li class="nav-item">
               <router-link to="/administrar-roles" class="nav-link mi-link">
-                <i class="fa-solid fa-user-cog me-1"></i> roles
+                <i class="fa-solid fa-user-cog me-1"></i> Roles
               </router-link>
             </li>
           </ul>
@@ -96,16 +96,12 @@
                     </td>
                     <td>{{ role.description }}</td>
                     <td>
-                      <input type="checkbox" v-for="permission in role.permissions" :key="permission"
-                        :checked="permission.checked">
+                      <input type="checkbox" v-for="permission in role.permissions" :key="permission">
                     </td>
                     <td>
-                      <button class="btn btn-sm btn-secondary" @click="redirectToAssignRole"><i
-                          class="fa-solid fa-user-plus"></i></button>
-                      <button class="btn btn-sm btn-secondary" @click="redirectToEditRole(role.id)"><i
-                          class="fa-solid fa-pen"></i></button>
-                      <button class="btn btn-sm btn-danger" @click="deleteRole(index)"><i
-                          class="fa-solid fa-trash"></i></button>
+                      <button class="btn btn-sm btn-secondary buton-form" @click="redirectToAssignRole"><i class="fa-solid fa-user-plus"></i></button>
+                      <button class="btn btn-sm btn-secondary" @click="redirectToEditRole(role.id)"><i class="fa-solid fa-pen"></i></button>
+                      <button class="btn btn-sm btn-danger btn-eliminar" @click="deleteRole(index)"><i class="fa-solid fa-trash"></i></button>
                     </td>
                   </tr>
                 </tbody>
@@ -119,7 +115,7 @@
 </template>
 
 <script>
-import "../assets/css/misTareas.css"
+
 
 export default {
   data() {
@@ -157,3 +153,6 @@ export default {
   }
 };
 </script>
+<style scoped>
+@import "@/../../assets/css/misTareas.css";
+</style>
