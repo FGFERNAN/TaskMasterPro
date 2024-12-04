@@ -6,6 +6,7 @@ import crearUsuario from '../components/crearUsuario.vue';
 import PerfilCompleto from '../components/PerfilCompleto.vue';
 import EditarPerfil from '../components/EditarPerfil.vue';
 import administrarRoles from '../components/administrarRoles.vue';
+import crearRol from '../components/crearRol.vue';
 import EditarRol from '../components/EditarRol.vue';
 import EditarUsuario from '../components/EditarUsuario.vue';
 
@@ -19,6 +20,7 @@ const routes = [
   { path: '/perfil-completo', component: PerfilCompleto },
   { path: '/editar-perfil', component: EditarPerfil },
   { path: '/administrar-roles', component: administrarRoles },
+  { path: '/crear-rol', component: crearRol},
   { path: '/editar-rol', component: EditarRol },
   { path: '/editar-usuario', component: EditarUsuario },
 

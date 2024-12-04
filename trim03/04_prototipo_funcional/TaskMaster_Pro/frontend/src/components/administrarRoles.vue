@@ -118,6 +118,9 @@
 
 
 export default {
+  mounted() {
+    document.title = "Roles | TaskMaster Pro";
+  },
   data() {
     return {
       selectedRole: null,
@@ -137,7 +140,7 @@ export default {
   },
   methods: {
     redirectToCreateRole() {
-      this.$router.push('creacion-rol');
+      this.$router.push('crear-rol');
     },
     redirectToAssignRole() {
       this.$router.push('/asignarRol');

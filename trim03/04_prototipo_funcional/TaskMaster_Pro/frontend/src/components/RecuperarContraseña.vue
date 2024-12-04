@@ -50,6 +50,9 @@
 
 <script>
 export default {
+  mounted(){
+    document.title = "Recuperar Contraseña | TaskMaster Pro";
+  },
   data() {
     return {
       email: '',

@@ -183,6 +183,9 @@
 
 <script>
 export default {
+  mounted() {
+    document.title = "Usuarios | TaskMaster Pro";
+  },
   methods: {
     // Redirige a la página de crear usuario
     redirectToRecoveruser() {

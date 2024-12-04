@@ -47,6 +47,9 @@
 
 <script>
 export default {
+  mounted(){
+    document.title = "Mi Perfil | TaskMaster Pro";
+  },
   name: 'PerfilCompleto',
   methods: {
     confirmarCerrarSesion() {
