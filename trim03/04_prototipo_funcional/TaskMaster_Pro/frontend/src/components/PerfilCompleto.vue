@@ -46,16 +46,20 @@
 </template>
 
 <script>
+import api from '@/services/api';
 export default {
   mounted(){
     document.title = "Mi Perfil | TaskMaster Pro";
   },
   name: 'PerfilCompleto',
   methods: {
-    confirmarCerrarSesion() {
+    async confirmarCerrarSesion() {
       if (confirm("¿Estás seguro que quieres cerrar sesión?")) {
         // Lógica para cerrar sesión, por ejemplo, redirigir a la página de login
+        const response = await api.post("/logout");
         this.$router.push("/iniciar-sesion");
+        const message = JSON.stringify(response.data.message);
+        alert(message);
       }
     },
     goToEditProfile() {

@@ -18,15 +18,15 @@
           <img src="../assets/img/logotipo.png" alt="Logo" class="logo">
         </div>
       </div>
-      <form class="container-fluid form-create-project needs-validation" novalidate>
+      <form ref="form" @submit.prevent="updateRole" class="container-fluid form-create-project needs-validation" novalidate>
         <div class="row mb-4"></div>
         <div class="row mb-3">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre:</label>
+          <label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
           <div class="col-sm-10 has-validation">
             <div class="input-group mb-3">
               <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-user-tag"></i></span>
-              <input type="text" class="form-control border-input" placeholder="Name" aria-label="Username"
-                aria-describedby="basic-addon1" value="Administrador" maxlength="50" required />
+              <input type="text" id="nombre" class="form-control border-input" placeholder="Name" aria-label="Username"
+                aria-describedby="basic-addon1" v-model="roles.nombre" maxlength="50" required />
               <div class="invalid-feedback">
                 Por favor ingrese el nombre (máximo 50 caracteres).
               </div>
@@ -34,30 +34,13 @@
           </div>
         </div>
         <div class="row mb-3">
-          <label for="inputPassword3" class="col-sm-2 col-form-label">Descripción:</label>
+          <label for="descripcion" class="col-sm-2 col-form-label">Descripción:</label>
           <div class="col-sm-10 has-validation">
             <div class="form-floating mb-3">
-              <textarea class="form-control border-input" placeholder="Leave a comment here" id="floatingTextarea"
+              <textarea class="form-control border-input" v-model="roles.descripcion" placeholder="Leave a comment here" id="descripcion"
                 required>El rol que administra el software</textarea>
               <label for="floatingTextarea">Description</label>
               <div class="invalid-feedback">Por favor ingrese la descripción.</div>
-            </div>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <label for="inputEmail3" class="col-sm-2 col-form-label ">Permisos:</label>
-          <div class="col-sm-10">
-            <div class="input-group mb-3">
-              <span class="input-group-text border-input" id="basic-addon1 "><i
-                  class="fa-solid fa-users-gear"></i></span>
-              <select class="form-select border-input" id="inputGroupSelect01" required>
-                <option value="" style="display: none;">Seleccionar</option>
-                <option selected value="1">Permisos 1</option>
-                <option value="2">Permisos 2</option>
-                <option value="3">Permisos 3</option>
-                <option value="4">Permisos 4</option>
-              </select>
-              <div class="invalid-feedback">Por favor seleccione un estado.</div>
             </div>
           </div>
         </div>
@@ -70,35 +53,48 @@
 </template>
 
 <script>
+import api from '@/services/api';
 export default {
+  mounted() {
+    document.title = "Editar Rol | TaskMaster Pro";
+    const roleId = this.$route.params.id;
+    this.getRoleById(roleId);
+  },
+  data(){
+    return{
+      roles: []
+    };
+  },
   methods: {
     // Redireccionar a otra vista al hacer clic en "Regresar"
     goBack() {
-      this.$router.push('administrar-roles');  // Cambia '/ruta-deseada' por la ruta real a la que quieres redirigir
+      this.$router.go(-1); 
     },
-  },
 
-  mounted() {
-    document.title = "Editar Rol | TaskMaster Pro";
-    (() => {
-      'use strict';
-
-      const forms = document.querySelectorAll('.needs-validation');
-
-      Array.from(forms).forEach((form) => {
-        form.addEventListener(
-          'submit',
-          (event) => {
-            if (!form.checkValidity()) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-          },
-          false
-        );
-      });
-    })();
+    async getRoleById(roleId){
+      try {
+        const response = await api.get(`/role/${roleId}`);
+        this.roles = response.data.data;
+      } catch(error) {
+        console.log('Error al obtener los datos del rol: ', error);
+        alert('Hubo un problema');
+      }
+    },
+    async updateRole(){
+      const form = this.$refs.form;
+      if (!form.checkValidity()) {
+        form.classList.add('was-validated');
+        return;
+      }
+      try{
+        await api.put(`/role/${this.roles.id}`, this.roles);
+        alert('Rol actualizado con exito');
+        this.$router.push('/administrar-roles');
+      } catch (error) {
+        console.log('Error al actualizar el rol: ', error);
+        alert('Hubo un problema');
+      }
+    }
   },
 };
 </script>

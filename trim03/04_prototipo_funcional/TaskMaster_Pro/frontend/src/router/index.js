@@ -21,7 +21,7 @@ const routes = [
   { path: '/editar-perfil', component: EditarPerfil },
   { path: '/administrar-roles', component: administrarRoles },
   { path: '/crear-rol', component: crearRol},
-  { path: '/editar-rol', component: EditarRol },
+  { path: '/editar-rol/:id', name: 'EditarRol', component: EditarRol, props: true },
   { path: '/editar-usuario', component: EditarUsuario },
 
 ];

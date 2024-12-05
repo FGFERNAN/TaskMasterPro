@@ -89,7 +89,8 @@ export default {
           password: this.password,
         });
         console.log(response.data);
-        alert('Inicio de Sesion Exitoso');
+        const message = JSON.stringify(response.data.message);
+        alert(message);
         this.$router.push("/perfil-completo");
       } catch (error) {
         if (error.response && error.response.data) {

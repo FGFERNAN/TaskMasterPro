@@ -85,23 +85,22 @@
                   <tr>
                     <th>Nombre</th>
                     <th>Descripción</th>
-                    <th>Permisos</th>
                     <th>Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(role, index) in filteredRoles" :key="role.id">
+                  <tr v-for="(role) in filteredRoles" :key="role.id">
                     <td>
-                      <input type="radio" v-model="selectedRole" :value="role.name"> {{ role.name }}
+                      <input type="radio" @click="redirectToEditRole" v-model="selectedRole" :value="role.nombre"> {{ role.nombre }}
                     </td>
-                    <td>{{ role.description }}</td>
+                    <td class="description">{{ role.descripcion }}</td>
                     <td>
-                      <input type="checkbox" v-for="permission in role.permissions" :key="permission">
-                    </td>
-                    <td>
-                      <button class="btn btn-sm btn-secondary buton-form" @click="redirectToAssignRole"><i class="fa-solid fa-user-plus"></i></button>
-                      <button class="btn btn-sm btn-secondary" @click="redirectToEditRole(role.id)"><i class="fa-solid fa-pen"></i></button>
-                      <button class="btn btn-sm btn-danger btn-eliminar" @click="deleteRole(index)"><i class="fa-solid fa-trash"></i></button>
+                      <button class="btn btn-sm btn-secondary buton-form" @click="redirectToAssignRole"><i
+                          class="fa-solid fa-user-plus"></i></button>
+                      <button class="btn btn-sm btn-secondary" @click="redirectToEditRole(role.id)"><i
+                          class="fa-solid fa-pen"></i></button>
+                      <button class="btn btn-sm btn-danger btn-eliminar" @click="deleteRole(role.id)"><i
+                          class="fa-solid fa-trash"></i></button>
                     </td>
                   </tr>
                 </tbody>
@@ -115,42 +114,48 @@
 </template>
 
 <script>
-
-
+import api from '@/services/api';
 export default {
   mounted() {
     document.title = "Roles | TaskMaster Pro";
+    this.getRole();
   },
   data() {
     return {
-      selectedRole: null,
       searchQuery: '',
-      roles: [
-        { id: 1, name: 'Administrador', description: 'Descripción del rol', permissions: [{ name: 'Permiso 1', checked: true }] },
-        { id: 2, name: 'Líder Proyecto', description: 'Descripción del rol', permissions: [{ name: 'Permiso 2', checked: false }] },
-        { id: 3, name: 'Miembro Proyecto', description: 'Descripción del rol', permissions: [{ name: 'Permiso 3', checked: true }] },
-        { id: 4, name: 'StakeHolder', description: 'Descripción del rol', permissions: [{ name: 'Permiso 4', checked: false }] }
-      ]
+      roles: []
     };
   },
   computed: {
     filteredRoles() {
-      return this.roles.filter(role => role.name.toLowerCase().includes(this.searchQuery.toLowerCase()));
+      return this.roles.filter(role => role.nombre.toLowerCase().includes(this.searchQuery.toLowerCase()));
     }
   },
   methods: {
+    async getRole() {
+      try {
+        const response = await api.get('/role');
+        this.roles = response.data.data;
+        console.log(response.data);
+      } catch (error) {
+        console.log('Error al obtener los roles: ', error);
+        alert('Hubo un problema');
+      }
+    },
     redirectToCreateRole() {
       this.$router.push('crear-rol');
     },
     redirectToAssignRole() {
       this.$router.push('/asignarRol');
     },
-    redirectToEditRole() {
-      this.$router.push('/editar-rol');
+    redirectToEditRole(roleId) {
+      this.$router.push({ name: 'EditarRol', params: { id: roleId }});
     },
-    deleteRole(index) {
+    async deleteRole(roleId) {
       if (confirm('¿Estás seguro que deseas eliminar el rol?')) {
-        this.roles.splice(index, 1);
+        this.$router.push({ params: { id: roleId }})
+        await api.delete(`/role/${roleId}}`);
+        alert('Rol eliminado con exito');
       }
     }
   }
