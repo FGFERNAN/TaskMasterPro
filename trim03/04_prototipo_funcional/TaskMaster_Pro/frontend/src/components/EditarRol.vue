@@ -37,10 +37,10 @@
           <label for="descripcion" class="col-sm-2 col-form-label">Descripción:</label>
           <div class="col-sm-10 has-validation">
             <div class="form-floating mb-3">
-              <textarea class="form-control border-input" v-model="roles.descripcion" placeholder="Leave a comment here" id="descripcion"
+              <textarea class="form-control border-input" v-model="roles.descripcion" placeholder="Leave a comment here" id="descripcion" minlength="10" maxlength="1000"
                 required>El rol que administra el software</textarea>
               <label for="floatingTextarea">Description</label>
-              <div class="invalid-feedback">Por favor ingrese la descripción.</div>
+              <div class="invalid-feedback">Por favor ingrese la descripción (minimo 10 caracteres).</div>
             </div>
           </div>
         </div>

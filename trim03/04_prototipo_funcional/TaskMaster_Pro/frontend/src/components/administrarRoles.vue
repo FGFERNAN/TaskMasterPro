@@ -138,8 +138,23 @@ export default {
         this.roles = response.data.data;
         console.log(response.data);
       } catch (error) {
-        console.log('Error al obtener los roles: ', error);
-        alert('Hubo un problema');
+        if(error.response && error.response.data){
+          const serverErrors = error.response.data;
+          if(serverErrors.message === 'Error fetching roles: ' ){
+            console.log(serverErrors.message);
+            alert(serverErrors.message);
+          } else if(serverErrors.mensaje === 'Usuario no autenticado'){
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else if(serverErrors.mensaje === 'No tienes permisos para realizar esta acción.'){
+            console.log(serverErrors.mensaje);
+            alert(serverErrors.mensaje);
+          } else {
+           console.log('Ocurrio un error inesperado del lado del servidor: ', serverErrors);
+            alert('Ocurrio un error inesperado del lado del servidor, revisa la consola para obtener más detalles');
+          }
+        }
       }
     },
     redirectToCreateRole() {
@@ -152,11 +167,29 @@ export default {
       this.$router.push({ name: 'EditarRol', params: { id: roleId }});
     },
     async deleteRole(roleId) {
-      if (confirm('¿Estás seguro que deseas eliminar el rol?')) {
-        this.$router.push({ params: { id: roleId }})
-        await api.delete(`/role/${roleId}}`);
-        alert('Rol eliminado con exito');
+      try {
+        if (confirm('¿Estás seguro que deseas eliminar el rol?')) {
+        const response =  await api.delete(`/role/${roleId}}`);
+        this.roles = this.roles.filter(role => role.id !== roleId);
+        console.log(response.data.message);
+        alert(response.data.message);
       }
+      } catch (error) {
+        if(error.response && error.response.data){
+          const serverErrors = error.response.data;
+          if(serverErrors.message === 'Role not exists'){
+            console.log(serverErrors.message);
+            alert(serverErrors.message);
+          } else if (serverErrors.message === 'Rol no eliminado'){
+            console.log(serverErrors.message);
+            alert(serverErrors.message);
+          } else if(serverErrors.message === 'Error deleting role: '){
+            console.log('Ocurrio un error inesperado del lado del servidor: ', serverErrors);
+            alert('Ocurrio un error inesperado del lado del servidor, revisa la consola para obtener más detalles');
+          }
+        }
+      }
+      
     }
   }
 };

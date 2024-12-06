@@ -75,7 +75,7 @@ class RoleService{
                     throw new Error("Rol no eliminado");
                 }
             } else {
-                return { message: "Role not exists"};
+                throw new Error("Role not exists");
             }
         } catch(err) {
             console.error('Error deleting role: ', err.message);
