@@ -145,7 +145,7 @@ export default {
             alert(serverErrors.message);
           } else if(serverErrors.mensaje === 'Usuario no autenticado'){
             console.log(serverErrors.mensaje);
-            alert(`${serverErrors.mensaje}, debes loguearte para acceder a esta ruta.`);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
             this.$router.push('/iniciar-sesion');
           } else if(serverErrors.mensaje === 'No tienes permisos para realizar esta acción.'){
             console.log(serverErrors.mensaje);

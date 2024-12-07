@@ -76,8 +76,19 @@ export default {
         const response = await api.get(`/role/${roleId}`);
         this.roles = response.data.data;
       } catch(error) {
-        console.log('Error al obtener los datos del rol: ', error);
-        alert('Hubo un problema');
+        if(error.response && error.response.data){
+          const serverErrors = error.response.data;
+          if(serverErrors.message === 'Rol no encontrado'){
+            console.log(serverErrors);
+            alert(`${serverErrors.message} en la base de datos`);
+          } else if(serverErrors.message === 'Error fetching role: '){
+            console.log(serverErrors);
+            alert(`Ocurrio un error inesperado del lado del servidor: ${serverErrors.message}, vuelve a intentar más tarde`);
+          } else{
+            console.log(error.reponse);
+            alert(error.response.data.mensaje);
+          }
+        }
       }
     },
     async updateRole(){
@@ -87,12 +98,31 @@ export default {
         return;
       }
       try{
-        await api.put(`/role/${this.roles.id}`, this.roles);
-        alert('Rol actualizado con exito');
+        const response = await api.put(`/role/${this.roles.id}`, this.roles);
+        console.log(response.data.message);
+        alert(response.data.message);
         this.$router.push('/administrar-roles');
       } catch (error) {
-        console.log('Error al actualizar el rol: ', error);
-        alert('Hubo un problema');
+        if(error.response && error.response.data){
+          const serverErrors = error.response.data;
+          if(serverErrors.message === 'Rol no actualizado'){
+            console.log(serverErrors.message);
+            alert('Ingresa los parametros necesarios para realizar la creación');
+          } else if(serverErrors.message === 'Unregistered role'){
+            console.log(serverErrors.message);
+            alert(`El rol que estas intentando editar no existe en la base de datos, ${serverErrors.message}`);
+          } else if(serverErrors.mensaje === 'Usuario no autenticado'){
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else if(serverErrors.mensaje === 'No tienes permisos para realizar esta acción.'){
+            console.log(serverErrors.mensaje);
+            alert(serverErrors.mensaje);
+          } else {
+           console.log('Ocurrio un error inesperado del lado del servidor: ', serverErrors);
+            alert('Ocurrio un error inesperado del lado del servidor, revisa la consola para obtener más detalles');
+          }
+        }
       }
     }
   },

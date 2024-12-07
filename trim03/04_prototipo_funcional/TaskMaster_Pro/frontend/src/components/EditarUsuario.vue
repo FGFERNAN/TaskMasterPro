@@ -181,8 +181,19 @@ export default {
         const response = await api.get(`/user/${userId}`);
         this.users = response.data.data;
       } catch(error) {
-        console.log('Error al obtener los datos del usuario: ', error);
-        alert('Hubo un problema');
+        if(error.response && error.response.data){
+          const serverErrors = error.response.data;
+          if(serverErrors.message === 'Usuario no encontrado'){
+            console.log(serverErrors);
+            alert(`${serverErrors.message} en la base de datos`);
+          } else if(serverErrors.message === 'Error fetching users: '){
+            console.log(serverErrors);
+            alert(`Ocurrio un error inesperado del lado del servidor: ${serverErrors.message}, vuelve a intentar más tarde`);
+          } else{
+            console.log(error.response);
+            alert(error.response.data.mensaje)
+          }
+        }
       }
     },
     async updateUser(){
@@ -192,12 +203,27 @@ export default {
         return;
       }
       try{
-        await api.put(`/user/${this.users.id}`, this.users);
-        alert('Usuario actualizado con exito');
+        const response = await api.put(`/user/${this.users.id}`, this.users);
+        console.log(response.data);
+        alert(response.data.message);
         this.$router.push('/administrar-usuarios');
       } catch (error) {
-        console.log('Error al actualizar el usuario: ', error);
-        alert('Hubo un problema');
+        if(error.response && error.response.data){
+          const serverErrors = error.response.data;
+          if(serverErrors.message === 'Usuario no actualizado'){
+            console.log(serverErrors);
+            alert(`${serverErrors.message}, ingresa los parametros necesarios para realizar esta acción`);
+          } else if(serverErrors.message === 'Unregistered user'){
+            console.log(serverErrors);
+            alert(`${serverErrors.message}, el usuario que intentas actualizar no se encuentra en la base de datos.`);
+          } else if(serverErrors.message === 'Error updating user: '){
+            console.log(serverErrors);
+            alert(`Ocurrio un error inesperado del lado del servidor: ${serverErrors.message}, vuelve a intentar más tardes`);
+          } else{
+            console.log(error.response);
+            alert(error.response.data.mensaje);
+          }
+        }
       }
     }
   },

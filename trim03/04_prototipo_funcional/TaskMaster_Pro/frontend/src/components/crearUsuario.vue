@@ -205,8 +205,7 @@ export default {
           tipo_documento: this.tipo_documento
         });
         console.log(response.data);
-        const message = JSON.stringify(response.data.message);
-        alert(message);
+        alert(response.data.message);
         this.$router.push("/administrar-usuarios");
       } catch (error) {
         if(error.response && error.response.data){
@@ -219,7 +218,7 @@ export default {
             alert('Ocurrio un error inesperado del lado del servidor, revisa la consola para obtener más detalles');
           } else if(serverErrors.mensaje === 'Usuario no autenticado'){
             console.log(serverErrors.mensaje);
-            alert(`${serverErrors.mensaje}, debes loguearte para acceder a esta ruta.`);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
             this.$router.push('/iniciar-sesion');
           } else if(serverErrors.mensaje === 'No tienes permisos para realizar esta acción.'){
             console.log(serverErrors.mensaje);

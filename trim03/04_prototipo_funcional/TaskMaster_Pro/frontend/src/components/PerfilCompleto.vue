@@ -58,8 +58,7 @@ export default {
         // Lógica para cerrar sesión, por ejemplo, redirigir a la página de login
         const response = await api.post("/logout");
         this.$router.push("/iniciar-sesion");
-        const message = JSON.stringify(response.data.message);
-        alert(message);
+        alert(response.data.message);
       }
     },
     goToEditProfile() {
