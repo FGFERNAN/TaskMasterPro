@@ -122,6 +122,11 @@ h2::after {
   /* Limita el ancho de la celda */
 }
 
+.password{
+  word-wrap: break-word;
+  max-width: 150px;
+}
+
 .buton-regresar-tareas {
   background-color: #2E7060;
   color: white;

@@ -72,8 +72,6 @@
                 <!-- Usamos router-link para redirigir -->
                 <button class="btn btn-success ms-3" @click="redirectToRecoveruser"><i
                     class="fa-solid fa-plus me-1"></i></button>
-
-
               </div>
             </div>
 
@@ -82,93 +80,29 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
+                    <th>ID</th>
                     <th>Nombre</th>
-                    <th>Numero de documento</th>
+                    <th>Email</th>
                     <th>Telefono</th>
-                    <th>Contraseña</th>
                     <th>Rol</th>
-                    <th>Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr id="fila-admin">
-                    <td><input type="radio" name="nombre" />Johan Garcia</td>
-                    <td>1030533364</td>
-                    <td>3107847573</td>
-                    <td>*************</td>
+                  <tr v-for="(user) in filteredUser" :key="user.id">
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.nombre }} {{ user.apellidos }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.telefono }}</td>
                     <td>
                       <select class="form-select" disabled>
-                        <option selected>Administrador</option>
-                        <option>Líder Proyecto</option>
-                        <option>Miembro Proyecto</option>
-                        <option>StakeHolder</option>
+                        <option :value="user.rolID">{{ user.rolID }}</option>
                       </select>
                     </td>
                     <td>
                       <!-- Usamos el método redirectToEditUser para redirigir a editar usuario -->
-                      <button class="btn btn-sm btn-secondary" @click="redirectToEditUser"><i
+                      <button class="btn btn-sm btn-secondary" @click="redirectToEditUser(user.id)"><i
                           class="fa-solid fa-pen"></i></button>
-                      <button class="btn btn-sm btn-danger btn-eliminar"><i class="fa-solid fa-trash"></i></button>
-                    </td>
-                  </tr>
-                  <tr id="fila-lider">
-                    <td><input type="radio" name="nombre" />Erika Triana</td>
-                    <td>1234567890</td>
-                    <td>3103110309</td>
-                    <td>*************</td>
-                    <td>
-                      <select class="form-select" disabled>
-                        <option>Administrador</option>
-                        <option selected>Líder Proyecto</option>
-                        <option>Miembro Proyecto</option>
-                        <option>StakeHolder</option>
-                      </select>
-                    </td>
-                    <td>
-                      <!-- Usamos el método redirectToEditUser para redirigir a editar usuario -->
-                      <button class="btn btn-sm btn-secondary" @click="redirectToEditUser"><i
-                          class="fa-solid fa-pen"></i></button>
-                      <button class="btn btn-sm btn-danger btn-eliminar"><i class="fa-solid fa-trash"></i></button>
-                    </td>
-                  </tr>
-                  <tr id="fila-miembro">
-                    <td><input type="radio" name="nombre" />Andres Garzon</td>
-                    <td>1054544267</td>
-                    <td>3243850895</td>
-                    <td>*************</td>
-                    <td>
-                      <select class="form-select" disabled>
-                        <option>Administrador</option>
-                        <option>Líder Proyecto</option>
-                        <option selected>Miembro Proyecto</option>
-                        <option>StakeHolder</option>
-                      </select>
-                    </td>
-                    <td>
-                      <!-- Usamos el método redirectToEditUser para redirigir a editar usuario -->
-                      <button class="btn btn-sm btn-secondary" @click="redirectToEditUser"><i
-                          class="fa-solid fa-pen"></i></button>
-                      <button class="btn btn-sm btn-danger btn-eliminar"><i class="fa-solid fa-trash"></i></button>
-                    </td>
-                  </tr>
-                  <tr id="fila-stakeholder">
-                    <td><input type="radio" name="nombre" />Nikole Bernal</td>
-                    <td>1083486290</td>
-                    <td>3102963881</td>
-                    <td>*************</td>
-                    <td>
-                      <select class="form-select" disabled>
-                        <option>Administrador</option>
-                        <option>Líder Proyecto</option>
-                        <option>Miembro Proyecto</option>
-                        <option selected>StakeHolder</option>
-                      </select>
-                    </td>
-                    <td>
-                      <!-- Usamos el método redirectToEditUser para redirigir a editar usuario -->
-                      <button class="btn btn-sm btn-secondary" @click="redirectToEditUser"><i
-                          class="fa-solid fa-pen"></i></button>
-                      <button class="btn btn-sm btn-danger btn-eliminar"><i class="fa-solid fa-trash"></i></button>
+                      <button class="btn btn-sm btn-danger btn-eliminar" @click="deleteUser(user.id)"><i class="fa-solid fa-trash"></i></button>
                     </td>
                   </tr>
                 </tbody>
@@ -182,20 +116,82 @@
 </template>
 
 <script>
+import api from '@/services/api';
 export default {
   mounted() {
     document.title = "Usuarios | TaskMaster Pro";
+    this.getUsers();
+  },
+  data() {
+    return {
+      searchQuery: '',
+      users: []
+    };
+  },
+  computed: {
+    filteredUser() {
+      return this.users.filter(user => user.nombre.toLowerCase().includes(this.searchQuery.toLowerCase()));
+    }
   },
   methods: {
+    async getUsers() {
+      try {
+        const response = await api.get('/user');
+        this.users = response.data.data;
+        console.log(response.data);
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.message === 'Error fetching users: ') {
+            console.log(serverErrors.message);
+            alert(serverErrors.message);
+          } else if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
+            console.log(serverErrors.mensaje);
+            alert(serverErrors.mensaje);
+          } else {
+            console.log('Ocurrio un error inesperado del lado del servidor: ', serverErrors);
+            alert('Ocurrio un error inesperado del lado del servidor, revisa la consola para obtener más detalles');
+          }
+        }
+      }
+    },
+
     // Redirige a la página de crear usuario
     redirectToRecoveruser() {
       console.log('Redirigiendo a crear-usuario');
       this.$router.push('/crear-usuario');
     },
     // Redirige a la página de editar usuario
-    redirectToEditUser() {
-      console.log('Redirigiendo a editar usuario');
-      this.$router.push('/editar-usuario'); // Redirige a la vista editar sin necesidad de pasar ID
+    redirectToEditUser(userId) {
+      this.$router.push({ name: 'EditarUsuario', params: { id: userId }});
+    },
+    async deleteUser(userId) {
+      try {
+        if (confirm('¿Estás seguro que deseas eliminar el usuario?')) {
+        const response =  await api.delete(`/user/${userId}}`);
+        this.users = this.users.filter(user => user.id !== userId);
+        console.log(response.data.message);
+        alert(response.data.message);
+      }
+      } catch (error) {
+        if(error.response && error.response.data){
+          const serverErrors = error.response.data;
+          if(serverErrors.message === 'User not exists'){
+            console.log(serverErrors.message);
+            alert(serverErrors.message);
+          } else if (serverErrors.message === 'Usuario no eliminado'){
+            console.log(serverErrors.message);
+            alert(serverErrors.message);
+          } else if(serverErrors.message === 'Error deleting user: '){
+            console.log('Ocurrio un error inesperado del lado del servidor: ', serverErrors);
+            alert('Ocurrio un error inesperado del lado del servidor, revisa la consola para obtener más detalles');
+          }
+        }
+      }
     }
   }
 };
