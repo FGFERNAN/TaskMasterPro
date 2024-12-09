@@ -7,6 +7,7 @@ const roleRoutes = require("./routes/role_routes");
 const moduleRoutes = require("./routes/module_routes");
 const loginRoutes = require("./routes/login_routes");
 const logoutRoutes = require('./routes/logout_routes');
+const editProfile = require('./routes/editProfile_routes');
 
 const db = new DBConnection();
 
@@ -42,6 +43,7 @@ app.use('/api-v1/role',roleRoutes);
 app.use('/api-v1/module',moduleRoutes);
 app.use('/api-v1/login',loginRoutes);
 app.use('/api-v1/logout', logoutRoutes);
+app.use('/api-v1/editProfile', editProfile);
 
 /* El fragmento de código `app.listen(port,()=>{ console.log(`Listener Server http://localhost:`); });`
 configura un servidor para que escuche en un puerto específico (en este caso, el puerto 4000). Cuando el

@@ -81,8 +81,7 @@ export default {
           descripcion: this.descripcion,
         });
         console.log(response.data);
-        const message = JSON.stringify(response.data.message);
-        alert(message);
+        alert(response.data.message);
         this.$router.push("/administrar-roles");
       } catch (error) {
         if(error.response && error.response.data){

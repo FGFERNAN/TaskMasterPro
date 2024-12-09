@@ -35,7 +35,7 @@ class UserService {
         try {
             const hashedPassword = await bcrypt.hash(data.password, saltRounds);
             var dataQry = [data.id, data.nombre, data.apellidos, data.email, data.telefono, hashedPassword, data.rolID, data.tipo_documento];
-            var qry = `INSERT INTO usuarios (id, nombre, apellidos, email, telefono, password, rolID, tipo_documento) VALUES(?,?,?,?,?,?,?,?);`;
+            var qry = `CALL insertUser(?,?,?,?,?,?,?,?);`;
             const results = await this.db.query(qry, dataQry);
             if (results.length === 0) {
                 throw new Error("Usuario no creado");
@@ -53,7 +53,7 @@ class UserService {
             const getUser = await this.db.query(`SELECT * FROM usuarios WHERE id = ?`, [id]);
             if (getUser.length != 0) {
                 var dataQry = [data.nombre, data.apellidos, data.email, data.telefono, data.rolID, data.tipo_documento];
-                const results = await this.db.query(`UPDATE usuarios SET nombre=?, apellidos=?, email=?, telefono=?,  rolID=?, tipo_documento=? WHERE id=?`, [...dataQry, id]);
+                const results = await this.db.query(`UPDATE usuarios SET nombre=?, apellidos=?, email=?, telefono=?, rolID=?, tipo_documento=? WHERE id=?`, [...dataQry, id]);
                 if (results.length != 0) {
                     return { message: "Usuario actualizado con exito" };
                 } else {

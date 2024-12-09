@@ -192,6 +192,9 @@ export default {
           } else if(serverErrors.message === 'Error deleting user: '){
             console.log('Ocurrio un error inesperado del lado del servidor: ', serverErrors);
             alert('Ocurrio un error inesperado del lado del servidor, revisa la consola para obtener más detalles');
+          } else{
+            console.log(error.response.data);
+            alert(error.response.data.mensaje);
           }
         }
       }
