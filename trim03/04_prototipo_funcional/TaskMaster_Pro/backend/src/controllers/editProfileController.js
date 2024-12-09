@@ -20,6 +20,14 @@ class editProfileController{
             res.status(404).json({ message: err.message });
         }
     }
+    cancelUser = async (req, res) => {
+        try {
+            const message = await this.editProfileService.cancelUser(req.session.userId);
+            res.status(200).json(message);
+        } catch(err){
+            res.status(400).json({ message: err.message });
+        }
+    }
 };
 
 module.exports = new editProfileController();

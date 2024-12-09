@@ -122,8 +122,11 @@
           <div class="col-sm-10 has-validation">
             <div class="input-group mb-3">
               <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
-              <input type="password" v-model="password" class="form-control border-input" placeholder="Password" aria-label="Username"
+              <input :type="passwordFieldType" v-model="password" class="form-control border-input" placeholder="Password" aria-label="Username"
                 aria-describedby="basic-addon1" minlength="8" maxlength="20" required />
+                <button class="btn btn-outline-secondary border-input" type="button" @click="togglePasswordVisibility">
+                <i :class="passwordVisible ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
+              </button>
               <div class="invalid-feedback">
                 Por favor ingrese la contraseña (máximo 20 caracteres).
               </div>
@@ -179,7 +182,14 @@ export default {
         rolID: "",
         tipo_documento: "",
       },
+      passwordVisible: false,
     };
+  },
+  computed: {
+    // Computed property para cambiar el tipo del input
+    passwordFieldType() {
+      return this.passwordVisible ? 'text' : 'password';
+    },
   },
   methods: {
     goBack() {
@@ -229,7 +239,11 @@ export default {
           }
         }
       }
-    }
+    },
+    togglePasswordVisibility() {
+      // Cambia el estado de visibilidad de la contraseña
+      this.passwordVisible = !this.passwordVisible;
+    },
   },
 };
 </script>

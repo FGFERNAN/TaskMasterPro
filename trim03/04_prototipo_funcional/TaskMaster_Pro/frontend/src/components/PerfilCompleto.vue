@@ -73,10 +73,11 @@ export default {
       // Redirige a la página de gestión de usuarios
       this.$router.push("/administrar-usuarios");
     },
-    confirmarCancelacion() {
+    async confirmarCancelacion() {
       if (confirm("¿Estás seguro que quieres cancelar tu cuenta?")) {
-        // Lógica para cancelar la cuenta, como redirigir o mostrar un mensaje
-        alert("Cuenta cancelada (simulación).");
+        const response = await api.delete("/editProfile");
+        alert(response.data.message);
+        this.$router.push("/iniciar-sesion");
       }
     }
   }

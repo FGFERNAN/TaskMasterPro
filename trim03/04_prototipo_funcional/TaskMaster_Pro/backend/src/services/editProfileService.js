@@ -22,8 +22,9 @@ class editProfileService{
         try {
             const getUser = await this.db.query(`SELECT * FROM usuarios WHERE id = ?`, [id]);
             if (getUser.length != 0) {
-                var dataQry = [data.nombre, data.apellidos, data.email, data.telefono, data.tipo_documento];
-                const results = await this.db.query(`UPDATE usuarios SET nombre=?, apellidos=?, email=?, telefono=?, tipo_documento=? WHERE id=?`, [...dataQry, id]);
+                const hashedPassword = await bcrypt.hash(data.password, saltRounds);
+                var dataQry = [data.nombre, data.apellidos, data.email, data.telefono, hashedPassword, data.tipo_documento];
+                const results = await this.db.query(`UPDATE usuarios SET nombre=?, apellidos=?, email=?, telefono=?, password=?, tipo_documento=? WHERE id=?`, [...dataQry, id]);
                 if (results.length != 0) {
                     return { message: "Perfil actualizado con exito" };
                 } else {
@@ -35,6 +36,24 @@ class editProfileService{
 
         } catch (err) {
             console.error('Error updating profile: ', err.message);
+            throw err;
+        }
+    }
+    async cancelUser(id) {
+        try {
+            const getUser = await this.db.query(`SELECT * FROM usuarios WHERE id  = ?`, [id]);
+            if (getUser.length != 0) {
+                const results = await this.db.query(`DELETE FROM usuarios WHERE id = ?`, [id]);
+                if (results.length != 0) {
+                    return { message: "Cuenta cancelada con exito" };
+                } else {
+                    throw new Error("Cuenta no cancelada");
+                }
+            } else {
+                return { message: "User not exists" };
+            }
+        } catch (err) {
+            console.error('Error deleting user: ', err.message);
             throw err;
         }
     }

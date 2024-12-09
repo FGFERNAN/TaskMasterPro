@@ -6,4 +6,6 @@ router.get('/', editProfileController.getData);
 
 router.post('/', editProfileController.editProfile);
 
+router.delete('/', editProfileController.cancelUser);
+
 module.exports = router;

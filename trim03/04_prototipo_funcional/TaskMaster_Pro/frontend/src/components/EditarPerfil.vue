@@ -19,7 +19,8 @@
         </div>
       </div>
 
-      <form ref="form" @submit.prevent="editProfile" class="container form-create-project-editar-perfil needs-validation" novalidate>
+      <form ref="form" @submit.prevent="editProfile"
+        class="container form-create-project-editar-perfil needs-validation" novalidate>
         <div class="row mb-4"></div>
 
         <!-- Nombre -->
@@ -49,8 +50,8 @@
                     d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0" />
                 </svg>
               </span>
-              <input type="text" v-model="data.apellidos" id="apellidos" class="form-control border-input" placeholder="Last Name"
-                aria-label="Username" aria-describedby="basic-addon1" minlength="5" required />
+              <input type="text" v-model="data.apellidos" id="apellidos" class="form-control border-input"
+                placeholder="Last Name" aria-label="Username" aria-describedby="basic-addon1" minlength="5" required />
               <div class="invalid-feedback">
                 Por favor ingrese el apellido.
               </div>
@@ -79,8 +80,12 @@
           <div class="col-sm-10">
             <div class="input-group mb-3">
               <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
-              <input type="password" v-model="data.password" id="password" class="form-control border-input" placeholder="Password"
-                aria-label="Username" aria-describedby="basic-addon1" minlength="8" maxlength="20" disabled/>
+              <input :type="passwordFieldType" v-model="data.password" id="password" class="form-control border-input"
+                placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" minlength="8"
+                maxlength="20" required />
+              <button class="btn btn-outline-secondary border-input" type="button" @click="togglePasswordVisibility">
+                <i :class="passwordVisible ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
+              </button>
               <div class="invalid-feedback">
                 Por favor ingrese la contraseña (máximo 20 caracteres).
               </div>
@@ -125,7 +130,7 @@
         <!-- Foto de perfil (al final del formulario) -->
         <div class="profile-pic-container mb-4">
           <div class="profile-pic">
-            <img alt="Profile Picture" />
+            <!-- <img alt="Profile Picture" /> -->
             <div>Foto</div>
             <label class="edit-icon" for="fileInput">
               <i class="fas fa-plus" id="icon-plus"></i>
@@ -156,63 +161,74 @@ export default {
     this.getData();
   },
   data() {
-    return{
+    return {
       data: [],
+      passwordVisible: false,
     }
+  },
+  computed: {
+    // Computed property para cambiar el tipo del input
+    passwordFieldType() {
+      return this.passwordVisible ? 'text' : 'password';
+    },
   },
   methods: {
     goBack() {
       this.$router.go(-1); // Navegar hacia atrás
     },
-    async getData(){
-      try{
+    async getData() {
+      try {
         const response = await api.get('/editProfile');
         this.data = response.data.data;
-      } catch(error) {
-        if(error.response && error.response.data){
+      } catch (error) {
+        if (error.response && error.response.data) {
           const serverErrors = error.response.data;
-          if(serverErrors.message === 'Usuario no encontrado'){
+          if (serverErrors.message === 'Usuario no encontrado') {
             console.log(serverErrors);
             alert(`${serverErrors.message} en la base de datos`);
-          } else if(serverErrors.message === 'Error fetching data: '){
+          } else if (serverErrors.message === 'Error fetching data: ') {
             console.log(serverErrors);
             alert(`Ocurrio un error inesperado del lado del servidor: ${serverErrors.message}, vuelve a intentar más tarde`);
-          } else{
+          } else {
             console.log(error.response);
             alert(error.response.data.mensaje)
           }
         }
       }
     },
-    async editProfile(){
+    async editProfile() {
       const form = this.$refs.form;
       if (!form.checkValidity()) {
         form.classList.add('was-validated');
         return;
       }
-      try{
+      try {
         const response = await api.post('/editProfile', this.data);
         console.log(response.data);
         alert(response.data.message);
         this.$router.push('/perfil-completo');
       } catch (error) {
-        if(error.response && error.response.data){
+        if (error.response && error.response.data) {
           const serverErrors = error.response.data;
-          if(serverErrors.message === 'Perfil no actualizado'){
+          if (serverErrors.message === 'Perfil no actualizado') {
             console.log(serverErrors);
             alert(`${serverErrors.message}, ingresa los parametros necesarios para realizar esta acción`);
-          } else if(serverErrors.message === 'Unregistered user'){
+          } else if (serverErrors.message === 'Unregistered user') {
             console.log(serverErrors);
             alert(`${serverErrors.message}, el usuario que intentas actualizar no se encuentra en la base de datos.`);
-          } else if(serverErrors.message === 'Error updating profile: '){
+          } else if (serverErrors.message === 'Error updating profile: ') {
             console.log(serverErrors);
             alert(`Ocurrio un error inesperado del lado del servidor: ${serverErrors.message}, vuelve a intentar más tardes`);
-          } else{
+          } else {
             console.log(error.response);
             alert(error.response.data.mensaje);
           }
         }
       }
+    },
+    togglePasswordVisibility() {
+      // Cambia el estado de visibilidad de la contraseña
+      this.passwordVisible = !this.passwordVisible;
     },
   },
 };
