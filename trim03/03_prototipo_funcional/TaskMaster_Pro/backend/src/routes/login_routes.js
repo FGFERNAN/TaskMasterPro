@@ -8,5 +8,6 @@ const router = Router();
 /* Este fragmento de código define un controlador de ruta POST mediante Express.js. A continuación, 
 se muestra un desglose de lo que hace: */
 router.post('/', LoginController.login);
+router.get('/', LoginController.session);
 
 module.exports = router;

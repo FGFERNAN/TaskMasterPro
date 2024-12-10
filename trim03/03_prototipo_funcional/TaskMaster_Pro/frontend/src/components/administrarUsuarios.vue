@@ -57,7 +57,7 @@
           <header>
             <div class="header d-flex justify-content-end align-items-center p-3">
               <div class="d-flex align-items-center">
-                <span>Administrador</span>
+                <span>{{ username }}</span>
                 <a href="perfil.html" class="ms-3">
                   <img src="../assets/img/mariposa34.jpg" alt="Perfil" class="rounded-circle" width="40" />
                 </a>
@@ -128,8 +128,12 @@ export default {
   data() {
     return {
       searchQuery: '',
-      users: []
+      users: [],
+      username: ''
     };
+  },
+  created() {
+    this.getUsername(); // Obtiene el nombre del usuario al cargar el componente
   },
   computed: {
     filteredUser() {
@@ -197,6 +201,15 @@ export default {
             alert(error.response.data.mensaje);
           }
         }
+      }
+    },
+    async getUsername(){
+      try{
+        const response = await api.get('/session');
+        this.username = response.data.nombre;
+      } catch(error){
+        console.log("Error al obtener el usuario", error)
+        this.username = "Invitado";
       }
     }
   }

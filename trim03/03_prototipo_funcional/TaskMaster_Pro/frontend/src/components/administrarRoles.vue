@@ -58,7 +58,7 @@
           <header>
             <div class="header d-flex justify-content-end align-items-center p-3">
               <div class="d-flex align-items-center">
-                <span>Administrador</span>
+                <span>{{ username }}</span>
                 <a href="perfil.html" class="ms-3">
                   <img src="../assets/img/mariposa34.jpg" alt="Perfil" class="rounded-circle" width="40">
                 </a>
@@ -123,8 +123,12 @@ export default {
   data() {
     return {
       searchQuery: '',
-      roles: []
+      roles: [],
+      username: ''
     };
+  },
+  created() {
+    this.getUsername(); // Obtiene el nombre del usuario al cargar el componente
   },
   computed: {
     filteredRoles() {
@@ -188,8 +192,16 @@ export default {
             alert('Ocurrio un error inesperado del lado del servidor, revisa la consola para obtener más detalles');
           }
         }
+      } 
+    },
+    async getUsername(){
+      try{
+        const response = await api.get('/session');
+        this.username = response.data.nombre;
+      } catch(error){
+        console.log("Error al obtener el usuario", error)
+        this.username = "Invitado";
       }
-      
     }
   }
 };

@@ -13,10 +13,19 @@ class LoginController{
             }  
             const user = await this.loginService.login(req.body);
             req.session.userId = user.id;
+            req.session.nombre = `${user.nombre} ${user.apellidos}`;
             res.status(200).json(user);
         } catch(err) {
             res.status(401).json({ message: err.message });
         };
+    }
+
+    session = async (req, res) => {
+        if(req.session.nombre){
+            return res.status(200).json({ nombre: req.session.nombre });
+        } else {
+            return res.status(401).json({ message: "No autenticado"});
+        }
     }
 
     logout = async (req, res) => {

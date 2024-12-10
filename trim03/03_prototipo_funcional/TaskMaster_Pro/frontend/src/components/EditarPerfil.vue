@@ -189,9 +189,10 @@ export default {
           } else if (serverErrors.message === 'Error fetching data: ') {
             console.log(serverErrors);
             alert(`Ocurrio un error inesperado del lado del servidor: ${serverErrors.message}, vuelve a intentar más tarde`);
-          } else {
-            console.log(error.response);
-            alert(error.response.data.mensaje)
+          } else if(serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors);
+            alert(`${serverErrors.mensaje}, debes loguearte para editar tu perfil.`);
+            this.$router.push('/iniciar-sesion');
           }
         }
       }
@@ -219,9 +220,10 @@ export default {
           } else if (serverErrors.message === 'Error updating profile: ') {
             console.log(serverErrors);
             alert(`Ocurrio un error inesperado del lado del servidor: ${serverErrors.message}, vuelve a intentar más tardes`);
-          } else {
-            console.log(error.response);
-            alert(error.response.data.mensaje);
+          } else if(serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors);
+            alert(`${serverErrors.mensaje}, debes loguearte para editar tu perfil.`);
+            this.$router.push('/iniciar-sesion');
           }
         }
       }

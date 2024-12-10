@@ -44,6 +44,7 @@ app.use('/api-v1/module',moduleRoutes);
 app.use('/api-v1/login',loginRoutes);
 app.use('/api-v1/logout', logoutRoutes);
 app.use('/api-v1/editProfile', editProfile);
+app.use('/api-v1/session', loginRoutes);
 
 /* El fragmento de código `app.listen(port,()=>{ console.log(`Listener Server http://localhost:`); });`
 configura un servidor para que escuche en un puerto específico (en este caso, el puerto 4000). Cuando el

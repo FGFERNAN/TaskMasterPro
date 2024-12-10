@@ -11,8 +11,7 @@ class UserService {
 
     async getAllUsers() {
         try {
-            const results = await this.db.query(`SELECT usuarios.id, usuarios.nombre, usuarios.apellidos, usuarios.email, usuarios.telefono, usuarios.password, roles.nombre AS rol, tipo_documento.nombre AS tipo_documento FROM usuarios
-	        JOIN roles ON usuarios.rolID = roles.id JOIN tipo_documento ON usuarios.tipo_documento = tipo_documento.id;`);
+            const results = await this.db.query(`SELECT * FROM getAllUsers;`);
             return results.map(user => new User(...Object.values(user)));
         } catch (err) {
             console.error('Error fetching users: ', err.message);
@@ -41,6 +40,7 @@ class UserService {
                 throw new Error("Usuario no creado");
             }
             return { message: "Usuario creado con exito" };
+            
 
         } catch (err) {
             console.error('Error creating users: ', err.message);
