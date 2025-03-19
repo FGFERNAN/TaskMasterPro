@@ -24,7 +24,7 @@ class LoginController{
         if(req.session.nombre){
             return res.status(200).json({ nombre: req.session.nombre });
         } else {
-            return res.status(401).json({ message: "No autenticado"});
+            return res.status(401).json({ message: "Usuario no autenticado"});
         }
     }
 

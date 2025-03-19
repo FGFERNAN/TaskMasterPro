@@ -7,7 +7,7 @@ class editProfileController{
     getData = async (req, res) => {
         try {
             const user = await this.editProfileService.getData(req.session.userId);
-            res.json({ message: "Method Get Id: User Found", data: user, status: 200 });
+            res.json({ message: "Method Get: User Found", data: user, status: 200 });
         } catch(err) {
             res.status(404).json({ message: err.message });
         }

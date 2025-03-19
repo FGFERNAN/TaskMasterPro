@@ -23,34 +23,43 @@ el código:*/
  *         content:
  *           application/json:
  *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   id:
+ *               type: object
+ *               properties:
+ *                   message:
+ *                     type: string
+ *                     example: Method Get
+ *                   data:
+ *                     type: array
+ *                     items:
+ *                       type: object
+ *                       properties:
+ *                         id:
+ *                           type: integer
+ *                           example: 1
+ *                         nombre:
+ *                           type: string
+ *                           example: Johan
+ *                         apellidos:
+ *                           type: string
+ *                           example: Garcia
+ *                         email:
+ *                           type: string
+ *                           example: fgfernan2508@gmail.com
+ *                         telefono:
+ *                           type: string
+ *                           example: 3107847573
+ *                         password:
+ *                           type: string
+ *                           example: pipe1234
+ *                         rolID:
+ *                           type: integer
+ *                           example: 1
+ *                         tipo_documento:
+ *                           type: integer
+ *                           example: 2
+ *                   status:
  *                     type: integer
- *                     example: 1
- *                   nombre:
- *                     type: string
- *                     example: Johan
- *                   apellidos:
- *                     type: string
- *                     example: Garcia
- *                   email:
- *                     type: string
- *                     example: fgfernan2508@gmail.com
- *                   telefono:
- *                     type: string
- *                     example: 3107847573
- *                   password:
- *                     type: string
- *                     example: pipe1234
- *                   rolID:
- *                     type: integer
- *                     example: 1
- *                   tipo_documento:
- *                     type: integer
- *                     example: 2
+ *                     example: 200
  *       500:
  *         description: Error interno del servidor
  */
@@ -84,32 +93,49 @@ URL, el código intenta recuperar información sobre ese usuario en particular d
  *             schema:
  *               type: object
  *               properties:
- *                   id:
+ *                   message:
+ *                     type: string
+ *                     example: Method Get Id User Found
+ *                   data: 
+ *                     type: object
+ *                     properties:
+ *                         id:
+ *                           type: integer
+ *                           example: 1
+ *                         nombre:
+ *                           type: string
+ *                           example: Johan
+ *                         apellidos:
+ *                           type: string
+ *                           example: Garcia
+ *                         email:
+ *                           type: string
+ *                           example: fgfernan2508@gmail.com
+ *                         telefono:
+ *                           type: string
+ *                           example: 3107847573
+ *                         password:
+ *                           type: string
+ *                           example: pipe1234
+ *                         rolID:
+ *                           type: integer
+ *                           example: 1
+ *                         tipo_documento:
+ *                           type: integer
+ *                           example: 2
+ *                   status:
  *                     type: integer
- *                     example: 1
- *                   nombre:
- *                     type: string
- *                     example: Johan
- *                   apellidos:
- *                     type: string
- *                     example: Garcia
- *                   email:
- *                     type: string
- *                     example: fgfernan2508@gmail.com
- *                   telefono:
- *                     type: string
- *                     example: 3107847573
- *                   password:
- *                     type: string
- *                     example: pipe1234
- *                   rolID:
- *                     type: integer
- *                     example: 1
- *                   tipo_documento:
- *                     type: integer
- *                     example: 2
+ *                     example: 200
  *       404:
  *         description: Usuario no encontrado.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                    message:
+ *                     type: string
+ *                     example: Usuario no encontrado.
  */
 router.get('/:id', verificarPermiso('Modulo Usuarios', 'Consultar Usuario ID'), UserController.getUserById);
 
@@ -229,7 +255,15 @@ A continuación, se muestra un desglose de lo que hace el código:*/
  *                   type: string
  *                   example: Usuario actualizado con exito
  *       404:
- *         description: Usuario no encontrado.
+ *         description: Usuario sin registrar.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                    message:
+ *                     type: string
+ *                     example: Unregistered user
  *       500:
  *         description: Error interno en el servidor.
  */
@@ -253,7 +287,7 @@ según su ID. A continuación, se muestra un desglose de lo que hace el código:
  *         required: true
  *         schema:
  *           type: integer
- *         description: ID del usuario a obtener.
+ *         description: ID del usuario a eliminar.
  *     responses:
  *       200:
  *         description: Usuario eliminado con exito
@@ -267,6 +301,14 @@ según su ID. A continuación, se muestra un desglose de lo que hace el código:
  *                   example: Usuario eliminado con exito
  *       404:
  *         description: Usuario no encontrado.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                    message:
+ *                     type: string
+ *                     example: Usuario no encontrado.
  *       400: 
  *         description: ID inválido.
  *       
