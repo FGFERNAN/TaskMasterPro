@@ -52,7 +52,7 @@ const swaggerOptions = {
       },
     ],
   },
-  apis: ["./routes/*.js"],
+  apis: ["./src/routes/*.js"],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
@@ -61,13 +61,13 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 //Routes
 /* Estas líneas de código configuran rutas para diferentes partes de la aplicación. Cada instrucción 
 `app.use` asocia una ruta específica con un conjunto correspondiente de rutas definidas en archivos separados.*/
-app.use('/api-v1/user',userRoutes);
-app.use('/api-v1/role',roleRoutes);
-app.use('/api-v1/module',moduleRoutes);
-app.use('/api-v1/login',loginRoutes);
-app.use('/api-v1/logout', logoutRoutes);
-app.use('/api-v1/editProfile', editProfile);
-app.use('/api-v1/session', loginRoutes);
+app.use('/user',userRoutes);
+app.use('/role',roleRoutes);
+app.use('/module',moduleRoutes);
+app.use('/login',loginRoutes);
+app.use('/logout', logoutRoutes);
+app.use('/editProfile', editProfile);
+app.use('/session', loginRoutes);
 
 /* El fragmento de código `app.listen(port,()=>{ console.log(`Listener Server http://localhost:`); });`
 configura un servidor para que escuche en un puerto específico (en este caso, el puerto 4000). Cuando el
