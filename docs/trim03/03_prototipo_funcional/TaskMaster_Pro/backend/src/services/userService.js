@@ -32,6 +32,11 @@ class UserService {
 
     async createUser(data) {
         try {
+            const verificarEmail = `SELECT id FROM usuarios WHERE email = ?;`;
+            const emailExiste = await this.db.query(verificarEmail, [data.email]);
+            if(emailExiste.length > 0){
+                throw new Error("El correo electronico ingresado, ya se encuentra registrado en el sistema");
+            }
             const hashedPassword = await bcrypt.hash(data.password, saltRounds);
             var dataQry = [data.id, data.nombre, data.apellidos, data.email, data.telefono, hashedPassword, data.rolID, data.tipo_documento];
             var qry = `CALL insertUser(?,?,?,?,?,?,?,?);`;

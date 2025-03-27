@@ -64,9 +64,11 @@
               <span class="input-group-text border-input">
                 <i class="fa-solid fa-at"></i>
               </span>
-              <input type="email" class="form-control border-input" id="correoUsuario" placeholder="Email"
+              <input type="email" class="form-control border-input" :class="{ 'is-invalid': errors.email }" id="correoUsuario" placeholder="Email"
                 v-model="email" minlength="15" maxlength="150" required />
-              <div class="invalid-feedback">Por favor ingrese el correo electrónico (máximo 150 caracteres).</div>
+              <div class="invalid-feedback">
+                {{ errors.email || "Por favor ingrese el correo electrónico (máximo 150 caracteres)." }}
+              </div>
             </div>
           </div>
         </div>
@@ -182,6 +184,7 @@ export default {
         rolID: "",
         tipo_documento: "",
       },
+      errors: {},
       passwordVisible: false,
     };
   },
@@ -203,6 +206,7 @@ export default {
         form.classList.add('was-validated');
         return;
       }
+      this.errors = {};
       try {
         const response = await api.post("/user", {
           id: this.id,
@@ -223,9 +227,6 @@ export default {
           if(serverErrors.message === 'Usuario no creado'){
             console.log(serverErrors.message);
             alert('Ingresa los parametros necesarios para realizar la creación');
-          } else if(serverErrors.message === 'Error creating users: '){
-            console.log(serverErrors.message);
-            alert('Ocurrio un error inesperado del lado del servidor, revisa la consola para obtener más detalles');
           } else if(serverErrors.mensaje === 'Usuario no autenticado'){
             console.log(serverErrors.mensaje);
             alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
@@ -233,9 +234,8 @@ export default {
           } else if(serverErrors.mensaje === 'No tienes permisos para realizar esta acción.'){
             console.log(serverErrors.mensaje);
             alert(serverErrors.mensaje);
-          } else {
-           console.log('Ocurrio un error inesperado del lado del servidor: ', serverErrors);
-            alert('Ocurrio un error inesperado del lado del servidor, revisa la consola para obtener más detalles');
+          } else if(serverErrors.message === 'El correo electronico ingresado, ya se encuentra registrado en el sistema') {
+            this.errors.email = 'El correo electronico ingresado, ya se encuentra registrado en el sistema';
           }
         }
       }
