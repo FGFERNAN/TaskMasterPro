@@ -9,7 +9,6 @@ import administrarRoles from '../components/administrarRoles.vue';
 import crearRol from '../components/crearRol.vue';
 import EditarRol from '../components/EditarRol.vue';
 import EditarUsuario from '../components/EditarUsuario.vue';
-import CrearRol from '../components/CrearRol.vue';
 
 
 const routes = [
@@ -21,15 +20,9 @@ const routes = [
   { path: '/perfil-completo', component: PerfilCompleto },
   { path: '/editar-perfil', component: EditarPerfil },
   { path: '/administrar-roles', component: administrarRoles },
-<<<<<<< Updated upstream:docs/trim03/03_prototipo_funcional/TaskMaster_Pro/frontend/src/router/index.js
   { path: '/crear-rol', component: crearRol},
   { path: '/editar-rol/:id', name: 'EditarRol', component: EditarRol, props: true },
   { path: '/editar-usuario/:id', name: 'EditarUsuario', component: EditarUsuario, props: true },
-=======
-  { path: '/editar-rol', component: EditarRol },
-  { path: '/editar-usuario', component: EditarUsuario },
-  { path:'/crear-rol', component: CrearRol },
->>>>>>> Stashed changes:trim03/04_prototipo_funcional/TaskMaster_Pro/frontend/src/router/index.js
 
 ];
 
