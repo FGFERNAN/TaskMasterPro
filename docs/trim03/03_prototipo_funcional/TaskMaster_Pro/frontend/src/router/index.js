@@ -9,6 +9,9 @@ import administrarRoles from '../components/administrarRoles.vue';
 import crearRol from '../components/crearRol.vue';
 import EditarRol from '../components/EditarRol.vue';
 import EditarUsuario from '../components/EditarUsuario.vue';
+import crearClave from '../components/crearClave.vue';
+
+
 
 
 const routes = [
@@ -23,6 +26,8 @@ const routes = [
   { path: '/crear-rol', component: crearRol},
   { path: '/editar-rol/:id', name: 'EditarRol', component: EditarRol, props: true },
   { path: '/editar-usuario/:id', name: 'EditarUsuario', component: EditarUsuario, props: true },
+  { path: '/crear-clave', component: crearClave },
+  
 
 ];
 
