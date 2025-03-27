@@ -5,7 +5,8 @@
         <div class="text-center">
           <img src="../assets/img/logos/logotipo.png" class="mx-auto d-block logo1" width="400" alt="Logo" />
         </div>
-        <form ref="form" @submit.prevent="handleSubmit" class="mx-auto needs-validation custom-iniciarSesion" novalidate>
+        <form ref="form" @submit.prevent="handleSubmit" class="mx-auto needs-validation custom-iniciarSesion"
+          novalidate>
           <div class="mb-3">
             <label for="email" class="form-label">Correo Electrónico</label>
             <div class="input-group mb-3 has-validation">
@@ -62,7 +63,7 @@
 import api from "@/services/api";
 
 export default {
-  mounted(){
+  mounted() {
     document.title = "Iniciar Sesión | TaskMaster Pro";
   },
   data() {
@@ -116,5 +117,3 @@ export default {
 <style scoped>
 @import "@/../../assets/css/style.css";
 </style>
-
-
