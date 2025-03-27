@@ -13,7 +13,7 @@
           <h2>Mi Perfil</h2>
         </div>
         <div class="col-md-2 d-flex justify-content-end">
-          <button class="btn btn-cerrar-sesion me-3" @click="confirmarCerrarSesion">
+         <button class="btn btn-cerrar-sesion me-3" @click="cerrarSesion">
             <i class="fa-solid fa-right-to-bracket me-1"></i> Cerrar Sesión
           </button>
         </div>
@@ -46,6 +46,7 @@
 </template>
 
 <script>
+<<<<<<< Updated upstream:docs/trim03/03_prototipo_funcional/TaskMaster_Pro/frontend/src/components/PerfilCompleto.vue
 import api from '@/services/api';
 export default {
   mounted(){
@@ -59,8 +60,30 @@ export default {
         const response = await api.post("/logout");
         this.$router.push("/iniciar-sesion");
         alert(response.data.message);
+=======
+import api from "@/services/api";
+
+export default {
+  methods: {
+    async cerrarSesion() {
+      try {
+        // Llamada a la API para cerrar sesión
+        await api.post("/logout");
+
+        // Limpieza de cualquier dato local (si aplica)
+        sessionStorage.clear();
+        localStorage.clear();
+
+        // Redirección al login
+        this.$router.push("/login");
+      } catch (error) {
+        console.error("Error al cerrar sesión:", error);
+        // Mostrar un mensaje de error al usuario
+        alert("Hubo un problema al intentar cerrar sesión. Intenta nuevamente.");
+>>>>>>> Stashed changes:trim03/04_prototipo_funcional/TaskMaster_Pro/frontend/src/components/PerfilCompleto.vue
       }
     },
+
     goToEditProfile() {
       // Redirige a la página de edición del perfil
       this.$router.push("/editar-perfil");
