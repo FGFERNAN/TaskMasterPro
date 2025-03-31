@@ -10,6 +10,7 @@ import crearRol from '../components/crearRol.vue';
 import EditarRol from '../components/EditarRol.vue';
 import EditarUsuario from '../components/EditarUsuario.vue';
 import crearClave from '../components/crearClave.vue';
+import cambiarClave from '@/components/cambiarClave.vue';
 
 
 
@@ -27,6 +28,7 @@ const routes = [
   { path: '/editar-rol/:id', name: 'EditarRol', component: EditarRol, props: true },
   { path: '/editar-usuario/:id', name: 'EditarUsuario', component: EditarUsuario, props: true },
   { path: '/crear-clave', component: crearClave },
+  { path: '/modificar-contraseña', component: cambiarClave },
   
 
 ];

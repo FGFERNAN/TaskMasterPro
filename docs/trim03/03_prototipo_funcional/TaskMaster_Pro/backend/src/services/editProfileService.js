@@ -4,8 +4,8 @@ const User = require('../models/user');
 
 const saltRounds = 10;
 
-class editProfileService{
-    constructor(){
+class editProfileService {
+    constructor() {
         this.db = new DBConnection();
     }
     async getData(id) {
@@ -22,9 +22,8 @@ class editProfileService{
         try {
             const getUser = await this.db.query(`SELECT * FROM usuarios WHERE id = ?`, [id]);
             if (getUser.length != 0) {
-                const hashedPassword = await bcrypt.hash(data.password, saltRounds);
-                var dataQry = [data.nombre, data.apellidos, data.email, data.telefono, hashedPassword, data.tipo_documento];
-                const results = await this.db.query(`UPDATE usuarios SET nombre=?, apellidos=?, email=?, telefono=?, password=?, tipo_documento=? WHERE id=?`, [...dataQry, id]);
+                var dataQry = [data.nombre, data.apellidos, data.email, data.telefono, data.tipo_documento];
+                const results = await this.db.query(`UPDATE usuarios SET nombre=?, apellidos=?, email=?, telefono=?, tipo_documento=? WHERE id=?`, [...dataQry, id]);
                 if (results.length != 0) {
                     return { message: "Perfil actualizado con exito" };
                 } else {
@@ -36,6 +35,34 @@ class editProfileService{
 
         } catch (err) {
             console.error('Error updating profile: ', err.message);
+            throw err;
+        }
+    };
+    async alterPassword(id, data) {
+        try {
+            const getPassword = await this.db.query(`SELECT password FROM usuarios WHERE id = ?`, [id]);
+            if (getPassword.length != 0) {
+                const hashedDBPassword = getPassword[0].password;
+                const password = data.password;
+                const newPassword = data.newPassword;
+                const isMatch = await bcrypt.compare(password, hashedDBPassword);
+                if (isMatch) {
+                    const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
+                    var dataQry = [hashedPassword];
+                    const results = await this.db.query(`UPDATE usuarios SET password=? WHERE id=?`, [...dataQry, id]);
+                    if (results.length != 0) {
+                        return { message: "Contraseña actualizada con exito" };
+                    } else {
+                        throw new Error("Contraseña no actualizada");
+                    }
+                } else {
+                    throw new Error("Password Error");
+                }
+            } else {
+                return { message: "Unregistered user" };
+            }
+        } catch (err) {
+            console.error('Error updating password: ', err.message);
             throw err;
         }
     }
@@ -56,7 +83,7 @@ class editProfileService{
             console.error('Error deleting user: ', err.message);
             throw err;
         }
-    }
+    };
 }
 
 module.exports = editProfileService;

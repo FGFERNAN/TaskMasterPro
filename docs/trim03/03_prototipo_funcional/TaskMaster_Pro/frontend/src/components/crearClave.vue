@@ -28,7 +28,7 @@
               <div class="input-group mb-3 has-validation">
                 <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
                 <div class="form-floating">
-                  <input v-model="confirmPassword" :type="showConfirmPassword ? 'text' : 'password'" 
+                  <input v-model="confirmPassword" :type="showPassword ? 'text' : 'password'" 
                     class="form-control border-input" id="confirmPassword"
                     placeholder="Repetir contraseña" required />
                   <label for="confirmPassword">Confirmar contraseña</label>
@@ -56,7 +56,7 @@
   <script>
   export default {
     mounted() {
-      document.title = "crear clave | TaskMaster Pro";
+      document.title = "Crear Clave | TaskMaster Pro";
     },
     data() {
       return {

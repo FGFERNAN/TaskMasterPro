@@ -19,6 +19,14 @@ class editProfileController{
         } catch(err) {
             res.status(404).json({ message: err.message });
         }
+    };
+    editPassword = async (req, res) => {
+        try {
+            const user = await this.editProfileService.alterPassword(req.session.userId, req.body);
+            res.status(200).json(user);
+        } catch(err) {
+            res.status(404).json({ message: err.message });
+        }
     }
     cancelUser = async (req, res) => {
         try {

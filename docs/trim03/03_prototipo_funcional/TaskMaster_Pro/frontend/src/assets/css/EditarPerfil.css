@@ -96,6 +96,16 @@
     font-weight: bold;
 }
 
+.buton-cambiarClave {
+  background-color: #6DA2C1 ;
+  border-color: #6DA2C1;
+}
+
+.buton-cambiarClave:hover {
+  background-color: #2c7eae;
+  border-color: #2c7eae;
+}
+
 .buton-regresar:hover {
     background-color: #204b42;
     border-color: #2E7060;

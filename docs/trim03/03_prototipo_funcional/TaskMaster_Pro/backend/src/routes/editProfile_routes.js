@@ -116,6 +116,8 @@ router.get('/', verificarPermiso('Modulo Usuarios', 'Editar Perfil'), editProfil
  */
 router.post('/', verificarPermiso('Modulo Usuarios', 'Editar Perfil'), editProfileController.editProfile);
 
+router.put('/', verificarPermiso('Modulo Usuarios', 'Editar Perfil'), editProfileController.editPassword);
+
 router.delete('/', verificarPermiso('Modulo Usuarios', 'Cancelar Cuenta'), editProfileController.cancelUser);
 
 module.exports = router;

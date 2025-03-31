@@ -40,7 +40,7 @@
 
         <!-- Apellido -->
         <div class="row mb-3">
-          <label for="apellidos" class="col-sm-2 col-form-label">Apellido:</label>
+          <label for="apellidos" class="col-sm-2 col-form-label">Apellidos:</label>
           <div class="col-sm-10">
             <div class="input-group mb-3">
               <span class="input-group-text border-input" id="basic-addon1">
@@ -69,25 +69,6 @@
                 aria-label="Username" aria-describedby="basic-addon1" minlength="15" maxlength="150" required />
               <div class="invalid-feedback">
                 Por favor ingrese el correo electrónico (máximo 150 caracteres).
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Contraseña -->
-        <div class="row mb-3">
-          <label for="password" class="col-sm-2 col-form-label">Contraseña:</label>
-          <div class="col-sm-10">
-            <div class="input-group mb-3">
-              <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
-              <input :type="passwordFieldType" v-model="data.password" id="password" class="form-control border-input"
-                placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" minlength="8"
-                maxlength="20" required />
-              <button class="btn btn-outline-secondary border-input" type="button" @click="togglePasswordVisibility">
-                <i :class="passwordVisible ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
-              </button>
-              <div class="invalid-feedback">
-                Por favor ingrese la contraseña (máximo 20 caracteres).
               </div>
             </div>
           </div>
@@ -145,8 +126,12 @@
           <div class="d-grid gap-2 col-3 mx-auto">
             <button class="btn btn-primary buton-form mb-4" type="submit">Confirmar</button>
           </div>
-          <button type="button" class="btn btn-danger mb-4 fw-bold">Cancelar
-            Cuenta</button>
+          <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-danger mb-4 fw-bold">Cancelar Cuenta
+            </button>
+            <button type="button" @click="alterPassword" class="btn btn-primary buton-cambiarClave mb-4 fw-bold">Modificar Contraseña
+            </button>
+          </div>
         </div>
       </form>
     </div>
@@ -176,6 +161,9 @@ export default {
     goBack() {
       this.$router.go(-1); // Navegar hacia atrás
     },
+    alterPassword() {
+      this.$router.push('/modificar-contraseña');
+    },
     async getData() {
       try {
         const response = await api.get('/editProfile');
@@ -189,7 +177,7 @@ export default {
           } else if (serverErrors.message === 'Error fetching data: ') {
             console.log(serverErrors);
             alert(`Ocurrio un error inesperado del lado del servidor: ${serverErrors.message}, vuelve a intentar más tarde`);
-          } else if(serverErrors.mensaje === 'Usuario no autenticado') {
+          } else if (serverErrors.mensaje === 'Usuario no autenticado') {
             console.log(serverErrors);
             alert(`${serverErrors.mensaje}, debes loguearte para editar tu perfil.`);
             this.$router.push('/iniciar-sesion');
@@ -220,7 +208,7 @@ export default {
           } else if (serverErrors.message === 'Error updating profile: ') {
             console.log(serverErrors);
             alert(`Ocurrio un error inesperado del lado del servidor: ${serverErrors.message}, vuelve a intentar más tardes`);
-          } else if(serverErrors.mensaje === 'Usuario no autenticado') {
+          } else if (serverErrors.mensaje === 'Usuario no autenticado') {
             console.log(serverErrors);
             alert(`${serverErrors.mensaje}, debes loguearte para editar tu perfil.`);
             this.$router.push('/iniciar-sesion');
