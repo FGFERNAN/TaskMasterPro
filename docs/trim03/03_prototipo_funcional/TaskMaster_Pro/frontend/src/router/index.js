@@ -27,7 +27,7 @@ const routes = [
   { path: '/crear-rol', component: crearRol},
   { path: '/editar-rol/:id', name: 'EditarRol', component: EditarRol, props: true },
   { path: '/editar-usuario/:id', name: 'EditarUsuario', component: EditarUsuario, props: true },
-  { path: '/crear-clave', component: crearClave },
+  { path: '/crear-clave/:token', component: crearClave },
   { path: '/modificar-contraseña', component: cambiarClave },
   
 

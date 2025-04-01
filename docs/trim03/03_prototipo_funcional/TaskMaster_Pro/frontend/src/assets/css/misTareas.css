@@ -63,16 +63,32 @@
 }
 
 .buton-recuperar-contraseña {
+  background-color: #6DA2C1;
+  color: white;
+  border-color: black;
+  font-weight: bold;
+  border: 0.1em solid black;
+  padding: 0.7em;
+  border-radius: 2rem;
+}
+
+.buton-intentar-accesso {
   background-color: #DAF5E3;
   color: black;
   border-color: black;
   font-weight: bold;
   border: 0.1em solid black;
   padding: 0.7em;
+  border-radius: 2rem;
 }
 
+.buton-intentar-accesso:hover {
+  background-color: #bbeacb;
+  color: #000;
+  border-color: #000;
+}
 .buton-recuperar-contraseña:hover {
-  background-color: #6DA2C1;
+  background-color: #3987b4;
   border-color: black;
 }
 

@@ -37,6 +37,24 @@ class LoginController{
             return res.status(200).json({ message: "Sesión cerrada exitosamente" });
         });
     }
+
+    recoveryPassword = async (req, res) => {
+        try {
+            const execution = await this.loginService.recoveryPassword(req.body);
+            res.status(200).json(execution);
+        } catch (err) {
+            res.status(400).json({ message: err.message });
+        }
+    }
+
+    resetPassword = async (req, res) => {
+        try {
+            const execution = await this.loginService.resetPassword(req.params.token, req.body);
+            res.status(200).json(execution);
+        } catch (err) {
+            res.status(400).json({ message: err.message });
+        }
+    }
 }
 
 module.exports = new LoginController();

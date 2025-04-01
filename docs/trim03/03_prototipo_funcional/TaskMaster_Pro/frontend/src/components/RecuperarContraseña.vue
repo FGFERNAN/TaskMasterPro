@@ -5,8 +5,9 @@
         <div class="text-center">
           <h1 class="d-block mt-3">Recuperar Contraseña</h1>
         </div>
-        <form @submit.prevent="handleSubmit" class="mx-auto needs-validation custom-recuperarContraseña">
-          
+        <form @submit.prevent="handleSubmit" ref="form" class="mx-auto needs-validation custom-recuperarContraseña"
+          novalidate>
+
           <!-- Campo para Correo Electrónico -->
           <div class="mb-3">
             <label for="email" class="form-label">Correo Electrónico</label>
@@ -15,14 +16,19 @@
               <div class="form-floating">
                 <input v-model="email" type="email" class="form-control border-input" id="email"
                   placeholder="Correo electrónico" required />
+                <div class="invalid-feedback">
+                  Por favor ingrese el correo.
+                </div>
                 <label for="email">Correo Electrónico</label>
               </div>
             </div>
           </div>
 
           <!-- Botón de Enviar -->
-          <div class="d-grid gap-2 col-4 mx-auto">
-            <button class="btn btn-primary mt-3 buton-recuperar-contraseña" type="submit">Siguiente</button>
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-primary mt-4 buton-recuperar-contraseña" type="submit">Recuperar contraseña</button>
+            <button class="btn btn-primary mt-2 buton-intentar-accesso" @click="goLogin" type="button">Volver a intentar
+              el acceso</button>
           </div>
         </form>
       </div>
@@ -41,13 +47,17 @@ export default {
     };
   },
   methods: {
-    handleSubmit() {
-      if (this.email) {
-        alert(`Correo: ${this.email}`);
-        this.$router.push('/crear-clave');
-      } else {
-        alert("Por favor, ingresa un correo válido.");
+    async handleSubmit() {
+      const form = this.$refs.form;
+
+      // Desactiva validación automática del navegador y aplica validación manual con Bootstrap
+      if (!form.checkValidity()) {
+        form.classList.add('was-validated');
+        return;
       }
+    },
+    goLogin() {
+      this.$router.push('/iniciar-sesion');
     }
   }
 };
