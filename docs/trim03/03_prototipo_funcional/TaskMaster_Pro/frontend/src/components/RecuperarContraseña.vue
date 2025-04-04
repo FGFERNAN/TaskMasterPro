@@ -14,10 +14,17 @@
             <div class="input-group mb-3 has-validation">
               <span class="input-group-text"><i class="fa-regular fa-envelope"></i></span>
               <div class="form-floating">
-                <input v-model="email" type="email" class="form-control border-input" id="email"
-                  placeholder="Correo electrónico" required />
-                <div class="invalid-feedback">
-                  Por favor ingrese el correo.
+                <input v-model="email" type="email" class="form-control border-input"
+                  :class="{ 'is-invalid': v$.email.$error || backendErrors.email, 'is-valid': !v$.email.$invalid && !backendErrors.email && email }"
+                  id="email" placeholder="Correo electrónico" @blur="v$.email.$touch()" />
+                <div v-for="error in v$.email.$errors" :key="error.$uid" class="invalid-feedback">
+                  {{ error.$message }}
+                </div>
+                <div v-if="backendErrors.email" class="invalid-feedback">
+                  {{ backendErrors.email }}
+                </div>
+                <div v-if="mensaje.email && !v$.email.$error && !backendErrors.email" class="valid-feedback">
+                  {{ mensaje.email }}
                 </div>
                 <label for="email">Correo Electrónico</label>
               </div>
@@ -37,23 +44,56 @@
 </template>
 
 <script>
+import api from "@/services/api";
+import { useVuelidate } from '@vuelidate/core';
+import { required, email, helpers } from '@vuelidate/validators';
 export default {
+  setup() {
+    return { v$: useVuelidate() };
+  },
   mounted() {
     document.title = "Recuperar Contraseña | TaskMaster Pro";
   },
   data() {
     return {
-      email: ''
+      email: '',
+      backendErrors: {},
+      mensaje: {}
     };
+  },
+  validations() {
+    return {
+      email: {
+        required: helpers.withMessage('El correo es obligatorio', required),
+        email: helpers.withMessage('Ingrese un email valido', email),
+      },
+    }
   },
   methods: {
     async handleSubmit() {
-      const form = this.$refs.form;
-
-      // Desactiva validación automática del navegador y aplica validación manual con Bootstrap
-      if (!form.checkValidity()) {
-        form.classList.add('was-validated');
-        return;
+      this.mensaje = {};
+      this.backendErrors = {};
+      const isValid = await this.v$.$validate();
+      if (!isValid) return;
+      try {
+        const response = await api.post("/recoveryPassword", {
+          email: this.email
+        });
+        console.log(response.data);
+        alert(response.data.message);
+        this.mensaje.email = 'Le hemos enviado un e-mail para que pueda recuperar la contraseña';
+        this.v$.email.$reset();
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.message === 'El usuario no existe') {
+            this.backendErrors.email = 'El usuario no existe';
+            this.v$.email.$reset();
+          } else {
+            alert(serverErrors.message);
+            console.log(serverErrors);
+          }
+        }
       }
     },
     goLogin() {

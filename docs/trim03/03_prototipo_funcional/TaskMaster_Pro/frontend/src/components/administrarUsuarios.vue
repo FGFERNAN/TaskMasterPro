@@ -58,7 +58,7 @@
             <div class="header d-flex justify-content-end align-items-center p-3">
               <div class="d-flex align-items-center">
                 <span>{{ username }}</span>
-                <a href="perfil.html" class="ms-3">
+                <a @click="irPerfil" class="ms-3 puntero">
                   <img src="../assets/img/mariposa34.jpg" alt="Perfil" class="rounded-circle" width="40" />
                 </a>
               </div>
@@ -211,6 +211,9 @@ export default {
         console.log("Error al obtener el usuario", error)
         this.username = "Invitado";
       }
+    },
+    irPerfil(){
+      this.$router.push('/perfil-completo');
     }
   }
 };

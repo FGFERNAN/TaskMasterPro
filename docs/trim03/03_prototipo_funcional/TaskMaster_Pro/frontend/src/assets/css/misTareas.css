@@ -41,6 +41,10 @@
   margin-top: -3.5em;
 }
 
+.puntero {
+  cursor: pointer;
+}
+
 .buton-iniciar-sesion {
   background-color: #DAF5E3;
   color: black;

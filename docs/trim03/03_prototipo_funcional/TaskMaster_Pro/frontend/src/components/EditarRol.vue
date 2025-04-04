@@ -25,10 +25,10 @@
           <div class="col-sm-10 has-validation">
             <div class="input-group mb-3">
               <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-user-tag"></i></span>
-              <input type="text" id="nombre" class="form-control border-input" placeholder="Name" aria-label="Username"
-                aria-describedby="basic-addon1" v-model="roles.nombre" maxlength="50" required />
-              <div class="invalid-feedback">
-                Por favor ingrese el nombre (máximo 50 caracteres).
+              <input type="text" id="nombre" class="form-control border-input" :class="{ 'is-invalid': v$.nombre.$error, 'is-valid': !v$.nombre.$invalid }" placeholder="Name" aria-label="Username"
+                aria-describedby="basic-addon1" v-model="nombre" @blur="v$.nombre.$touch()"/>
+                <div v-for="error in v$.nombre.$errors" :key="error.$uid" class="invalid-feedback">
+                {{ error.$message }}
               </div>
             </div>
           </div>
@@ -37,10 +37,12 @@
           <label for="descripcion" class="col-sm-2 col-form-label">Descripción:</label>
           <div class="col-sm-10 has-validation">
             <div class="form-floating mb-3">
-              <textarea class="form-control border-input" v-model="roles.descripcion" placeholder="Leave a comment here" id="descripcion" minlength="10" maxlength="1000"
-                required>El rol que administra el software</textarea>
+              <textarea class="form-control border-input" :class="{ 'is-invalid': v$.descripcion.$error, 'is-valid': !v$.descripcion.$invalid }" v-model="descripcion" placeholder="Leave a comment here" id="descripcion" 
+              @blur="v$.descripcion.$touch()">El rol que administra el software</textarea>
               <label for="floatingTextarea">Description</label>
-              <div class="invalid-feedback">Por favor ingrese la descripción (minimo 10 caracteres).</div>
+              <div v-for="error in v$.descripcion.$errors" :key="error.$uid" class="invalid-feedback">
+                  {{ error.$message }}
+                </div>
             </div>
           </div>
         </div>
@@ -54,7 +56,14 @@
 
 <script>
 import api from '@/services/api';
+import { useVuelidate } from '@vuelidate/core';
+import { required, helpers } from '@vuelidate/validators';
+import { maxLength } from 'vuelidate/lib/validators';
+import { minLength } from 'vuelidate/lib/validators';
 export default {
+  setup() {
+    return { v$: useVuelidate() };
+  },
   mounted() {
     document.title = "Editar Rol | TaskMaster Pro";
     const roleId = this.$route.params.id;
@@ -62,8 +71,26 @@ export default {
   },
   data(){
     return{
-      roles: []
+      nombre: "",
+      descripcion: ""
     };
+  },
+  validations(){
+    return {
+      nombre: {
+        required: helpers.withMessage('El nombre es obligatorio', required),
+        maxLength: helpers.withMessage('Maximo 50 caracteres', maxLength(50)),
+        strong: helpers.withMessage(
+          'Debe contener solo letras',
+          (value) => /^[A-Za-záéúíóñÑÁÉÚÍÓ\s]{1,50}$/.test(value)
+        )
+      },
+      descripcion: {
+        required: helpers.withMessage('La descripcion es obligatoria', required),
+        minLength: helpers.withMessage('Minimo 10 caracteres', minLength(10)),
+        maxLength: helpers.withMessage('Maximo 1000 caracteres', maxLength(1000))
+      }
+    }
   },
   methods: {
     // Redireccionar a otra vista al hacer clic en "Regresar"
@@ -74,7 +101,8 @@ export default {
     async getRoleById(roleId){
       try {
         const response = await api.get(`/role/${roleId}`);
-        this.roles = response.data.data;
+        this.nombre = response.data.data.nombre;
+        this.descripcion = response.data.data.descripcion;
       } catch(error) {
         if(error.response && error.response.data){
           const serverErrors = error.response.data;
@@ -92,13 +120,13 @@ export default {
       }
     },
     async updateRole(){
-      const form = this.$refs.form;
-      if (!form.checkValidity()) {
-        form.classList.add('was-validated');
-        return;
-      }
+      const isValid = await this.v$.$validate();
+      if (!isValid) return;
       try{
-        const response = await api.put(`/role/${this.roles.id}`, this.roles);
+        const response = await api.put(`/role/${this.roles.id}`, {
+          nombre: this.nombre,
+          descripcion: this.descripcion
+        });
         console.log(response.data.message);
         alert(response.data.message);
         this.$router.push('/administrar-roles');

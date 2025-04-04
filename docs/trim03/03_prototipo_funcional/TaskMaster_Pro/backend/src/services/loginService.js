@@ -40,7 +40,7 @@ class LoginService {
 
             // Generación de token seguro y almacenamiento en la base de datos con expiración 
             const token = crypto.randomBytes(32).toString('hex');
-            const expiresToken = new Date(Date.now() + 3600000); // 1 hora de validez
+            const expiresToken = new Date(Date.now() + 900000); // 15 minuto de validez
 
             await this.db.query(`UPDATE usuarios SET token = ?, expiresToken = ? WHERE email = ?`, [token, expiresToken, email]);
 
@@ -60,10 +60,29 @@ class LoginService {
                 from: 'fgfernan2508@gmail.com',
                 to: email,
                 subject: 'Recuperación de Contraseña',
-                html: `<p>Haz clic en el siguiente enlace para restablecer tu contraseña:</p>
-                       <a href="${resetLink}">${resetLink}</a>
-                       <p>Este enlace expirará en 1 hora.</p>`
-            };
+                html: `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
+                        <h2 style="color: #2c3e50; text-align: center;">Restablece tu contraseña</h2>
+                            <p style="font-size: 16px; color: #34495e;">Hola,</p>
+                            <p style="font-size: 16px; color: #34495e;">Recibimos una solicitud para restablecer la contraseña de tu cuenta. Haz clic en el botón siguiente para continuar:</p>
+      
+                            <div style="text-align: center; margin: 25px 0;">
+                                <a href="${resetLink}" 
+                                style="background-color: #3498db; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold; display: inline-block;">
+                                Restablecer contraseña
+                                </a>
+                            </div>
+
+                            <p style="font-size: 14px; color: #7f8c8d; text-align: center;">
+                                Si no solicitaste este cambio, ignora este correo. El enlace expirará en <strong>15 minutos</strong>.
+                            </p>
+
+                            <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 20px 0;">
+
+                            <p style="font-size: 12px; color: #95a5a6; text-align: center;">
+                             © ${new Date().getFullYear()} Tu Empresa. Todos los derechos reservados.
+                            </p>
+                            </div>`
+        };
 
             await transporter.sendMail(mailOptions);
             return { message: "Correo de recuperación enviado" };

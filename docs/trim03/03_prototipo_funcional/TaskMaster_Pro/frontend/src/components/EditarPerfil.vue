@@ -29,10 +29,11 @@
           <div class="col-sm-10">
             <div class="input-group mb-3">
               <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
-              <input type="text" v-model="data.nombre" class="form-control border-input" placeholder="Name"
-                aria-label="Username" id="nombre" aria-describedby="basic-addon1" minlength="5" required />
-              <div class="invalid-feedback">
-                Por favor ingrese el nombre.
+              <input type="text" v-model="nombre" class="form-control border-input"
+                :class="{ 'is-invalid': v$.nombre.$error, 'is-valid': !v$.nombre.$invalid }" placeholder="Name"
+                aria-label="Username" id="nombre" aria-describedby="basic-addon1" @blur="v$.nombre.$touch()" />
+              <div v-for="error in v$.nombre.$errors" :key="error.$uid" class="invalid-feedback">
+                {{ error.$message }}
               </div>
             </div>
           </div>
@@ -50,10 +51,12 @@
                     d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0" />
                 </svg>
               </span>
-              <input type="text" v-model="data.apellidos" id="apellidos" class="form-control border-input"
-                placeholder="Last Name" aria-label="Username" aria-describedby="basic-addon1" minlength="5" required />
-              <div class="invalid-feedback">
-                Por favor ingrese el apellido.
+              <input type="text" v-model="apellidos" id="apellidos" class="form-control border-input"
+                :class="{ 'is-invalid': v$.apellidos.$error, 'is-valid': !v$.apellidos.$invalid }"
+                placeholder="Last Name" aria-label="Username" aria-describedby="basic-addon1"
+                @blur="v$.apellidos.$touch()" />
+              <div v-for="error in v$.apellidos.$errors" :key="error.$uid" class="invalid-feedback">
+                {{ error.$message }}
               </div>
             </div>
           </div>
@@ -65,10 +68,11 @@
           <div class="col-sm-10">
             <div class="input-group mb-3">
               <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-at"></i></span>
-              <input type="email" v-model="data.email" id="email" class="form-control border-input" placeholder="Email"
-                aria-label="Username" aria-describedby="basic-addon1" minlength="15" maxlength="150" required />
-              <div class="invalid-feedback">
-                Por favor ingrese el correo electrónico (máximo 150 caracteres).
+              <input type="email" v-model="email" id="email" class="form-control border-input"
+                :class="{ 'is-invalid': v$.email.$error, 'is-valid': !v$.email.$invalid }" placeholder="Email"
+                aria-label="Username" aria-describedby="basic-addon1" @blur="v$.email.$touch()" />
+              <div v-for="error in v$.email.$errors" :key="error.$uid" class="invalid-feedback">
+                {{ error.$message }}
               </div>
             </div>
           </div>
@@ -80,10 +84,11 @@
           <div class="col-sm-10">
             <div class="input-group mb-3">
               <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-phone"></i></span>
-              <input type="number" id="numeroCelular" class="form-control border-input" v-model="data.telefono"
-                placeholder="Phone Number" min="1000000000" max="9999999999" required />
-              <div class="invalid-feedback">
-                Por favor ingrese el número de celular (10 caracteres).
+              <input type="text" id="numeroCelular" class="form-control border-input"
+                :class="{ 'is-invalid': v$.telefono.$error, 'is-valid': !v$.telefono.$invalid }" v-model="telefono"
+                placeholder="Phone Number" @blur="v$.telefono.$touch()" />
+              <div v-for="error in v$.telefono.$errors" :key="error.$uid" class="invalid-feedback">
+                {{ error.$message }}
               </div>
             </div>
           </div>
@@ -95,14 +100,14 @@
           <div class="col-sm-10">
             <div class="input-group mb-3">
               <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-id-card"></i></span>
-              <select v-model="data.tipo_documento" id="tipo_documento" class="form-select border-input" required>
+              <select v-model="tipo_documento" id="tipo_documento" class="form-select border-input" :class="{ 'is-invalid': v$.tipo_documento.$error, 'is-valid': !v$.tipo_documento.$invalid }" @blur="v$.tipo_documento.$touch()" >
                 <option value="" disabled>Seleccionar</option>
                 <option value="1">Tarjeta de Identidad</option>
                 <option value="2">Cédula de Ciudadanía</option>
                 <option value="3">Cedula de Extranjeria</option>
               </select>
-              <div class="invalid-feedback">
-                Por favor seleccione un tipo de documento.
+              <div v-for="error in v$.tipo_documento.$errors" :key="error.$uid" class="invalid-feedback">
+                {{ error.$message }}
               </div>
             </div>
           </div>
@@ -129,7 +134,8 @@
           <div class="d-flex justify-content-between">
             <button type="button" class="btn btn-danger mb-4 fw-bold">Cancelar Cuenta
             </button>
-            <button type="button" @click="alterPassword" class="btn btn-primary buton-cambiarClave mb-4 fw-bold">Modificar Contraseña
+            <button type="button" @click="alterPassword"
+              class="btn btn-primary buton-cambiarClave mb-4 fw-bold">Modificar Contraseña
             </button>
           </div>
         </div>
@@ -140,15 +146,60 @@
 
 <script>
 import api from '@/services/api';
+import { useVuelidate } from '@vuelidate/core';
+import { required, email, helpers } from '@vuelidate/validators';
+import { minLength } from 'vuelidate/lib/validators';
+const phoneValidator = (value) =>
+  !value || (value.length === 10 && /^\d+$/.test(value));
 export default {
+  setup() {
+    return { v$: useVuelidate() };
+  },
   mounted() {
     document.title = "Editar Perfil | TaskMaster Pro";
     this.getData();
   },
   data() {
     return {
-      data: [],
+      nombre: "",
+      apellidos: "",
+      email: "",
+      telefono: "",
+      tipo_documento: "",
       passwordVisible: false,
+    }
+  },
+  validations() {
+    return {
+      nombre: {
+        required: helpers.withMessage('El nombre es obligatorio', required),
+        minLength: helpers.withMessage('Minimo 3 caracteres', minLength(3)),
+        strong: helpers.withMessage(
+          'Debe contener solo letras',
+          (value) => /^[A-Za-záéúíóñÑÁÉÚÍÓ\s]{3,}$/.test(value)
+        )
+      },
+      apellidos: {
+        required: helpers.withMessage('Los apellidos son obligatorios', required),
+        minLength: helpers.withMessage('Minimo 3 caracteres', minLength(3)),
+        strong: helpers.withMessage(
+          'Debe contener solo letras',
+          (value) => /^[A-Za-záéúíóñÑÁÉÚÍÓ\s]{3,}$/.test(value)
+        )
+      },
+      email: {
+        required: helpers.withMessage('El correo es obligatorio', required),
+        email: helpers.withMessage('Ingrese un email valido', email),
+      },
+      telefono: {
+        phone: helpers.withMessage(
+          'El telefono debe tener 10 digitos numericos',
+          phoneValidator
+        )
+      },
+      tipo_documento: {
+        required: helpers.withMessage('El tipo de documento es obligatorio', required)
+      },
     }
   },
   computed: {
@@ -167,7 +218,11 @@ export default {
     async getData() {
       try {
         const response = await api.get('/editProfile');
-        this.data = response.data.data;
+        this.nombre = response.data.data.nombre;
+        this.apellidos = response.data.data.apellidos;
+        this.email = response.data.data.email;
+        this.telefono = response.data.data.telefono;
+        this.tipo_documento = response.data.data.tipo_documento;
       } catch (error) {
         if (error.response && error.response.data) {
           const serverErrors = error.response.data;
@@ -186,13 +241,17 @@ export default {
       }
     },
     async editProfile() {
-      const form = this.$refs.form;
-      if (!form.checkValidity()) {
-        form.classList.add('was-validated');
-        return;
-      }
+      const isValid = await this.v$.$validate();
+      if (!isValid) return;
       try {
-        const response = await api.post('/editProfile', this.data);
+        const response = await api.post('/editProfile', {
+          nombre: this.nombre,
+          apellidos: this.apellidos,
+          email: this.email,
+          telefono: this.telefono,
+          tipo_documento: this.tipo_documento
+        }  
+        );
         console.log(response.data);
         alert(response.data.message);
         this.$router.push('/perfil-completo');

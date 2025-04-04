@@ -13,10 +13,11 @@
                             <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
                             <div class="form-floating">
                                 <input v-model="password" :type="showPassword ? 'text' : 'password'"
-                                    class="form-control border-input" minlength="8" id="password" placeholder="Nueva contraseña"
-                                    required />
-                                <div class="invalid-feedback">
-                                    Por favor ingrese la contraseña actual.
+                                    class="form-control border-input"
+                                    :class="{ 'is-invalid': v$.password.$error, 'is-valid': !v$.password.$invalid }"
+                                    id="password" placeholder="Nueva contraseña" @blur="v$.password.$touch()" />
+                                <div v-for="error in v$.password.$errors" :key="error.$uid" class="invalid-feedback">
+                                    {{ error.$message }}
                                 </div>
                                 <label for="password">Ingresa la contraseña actual</label>
                             </div>
@@ -31,10 +32,11 @@
                             <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
                             <div class="form-floating">
                                 <input v-model="newPassword" :type="showPassword ? 'text' : 'password'"
-                                    class="form-control border-input" :class="{ 'is-invalid': errors.newPassword }"
-                                    id="password" placeholder="Nueva contraseña" minlength="8" maxlength="20" required />
-                                <div class="invalid-feedback">
-                                    {{ errors.newPassword || "Por favor ingrese la nueva contraseña." }}
+                                    class="form-control border-input"
+                                    :class="{ 'is-invalid': v$.newPassword.$error, 'is-valid': !v$.newPassword.$invalid }"
+                                    id="password" placeholder="Nueva contraseña" @blur="v$.newPassword.$touch()" />
+                                <div v-for="error in v$.newPassword.$errors" :key="error.$uid" class="invalid-feedback">
+                                    {{ error.$message }}
                                 </div>
                                 <label for="password">Ingresa una nueva contraseña</label>
                             </div>
@@ -49,10 +51,16 @@
                             <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
                             <div class="form-floating">
                                 <input v-model="confirmPassword" :type="showPassword ? 'text' : 'password'"
-                                    class="form-control border-input" :class="{ 'is-invalid': errors.confirmPassword }" id="confirmPassword"
-                                    placeholder="Repetir contraseña" minlength="8" maxlength="20" required />
-                                    <div class="invalid-feedback">
-                                    {{ errors.confirmPassword || "Por favor confirme su nueva contraseña." }}
+                                    class="form-control border-input"
+                                    :class="{ 'is-invalid': v$.confirmPassword.$error || backendErrors.confirmPassword, 'is-valid': !v$.confirmPassword.$invalid && !backendErrors.confirmPassword && confirmPassword }"
+                                    id="confirmPassword" placeholder="Repetir contraseña"
+                                    @blur="v$.confirmPassword.$touch()" />
+                                <div v-for="error in v$.confirmPassword.$errors" :key="error.$uid"
+                                    class="invalid-feedback">
+                                    {{ error.$message }}
+                                </div>
+                                <div v-if="backendErrors.confirmPassword" class="invalid-feedback">
+                                    {{ backendErrors.confirmPassword }}
                                 </div>
                                 <label for="confirmPassword">Confirmar contraseña</label>
                             </div>
@@ -78,7 +86,13 @@
 
 <script>
 import api from '@/services/api';
+import { useVuelidate } from '@vuelidate/core';
+import { required, helpers } from '@vuelidate/validators';
+import { minLength, maxLength } from 'vuelidate/lib/validators';
 export default {
+    setup() {
+        return { v$: useVuelidate() };
+    },
     mounted() {
         document.title = "Crear Clave | TaskMaster Pro";
     },
@@ -88,17 +102,35 @@ export default {
             newPassword: "",
             confirmPassword: "",
             showPassword: false,
-            errors: {},
+            backendErrors: {},
         };
+    },
+    validations() {
+        return {
+            password: {
+                required: helpers.withMessage('La contraseña actual es obligatoria', required),
+            },
+            newPassword: {
+                required: helpers.withMessage('Ingresa la nueva contraseña', required),
+                minLength: helpers.withMessage('Minimo 8 caracteres', minLength(8)),
+                maxLength: helpers.withMessage('Maximo 20 caracteres', maxLength(20)),
+                strong: helpers.withMessage(
+                    'Debe contener mayusculas, minusculas y un caracter especial (#$*)',
+                    (value) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*[#$*]).{8,}$/.test(value)
+                )
+            },
+            confirmPassword: {
+                required: helpers.withMessage('Confirma tu contraseña', required),
+            }
+        }
     },
     methods: {
         async handleSubmit() {
-            const form = this.$refs.form;
-            if (!form.checkValidity()) {
-                form.classList.add('was-validated');
+            const isValid = await this.v$.$validate();
+            if (!isValid) {
                 return;
-            } else if (this.newPassword === this.confirmPassword) {
-                this.errors = {};
+            }
+            else if (this.newPassword === this.confirmPassword) {
                 try {
                     const response = await api.put('/editProfile', {
                         password: this.password,
@@ -127,8 +159,8 @@ export default {
                     }
                 }
             } else {
-                this.errors.newPassword = 'Contraseñas no coinciden';
-                this.errors.confirmPassword = 'Contraseñas no coinciden';
+                this.backendErrors.confirmPassword = 'Contraseñas no coinciden';
+                this.v$.confirmPassword.$reset();
             }
         },
         togglePassword(field) {
