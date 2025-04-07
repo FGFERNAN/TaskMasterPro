@@ -131,6 +131,7 @@ export default {
             } else {
               alert(serverErrors.message);
               console.log(serverErrors);
+              this.$router.push('/error500');
             }
           }
         }

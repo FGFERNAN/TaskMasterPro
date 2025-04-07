@@ -99,6 +99,9 @@ export default {
             this.errors.password = 'Contraseña incorrecta.';
           } else if (serverErrors.message === 'The user not created') {
             this.errors.email = 'El correo no está registrado.';
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
           }
         }
       }

@@ -27,6 +27,18 @@
   cursor: pointer;
 }
 
+.go-home {
+  color: white;
+  background-color: #2E7060;
+  border-color: #2E7060;
+  font-weight:500;
+}
+
+.go-home:hover {
+  background-color: #1a4e41;
+  border-color: #1a4e41;
+}
+
 .custom-dropdown .dropdown-menu {
   transform: translateX(15px) translateY(42px) !important;
   background-color: white;

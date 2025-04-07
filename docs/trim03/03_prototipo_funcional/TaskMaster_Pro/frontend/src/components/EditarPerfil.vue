@@ -233,9 +233,12 @@ export default {
             console.log(serverErrors);
             alert(`Ocurrio un error inesperado del lado del servidor: ${serverErrors.message}, vuelve a intentar más tarde`);
           } else if (serverErrors.mensaje === 'Usuario no autenticado') {
-            console.log(serverErrors);
+            console.log(serverErrors.mensaje);
             alert(`${serverErrors.mensaje}, debes loguearte para editar tu perfil.`);
             this.$router.push('/iniciar-sesion');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
           }
         }
       }
@@ -271,6 +274,9 @@ export default {
             console.log(serverErrors);
             alert(`${serverErrors.mensaje}, debes loguearte para editar tu perfil.`);
             this.$router.push('/iniciar-sesion');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
           }
         }
       }

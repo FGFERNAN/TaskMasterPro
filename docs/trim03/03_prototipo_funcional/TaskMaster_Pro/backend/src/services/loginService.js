@@ -37,7 +37,6 @@ class LoginService {
             if (getUser.length === 0) {
                 throw new Error("El usuario no existe");
             }
-
             // Generación de token seguro y almacenamiento en la base de datos con expiración 
             const token = crypto.randomBytes(32).toString('hex');
             const expiresToken = new Date(Date.now() + 900000); // 15 minuto de validez
@@ -45,7 +44,9 @@ class LoginService {
             await this.db.query(`UPDATE usuarios SET token = ?, expiresToken = ? WHERE email = ?`, [token, expiresToken, email]);
 
             // Configuración del transporte para envio de correos 
-            let transporter = nodemailer.createTransport({
+            const transporter = nodemailer.createTransport({
+                pool: true,
+                maxConnections: 5,
                 service: 'gmail',
                 auth: {
                     user: 'fgfernan2508@gmail.com',
@@ -82,8 +83,7 @@ class LoginService {
                              © ${new Date().getFullYear()} Tu Empresa. Todos los derechos reservados.
                             </p>
                             </div>`
-        };
-
+            };
             await transporter.sendMail(mailOptions);
             return { message: "Correo de recuperación enviado" };
         } catch (err) {

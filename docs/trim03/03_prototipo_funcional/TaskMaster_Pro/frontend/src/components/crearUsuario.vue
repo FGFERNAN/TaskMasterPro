@@ -314,7 +314,7 @@ export default {
             this.$router.push('/iniciar-sesion');
           } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
             console.log(serverErrors.mensaje);
-            alert(serverErrors.mensaje);
+            this.$router.push('/error403');
           } else if (serverErrors.message === 'El correo electronico ingresado, ya se encuentra registrado en el sistema') {
             this.backendErrors.email = 'El correo electronico ingresado, ya se encuentra registrado en el sistema';
             this.v$.email.$reset();

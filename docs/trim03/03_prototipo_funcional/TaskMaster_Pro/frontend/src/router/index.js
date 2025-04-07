@@ -11,6 +11,9 @@ import EditarRol from '../components/EditarRol.vue';
 import EditarUsuario from '../components/EditarUsuario.vue';
 import crearClave from '../components/crearClave.vue';
 import cambiarClave from '@/components/cambiarClave.vue';
+import error404  from '../components/errorPermisos.vue';
+import errorGeneral from '@/components/errorGeneral.vue';
+
 
 
 
@@ -29,6 +32,8 @@ const routes = [
   { path: '/editar-usuario/:id', name: 'EditarUsuario', component: EditarUsuario, props: true },
   { path: '/crear-clave/:token', component: crearClave },
   { path: '/modificar-contraseña', component: cambiarClave },
+  { path: '/error403', component: error404},
+  { path: '/error500', component: errorGeneral}
   
 
 ];

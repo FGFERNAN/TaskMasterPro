@@ -264,8 +264,8 @@ export default {
             console.log(serverErrors);
             alert(`Ocurrio un error inesperado del lado del servidor: ${serverErrors.message}, vuelve a intentar más tarde`);
           } else {
-            console.log(error.response);
-            alert(error.response.data.mensaje)
+            console.log(serverErrors);
+            this.$router.push('/error500');
           }
         }
       }
@@ -298,13 +298,15 @@ export default {
             console.log(serverErrors);
             alert(`Ocurrio un error inesperado del lado del servidor: ${serverErrors.message}, vuelve a intentar más tardes`);
           } else if (serverErrors.mensaje === 'Usuario no autenticado') {
-            console.log(serverErrors);
+            console.log(serverErrors.mensaje);
             alert(`${serverErrors.mensaje}, debes loguearte para acceder a esta función`);
             this.$router.push('/iniciar-sesion');
-          }
-          else {
-            console.log(error.response);
-            alert(error.response.data.mensaje);
+          } else if(serverErrors.mensaje === 'No tienes permisos para realizar esta acción.'){
+            console.log(serverErrors.mensaje);
+            this.$router.push('/error403');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
           }
         }
       }

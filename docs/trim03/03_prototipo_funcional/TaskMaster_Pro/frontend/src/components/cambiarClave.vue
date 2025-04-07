@@ -155,6 +155,9 @@ export default {
                             console.log(serverErrors);
                             alert(`${serverErrors.mensaje}, debes loguearte para editar tu perfil.`);
                             this.$router.push('/iniciar-sesion');
+                        } else {
+                            console.log(serverErrors);
+                            this.$router.push('/error500');
                         }
                     }
                 }
