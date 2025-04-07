@@ -13,7 +13,7 @@
           <h2>Mi Perfil</h2>
         </div>
         <div class="col-md-2 d-flex justify-content-end">
-          <button class="btn btn-cerrar-sesion me-3" @click="confirmarCerrarSesion">
+          <button class="btn btn-primary btn-cerrar-sesion me-3" @click="confirmarCerrarSesion">
             <i class="fa-solid fa-right-to-bracket me-1"></i> Cerrar Sesión
           </button>
         </div>
@@ -36,7 +36,7 @@
             </div>
             <!-- Logo al lado de los botones -->
             <div class="ms-4">
-              <img src="../assets/img/logotipo.png" alt="Logo" class="img-fluid logo_perfil" />
+              <img src="../assets/img/logotipo.png" @click="goInterfazPrincipal" alt="Logo" class="img-fluid logo_perfil" />
             </div>
           </div>
         </section>
@@ -72,6 +72,9 @@ export default {
     goToManageUsers() {
       // Redirige a la página de gestión de usuarios
       this.$router.push("/administrar-usuarios");
+    },
+    goInterfazPrincipal() {
+      this.$router.push('/interfaz-principal');
     },
     async confirmarCancelacion() {
       if (confirm("¿Estás seguro que quieres cancelar tu cuenta?")) {

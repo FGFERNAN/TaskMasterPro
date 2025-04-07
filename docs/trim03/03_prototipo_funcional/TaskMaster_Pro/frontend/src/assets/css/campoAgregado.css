@@ -168,15 +168,6 @@
     /* Cambia el color del icono cuando se pasa el cursor sobre él */
   }
   
-  .btn-cerrar-sesion {
-    background-color: #DAF5E3;
-    color: black;
-   
-  }
-  
-  .btn-cerrar-sesion:hover {
-    background-color: #A1D9CC;
-  }
   
   .btn-perfil {
     background-color: #6DA2C2;

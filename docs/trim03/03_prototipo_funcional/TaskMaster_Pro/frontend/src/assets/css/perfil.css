@@ -9,6 +9,7 @@
   
   .logo_perfil {
     margin-block-start: -1em;
+    cursor: pointer;
   }
   
   .custom-col {

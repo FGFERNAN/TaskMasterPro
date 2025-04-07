@@ -6,13 +6,7 @@
     background-color: #204b42;
     color: white;
 }
-.btn-cerrar-sesion {
-    background-color: #DAF5E3;
-    color: black;
-}
-.btn-cerrar-sesion:hover {
-    background-color: #A1D9CC;
-}
+
 .btn-perfil {
     background-color: #6DA2C2;
     color: white;

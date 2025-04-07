@@ -21,6 +21,11 @@ class editProfileService {
     async editProfile(id, data) {
         try {
             const getUser = await this.db.query(`SELECT * FROM usuarios WHERE id = ?`, [id]);
+            const verificarEmail = `SELECT id FROM usuarios WHERE email = ? AND id != ?;`;
+            const emailExiste = await this.db.query(verificarEmail, [data.email, id]);
+            if(emailExiste.length > 0){
+                throw new Error("El correo electronico ingresado, ya se encuentra registrado en el sistema");
+            }
             if (getUser.length != 0) {
                 var dataQry = [data.nombre, data.apellidos, data.email, data.telefono, data.tipo_documento];
                 const results = await this.db.query(`UPDATE usuarios SET nombre=?, apellidos=?, email=?, telefono=?, tipo_documento=? WHERE id=?`, [...dataQry, id]);

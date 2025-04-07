@@ -66,10 +66,13 @@
                 <i class="fa-solid fa-at"></i>
               </span>
               <input type="email" class="form-control border-input"
-                :class="{ 'is-invalid': v$.email.$error, 'is-valid': !v$.email.$invalid }" id="correoUsuario"
-                placeholder="Email" v-model="email" @blur="v$.email.$touch()" />
+                :class="{ 'is-invalid': v$.email.$error || backendErrors.email, 'is-valid': !v$.email.$invalid && !backendErrors.email && email }"
+                id="correoUsuario" placeholder="Email" v-model="email" @blur="v$.email.$touch()" />
               <div v-for="error in v$.email.$errors" :key="error.$uid" class="invalid-feedback">
                 {{ error.$message }}
+              </div>
+              <div v-if="backendErrors.email" class="invalid-feedback">
+                {{ backendErrors.email }}
               </div>
             </div>
           </div>
@@ -133,9 +136,11 @@
           <div class="col-sm-10 has-validation">
             <div class="input-group mb-3">
               <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
-              <input type="password" class="form-control border-input" placeholder="Password" aria-label="Password"
+              <input :type="passwordFieldType" class="form-control border-input" placeholder="Password" aria-label="Password"
                 aria-describedby="basic-addon1" v-model="password" disabled />
-
+              <button class="btn btn-outline-secondary border-input" type="button" @click="togglePasswordVisibility">
+                <i :class="passwordVisible ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
+              </button>
             </div>
           </div>
         </div>
@@ -200,7 +205,9 @@ export default {
       tipo_documento: "",
       id: "",
       password: "",
-      rolID: ""
+      rolID: "",
+      backendErrors: {},
+      passwordVisible: false,
     }
   },
   validations() {
@@ -239,6 +246,12 @@ export default {
       }
     }
   },
+  computed: {
+    // Computed property para cambiar el tipo del input
+    passwordFieldType() {
+      return this.passwordVisible ? 'text' : 'password';
+    },
+  },
   methods: {
     goBack() {
       this.$router.go(-1);
@@ -260,6 +273,10 @@ export default {
           if (serverErrors.message === 'Usuario no encontrado') {
             console.log(serverErrors);
             alert(`${serverErrors.message} en la base de datos`);
+          } else if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
           } else if (serverErrors.message === 'Error fetching users: ') {
             console.log(serverErrors);
             alert(`Ocurrio un error inesperado del lado del servidor: ${serverErrors.message}, vuelve a intentar más tarde`);
@@ -297,11 +314,14 @@ export default {
           } else if (serverErrors.message === 'Error updating user: ') {
             console.log(serverErrors);
             alert(`Ocurrio un error inesperado del lado del servidor: ${serverErrors.message}, vuelve a intentar más tardes`);
+          } else if (serverErrors.message === 'El correo electronico ingresado, ya se encuentra registrado en el sistema') {
+            this.backendErrors.email = 'El correo electronico ingresado, ya se encuentra registrado en el sistema';
+            this.v$.email.$reset();
           } else if (serverErrors.mensaje === 'Usuario no autenticado') {
             console.log(serverErrors.mensaje);
             alert(`${serverErrors.mensaje}, debes loguearte para acceder a esta función`);
             this.$router.push('/iniciar-sesion');
-          } else if(serverErrors.mensaje === 'No tienes permisos para realizar esta acción.'){
+          } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
             console.log(serverErrors.mensaje);
             this.$router.push('/error403');
           } else {
@@ -310,7 +330,11 @@ export default {
           }
         }
       }
-    }
+    },
+    togglePasswordVisibility() {
+      // Cambia el estado de visibilidad de la contraseña
+      this.passwordVisible = !this.passwordVisible;
+    },
   },
 };
 </script>

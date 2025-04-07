@@ -34,8 +34,12 @@ class UserService {
         try {
             const verificarEmail = `SELECT id FROM usuarios WHERE email = ?;`;
             const emailExiste = await this.db.query(verificarEmail, [data.email]);
+            const verificarId = `SELECT * FROM usuarios WHERE id = ?;`;
+            const idExiste = await this.db.query(verificarId, [data.id]);
             if(emailExiste.length > 0){
                 throw new Error("El correo electronico ingresado, ya se encuentra registrado en el sistema");
+            } else if(idExiste.length > 0){
+                throw new Error("El numero de documento ingresado, ya se encuentra registrado en el sistema");
             }
             const hashedPassword = await bcrypt.hash(data.password, saltRounds);
             var dataQry = [data.id, data.nombre, data.apellidos, data.email, data.telefono, hashedPassword, data.rolID, data.tipo_documento];
@@ -56,6 +60,11 @@ class UserService {
     async updateUser(id, data) {
         try {
             const getUser = await this.db.query(`SELECT * FROM usuarios WHERE id = ?`, [id]);
+            const verificarEmail = `SELECT id FROM usuarios WHERE email = ? AND id != ?;`;
+            const emailExiste = await this.db.query(verificarEmail, [data.email, id]);
+            if(emailExiste.length > 0){
+                throw new Error("El correo electronico ingresado, ya se encuentra registrado en el sistema");
+            }
             if (getUser.length != 0) {
                 var dataQry = [data.nombre, data.apellidos, data.email, data.telefono, data.rolID, data.tipo_documento];
                 const results = await this.db.query(`UPDATE usuarios SET nombre=?, apellidos=?, email=?, telefono=?, rolID=?, tipo_documento=? WHERE id=?`, [...dataQry, id]);

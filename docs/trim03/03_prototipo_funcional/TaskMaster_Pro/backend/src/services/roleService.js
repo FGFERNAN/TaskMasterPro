@@ -29,6 +29,11 @@ class RoleService{
 
     async createRole(data){
         try {
+            const verificarNombre = `SELECT id FROM roles WHERE nombre = ?;`;
+            const nombreExiste = await this.db.query(verificarNombre, [data.nombre]);
+            if(nombreExiste.length > 0) {
+                throw new Error("El nombre ingresado, ya se encuentra registrado en la base de datos del sistema");
+            }
             var dataQry = [data.nombre, data.descripcion]; 
             var qry = `INSERT INTO roles(nombre, descripcion) VALUES(?,?);`;
             const results = await this.db.query(qry, dataQry);
@@ -46,6 +51,11 @@ class RoleService{
     async updateRole(id, data){
         try {
             const getRole = await this.db.query(`SELECT * FROM roles WHERE id = ?`, [id]);
+            const verificarNombre = `SELECT id FROM roles WHERE nombre = ? AND id != ?;`;
+            const nombreExiste = await this.db.query(verificarNombre, [data.nombre, id]);
+            if(nombreExiste.length > 0) {
+                throw new Error("El nombre ingresado, ya se encuentra registrado en la base de datos del sistema");
+            }
             if(getRole.length != 0){
                 var dataQry = [data.nombre, data.descripcion];
                 const results = await this.db.query(`UPDATE roles SET nombre=?, descripcion=? WHERE id=?`, [...dataQry, id]);

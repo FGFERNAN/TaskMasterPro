@@ -18,17 +18,23 @@
           <img src="../assets/img/logotipo.png" alt="Logo" class="logo">
         </div>
       </div>
-      <form ref="form" @submit.prevent="updateRole" class="container-fluid form-create-project needs-validation" novalidate>
+      <form ref="form" @submit.prevent="updateRole" class="container-fluid form-create-project needs-validation"
+        novalidate>
         <div class="row mb-4"></div>
         <div class="row mb-3">
           <label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
           <div class="col-sm-10 has-validation">
             <div class="input-group mb-3">
               <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-user-tag"></i></span>
-              <input type="text" id="nombre" class="form-control border-input" :class="{ 'is-invalid': v$.nombre.$error, 'is-valid': !v$.nombre.$invalid }" placeholder="Name" aria-label="Username"
-                aria-describedby="basic-addon1" v-model="nombre" @blur="v$.nombre.$touch()"/>
-                <div v-for="error in v$.nombre.$errors" :key="error.$uid" class="invalid-feedback">
+              <input type="text" id="nombre" class="form-control border-input"
+                :class="{ 'is-invalid': v$.nombre.$error || backendErrors.nombre, 'is-valid': !v$.nombre.$invalid && !backendErrors.nombre && nombre }"
+                placeholder="Name" aria-label="Username" aria-describedby="basic-addon1" v-model="nombre"
+                @blur="v$.nombre.$touch()" />
+              <div v-for="error in v$.nombre.$errors" :key="error.$uid" class="invalid-feedback">
                 {{ error.$message }}
+              </div>
+              <div v-if="backendErrors.nombre" class="invalid-feedback">
+                {{ backendErrors.nombre }}
               </div>
             </div>
           </div>
@@ -37,12 +43,14 @@
           <label for="descripcion" class="col-sm-2 col-form-label">Descripción:</label>
           <div class="col-sm-10 has-validation">
             <div class="form-floating mb-3">
-              <textarea class="form-control border-input" :class="{ 'is-invalid': v$.descripcion.$error, 'is-valid': !v$.descripcion.$invalid }" v-model="descripcion" placeholder="Leave a comment here" id="descripcion" 
-              @blur="v$.descripcion.$touch()">El rol que administra el software</textarea>
+              <textarea class="form-control border-input"
+                :class="{ 'is-invalid': v$.descripcion.$error, 'is-valid': !v$.descripcion.$invalid }"
+                v-model="descripcion" placeholder="Leave a comment here" id="descripcion"
+                @blur="v$.descripcion.$touch()">El rol que administra el software</textarea>
               <label for="floatingTextarea">Description</label>
               <div v-for="error in v$.descripcion.$errors" :key="error.$uid" class="invalid-feedback">
-                  {{ error.$message }}
-                </div>
+                {{ error.$message }}
+              </div>
             </div>
           </div>
         </div>
@@ -69,13 +77,15 @@ export default {
     const roleId = this.$route.params.id;
     this.getRoleById(roleId);
   },
-  data(){
-    return{
+  data() {
+    return {
+      id: "",
       nombre: "",
-      descripcion: ""
+      descripcion: "",
+      backendErrors: {}
     };
   },
-  validations(){
+  validations() {
     return {
       nombre: {
         required: helpers.withMessage('El nombre es obligatorio', required),
@@ -95,35 +105,36 @@ export default {
   methods: {
     // Redireccionar a otra vista al hacer clic en "Regresar"
     goBack() {
-      this.$router.go(-1); 
+      this.$router.go(-1);
     },
 
-    async getRoleById(roleId){
+    async getRoleById(roleId) {
       try {
         const response = await api.get(`/role/${roleId}`);
+        this.id = response.data.data.id;
         this.nombre = response.data.data.nombre;
         this.descripcion = response.data.data.descripcion;
-      } catch(error) {
-        if(error.response && error.response.data){
+      } catch (error) {
+        if (error.response && error.response.data) {
           const serverErrors = error.response.data;
-          if(serverErrors.message === 'Rol no encontrado'){
+          if (serverErrors.message === 'Rol no encontrado') {
             console.log(serverErrors);
             alert(`${serverErrors.message} en la base de datos`);
-          } else if(serverErrors.message === 'Error fetching role: '){
+          } else if (serverErrors.message === 'Error fetching role: ') {
             console.log(serverErrors);
             alert(`Ocurrio un error inesperado del lado del servidor: ${serverErrors.message}, vuelve a intentar más tarde`);
-          } else{
+          } else {
             console.log(error.reponse);
             alert(error.response.data.mensaje);
           }
         }
       }
     },
-    async updateRole(){
+    async updateRole() {
       const isValid = await this.v$.$validate();
       if (!isValid) return;
-      try{
-        const response = await api.put(`/role/${this.roles.id}`, {
+      try {
+        const response = await api.put(`/role/${this.id}`, {
           nombre: this.nombre,
           descripcion: this.descripcion
         });
@@ -131,19 +142,22 @@ export default {
         alert(response.data.message);
         this.$router.push('/administrar-roles');
       } catch (error) {
-        if(error.response && error.response.data){
+        if (error.response && error.response.data) {
           const serverErrors = error.response.data;
-          if(serverErrors.message === 'Rol no actualizado'){
+          if (serverErrors.message === 'Rol no actualizado') {
             console.log(serverErrors.message);
             alert('Ingresa los parametros necesarios para realizar la creación');
-          } else if(serverErrors.message === 'Unregistered role'){
+          } else if (serverErrors.message === 'Unregistered role') {
             console.log(serverErrors.message);
             alert(`El rol que estas intentando editar no existe en la base de datos, ${serverErrors.message}`);
-          } else if(serverErrors.mensaje === 'Usuario no autenticado'){
+          } else if (serverErrors.message === 'El nombre ingresado, ya se encuentra registrado en la base de datos del sistema') {
+            this.backendErrors.nombre = `${serverErrors.message}`;
+            this.v$.nombre.$reset();
+          } else if (serverErrors.mensaje === 'Usuario no autenticado') {
             console.log(serverErrors.mensaje);
             alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
             this.$router.push('/iniciar-sesion');
-          } else if(serverErrors.mensaje === 'No tienes permisos para realizar esta acción.'){
+          } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
             console.log(serverErrors.mensaje);
             this.$router.push('/error403');
           } else {

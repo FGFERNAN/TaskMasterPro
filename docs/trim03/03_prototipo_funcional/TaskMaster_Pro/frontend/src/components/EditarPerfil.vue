@@ -69,10 +69,13 @@
             <div class="input-group mb-3">
               <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-at"></i></span>
               <input type="email" v-model="email" id="email" class="form-control border-input"
-                :class="{ 'is-invalid': v$.email.$error, 'is-valid': !v$.email.$invalid }" placeholder="Email"
+              :class="{ 'is-invalid': v$.email.$error || backendErrors.email, 'is-valid': !v$.email.$invalid && !backendErrors.email && email }" placeholder="Email"
                 aria-label="Username" aria-describedby="basic-addon1" @blur="v$.email.$touch()" />
               <div v-for="error in v$.email.$errors" :key="error.$uid" class="invalid-feedback">
                 {{ error.$message }}
+              </div>
+              <div v-if="backendErrors.email" class="invalid-feedback">
+                {{ backendErrors.email }}
               </div>
             </div>
           </div>
@@ -167,6 +170,7 @@ export default {
       telefono: "",
       tipo_documento: "",
       passwordVisible: false,
+      backendErrors: {}
     }
   },
   validations() {
@@ -267,6 +271,9 @@ export default {
           } else if (serverErrors.message === 'Unregistered user') {
             console.log(serverErrors);
             alert(`${serverErrors.message}, el usuario que intentas actualizar no se encuentra en la base de datos.`);
+          }  else if (serverErrors.message === 'El correo electronico ingresado, ya se encuentra registrado en el sistema') {
+            this.backendErrors.email = 'El correo electronico ingresado, ya se encuentra registrado en el sistema';
+            this.v$.email.$reset();
           } else if (serverErrors.message === 'Error updating profile: ') {
             console.log(serverErrors);
             alert(`Ocurrio un error inesperado del lado del servidor: ${serverErrors.message}, vuelve a intentar más tardes`);

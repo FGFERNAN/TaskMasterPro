@@ -28,8 +28,7 @@
               <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
               <div class="form-floating">
                 <input v-model="password" type="password" class="form-control border-input"
-                  :class="{ 'is-invalid': errors.password }" id="password" placeholder="Password" maxlength="20"
-                  minlength="8" required />
+                  :class="{ 'is-invalid': errors.password }" id="password" placeholder="Password" required />
                 <label for="password">Password</label>
                 <div class="invalid-feedback">
                   {{ errors.password || "Ingresa una contraseña" }}

@@ -94,7 +94,7 @@ export default {
         return { v$: useVuelidate() };
     },
     mounted() {
-        document.title = "Crear Clave | TaskMaster Pro";
+        document.title = "Cambiar Clave | TaskMaster Pro";
     },
     data() {
         return {

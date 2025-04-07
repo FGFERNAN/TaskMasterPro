@@ -27,10 +27,13 @@
             <div class="input-group mb-3">
               <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-user-tag"></i></span>
               <input type="text" id="nombre" v-model="nombre" class="form-control border-input"
-                :class="{ 'is-invalid': v$.nombre.$error, 'is-valid': !v$.nombre.$invalid }" placeholder="Name"
+              :class="{ 'is-invalid': v$.nombre.$error || backendErrors.nombre, 'is-valid': !v$.nombre.$invalid && !backendErrors.nombre && nombre }" placeholder="Name"
                 aria-label="Username" aria-describedby="basic-addon1" @blur="v$.nombre.$touch()" />
               <div v-for="error in v$.nombre.$errors" :key="error.$uid" class="invalid-feedback">
                 {{ error.$message }}
+              </div>
+              <div v-if="backendErrors.nombre" class="invalid-feedback">
+                {{ backendErrors.nombre }}
               </div>
             </div>
           </div>
@@ -71,6 +74,7 @@ export default {
     return {
       nombre: '',
       descripcion: '',
+      backendErrors: {}
     };
   },
   validations() {
@@ -117,6 +121,9 @@ export default {
           } else if (serverErrors.message === 'Error creating role: ') {
             console.log(serverErrors.message);
             alert('Ocurrio un error inesperado del lado del servidor, revisa la consola para obtener más detalles');
+          } else if(serverErrors.message === 'El nombre ingresado, ya se encuentra registrado en la base de datos del sistema') {
+            this.backendErrors.nombre = `${serverErrors.message}`;
+            this.v$.nombre.$reset();
           } else if (serverErrors.mensaje === 'Usuario no autenticado') {
             console.log(serverErrors.mensaje);
             alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
