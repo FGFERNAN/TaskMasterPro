@@ -10,9 +10,14 @@ import crearRol from '../components/crearRol.vue';
 import EditarRol from '../components/EditarRol.vue';
 import EditarUsuario from '../components/EditarUsuario.vue';
 import crearClave from '../components/crearClave.vue';
+<<<<<<< Updated upstream
 import cambiarClave from '@/components/cambiarClave.vue';
 import error404  from '../components/errorPermisos.vue';
 import errorGeneral from '@/components/errorGeneral.vue';
+=======
+import editarProyecto from '@/components/editarProyecto.vue';
+
+>>>>>>> Stashed changes
 
 
 
@@ -30,11 +35,17 @@ const routes = [
   { path: '/crear-rol', component: crearRol},
   { path: '/editar-rol/:id', name: 'EditarRol', component: EditarRol, props: true },
   { path: '/editar-usuario/:id', name: 'EditarUsuario', component: EditarUsuario, props: true },
+<<<<<<< Updated upstream
   { path: '/crear-clave/:token', component: crearClave },
   { path: '/modificar-contraseña', component: cambiarClave },
   { path: '/error403', component: error404},
   { path: '/error500', component: errorGeneral}
+=======
+  { path: '/crear-clave', component: crearClave },
+  { path: '/editar-proyecto', component: editarProyecto },
+>>>>>>> Stashed changes
   
+ 
 
 ];
 
