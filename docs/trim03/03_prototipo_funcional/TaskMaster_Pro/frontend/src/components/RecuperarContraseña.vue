@@ -101,11 +101,7 @@ export default {
         }
       }
     },
-<<<<<<< Updated upstream
     goLogin() {
-=======
-    irAInicioSesion() {
->>>>>>> Stashed changes
       this.$router.push('/iniciar-sesion');
     }
   }
