@@ -13,11 +13,8 @@ import crearClave from '../components/crearClave.vue';
 import cambiarClave from '@/components/cambiarClave.vue';
 import error404  from '../components/errorPermisos.vue';
 import errorGeneral from '@/components/errorGeneral.vue';
-<<<<<<< Updated upstream
 import InterfazPrincipal from '@/components/InterfazPrincipal..vue';
 
-=======
->>>>>>> Stashed changes
 
 
 
@@ -38,14 +35,8 @@ const routes = [
   { path: '/crear-clave/:token', component: crearClave },
   { path: '/modificar-contraseña', component: cambiarClave },
   { path: '/error403', component: error404},
-<<<<<<< Updated upstream
   { path: '/error500', component: errorGeneral},
   { path: '/interfaz-principal', component: InterfazPrincipal}
-=======
-  { path: '/error500', component: errorGeneral}
->>>>>>> Stashed changes
-  
- 
 
 ];
 
