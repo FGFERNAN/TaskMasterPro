@@ -10,9 +10,10 @@ SELECT * FROM modulos;
 
 INSERT INTO roles(nombre, descripcion) VALUES ('Administrador', 'Administrador del sistema, que puede realizar cualquier accion disponible del software'),
 ('Lider de Proyecto', 'Lider de proyecto del sistema que como su nombre indica, es el responsable de crear proyectos, asiganarlos, eliminarlos y demas acciones que solo deberia
-realizar un lider de proyecto para mayor orden en la gestion del mismo'),
+realizar un lider de proyectoconsultarPermisos para mayor orden en la gestion del mismo'),
 ('Miembro de Proyecto', 'Miembro de proyecto, es el rol, que puede solo editar proyectos, tareas, subir archivos, enviar mensajes y entre otras acciones que delimitan sus permisos de los del lider'),
 ('StakeHolder/cliente', 'StakeHolder/cliente, creado con el fin de tener mayoritariamente solo acciones de visualizacion y obtener reportes');
+INSERT INTO roles(nombre, descripcion) VALUES ('Prueba', 'Prueba');
 
 SELECT * FROM roles;
 
@@ -22,6 +23,11 @@ INSERT INTO acciones(nombre) VALUES ('Crear Rol'), ('Asignar Rol'), ('Actualizar
 INSERT INTO acciones(nombre) VALUES ('Consultar Rol ID');
 INSERT INTO acciones(nombre) VALUES ('Crear Modulo'), ('Consultar Modulos'), ('Consultar Modulo ID'), ('Actualizar Modulo'),
 ('Eliminar Modulo');
+INSERT INTO acciones(nombre) VALUES ('Editar Perfil');
+INSERT INTO acciones(nombre) VALUES ('Cancelar Cuenta');
+INSERT INTO acciones(nombre) VALUES ('Crear Proyecto'), ('Crear Plantillas Proyecto'), ('Definir Fechas'), ('Definir Prioridad'),
+('Editar Proyecto'), ('Eliminar Proyecto'), ('Asignar Proyecto'), ('Cambiar Estado Proyecto'), ('Filtrar Proyecto'), ('Gestionar Permisos'),
+('Agregar Miembros Proyecto'), ('Eliminar Miembros Proyecto');
 
 SELECT * FROM acciones;
 
@@ -40,6 +46,10 @@ aes_encrypt('HolaMundo', 'clave'), 3, 2);
 
 SELECT * FROM usuarios;
 
+SELECT usuarios.id, usuarios.nombre, usuarios.apellidos, usuarios.email, usuarios.telefono, usuarios.password, roles.nombre AS rol, tipo_documento.nombre AS tipo_documento FROM usuarios
+	JOIN roles ON usuarios.rolID = roles.id
+    JOIN tipo_documento ON usuarios.tipo_documento = tipo_documento.id;
+
 
 ## Permisos para administrador
 
@@ -49,6 +59,11 @@ INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (1,1,2),
 (1,1,9), (1,1,10);
 INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (1,1,12),
 (1,1,13), (1,1,14), (1,1,15), (1,1,16);
+INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (1,1,17);
+INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (1,1,18);
+INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (1,2,19),
+(1,2,20), (1,2,21), (1,2,22), (1,2,23), (1,2,24), (1,2,25), (1,2,26),
+(1,2,27), (1,2,28), (1,2,29), (1,2,30);
 
 
 ## Permisos para Lider de Proyecto
@@ -56,16 +71,27 @@ INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (1,1,12),
 INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (2,1,6);
 INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (2,1,7),
 (2,1,8), (2,1,9), (2,1,10);
+INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (2,1,17);
+INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (2,1,18);
+INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (2,2,19),
+(2,2,20), (2,2,21), (2,2,22), (2,2,23), (2,2,24), (2,2,25), (2,2,26),
+(2,2,27), (2,2,28), (2,2,29), (2,2,30);
 
 
 ## Permisos para Miembro de Proyecto
 
 INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (3,1,7);
+INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (3,1,17);
+INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (3,1,18);
+INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (3,2,23),
+(3,2,27);
 
 
 ## Permisos para StakeHolder/Cliente
 
 INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (4,1,7);
+INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (4,1,17);
+INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (4,1,18);
 
 
 ## Verificar Permisos 
@@ -83,3 +109,35 @@ JOIN modulos ON permisos.moduloID = modulos.id
 JOIN acciones ON permisos.accionesID = acciones.id
 WHERE permisos.rolID = ? AND modulos.nombre = ? AND acciones.nombre = ?;
 
+## Procedimiento almacenado
+CALL consultarPermisos (1, 'Modulo Usuarios', 'Crear Usuario');
+
+## Procedimiento almacenado InsertUser
+CALL insertUser(1, 'Pepito', 'Perez', 'holamundo@gmail.com', '3124331752', aes_encrypt('SENA','clave'), 2, 2);
+
+# Creacion de vista 
+CREATE VIEW getAllUsers AS
+SELECT u.id, u.nombre, u.apellidos, u.email, u.telefono, u.password, r.nombre AS rol, t.nombre AS tipo_documento FROM usuarios u
+	JOIN roles r ON u.rolID = r.id JOIN tipo_documento t ON u.tipo_documento = t.id;
+    
+## Modificación de vista
+CREATE OR REPLACE VIEW getAllUsers AS
+SELECT u.id, u.nombre, u.apellidos, u.email, u.telefono, u.password, r.nombre AS rol, t.nombre AS tipo_documento FROM usuarios u
+	JOIN roles r ON u.rolID = r.id JOIN tipo_documento t ON u.tipo_documento = t.id;
+
+## Como llamar una vista
+SELECT * FROM getAllUsers;
+
+## Creación de vista de proyectos
+CREATE VIEW getAllProjects AS
+SELECT p.id, p.nombre, p.descripcion, p.fechaInicio, p.fechaFin, p.estado, p.prioridad, e.nombre AS etiquetas FROM proyectos p
+	JOIN etiquetas e ON p.etiquetasID = e.id;
+    
+# Como llamar la vista de proyectos
+SELECT * FROM getAllProjects;
+
+## Modificacion de vista de proyectos
+CREATE OR REPLACE VIEW getAllProjects AS
+SELECT p.id, p.nombre, p.descripcion, p.fechaInicio, p.fechaFin, p.estado, p.prioridad, e.nombre AS etiquetas FROM proyectos p
+	LEFT JOIN etiquetas e ON p.etiquetasID = e.id;
+    

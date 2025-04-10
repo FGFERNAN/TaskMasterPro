@@ -35,6 +35,7 @@ class ProjectService {
                 throw new Error("El nombre ingresado ya se encuentra registrado en otro proyecto activo");
             }
             var dataQry = [data.nombre, data.descripcion, data.fechaInicio, data.fechaFin, data.estado, data.prioridad, data.etiquetasID];
+            if(data.fechaInicio > data.fechaFin) throw new Error('La fecha de inicio no puede ser posterior a la fecha de fin');
             var qry = `CALL insertProject(?,?,?,?,?,?,?);`;
             const results = await this.db.query(qry, dataQry);
             if (results.length === 0) {

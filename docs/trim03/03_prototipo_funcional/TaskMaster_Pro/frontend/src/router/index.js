@@ -13,7 +13,7 @@ import crearClave from '../components/crearClave.vue';
 import cambiarClave from '@/components/cambiarClave.vue';
 import error404  from '../components/errorPermisos.vue';
 import errorGeneral from '@/components/errorGeneral.vue';
-import InterfazPrincipal from '@/components/InterfazPrincipal..vue';
+import InterfazPrincipal from '@/components/InterfazPrincipal.vue';
 
 
 

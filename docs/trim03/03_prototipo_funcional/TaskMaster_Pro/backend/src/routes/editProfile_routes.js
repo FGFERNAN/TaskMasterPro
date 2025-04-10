@@ -116,8 +116,96 @@ router.get('/', verificarPermiso('Modulo Usuarios', 'Editar Perfil'), editProfil
  */
 router.post('/', verificarPermiso('Modulo Usuarios', 'Editar Perfil'), editProfileController.editProfile);
 
+/**
+ * @swagger
+ * /editProfile:
+ *   put:
+ *     summary: Editar contraseña del usuario logueado
+ *     description: Edita la contraseña registrada en la BD del usuario logueado.
+ *     tags:
+ *       - Editar Perfil
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               password:
+ *                 type: string
+ *                 example: Holamundo1234$
+ *               newPassword:
+ *                 type: string
+ *                 example: enrique123$
+ *     responses:
+ *       200:
+ *         description: Contraseña actualizada con exito
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Contraseña actualizada con exito
+ *       404:
+ *         description: Usuario sin registrar.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                    message:
+ *                     type: string
+ *                     example: Unregistered user
+ *       400:
+ *         description: Contraseña actual incorrecta.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                    message:
+ *                     type: string
+ *                     example: Password Error
+ *       500:
+ *         description: Error interno del servidor
+ */
 router.put('/', verificarPermiso('Modulo Usuarios', 'Editar Perfil'), editProfileController.editPassword);
 
+/**
+ * @swagger
+ * /editProfile:
+ *   delete:
+ *     summary: Cancelar cuenta del usuario logueado.
+ *     description: El usuario se puede dar de baja de la base de datos del sistema.
+ *     tags:
+ *       - Editar Perfil
+ *     responses:
+ *       200:
+ *         description: Cuenta cancelada con exito
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Cuenta cancelada con exito
+ *       404:
+ *         description: Usuario no encontrado.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                    message:
+ *                     type: string
+ *                     example: User not exists
+ *       400: 
+ *         description: ID inválido.
+ *       
+ */
 router.delete('/', verificarPermiso('Modulo Usuarios', 'Cancelar Cuenta'), editProfileController.cancelUser);
 
 module.exports = router;
