@@ -89,20 +89,19 @@
 }
 
 .buton-intentar-accesso {
-  background-color: #DAF5E3;
-  color: black;
-  border-color: black;
-  font-weight: bold;
-  border: 0.1em solid black;
-  padding: 0.7em;
-  border-radius: 2rem;
+  cursor: pointer;
+  font-style: italic;
+  font-weight: 700;
+  color: #000000;
 }
 
 .buton-intentar-accesso:hover {
-  background-color: #bbeacb;
-  color: #000;
-  border-color: #000;
+  cursor: pointer;
+  font-style: italic;
+  font-weight: 700;
+  color: #3987b4;
 }
+
 .buton-recuperar-contraseña:hover {
   background-color: #3987b4;
   border-color: black;

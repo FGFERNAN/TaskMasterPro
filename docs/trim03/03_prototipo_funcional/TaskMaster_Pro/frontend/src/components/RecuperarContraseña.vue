@@ -31,16 +31,14 @@
             </div>
           </div>
           <p class="text-center">
-  ¿Tienes una cuenta?  
-  <a href="#" class="text-dark fw-bold" @click.prevent="irAInicioSesion">
-   Volver a intentar  el acceso
-  </a>
-</p>
+            ¿Tienes una cuenta?
+            <a class="buton-intentar-accesso" @click="goLogin">
+              Volver a intentar el acceso
+            </a>
+          </p>
           <!-- Botón de Enviar -->
           <div class="d-grid gap-2 col-6 mx-auto">
             <button class="btn btn-primary mt-4 buton-recuperar-contraseña" type="submit">Recuperar contraseña</button>
-            <button class="btn btn-primary mt-2 buton-intentar-accesso" @click="goLogin" type="button">Volver a intentar
-              el acceso</button>
           </div>
         </form>
       </div>

@@ -1,6 +1,7 @@
 const DBConnection = require('../config/dbConnection');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
+const Project = require('../models/project');
 
 const saltRounds = 10;
 
@@ -22,8 +23,8 @@ class UserService {
     async getUserById(id) {
         try {
             const results = await this.db.query(`SELECT * FROM usuarios WHERE id = ?`, [id]);
-            if (results.length === 0) throw new Error("Usuario no encontrado");
-            return new User(...Object.values(results[0]));
+            if (results.length === 0) throw new Error("Proyecto no encontrado");
+            return new Project(...Object.values(results[0]));
         } catch (err) {
             console.error('Error fetching users: ', err.message);
             throw err;
