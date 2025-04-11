@@ -183,12 +183,6 @@ const proyectos = ref([
   { id: 'project6', nombre: 'Investigación', imagen: imgInvestigacion }
 ])
 
-<<<<<<< Updated upstream
-const proyectosChunked = computed(() => [
-  proyectos.value.slice(0, 3),
-  proyectos.value.slice(3, 6)
-])
-=======
 onMounted(() => {
   document.title = "Interfaz Principal | TaskMaster Pro";
 })
@@ -196,7 +190,6 @@ onMounted(() => {
 const proyectosChunked = computed(() => {
   return [proyectos.value.slice(0, 3), proyectos.value.slice(3, 6)]
 })
->>>>>>> Stashed changes
 
 const irAProyecto = () => {
   window.location.href = 'interfazProyecto.html'
@@ -219,7 +212,6 @@ const confirmarCerrarSesion = async () => {
   }
 }
 
-<<<<<<< Updated upstream
 // 🔍 Modal de búsqueda
 const mostrarModalBusqueda = ref(false)
 const busqueda = ref('')
@@ -234,9 +226,6 @@ const resultadosFiltrados = computed(() => {
     p.nombre.toLowerCase().includes(busqueda.value.toLowerCase())
   )
 })
-=======
-
->>>>>>> Stashed changes
 </script>
 
 <style scoped>
