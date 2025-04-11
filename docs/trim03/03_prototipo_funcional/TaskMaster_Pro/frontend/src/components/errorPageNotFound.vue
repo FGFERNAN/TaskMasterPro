@@ -6,7 +6,7 @@
   
   <script>
   import lottie from "lottie-web";
-  import animationData from "@/assets/lottie/error500.json"; // Importar el JSON
+  import animationData from "@/assets/lottie/error404.json"; // Importar el JSON
   
   export default {
     mounted() {
@@ -26,7 +26,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: scale(0.8);
+    transform: scale(0.7);
     height: 100vh; /* Centrar la animación verticalmente */
   }
   </style>

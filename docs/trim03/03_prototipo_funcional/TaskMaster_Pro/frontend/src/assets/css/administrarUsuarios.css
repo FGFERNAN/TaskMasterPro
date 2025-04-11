@@ -172,8 +172,8 @@
   
   .project-box {
     border: 2px solid #000; /* Borde negro */
-    height: 170px; /* Altura del cuadro */
-    margin-bottom: 10px;
+    height: 13em; /* Altura del cuadro */
+    margin-bottom: 5%;
     display: flex;
     align-items: center;
     justify-content: center;

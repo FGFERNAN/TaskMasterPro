@@ -193,7 +193,7 @@ h2::after {
 }
 
 .btn-cerrar-sesion {
-  background-color: #DAF5E3;
+  background-color: #f5e6da;
   color: black;
   border-color: #DAF5E3;
 
@@ -203,6 +203,16 @@ h2::after {
   background-color: #b8ebc9;
   color: black;
   border-color: #b8ebc9;
+}
+
+.btn-cerrar-sesion-ip {
+  background-color: #DAF5E3;
+  color: black;
+ 
+}
+
+.btn-cerrar-sesion-ip:hover {
+  background-color: #A1D9CC;
 }
 
 .btn-perfil {
@@ -217,11 +227,9 @@ h2::after {
 }
 
 .project-box {
-  border: 2px solid #000;
-  /* Borde negro */
-  height: 170px;
-  /* Altura del cuadro */
-  margin-bottom: 10px;
+  border: 2px solid #000; /* Borde negro */
+  height: 13em; /* Altura del cuadro */
+  margin-bottom: 5%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -246,15 +254,12 @@ h2::after {
 }
 
 .project-container {
-  border: 2px solid #000;
-  /* Borde del contenedor principal */
-  padding: 20px;
-  background-color: #DCD2BA;
-  /* Color de fondo para diferenciar el contenedor */
+  border: 2px solid #000; /* Borde del contenedor principal */
+  padding: 3%;
+  background-color: #DAF5E3; /* Color de fondo para diferenciar el contenedor */
   margin-block-end: 3em;
   margin-top: 2em;
 }
-
 .color-badge {
   background-color: #2E7060;
   box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.3);

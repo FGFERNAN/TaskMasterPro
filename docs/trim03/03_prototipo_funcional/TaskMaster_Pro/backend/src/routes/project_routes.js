@@ -1,5 +1,5 @@
 const { Router } = require("express");
-// const verificarPermiso = require('../middlewares/verificarPermiso');
+const verificarPermiso = require('../middlewares/verificarPermiso');
 const ProjectController = require("../controllers/projectController");
 const router = Router();
 
@@ -181,7 +181,7 @@ router.get('/:id', ProjectController.getProjectById);
  *       500:
  *         description: Error interno del servidor
  */
-router.post('/', ProjectController.createProject);
+router.post('/', verificarPermiso('Modulo Gestion Proyecto', 'Crear Proyecto'), ProjectController.createProject);
 
 /**
  * @swagger
@@ -247,7 +247,7 @@ router.post('/', ProjectController.createProject);
  *       500:
  *         description: Error interno en el servidor.
  */
-router.put('/:id', ProjectController.updateProject);
+router.put('/:id', verificarPermiso('Modulo Gestion Proyecto', 'Editar Proyecto'), ProjectController.updateProject);
 
 /**
  * @swagger
@@ -289,6 +289,6 @@ router.put('/:id', ProjectController.updateProject);
  *         description: ID inválido.
  *       
  */
-router.delete('/:id', ProjectController.deleteProject);
+router.delete('/:id', verificarPermiso('Modulo Gestion Proyecto', 'Eliminar Proyecto'), ProjectController.deleteProject);
 
 module.exports = router;

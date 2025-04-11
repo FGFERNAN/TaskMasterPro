@@ -11,9 +11,10 @@ import EditarRol from '../components/EditarRol.vue';
 import EditarUsuario from '../components/EditarUsuario.vue';
 import crearClave from '../components/crearClave.vue';
 import cambiarClave from '@/components/cambiarClave.vue';
-import error404  from '../components/errorPermisos.vue';
+import error403  from '../components/errorPermisos.vue';
 import errorGeneral from '@/components/errorGeneral.vue';
 import InterfazPrincipal from '@/components/InterfazPrincipal.vue';
+import error404 from '@/components/errorPageNotFound.vue';
 
 
 
@@ -34,9 +35,10 @@ const routes = [
   { path: '/editar-usuario/:id', name: 'EditarUsuario', component: EditarUsuario, props: true },
   { path: '/crear-clave/:token', component: crearClave },
   { path: '/modificar-contraseña', component: cambiarClave },
-  { path: '/error403', component: error404},
+  { path: '/error403', component: error403},
   { path: '/error500', component: errorGeneral},
-  { path: '/interfaz-principal', component: InterfazPrincipal}
+  { path: '/interfaz-principal', component: InterfazPrincipal},
+  { path: '/:pathMatch(.*)*', name: 'NotFound', component: error404}
 
 ];
 
