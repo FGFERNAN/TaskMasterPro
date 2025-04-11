@@ -147,7 +147,7 @@
                 <div class="col"></div>
                 <div class="col"></div>
                 <div class="col d-flex justify-content-end">
-                  <button @click="crearProyecto" class="btn btn-primary rounded-circle boton-crear">
+                  <button @click="crearProyecto" class="btn btn-primary rounded-circle buton-crear">
                     <i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
