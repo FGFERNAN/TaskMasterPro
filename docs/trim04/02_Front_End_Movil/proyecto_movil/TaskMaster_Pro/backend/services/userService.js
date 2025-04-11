@@ -1,5 +1,5 @@
-const DBConnection = require('../config/dbConnection');
-const bcrypt = require('bcrypt');
+const DBConnection = require('../config/config');
+const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 
 const saltRounds = 10;

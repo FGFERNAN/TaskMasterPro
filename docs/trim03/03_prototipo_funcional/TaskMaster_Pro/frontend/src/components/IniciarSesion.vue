@@ -90,7 +90,7 @@ export default {
         });
         console.log(response.data);
         alert(response.data.message);
-        this.$router.push("/perfil-completo");
+        this.$router.push("/interfaz-principal");
       } catch (error) {
         if (error.response && error.response.data) {
           const serverErrors = error.response.data;

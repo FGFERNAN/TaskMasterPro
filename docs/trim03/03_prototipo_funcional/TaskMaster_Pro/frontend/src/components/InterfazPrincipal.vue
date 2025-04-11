@@ -100,7 +100,7 @@
                 <button class="btn btn-cerrar-sesion-ip" @click="confirmarCerrarSesion">
                   <i class="fa-solid fa-right-to-bracket me-1"></i> Cerrar Sesión
                 </button>
-                <a href="perfil.html" class="btn btn-perfil"><i class="fa-solid fa-user me-1"></i> Perfil</a>
+                <a class="btn btn-perfil" @click="irPerfil"><i class="fa-solid fa-user me-1"></i> Perfil</a>
               </div>
             </div>
             <div class="text-center">
@@ -161,7 +161,11 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+
+import { ref, computed, onMounted, } from 'vue'
+import { useRouter } from 'vue-router';
+import api from '@/services/api';
+const router = useRouter();
 
 import imgVeterinaria from '../assets/img/proyecto_veterinaria.jpg'
 import imgFinanzas from '../assets/img/proyecto_finanzas.jpg'
@@ -179,25 +183,43 @@ const proyectos = ref([
   { id: 'project6', nombre: 'Investigación', imagen: imgInvestigacion }
 ])
 
+<<<<<<< Updated upstream
 const proyectosChunked = computed(() => [
   proyectos.value.slice(0, 3),
   proyectos.value.slice(3, 6)
 ])
+=======
+onMounted(() => {
+  document.title = "Interfaz Principal | TaskMaster Pro";
+})
+
+const proyectosChunked = computed(() => {
+  return [proyectos.value.slice(0, 3), proyectos.value.slice(3, 6)]
+})
+>>>>>>> Stashed changes
 
 const irAProyecto = () => {
   window.location.href = 'interfazProyecto.html'
 }
 
+const irPerfil = () => {
+  router.push('/perfil-completo');
+};
+
 const crearProyecto = () => {
   window.location.href = 'creacionProyecto.html'
 }
 
-const confirmarCerrarSesion = () => {
-  if (confirm('¿Seguro que quieres cerrar sesión ?')) {
-    window.location.href = '../../public/index.html'
+const confirmarCerrarSesion = async () => {
+  if (confirm("¿Estás seguro que quieres cerrar sesión?")) {
+    // Lógica para cerrar sesión, por ejemplo, redirigir a la página de login
+    const response = await api.post("/logout");
+    router.push("/iniciar-sesion");
+    alert(response.data.message);
   }
 }
 
+<<<<<<< Updated upstream
 // 🔍 Modal de búsqueda
 const mostrarModalBusqueda = ref(false)
 const busqueda = ref('')
@@ -212,6 +234,9 @@ const resultadosFiltrados = computed(() => {
     p.nombre.toLowerCase().includes(busqueda.value.toLowerCase())
   )
 })
+=======
+
+>>>>>>> Stashed changes
 </script>
 
 <style scoped>

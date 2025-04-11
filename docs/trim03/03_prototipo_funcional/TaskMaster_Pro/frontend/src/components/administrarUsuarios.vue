@@ -193,6 +193,10 @@ export default {
           } else if (serverErrors.message === 'Usuario no eliminado'){
             console.log(serverErrors.message);
             alert(serverErrors.message);
+          } else if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
           } else if(serverErrors.message === 'Error deleting user: '){
             console.log('Ocurrio un error inesperado del lado del servidor: ', serverErrors);
             alert('Ocurrio un error inesperado del lado del servidor, revisa la consola para obtener más detalles');
