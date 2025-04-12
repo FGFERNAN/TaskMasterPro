@@ -1,84 +1,117 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import { getProduct, createProduct, updateProduct, deleteProduct, getProductById } from '../../../../data/source/remote/api/ApiDelivery';
+import { getUser, getUserById, updateUser, deleteUser, createUser } from '../../../../data/source/remote/api/ApiDelivery';
 import { RemoveUserLocalUseCase } from "../../../../domain/useCases/userLocal/removeUserLocal";
 
-interface Product {
+interface User {
     id: number;
-    name: string;
-    price: number;
+    nombre: string;
+    apellidos: string;
+    email: string;
+    telefono: string;
+    password: string;
+    rolID: number;
+    tipo_documento: number;
 }
 
 const ProfileInfoViewModel = () => {
-    const [products, setProducts] = useState<Product[]>([]);
-    const [name, setName] = useState('');
-    const [price, setPrice] = useState('');
+    const [users, setUsers] = useState<User[]>([]);
+    const [id, setId] = useState('');
+    const [nombre, setNombre] = useState('');
+    const [apellidos, setApellidos] = useState('');
+    const [email, setEmail] = useState('');
+    const [telefono, setTelefono] = useState('');
+    const [password, setPassword] = useState('');
+    const [rolID, setRolID] = useState('');
+    const [tipo_documento, setTipo_documento] = useState('');
     const [searchId, setSearchId] = useState('')
-    const [selectedProductId, setSelectedProductId] = useState<number | null>(null);
+    const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
     const [isModalVisible, setModalVisible] = useState(false);
-    const [searchedProduct, setSearchedProduct] = useState<Product | null>(null);
+    const [searchedUser, setSearchedUser] = useState<User | null>(null);
 
     useEffect(() => {
-        fetchProducts();;
+        fetchUsers();;
     }, []);
 
-    const fetchProducts = async () => {
-        const data = await getProduct();
-        setProducts(data);
+    const fetchUsers = async () => {
+        const data = await getUser();
+        setUsers(data);
     };
 
-    const handleAddProduct = async () => {
-        const newProduct = await createProduct({ name, price });
-        setProducts([...products, newProduct]);
-        setName('');
-        setPrice('');
+    const handleAddUser = async () => {
+        const newUser = await createUser({ id, nombre, apellidos, email, telefono, password, rolID, tipo_documento });
+        setUsers([...users, newUser]);
+        setId('');
+        setNombre('');
+        setApellidos('');
+        setEmail('');
+        setTelefono('');
+        setPassword('');
+        setRolID('');
+        setTipo_documento('');
     };
 
-    const handleUpdateProduct = async () => {
-        if (selectedProductId !== null) {
-            const updatedProduct = await updateProduct(selectedProductId, { name, price });
-            setProducts(products.map(product => product.id === selectedProductId ? updatedProduct : product));
-            setSelectedProductId(null);
-            setName('');
-            setPrice('');
+    const handleUpdateUser = async () => {
+        if (selectedUserId !== null) {
+            const updatedUser = await updateUser(selectedUserId, { nombre, apellidos, email, telefono, rolID, tipo_documento });
+            setUsers(users.map(user => user.id === selectedUserId ? updatedUser : user));
+            setSelectedUserId(null);
+            setNombre('');
+            setApellidos('');
+            setEmail('');
+            setTelefono('');
+            setRolID('');
+            setTipo_documento('');
         }
     };
-    
 
-    const handleDeleteProduct = async (id: number) => {
-        await deleteProduct(id);
-        setProducts(products.filter(product => product.id !== id));
+
+    const handleDeleteUser = async (id: number) => {
+        await deleteUser(id);
+        setUsers(users.filter(user => user.id !== id));
     };
 
-    const handleSearchProduct = async () => {
-        const product = await getProductById(parseInt(searchId));
-        setSearchedProduct(product);
+    const handleSearchUser = async () => {
+        const users = await getUserById(parseInt(searchId));
+        setSearchedUser(users);
     };
 
     const toggleModal = () => {
         setModalVisible(!isModalVisible);
     };
-    
+
     const removeSession = async () => {
         await RemoveUserLocalUseCase();
     }
     return {
-        products,
-        name,
-        price,
+        users,
+        id,
+        nombre,
+        apellidos,
+        email,
+        telefono,
+        password,
+        rolID,
+        tipo_documento,
         searchId,
-        selectedProductId,
+        selectedUserId,
         isModalVisible,
-        searchedProduct,
-        setName,
-        setPrice,
+        searchedUser,
+        setId,
+        setNombre,
+        setApellidos,
+        setEmail,
+        setTelefono,
+        setPassword,
+        setRolID,
+        setTipo_documento,
         setSearchId,
-        setSelectedProductId,
+        setSelectedUserId,
         toggleModal,
-        handleAddProduct,
-        handleUpdateProduct,
-        handleDeleteProduct,
-        handleSearchProduct,
+        handleAddUser,
+        handleUpdateUser,
+        handleDeleteUser,
+        handleSearchUser,
         removeSession
     }
 }

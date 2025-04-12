@@ -46,6 +46,7 @@ class LoginController {
             };
 
             return res.status(201).json({
+                success: true,
                 message: 'Usuario Autenticado',
                 data: data,
                 status: 201

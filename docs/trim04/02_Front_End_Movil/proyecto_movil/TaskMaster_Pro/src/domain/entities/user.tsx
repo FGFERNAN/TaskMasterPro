@@ -1,10 +1,11 @@
 export interface User {
-    id?: string;
-    name: string;
-    lastname: string;
-    phone: string;
+    id?: number;
+    nombre: string;
+    apellidos: string;
     email: string;
+    telefono: string;
     password: string;
-    confirmPassword: string;
+    rolID: number;
+    tipo_documento: number;
     session_token?: string;
 }

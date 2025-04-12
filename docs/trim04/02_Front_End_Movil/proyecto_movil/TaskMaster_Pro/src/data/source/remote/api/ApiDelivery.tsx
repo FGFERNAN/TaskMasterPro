@@ -1,34 +1,34 @@
 import axios from "axios";
 
 const ApiDelivery = axios.create({
-    baseURL: 'http://192.168.80.15:3000/api',
+    baseURL: 'http://192.168.80.15:3000',
     headers: {
         'Content-Type': 'application/json'
     }
 });
 
-export const getProduct = async () => {
-    const response = await ApiDelivery.get('/products');
-    return response.data;
+export const getUser = async () => {
+    const response = await ApiDelivery.get('/users');
+    return response.data.data;
 };
 
-export const getProductById = async (id) => {
-    const response = await ApiDelivery.get(`/products/${id}`);
-    return response.data;
+export const getUserById = async (id) => {
+    const response = await ApiDelivery.get(`/users/${id}`);
+    return response.data.data;
 };
 
-export const createProduct = async (product) => {
-    const response = await ApiDelivery.post('/products/create', product);
-    return response.data;
+export const createUser = async (user) => {
+    const response = await ApiDelivery.post('/users', user);
+    return response.data.data;
 };
 
-export const updateProduct = async (id, product) => {
-    const response = await ApiDelivery.put(`/products/update/${id}`, product);
-    return response.data;
+export const updateUser = async (id, user) => {
+    const response = await ApiDelivery.put(`/users/${id}`, user);
+    return response.data.data;
 };
 
-export const deleteProduct = async (id) => {
-    const response = await ApiDelivery.delete(`/products/${id}`);
+export const deleteUser = async (id) => {
+    const response = await ApiDelivery.delete(`/users/${id}`);
     return response.data;
 };
 export {ApiDelivery};

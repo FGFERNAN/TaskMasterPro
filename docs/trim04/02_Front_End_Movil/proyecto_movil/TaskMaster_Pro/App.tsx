@@ -2,7 +2,7 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { HomeScreen } from './src/presentation/views/home/home';
-import { RegisterScreen } from './src/presentation/views/register/register';
+// import { RegisterScreen } from './src/presentation/views/register/register';
 import { ProfileInfoScreen } from './src/presentation/views/profile/info/profileInfo';
 
 export type RootStackParamList = {
@@ -25,14 +25,14 @@ const App = () => {
           component={HomeScreen}
         />
 
-        <Stack.Screen
+        {/* <Stack.Screen
         name="RegisterScreen"
         component={RegisterScreen}
         options={{
           headerShown: true,
           title: 'Registro'
         }}
-        />
+        /> */}
         <Stack.Screen 
           name="ProfileInfoScreen" 
           component={ProfileInfoScreen} 

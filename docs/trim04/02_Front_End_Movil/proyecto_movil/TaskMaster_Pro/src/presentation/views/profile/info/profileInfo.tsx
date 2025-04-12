@@ -10,22 +10,34 @@ interface Props extends StackScreenProps<RootStackParamList, 'ProfileInfoScreen'
 
 export const ProfileInfoScreen = ({ navigation, route }: Props) => {
     const {
-        products,
-        name,
-        price,
+        users,
+        id,
+        nombre,
+        apellidos,
+        email,
+        telefono,
+        password,
+        rolID,
+        tipo_documento,
         searchId,
-        selectedProductId,
+        selectedUserId,
         isModalVisible,
-        searchedProduct,
-        setName,
-        setPrice,
+        searchedUser,
+        setId,
+        setNombre,
+        setApellidos,
+        setEmail,
+        setTelefono,
+        setPassword,
+        setRolID,
+        setTipo_documento,
         setSearchId,
-        setSelectedProductId,
+        setSelectedUserId,
         toggleModal,
-        handleAddProduct,
-        handleUpdateProduct,
-        handleDeleteProduct,
-        handleSearchProduct,
+        handleAddUser,
+        handleUpdateUser,
+        handleDeleteUser,
+        handleSearchUser,
         removeSession
     } = useViewModel();
     return (
@@ -39,22 +51,28 @@ export const ProfileInfoScreen = ({ navigation, route }: Props) => {
                     <Text style={styles.buttonText}>Cerrar Sesión</Text>
                 </TouchableOpacity>
             </View>
-                <Text style={styles.title}>Productos</Text>
+                <Text style={styles.title}>Usarios</Text>
                 <FlatList
-                    data={products}
+                    data={users}
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={({ item }) => (
                         <View style={styles.productContainer}>
-                            <Text style={styles.productText}>{item.name} - ${item.price}</Text>
+                            <Text style={styles.productText}>{item.id} - {item.nombre} - {item.apellidos} - {item.email} - {item.telefono} - {item.password} - {item.rolID} - {item.tipo_documento}</Text>
                             <View style={styles.buttonContainer}>
                                 <TouchableOpacity style={styles.button} onPress={() => {
-                                    setName(item.name);
-                                    setPrice(item.price.toString());
-                                    setSelectedProductId(item.id);
+                                    setId(item.id.toString());
+                                    setNombre(item.nombre);
+                                    setApellidos(item.apellidos);
+                                    setEmail(item.email);
+                                    setTelefono(item.telefono);
+                                    setPassword(item.password);
+                                    setRolID(item.rolID.toString());
+                                    setTipo_documento(item.tipo_documento.toString());
+                                    setSelectedUserId(item.id);
                                 }}>
                                     <Text style={styles.buttonText}>Modificar</Text>
                                 </TouchableOpacity>
-                                <TouchableOpacity style={styles.buttonDelete} onPress={() => handleDeleteProduct(item.id)}>
+                                <TouchableOpacity style={styles.buttonDelete} onPress={() => handleDeleteUser(item.id)}>
                                     <Text style={styles.buttonText}>Eliminar</Text>
                                 </TouchableOpacity>
 
@@ -64,19 +82,55 @@ export const ProfileInfoScreen = ({ navigation, route }: Props) => {
                 />
             <TextInput
                 style={styles.input}
-                placeholder="Nombre"
-                value={name}
-                onChangeText={setName}
+                placeholder="ID"
+                value={id}
+                onChangeText={setId}
+                keyboardType="numeric"
             />
             <TextInput
                 style={styles.input}
-                placeholder="Precio"
-                value={price}
-                onChangeText={setPrice}
-                keyboardType="numeric"
+                placeholder="Nombre"
+                value={nombre}
+                onChangeText={setNombre}
             />
-            <TouchableOpacity style={styles.addButton} onPress={selectedProductId ? handleUpdateProduct : handleAddProduct}>
-                <Text style={styles.addButtonText}>{selectedProductId ? "Modificar Producto" : "Crear Producto"}</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="Apellidos"
+                value={apellidos}
+                onChangeText={setApellidos}
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Email"
+                value={email}
+                onChangeText={setEmail}
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Telefono"
+                value={telefono}
+                onChangeText={setTelefono}
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Contraseña"
+                value={password}
+                onChangeText={setPassword}
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Rol"
+                value={rolID}
+                onChangeText={setRolID}
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Tipo Documento"
+                value={tipo_documento}
+                onChangeText={setTipo_documento}
+            />
+            <TouchableOpacity style={styles.addButton} onPress={selectedUserId ? handleUpdateUser : handleAddUser}>
+                <Text style={styles.addButtonText}>{selectedUserId ? "Modificar Usuario" : "Crear Usuario"}</Text>
             </TouchableOpacity>
             <TextInput
                 style={styles.input}
@@ -85,12 +139,12 @@ export const ProfileInfoScreen = ({ navigation, route }: Props) => {
                 onChangeText={setSearchId}
                 keyboardType="numeric"
             />
-            <TouchableOpacity style={styles.searchButton} onPress={handleSearchProduct}>
-                <Text style={styles.searchButtonText}>Buscar Producto</Text>
+            <TouchableOpacity style={styles.searchButton} onPress={handleSearchUser}>
+                <Text style={styles.searchButtonText}>Buscar Usuario</Text>
             </TouchableOpacity>
-            {searchedProduct && (
+            {searchedUser && (
                 <View style={styles.productContainer}>
-                    <Text style={styles.productText}> Producto Buscado: {searchedProduct.name} - ${searchedProduct.price}</Text>
+                    <Text style={styles.productText}> Usuario Buscado: {searchedUser.nombre} - {searchedUser.apellidos}</Text>
                 </View>
             )}
             <TouchableOpacity style={styles.reportButton} onPress={toggleModal}>
@@ -98,9 +152,9 @@ export const ProfileInfoScreen = ({ navigation, route }: Props) => {
             </TouchableOpacity>
             <Modal isVisible={isModalVisible}>
                 <View style={styles.modalContent}>
-                    <Text style={styles.modalTitle}>Reporte de Productos</Text>
-                    {products.map(product => (
-                        <Text key={product.id} style={styles.modalText}>{product.name} - ${product.price}</Text>
+                    <Text style={styles.modalTitle}>Reporte de Usuarios</Text>
+                    {users.map(user => (
+                        <Text key={user.id} style={styles.modalText}>{user.nombre} - {user.apellidos}</Text>
                     ))}
                     <TouchableOpacity onPress={toggleModal} style={styles.closeButton}>
                         <Text style={styles.closeButtonText}>Cerrar</Text>
