@@ -22,8 +22,8 @@ const ProfileInfoViewModel = () => {
     const [email, setEmail] = useState('');
     const [telefono, setTelefono] = useState('');
     const [password, setPassword] = useState('');
-    const [rolID, setRolID] = useState('');
-    const [tipo_documento, setTipo_documento] = useState('');
+    const [rolID, setRolID] = useState(0);
+    const [tipo_documento, setTipo_documento] = useState(0);
     const [searchId, setSearchId] = useState('')
     const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
     const [isModalVisible, setModalVisible] = useState(false);
@@ -47,8 +47,8 @@ const ProfileInfoViewModel = () => {
         setEmail('');
         setTelefono('');
         setPassword('');
-        setRolID('');
-        setTipo_documento('');
+        setRolID(0);
+        setTipo_documento(0);
     };
 
     const handleUpdateUser = async () => {
@@ -60,8 +60,8 @@ const ProfileInfoViewModel = () => {
             setApellidos('');
             setEmail('');
             setTelefono('');
-            setRolID('');
-            setTipo_documento('');
+            setRolID(0);
+            setTipo_documento(0);
         }
     };
 
@@ -112,7 +112,8 @@ const ProfileInfoViewModel = () => {
         handleUpdateUser,
         handleDeleteUser,
         handleSearchUser,
-        removeSession
+        removeSession,
+        fetchUsers
     }
 }
 

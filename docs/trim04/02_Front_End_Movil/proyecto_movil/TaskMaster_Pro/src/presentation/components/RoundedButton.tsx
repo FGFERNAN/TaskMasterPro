@@ -3,15 +3,17 @@ import { TouchableOpacity, Text, Button, StyleSheet } from 'react-native';
 import { MyColors } from '../theme/appTheme';
 
 interface Props{
-    text: string,
-    onPress: () => void
+    text: string;
+    onPress: () => void;
+    disabled?: boolean;
 }
 
-export const RoundedButton = ({text, onPress}:Props) => {
+export const RoundedButton = ({text, onPress, disabled = false }:Props) => {
   return (
     <TouchableOpacity
-    style={styles.RoundedButton}
+    style={[styles.RoundedButton, disabled && styles.disabledButton]}
     onPress={() => onPress()}
+    disabled={disabled}
     >
         <Text style={styles.textButton}>{text}</Text>
     </TouchableOpacity>
@@ -29,5 +31,9 @@ const styles = StyleSheet.create({
     },
     textButton:{
         color: 'white'
-    }
+    },
+    disabledButton: {
+        backgroundColor: '#CCCCCC', // Color cuando está deshabilitado
+        opacity: 0.6
+      },
 })

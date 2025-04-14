@@ -5,7 +5,7 @@ import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../../App';
 import { useNavigation } from '@react-navigation/native';
 import useViewModel from './viewModel';
-import { CustomTextInput } from '../../components/CusatomTextInput';
+import { CustomTextInput } from '../../components/CustomTextInput';
 import styles from './styles';
 
 interface Props extends StackScreenProps<RootStackParamList, 'HomeScreen'>{};
@@ -14,7 +14,7 @@ export const HomeScreen = ({ navigation, route }: Props) => {
 
   const { email, password, errorMessage, user, onChange, login } = useViewModel();
 
-  //const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+//   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   useEffect(() => {
     if (errorMessage !== '') {
@@ -24,7 +24,7 @@ export const HomeScreen = ({ navigation, route }: Props) => {
 
   useEffect(() => {
     if (user?.id !== null && user?.id !== undefined) {
-      navigation.replace('ProfileInfoScreen');
+      navigation.replace('ProfileInfoScreen', { refresh: true });
     }
   }, [user])
 
@@ -68,12 +68,12 @@ export const HomeScreen = ({ navigation, route }: Props) => {
                     <RoundedButton text='ENTRAR' onPress={() => login()}
                     />
                 </View>
-                <View style={styles.formRegister}>
+                {/* <View style={styles.formRegister}>
                     <Text>¿No tienes cuenta ?</Text>
                     <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
                         <Text style={styles.formRegisterText}>Registrate</Text>
                     </TouchableOpacity>
-                </View>
+                </View> */}
             </View >
         </View>
 

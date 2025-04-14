@@ -1,6 +1,17 @@
 import { StyleSheet } from "react-native";
 
 const registerStyles = StyleSheet.create({
+    pickerContainer: {
+        backgroundColor: '#f0f0f0',
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: '#d1d1d1',
+        marginVertical: 10,
+    },
+    picker: {
+        height: 50,
+        width: '100%',
+    },
     container: {
         flex: 1,
         backgroundColor: 'black',

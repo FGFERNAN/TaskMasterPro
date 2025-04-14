@@ -1,5 +1,6 @@
 import { StackScreenProps } from "@react-navigation/stack";
 import React from "react";
+import { useEffect } from 'react'
 import { View, Text, FlatList, Button, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import { RootStackParamList } from "../../../../../App";
 import useViewModel from './viewModel';
@@ -38,8 +39,16 @@ export const ProfileInfoScreen = ({ navigation, route }: Props) => {
         handleUpdateUser,
         handleDeleteUser,
         handleSearchUser,
-        removeSession
+        removeSession,
+        fetchUsers
     } = useViewModel();
+    useEffect(() => {
+        if (route.params?.refresh) {
+            fetchUsers();
+            // Limpia el parámetro después de usarlo
+            navigation.setParams({ refresh: undefined });
+        }
+    }, [route.params?.refresh]);
     return (
         <View style={styles.container}>
             <View style={styles.buttonContainer}>
@@ -51,86 +60,36 @@ export const ProfileInfoScreen = ({ navigation, route }: Props) => {
                     <Text style={styles.buttonText}>Cerrar Sesión</Text>
                 </TouchableOpacity>
             </View>
-                <Text style={styles.title}>Usarios</Text>
-                <FlatList
-                    data={users}
-                    keyExtractor={(item) => item.id.toString()}
-                    renderItem={({ item }) => (
-                        <View style={styles.productContainer}>
-                            <Text style={styles.productText}>{item.id} - {item.nombre} - {item.apellidos} - {item.email} - {item.telefono} - {item.password} - {item.rolID} - {item.tipo_documento}</Text>
-                            <View style={styles.buttonContainer}>
-                                <TouchableOpacity style={styles.button} onPress={() => {
-                                    setId(item.id.toString());
-                                    setNombre(item.nombre);
-                                    setApellidos(item.apellidos);
-                                    setEmail(item.email);
-                                    setTelefono(item.telefono);
-                                    setPassword(item.password);
-                                    setRolID(item.rolID.toString());
-                                    setTipo_documento(item.tipo_documento.toString());
-                                    setSelectedUserId(item.id);
-                                }}>
-                                    <Text style={styles.buttonText}>Modificar</Text>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={styles.buttonDelete} onPress={() => handleDeleteUser(item.id)}>
-                                    <Text style={styles.buttonText}>Eliminar</Text>
-                                </TouchableOpacity>
+            <Text style={styles.title}>Usarios</Text>
+            <FlatList
+                data={users}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({ item }) => (
+                    <View style={styles.productContainer}>
+                        <Text style={styles.productText}>{item.id} - {item.nombre} {item.apellidos} - {item.email} - {item.rolID}</Text>
+                        <View style={styles.buttonContainer}>
+                            <TouchableOpacity
+                                style={styles.button}
+                                onPress={() => {
+                                    navigation.navigate('ModifyScreen', {
+                                        user: item // Pasamos el objeto de usuario completo
+                                    });
+                                }}
+                            >
+                                <Text style={styles.buttonText}>Modificar</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.buttonDelete} onPress={() => handleDeleteUser(item.id)}>
+                                <Text style={styles.buttonText}>Eliminar</Text>
+                            </TouchableOpacity>
 
-                            </View>
                         </View>
-                    )}
-                />
-            <TextInput
-                style={styles.input}
-                placeholder="ID"
-                value={id}
-                onChangeText={setId}
-                keyboardType="numeric"
+                    </View>
+                )}
             />
-            <TextInput
-                style={styles.input}
-                placeholder="Nombre"
-                value={nombre}
-                onChangeText={setNombre}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Apellidos"
-                value={apellidos}
-                onChangeText={setApellidos}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Email"
-                value={email}
-                onChangeText={setEmail}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Telefono"
-                value={telefono}
-                onChangeText={setTelefono}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Contraseña"
-                value={password}
-                onChangeText={setPassword}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Rol"
-                value={rolID}
-                onChangeText={setRolID}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Tipo Documento"
-                value={tipo_documento}
-                onChangeText={setTipo_documento}
-            />
-            <TouchableOpacity style={styles.addButton} onPress={selectedUserId ? handleUpdateUser : handleAddUser}>
-                <Text style={styles.addButtonText}>{selectedUserId ? "Modificar Usuario" : "Crear Usuario"}</Text>
+            <TouchableOpacity style={styles.addButton} onPress={() => {
+                navigation.navigate('CreateScreen');
+            }}>
+                <Text style={styles.addButtonText}>Crear Usuario</Text>
             </TouchableOpacity>
             <TextInput
                 style={styles.input}
@@ -144,7 +103,7 @@ export const ProfileInfoScreen = ({ navigation, route }: Props) => {
             </TouchableOpacity>
             {searchedUser && (
                 <View style={styles.productContainer}>
-                    <Text style={styles.productText}> Usuario Buscado: {searchedUser.nombre} - {searchedUser.apellidos}</Text>
+                    <Text style={styles.productText}> Usuario Buscado: {searchedUser.nombre} {searchedUser.apellidos}</Text>
                 </View>
             )}
             <TouchableOpacity style={styles.reportButton} onPress={toggleModal}>
@@ -154,7 +113,7 @@ export const ProfileInfoScreen = ({ navigation, route }: Props) => {
                 <View style={styles.modalContent}>
                     <Text style={styles.modalTitle}>Reporte de Usuarios</Text>
                     {users.map(user => (
-                        <Text key={user.id} style={styles.modalText}>{user.nombre} - {user.apellidos}</Text>
+                        <Text key={user.id} style={styles.modalText}>{user.id} - {user.nombre} {user.apellidos}</Text>
                     ))}
                     <TouchableOpacity onPress={toggleModal} style={styles.closeButton}>
                         <Text style={styles.closeButtonText}>Cerrar</Text>
