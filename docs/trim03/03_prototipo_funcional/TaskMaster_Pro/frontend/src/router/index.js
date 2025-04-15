@@ -13,8 +13,11 @@ import crearClave from '../components/crearClave.vue';
 import cambiarClave from '@/components/cambiarClave.vue';
 import error403  from '../components/errorPermisos.vue';
 import errorGeneral from '@/components/errorGeneral.vue';
-import InterfazPrincipal from '@/components/InterfazPrincipal.vue';
+import InterfazPrincipal from '@/components/prueba';
 import error404 from '@/components/errorPageNotFound.vue';
+import MiembrosPage from '@/components/MiembrosPage.vue';
+
+
 
 
 
@@ -38,7 +41,8 @@ const routes = [
   { path: '/error403', component: error403},
   { path: '/error500', component: errorGeneral},
   { path: '/interfaz-principal', component: InterfazPrincipal},
-  { path: '/:pathMatch(.*)*', name: 'NotFound', component: error404}
+  { path: '/:pathMatch(.*)*', name: 'NotFound', component: error404},
+  { path: '/miembros-page', component: MiembrosPage }
 
 ];
 
