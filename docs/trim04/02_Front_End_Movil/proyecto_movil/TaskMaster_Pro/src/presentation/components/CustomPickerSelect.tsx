@@ -1,9 +1,12 @@
 import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import { FontAwesome } from '@expo/vector-icons';
 
 interface Props {
-    image: any;
+    icon: any;
+    size: number;
+    color: string;
     placeholder: string;
     value: number;
     property: string;
@@ -12,7 +15,9 @@ interface Props {
 }
 
 export const CustomPickerSelect = ({
-    image,
+    icon,
+    size,
+    color,
     placeholder,
     value,
     property,
@@ -21,7 +26,7 @@ export const CustomPickerSelect = ({
 }: Props) => {
     return (
         <View style={styles.formInput}>
-            <Image style={styles.formIcon} source={image} />
+            <FontAwesome style={styles.formIcon} name={icon} size={size} color={color}/>
             <View style={styles.pickerContainer}>
                 <Picker
                     selectedValue={value}
@@ -31,10 +36,10 @@ export const CustomPickerSelect = ({
                 >
                     <Picker.Item label={placeholder} value={0} />
                     {options.map((option) => (
-                        <Picker.Item 
-                            key={option.value} 
-                            label={option.label} 
-                            value={option.value} 
+                        <Picker.Item
+                            key={option.value}
+                            label={option.label}
+                            value={option.value}
                         />
                     ))}
                 </Picker>
@@ -45,20 +50,18 @@ export const CustomPickerSelect = ({
 
 const styles = StyleSheet.create({
     formIcon: {
-        width: 25,
-        height: 25,
-        margin: 30,
-    },
-    formInput: {
+        marginRight: 15,
+        marginTop: 15
+      },
+      formInput: {
         flexDirection: 'row',
-        marginTop: 30,
-        alignItems: 'center',
-    },
+        marginTop: 40,
+      },
     pickerContainer: {
         flex: 1,
-        borderBottomWidth: 1,
-        borderBottomColor: 'orange',
-        marginLeft: 15,
+        borderBottomWidth: 2,
+        borderBottomColor: '#2E7060',
+        marginLeft: 5,
     },
     picker: {
         width: '100%',

@@ -6,6 +6,7 @@ import { RootStackParamList } from "../../../../../App";
 import useViewModel from './viewModel';
 import Modal from 'react-native-modal';
 import styles from "./styles";
+import { FontAwesome } from '@expo/vector-icons';
 
 interface Props extends StackScreenProps<RootStackParamList, 'ProfileInfoScreen'> { };
 
@@ -81,16 +82,11 @@ export const ProfileInfoScreen = ({ navigation, route }: Props) => {
                             <TouchableOpacity style={styles.buttonDelete} onPress={() => handleDeleteUser(item.id)}>
                                 <Text style={styles.buttonText}>Eliminar</Text>
                             </TouchableOpacity>
-
                         </View>
                     </View>
                 )}
             />
-            <TouchableOpacity style={styles.addButton} onPress={() => {
-                navigation.navigate('CreateScreen');
-            }}>
-                <Text style={styles.addButtonText}>Crear Usuario</Text>
-            </TouchableOpacity>
+            <View style={styles.buttonContainer}>
             <TextInput
                 style={styles.input}
                 placeholder="Numero de ID"
@@ -99,13 +95,20 @@ export const ProfileInfoScreen = ({ navigation, route }: Props) => {
                 keyboardType="numeric"
             />
             <TouchableOpacity style={styles.searchButton} onPress={handleSearchUser}>
-                <Text style={styles.searchButtonText}>Buscar Usuario</Text>
+                {/* <Text style={styles.searchButtonText}>Buscar Usuario</Text> */}
+                <FontAwesome name={"search"} size={15} color={"white"}/>
             </TouchableOpacity>
+            </View>
             {searchedUser && (
                 <View style={styles.productContainer}>
                     <Text style={styles.productText}> Usuario Buscado: {searchedUser.nombre} {searchedUser.apellidos}</Text>
                 </View>
             )}
+            <TouchableOpacity style={styles.addButton} onPress={() => {
+                navigation.navigate('CreateScreen');
+            }}>
+                <Text style={styles.addButtonText}>Crear Usuario</Text>
+            </TouchableOpacity>
             <TouchableOpacity style={styles.reportButton} onPress={toggleModal}>
                 <Text style={styles.reportButtonText}>Generar Reporte</Text>
             </TouchableOpacity>

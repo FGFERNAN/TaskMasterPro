@@ -36,27 +36,26 @@ export const CreateScreen = () => {
 
     return (
         <View style={styles.container}>
-            <Image
+            {/* <Image
                 source={require('../../../../assets/chef.jpg')}
                 style={styles.ImageBackground}
-            />
+            /> */}
             <View style={styles.logoContainer}>
                 <Image
                     source={require('../../../../assets/user_image.png')}
                     style={styles.logoImage}
                 />
-                <Text style={styles.logoText}>SELECCIONA UNA IMAGEN</Text>
+                {/* <Text style={styles.logoText}>SELECCIONA UNA IMAGEN</Text> */}
             </View>
 
 
             <View style={styles.form}>
                 <ScrollView>
                     <Text style={styles.formText}>CREAR USUARIO</Text>
-
-
-
                     <CustomTextInput
-                        image={require('../../../../assets/user.png')}
+                        icon="user-circle"
+                        size={25}
+                        color='#2E7060'
                         placeholder='Nombres'
                         keyboardType='default'
                         property='nombre'
@@ -65,7 +64,9 @@ export const CreateScreen = () => {
                     />
 
                     <CustomTextInput
-                        image={require('../../../../assets/my_user.png')}
+                        icon="user-circle-o"
+                        size={25}
+                        color='#2E7060'
                         placeholder='Apellidos'
                         keyboardType='default'
                         property='apellidos'
@@ -74,7 +75,9 @@ export const CreateScreen = () => {
                     />
 
                     <CustomTextInput
-                        image={require('../../../../assets/email.png')}
+                        icon="envelope"
+                        size={22}
+                        color='#2E7060'
                         placeholder='Correo Electronico'
                         keyboardType='email-address'
                         property='email'
@@ -82,7 +85,9 @@ export const CreateScreen = () => {
                         value={email}
                     />
                     <CustomTextInput
-                        image={require('../../../../assets/phone.png')}
+                        icon="phone"
+                        size={25}
+                        color='#2E7060'
                         placeholder='Telefono'
                         keyboardType='numeric'
                         property='telefono'
@@ -91,7 +96,9 @@ export const CreateScreen = () => {
                     />
 
                     <CustomPickerSelect
-                        image={require('../../../../assets/document.png')}
+                        icon="id-card-o"
+                        size={22}
+                        color='#2E7060'
                         placeholder="Tipo Documento"
                         value={tipo_documento}
                         property="tipo_documento"
@@ -100,16 +107,20 @@ export const CreateScreen = () => {
                     />
 
                     <CustomNumberInput
-                        image={require('../../../../assets/document.png')}
+                        icon="id-badge"
+                        size={24}
+                        color='#2E7060'
                         placeholder="Número de documento"
                         value={id}
                         property="id"
                         onChangeText={handleNumberChange}
-                        maxLength={15}
+                        maxLength={10}
                     />
 
                     <CustomTextInput
-                        image={require('../../../../assets/password.png')}
+                        icon="lock"
+                        size={27}
+                        color='#2E7060'
                         placeholder='Contraseña'
                         keyboardType='default'
                         property='password'
@@ -119,7 +130,9 @@ export const CreateScreen = () => {
                     />
 
                     <CustomPickerSelect
-                        image={require('../../../../assets/user.png')}
+                        icon="user"
+                        size={25}
+                        color='#2E7060'
                         placeholder="Rol"
                         value={rolID}
                         property="rolID"

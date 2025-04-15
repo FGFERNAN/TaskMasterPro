@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import useViewModel from './viewModel';
 import { CustomTextInput } from '../../components/CustomTextInput';
 import styles from './styles';
+import { FontAwesome } from '@expo/vector-icons';
 
 interface Props extends StackScreenProps<RootStackParamList, 'HomeScreen'>{};
 
@@ -31,22 +32,24 @@ export const HomeScreen = ({ navigation, route }: Props) => {
 
     return (
         <View style={styles.container}>
-            <Image
-                source={require('../../../../assets/chef.jpg')}
+            {/* <Image
+                source={require('../../../../assets/bg-image.png')}
                 style={styles.ImageBackground}
-            />
+            /> */}
             <View style={styles.logoContainer}>
                 <Image
-                    source={require('../../../../assets/logo.png')}
+                    source={require('../../../../assets/logotipo.png')}
                     style={styles.logoImage}
                 />
-                <Text style={styles.logoText}>FOOD FGFERNAN</Text>
+                {/* <Text style={styles.logoText}>TASKMASTER PRO</Text> */}
             </View>
 
             <View style={styles.form}>
                 <Text style={styles.formText}>INGRESAR</Text>
                 <CustomTextInput
-                    image={require('../../../../assets/email.png')}
+                    icon="envelope"
+                    size={25}
+                    color='#2E7060'
                     placeholder='Correo Electronico'
                     keyboardType='email-address'
                     property='email'
@@ -55,7 +58,9 @@ export const HomeScreen = ({ navigation, route }: Props) => {
                 />
 
                 <CustomTextInput
-                    image={require('../../../../assets/password.png')}
+                    icon="lock"
+                    size={35}
+                    color='#2E7060'
                     placeholder='Contraseña'
                     keyboardType='default'
                     property='password'

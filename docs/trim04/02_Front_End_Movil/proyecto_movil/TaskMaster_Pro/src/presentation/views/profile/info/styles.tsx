@@ -4,7 +4,7 @@ const profileStyles = StyleSheet.create({
     container: {
         flex: 10,
         padding: 20,
-        backgroundColor: '#f5f5f5',
+        backgroundColor: '#E4E2DD',
     },
     title: {
         fontSize: 24,
@@ -32,7 +32,7 @@ const profileStyles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     button: {
-        backgroundColor: '#2196F3',
+        backgroundColor: '#6DA2C2',
         padding: 10,
         borderRadius: 5,
         marginHorizontal: 5,
@@ -48,7 +48,8 @@ const profileStyles = StyleSheet.create({
         fontWeight: 'bold',
     },
     input: {
-        height: 40,
+        height: 45,
+        width: 315,
         borderColor: '#ccc',
         borderWidth: 1,
         borderRadius: 5,
@@ -57,7 +58,7 @@ const profileStyles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     addButton: {
-        backgroundColor: '#4CAF50',
+        backgroundColor: '#429866',
         padding: 15,
         borderRadius: 5,
         alignItems: 'center',
@@ -69,13 +70,13 @@ const profileStyles = StyleSheet.create({
     },
     buttonClose: {
         justifyContent: 'center', 
-        backgroundColor: '#e16c11',
+        backgroundColor: '#204b42',
         borderRadius: 6,
         padding: 6,
-        marginBlockStart: 10   
+        marginBlockStart: 20   
     },
     searchButton: {
-        backgroundColor: '#FF9800',
+        backgroundColor: '#9f9f9f',
         padding: 15,
         borderRadius: 5,
         alignItems: 'center',
@@ -86,7 +87,7 @@ const profileStyles = StyleSheet.create({
         fontWeight: 'bold',
     },
     reportButton: {
-        backgroundColor: '#9C27B0',
+        backgroundColor: '#84dec8',
         padding: 15,
         borderRadius: 5,
         alignItems: 'center',
@@ -114,7 +115,7 @@ const profileStyles = StyleSheet.create({
     closeButton: {
         marginTop: 20,
         padding: 10,
-        backgroundColor: '#2196F3',
+        backgroundColor: '#508199',
         borderRadius: 5,
     },
     closeButtonText: {

@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 const homeStyles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'black',
+        backgroundColor: '#E4E2DD',
     },
 
     ImageBackground: {
@@ -15,7 +15,7 @@ const homeStyles = StyleSheet.create({
 
     form: {
         width: '100%',
-        height: '50%',
+        height: '40%',
         backgroundColor: 'white',
         position: 'absolute',
         bottom: 0,
@@ -47,16 +47,16 @@ const homeStyles = StyleSheet.create({
     logoContainer: {
         position: 'absolute',
         alignSelf: 'center',
-        top: '15%',
+        top: '20%',
     },
 
     logoImage: {
-        width: 100,
-        height: 100,
+        width: 400,
+        height: 200,
     },
 
     logoText: {
-        color: 'white',
+        color: 'black',
         textAlign: 'center',
         fontSize: 20,
         marginTop: 10,

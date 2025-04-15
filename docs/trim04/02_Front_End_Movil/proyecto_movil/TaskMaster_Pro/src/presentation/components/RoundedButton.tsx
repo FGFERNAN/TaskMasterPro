@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
         borderRadius: 15,
     },
     textButton:{
-        color: 'white'
+        color: 'white',
+        fontWeight: 'bold'
     },
     disabledButton: {
         backgroundColor: '#CCCCCC', // Color cuando está deshabilitado

@@ -14,7 +14,7 @@ const registerStyles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        backgroundColor: 'black',
+        backgroundColor: '#E4E2DD',
     },
 
     ImageBackground: {
@@ -27,7 +27,7 @@ const registerStyles = StyleSheet.create({
     form: {
         width: '100%',
         height: '70%',
-        backgroundColor: 'white',
+        backgroundColor: '#DAF5E3',
         position: 'absolute',
         bottom: 0,
         borderTopLeftRadius: 40,

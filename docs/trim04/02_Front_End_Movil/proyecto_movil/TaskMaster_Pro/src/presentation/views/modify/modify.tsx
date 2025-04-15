@@ -21,11 +21,10 @@ export const ModifyScreen = ({ navigation, route }: Props) => {
         if (success) {
             navigation.navigate({
                 name: "ProfileInfoScreen",
-                params: { refresh: true }, // o simplemente {} si no pasas nada
+                params: { refresh: true },
             });
         }
     };
-    // Para saber si la variable ya tiene establecido un valor 
     const documentTypes = [
         { label: 'Tarjeta de Identidad', value: 1 },
         { label: 'Cédula de Ciudadanía', value: 2 },
@@ -59,17 +58,17 @@ export const ModifyScreen = ({ navigation, route }: Props) => {
 
     return (
         <View style={styles.container}>
-            <Image
+            {/* <Image
                 source={require('../../../../assets/chef.jpg')}
                 style={styles.ImageBackground}
 
-            />
+            /> */}
             <View style={styles.logoContainer}>
                 <Image
                     source={require('../../../../assets/user_image.png')}
                     style={styles.logoImage}
                 />
-                <Text style={styles.logoText}>SELECCIONA UNA IMAGEN</Text>
+                {/* <Text style={styles.logoText}>SELECCIONA UNA IMAGEN</Text> */}
             </View>
 
 
@@ -79,7 +78,9 @@ export const ModifyScreen = ({ navigation, route }: Props) => {
 
 
                     <CustomTextInput
-                        image={require('../../../../assets/user.png')}
+                        icon="user-circle"
+                        size={25}
+                        color='#2E7060'
                         placeholder='Nombres'
                         keyboardType='default'
                         property='nombre'
@@ -88,7 +89,9 @@ export const ModifyScreen = ({ navigation, route }: Props) => {
                     />
 
                     <CustomTextInput
-                        image={require('../../../../assets/my_user.png')}
+                        icon="user-circle-o"
+                        size={25}
+                        color='#2E7060'
                         placeholder='Apellidos'
                         keyboardType='default'
                         property='apellidos'
@@ -97,7 +100,9 @@ export const ModifyScreen = ({ navigation, route }: Props) => {
                     />
 
                     <CustomTextInput
-                        image={require('../../../../assets/email.png')}
+                        icon="envelope"
+                        size={22}
+                        color='#2E7060'
                         placeholder='Correo Electronico'
                         keyboardType='email-address'
                         property='email'
@@ -105,7 +110,9 @@ export const ModifyScreen = ({ navigation, route }: Props) => {
                         value={email}
                     />
                     <CustomTextInput
-                        image={require('../../../../assets/phone.png')}
+                        icon="phone"
+                        size={25}
+                        color='#2E7060'
                         placeholder='Telefono'
                         keyboardType='numeric'
                         property='telefono'
@@ -114,7 +121,9 @@ export const ModifyScreen = ({ navigation, route }: Props) => {
                     />
 
                     <CustomPickerSelect
-                        image={require('../../../../assets/document.png')}
+                        icon="id-card-o"
+                        size={22}
+                        color='#2E7060'
                         placeholder="Tipo Documento"
                         value={tipo_documento}
                         property="tipo_documento"
@@ -124,7 +133,9 @@ export const ModifyScreen = ({ navigation, route }: Props) => {
 
 
                     <CustomPickerSelect
-                        image={require('../../../../assets/user.png')}
+                        icon="user"
+                        size={25}
+                        color='#2E7060'
                         placeholder="Rol"
                         value={rolID}
                         property="rolID"

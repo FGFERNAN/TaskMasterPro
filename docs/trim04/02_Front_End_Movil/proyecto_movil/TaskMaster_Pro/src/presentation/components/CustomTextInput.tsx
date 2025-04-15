@@ -1,18 +1,23 @@
 import React from 'react'
 import { View, Image, TextInput, StyleSheet, KeyboardType, Keyboard } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 
 interface Props {
-    image: any;
-    placeholder: string;
-    value: string;
-    keyboardType: KeyboardType;
-    secureTextEntry?: boolean;
-    property: string,
-    onChangeText: (property: string, value: any) => void, 
+  icon: any;
+  size: number;
+  color: string;
+  placeholder: string;
+  value: string;
+  keyboardType: KeyboardType;
+  secureTextEntry?: boolean;
+  property: string,
+  onChangeText: (property: string, value: any) => void,
 }
 
 export const CustomTextInput = ({
-  image,
+  icon,
+  size,
+  color,
   placeholder,
   value,
   keyboardType,
@@ -22,9 +27,7 @@ export const CustomTextInput = ({
 }: Props) => {
   return (
     <View style={styles.formInput}>
-      <Image style={styles.formIcon}
-      source={image}
-      />
+      <FontAwesome style={styles.formIcon} name={icon} size={size} color={color}/>
       <TextInput
         style={styles.formTextInput}
         placeholder={placeholder}
@@ -32,25 +35,24 @@ export const CustomTextInput = ({
         value={value}
         onChangeText={text => onChangeText(property, text)}
         secureTextEntry={secureTextEntry}
-        />
+      />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   formIcon: {
-    width: 25,
-    height: 25,
-    margin: 30,
+    marginRight: 12,
+    marginTop: 10
   },
   formInput: {
     flexDirection: 'row',
-    marginTop: 30,
-  }, 
-  formTextInput:{
+    marginTop: 40,
+  },
+  formTextInput: {
     flex: 1,
-    borderBottomWidth: 1,
-    borderBottomColor: 'orange',
-    marginLeft: 15,
+    borderBottomWidth: 2,
+    borderBottomColor: '#2E7060',
+    marginLeft: 5,
   }
 })

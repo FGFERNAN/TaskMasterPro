@@ -54,8 +54,8 @@ class LoginController {
 
         } catch (err) {
             return res.status(500).json({
-                message: 'Error al procesar la solicitud',
-                error: err.message
+                message: err.message,
+                error: "Error al procesar la solicitud"
             });
         }
     };
