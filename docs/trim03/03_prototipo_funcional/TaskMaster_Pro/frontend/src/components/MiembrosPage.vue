@@ -53,7 +53,7 @@
       <div class="row">
         <!-- Sidebar Menu -->
         <div class="col-md-3 custom-col d-none d-lg-block">
-          <img src="../assets/img/logos/logotipo.png"  class="logo-inicio" width="300" alt="Logo">
+          <img src="../assets/img/logos/logotipo.png"  class="logo-inicio" width="300" alt="Logo" @click="irAOtraVista" style="cursor: pointer;">
           <ul class="nav flex-column">
             <li class="nav-item">
               <a class="nav-link mi-link" href="creacionProyecto.html"><i class="fa-solid fa-folder-plus me-1"></i> Crear Proyecto</a>
@@ -102,9 +102,9 @@
                 <button class="btn btn-cerrar-sesion" @click="confirmarCerrarSesion">
                   <i class="fa-solid fa-right-to-bracket me-1"></i> Cerrar Sesión
                 </button>
-                <a href="perfil.html" class="btn btn-perfil">
-                  <i class="fa-solid fa-user me-1"></i> Perfil
-                </a>
+                
+                  <a class="btn btn-perfil" @click="irPerfil"><i class="fa-solid fa-user me-1"></i> Perfil</a>
+                
               </div>
             </div>
           </header>
@@ -185,10 +185,21 @@ export default {
   methods: {
     goBack() {
       this.$router.go(-1);
+      window.location.href = './interfaz-proyecto';
+    },
+   
+    // Método para redirigir a la vista de perfil
+    irPerfil() {
+      this.$router.push('/perfil-completo'); // Ruta de Vue Router para redirigir a la vista de perfil
+    },
+
+     // Redirige al hacer click en el logo
+     irAOtraVista() {
+      this.$router.push('/interfaz-principal');  // Ruta de Vue Router para redirigir a otra vista
     },
     confirmarCerrarSesion() {
       if (confirm('¿Seguro que quieres cerrar sesión ?')) {
-        window.location.href = '../../public/index.html';
+        window.location.href = './IniciarSesion.vue';
       }
     },
     removeMember(id) {
@@ -200,6 +211,8 @@ export default {
     }
   }
 };
+
+
 </script>
 
 
