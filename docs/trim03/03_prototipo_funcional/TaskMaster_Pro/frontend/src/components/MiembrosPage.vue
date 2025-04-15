@@ -142,15 +142,23 @@
 </template>
 
 <script>
+import img1 from '@/assets/img/img1.jpg';
+import img2 from '@/assets/img/img2.jpg';
+import img3 from '@/assets/img/img3.jpg';
+import img4 from '@/assets/img/img4.jpg';
+import user234 from '@/assets/img/User234.jpg';
+import messielmejor from '@/assets/img/messielmejor.jpg';
+import user5720 from '@/assets/img/user53720.jpg';
+
 export default {
   data() {
     return {
       members: [
-      { id: 1, name: 'Fgferman02', avatar: require('@/assets/img/img1.jpg') },
-      { id: 2, name: 'ErikaTriana01', avatar: require('@/assets/img/img2.jpg') },
-      { id: 3, name: 'AndresG567', avatar: require('@/assets/img/img3.jpg') },
-      { id: 4, name: 'Nikob1030_', avatar: require('@/assets/img/img4.jpg') }
-    ],
+        { id: 1, name: 'Fgferman02', avatar: img1 },
+        { id: 2, name: 'ErikaTriana01', avatar: img2 },
+        { id: 3, name: 'AndresG567', avatar: img3 },
+        { id: 4, name: 'Nikob1030_', avatar: img4 }
+      ],
       searchQuery: '',
       users: [
         { name: 'User234' },
@@ -159,6 +167,13 @@ export default {
         { name: 'Unicornio56' },
         { name: 'Messielmejor' },
         { name: 'SML16' }
+      ],
+      availableAvatars: [
+        user234,
+        messielmejor,
+        user5720,
+        img1,
+        img2
       ]
     };
   },
@@ -180,11 +195,13 @@ export default {
       this.members = this.members.filter(member => member.id !== id);
     },
     addMember(user) {
-      this.members.push({ id: Date.now(), name: user.name, avatar: '../../public/assets/img/default.jpg' });
+      const randomAvatar = this.availableAvatars[Math.floor(Math.random() * this.availableAvatars.length)];
+      this.members.push({ id: Date.now(), name: user.name, avatar: randomAvatar });
     }
   }
 };
 </script>
+
 
 <style scoped>
 @import '@/assets/css/style.css';
