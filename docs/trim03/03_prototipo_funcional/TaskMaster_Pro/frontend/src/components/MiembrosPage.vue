@@ -146,11 +146,11 @@ export default {
   data() {
     return {
       members: [
-        { id: 1, name: 'Fgferman02', avatar: '../../public/assets/img/img1.jpg' },
-        { id: 2, name: 'ErikaTriana01', avatar: '../../public/assets/img/img2.jpg' },
-        { id: 3, name: 'AndresG567', avatar: '../../public/assets/img/img3.jpg' },
-        { id: 4, name: 'Nikob1030_', avatar: '../../public/assets/img/img4.jpg' }
-      ],
+      { id: 1, name: 'Fgferman02', avatar: require('@/assets/img/img1.jpg') },
+      { id: 2, name: 'ErikaTriana01', avatar: require('@/assets/img/img2.jpg') },
+      { id: 3, name: 'AndresG567', avatar: require('@/assets/img/img3.jpg') },
+      { id: 4, name: 'Nikob1030_', avatar: require('@/assets/img/img4.jpg') }
+    ],
       searchQuery: '',
       users: [
         { name: 'User234' },
@@ -187,5 +187,6 @@ export default {
 </script>
 
 <style scoped>
-/* Add your CSS here */
+@import '@/assets/css/style.css';
+@import '@/assets/css/members.css';
 </style>
