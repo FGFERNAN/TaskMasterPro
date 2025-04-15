@@ -190,16 +190,16 @@ export default {
    
     // Método para redirigir a la vista de perfil
     irPerfil() {
-      this.$router.push('/perfil-completo'); // Ruta de Vue Router para redirigir a la vista de perfil
+      this.$router.push('/perfil-completo'); 
     },
 
-     // Redirige al hacer click en el logo
+    
      irAOtraVista() {
-      this.$router.push('/interfaz-principal');  // Ruta de Vue Router para redirigir a otra vista
+      this.$router.push('/interfaz-principal');  
     },
     confirmarCerrarSesion() {
       if (confirm('¿Seguro que quieres cerrar sesión ?')) {
-        window.location.href = './IniciarSesion.vue';
+        window.location.href = './iniciar-sesion';
       }
     },
     removeMember(id) {
