@@ -105,7 +105,7 @@
                       <!-- Usamos el método redirectToEditUser para redirigir a editar usuario -->
                       <button class="btn btn-sm btn-secondary" @click="redirectToEditUser(user.id)"><i
                           class="fa-solid fa-pen"></i></button>
-                      <button class="btn btn-sm btn-danger btn-eliminar" @click="deleteUser(user.id)"><i class="fa-solid fa-trash"></i></button>
+                      <button class="btn btn-sm btn-danger " @click="deleteUser(user.id)"><i class="fa-solid fa-trash"></i></button>
                     </td>
                   </tr>
                 </tbody>

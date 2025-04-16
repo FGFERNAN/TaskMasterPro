@@ -3,7 +3,8 @@
     <!-- Navbar for mobile -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light d-lg-none">
       <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
+          aria-controls="offcanvasMenu">
           <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="#">Menú</a>
@@ -19,23 +20,31 @@
       <div class="offcanvas-body">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link mi-link" href="creacionProyecto.html"><i class="fa-solid fa-folder-plus me-1"></i> Crear Proyecto</a>
+            <a class="nav-link mi-link" href="creacionProyecto.html"><i class="fa-solid fa-folder-plus me-1"></i> Crear
+              Proyecto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mi-link" href="plantillasProyecto.html"><i class="fa-solid fa-folder-tree me-1"></i> Utilizar Plantillas de Proyecto</a>
+            <a class="nav-link mi-link" href="plantillasProyecto.html"><i class="fa-solid fa-folder-tree me-1"></i>
+              Utilizar Plantillas de Proyecto</a>
           </li>
           <li class="nav-item">
             <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i> Mis Tareas</a>
           </li>
           <li class="nav-item dropdown custom-dropdown">
-            <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-folder-minus me-1"></i> Proyectos</a>
+            <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#" role="button"
+              aria-expanded="false"><i class="fa-solid fa-folder-minus me-1"></i> Proyectos</a>
             <ul class="dropdown-menu">
               <li>
                 <div class="d-flex align-items-center" id="sub-menu-proyectos">
                   <a class="dropdown-item align-items-center" href="interfazProyecto.html">
                     <i class="fa-regular fa-folder-open"></i> Veterinaria
-                    <a href="editarProyecto.html" class="link-secondary ms-1 mi-link"><i class="fa-solid fa-edit"></i></a>
-                    <a id="buton-eliminar" class="link-secondary ms-2 mi-link"><i class="fa-solid fa-trash me-3"></i></a>
+                    <span class="ms-1">
+                      <a href="editarProyecto.html" class="link-secondary mi-link"><i class="fa-solid fa-edit"></i></a>
+                    </span>
+                    <span class="ms-2">
+                      <a class="link-secondary mi-link" id="btn-eliminar-movil"><i
+                          class="fa-solid fa-trash me-3"></i></a>
+                    </span>
                   </a>
                 </div>
               </li>
@@ -53,19 +62,24 @@
       <div class="row">
         <!-- Sidebar Menu -->
         <div class="col-md-3 custom-col d-none d-lg-block">
-          <img src="../assets/img/logos/logotipo.png"  class="logo-inicio" width="300" alt="Logo" @click="irAOtraVista" style="cursor: pointer;">
+          <img src="../assets/img/logos/logotipo.png" class="logo-inicio" width="300" alt="Logo" @click="irAOtraVista"
+            style="cursor: pointer;">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link mi-link" href="creacionProyecto.html"><i class="fa-solid fa-folder-plus me-1"></i> Crear Proyecto</a>
+              <a class="nav-link mi-link" href="creacionProyecto.html"><i class="fa-solid fa-folder-plus me-1"></i>
+                Crear Proyecto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mi-link" href="plantillasProyecto.html"><i class="fa-solid fa-folder-tree me-1"></i> Utilizar Plantillas de Proyecto</a>
+              <a class="nav-link mi-link" href="plantillasProyecto.html"><i class="fa-solid fa-folder-tree me-1"></i>
+                Utilizar Plantillas de Proyecto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i> Mis Tareas</a>
+              <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i> Mis
+                Tareas</a>
             </li>
             <li class="nav-item dropdown custom-dropdown">
-              <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+              <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#" role="button"
+                aria-expanded="false">
                 <i class="fa-solid fa-folder-minus me-1"></i> Proyectos
               </a>
               <ul class="dropdown-menu">
@@ -73,8 +87,14 @@
                   <div class="d-flex align-items-center" id="sub-menu-proyectos">
                     <a class="dropdown-item align-items-center" href="interfazProyecto.html">
                       <i class="fa-regular fa-folder-open"></i> Veterinaria
-                      <a href="editarProyecto.html" class="link-secondary ms-1 mi-link"><i class="fa-solid fa-edit"></i></a>
-                      <a id="buton-eliminar" class="link-secondary ms-2 mi-link"><i class="fa-solid fa-trash me-3"></i></a>
+                      <span class="ms-1">
+                        <a href="editarProyecto.html" class="link-secondary mi-link"><i
+                            class="fa-solid fa-edit"></i></a>
+                      </span>
+                      <span class="ms-2">
+                        <a class="link-secondary mi-link" id="btn-eliminar-escritorio"><i
+                            class="fa-solid fa-trash me-3"></i></a>
+                      </span>
                     </a>
                   </div>
                 </li>
@@ -91,20 +111,22 @@
           <header>
             <div class="header d-flex justify-content-between align-items-center p-3">
               <button class="btn me-md-2 mt-1 btn-regresar" @click="goBack">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
-                  <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                  <path
+                    d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
                 </svg> Regresar
               </button>
               <div class="d-flex align-items-center">
                 <a href="notificaciones.html" class="me-2">
                   <i class="fas fa-bell"></i> <!-- Icono de notificaciones -->
                 </a>
-                <button class="btn btn-cerrar-sesion" @click="confirmarCerrarSesion">
+                <button class="btn btn-cerrar-sesion-ip" @click="confirmarCerrarSesion">
                   <i class="fa-solid fa-right-to-bracket me-1"></i> Cerrar Sesión
                 </button>
-                
-                  <a class="btn btn-perfil" @click="irPerfil"><i class="fa-solid fa-user me-1"></i> Perfil</a>
-                
+
+                <a class="btn btn-perfil" @click="irPerfil"><i class="fa-solid fa-user me-1"></i> Perfil</a>
+
               </div>
             </div>
           </header>
@@ -151,6 +173,9 @@ import messielmejor from '@/assets/img/messielmejor.jpg';
 import user5720 from '@/assets/img/user53720.jpg';
 
 export default {
+  mounted() {
+    document.title = "Miembros | TaskMaster Pro";
+  },
   data() {
     return {
       members: [
@@ -187,15 +212,15 @@ export default {
       this.$router.go(-1);
       window.location.href = './interfaz-proyecto';
     },
-   
+
     // Método para redirigir a la vista de perfil
     irPerfil() {
-      this.$router.push('/perfil-completo'); 
+      this.$router.push('/perfil-completo');
     },
 
-    
-     irAOtraVista() {
-      this.$router.push('/interfaz-principal');  
+
+    irAOtraVista() {
+      this.$router.push('/interfaz-principal');
     },
     confirmarCerrarSesion() {
       if (confirm('¿Seguro que quieres cerrar sesión ?')) {

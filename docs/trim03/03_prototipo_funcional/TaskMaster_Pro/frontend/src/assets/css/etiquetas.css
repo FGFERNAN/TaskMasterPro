@@ -35,11 +35,10 @@ h1 {
 }
 
 .buton-regresar {
-  background-color: #2E7060;
+  background-color: #70482e;
   color: white;
   border-color: #2E7060;
   font-weight: bold;
- 
 }
 
 .buton-regresar:hover {
@@ -79,6 +78,7 @@ h1 {
   .border-input {
     border: 1px solid black;
   }
+  
 
   .buton-iniciar-sesion {
     background-color: #2E7060;

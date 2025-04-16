@@ -100,7 +100,7 @@
                           class="fa-solid fa-user-plus"></i></button>
                       <button class="btn btn-sm btn-secondary" @click="redirectToEditRole(role.id)"><i
                           class="fa-solid fa-pen"></i></button>
-                      <button class="btn btn-sm btn-danger btn-eliminar" @click="deleteRole(role.id)"><i
+                      <button class="btn btn-sm btn-danger" @click="deleteRole(role.id)"><i
                           class="fa-solid fa-trash"></i></button>
                     </td>
                   </tr>

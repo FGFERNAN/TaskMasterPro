@@ -3,7 +3,8 @@
     <!-- Navbar para mobile -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light d-lg-none">
       <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
+          aria-controls="offcanvasMenu">
           <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="#">Menú</a>
@@ -19,20 +20,24 @@
       <div class="offcanvas-body">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link mi-link" href="creacionProyecto.html"><i class="fa-solid fa-folder-plus me-1"></i> Crear Proyecto</a>
+            <a class="nav-link mi-link" href="creacionProyecto.html"><i class="fa-solid fa-folder-plus me-1"></i> Crear
+              Proyecto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mi-link" href="plantillasProyecto.html"><i class="fa-solid fa-folder-tree me-1"></i> Utilizar Plantillas</a>
+            <a class="nav-link mi-link" href="plantillasProyecto.html"><i class="fa-solid fa-folder-tree me-1"></i>
+              Utilizar Plantillas</a>
           </li>
           <li class="nav-item">
             <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i> Mis Tareas</a>
           </li>
           <li class="nav-item dropdown custom-dropdown">
-            <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#"><i class="fa-solid fa-folder-minus me-1"></i> Proyectos</a>
+            <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#"><i
+                class="fa-solid fa-folder-minus me-1"></i> Proyectos</a>
             <ul class="dropdown-menu">
-              <li>
+              <li v-for="proyecto in proyectos" :key="proyecto.id">
                 <div class="d-flex align-items-center">
-                  <a class="dropdown-item" href="interfazProyecto.html"><i class="fa-regular fa-folder-open"></i> Veterinaria</a>
+                  <a class="dropdown-item" href="interfazProyecto.html"><i class="fa-regular fa-folder-open"></i>
+                    {{ proyecto.nombre }}</a>
                   <span class="ms-1">
                     <a href="editarProyecto.html" class="link-secondary mi-link"><i class="fa-solid fa-edit"></i></a>
                   </span>
@@ -57,25 +62,31 @@
           <img src="../assets/img/logos/logotipo.png" class="logo-inicio" width="300" />
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link mi-link" href="creacionProyecto.html"><i class="fa-solid fa-folder-plus me-1"></i> Crear Proyecto</a>
+              <a class="nav-link mi-link" href="creacionProyecto.html"><i class="fa-solid fa-folder-plus me-1"></i>
+                Crear Proyecto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mi-link" href="plantillasProyecto.html"><i class="fa-solid fa-folder-tree me-1"></i> Utilizar Plantillas</a>
+              <a class="nav-link mi-link" href="plantillasProyecto.html"><i class="fa-solid fa-folder-tree me-1"></i>
+                Utilizar Plantillas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i> Mis Tareas</a>
+              <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i> Mis
+                Tareas</a>
             </li>
             <li class="nav-item dropdown custom-dropdown">
-              <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#"><i class="fa-solid fa-folder-minus me-1"></i> Proyectos</a>
+              <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#"><i
+                  class="fa-solid fa-folder-minus me-1"></i> Proyectos</a>
               <ul class="dropdown-menu">
-                <li>
+                <li v-for="proyecto in proyectos" :key="proyecto.id">
                   <div class="d-flex align-items-center">
-                    <a class="dropdown-item" href="interfazProyecto.html"><i class="fa-regular fa-folder-open"></i> Veterinaria</a>
+                    <a class="dropdown-item" href="interfazProyecto.html"><i class="fa-regular fa-folder-open"></i>
+                      {{ proyecto.nombre }}</a>
                     <span class="ms-1">
-                      <a href="editarProyecto.html" class="link-secondary mi-link"><i class="fa-solid fa-edit"></i></a>
+                      <a @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i class="fa-solid fa-edit"></i></a>
                     </span>
                     <span class="ms-2">
-                      <a class="link-secondary mi-link" id="btn-eliminar-escritorio"><i class="fa-solid fa-trash me-3"></i></a>
+                      <a class="link-secondary mi-link" @click="deleteProject(proyecto.id)" id="btn-eliminar-escritorio"><i
+                          class="fa-solid fa-trash me-3"></i></a>
                     </span>
                   </div>
                 </li>
@@ -94,7 +105,8 @@
               <div class="d-flex align-items-center">
                 <!-- 🔍 Lupa -->
                 <div class="input-group me-3" style="width: 50px;">
-                  <i class="fas fa-search" @click="mostrarModalBusqueda = true" style="color: #2E7060; font-size: 30px;"></i>
+                  <i class="fas fa-search" @click="mostrarModalBusqueda = true"
+                    style="color: #2E7060; font-size: 30px;"></i>
                 </div>
                 <a href="notificaciones.html" class="me-2"><i class="fas fa-bell"></i></a>
                 <button class="btn btn-cerrar-sesion-ip" @click="confirmarCerrarSesion">
@@ -110,7 +122,8 @@
 
           <section>
             <!-- 🔍 Modal de búsqueda -->
-            <div class="modal fade" :class="{ show: mostrarModalBusqueda }" tabindex="-1" v-if="mostrarModalBusqueda" style="display: block;">
+            <div class="modal fade" :class="{ show: mostrarModalBusqueda }" tabindex="-1" v-if="mostrarModalBusqueda"
+              style="display: block;">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -118,7 +131,8 @@
                     <button type="button" class="btn-close" @click="cerrarModalBusqueda"></button>
                   </div>
                   <div class="modal-body">
-                    <input type="text" class="form-control" v-model="busqueda" placeholder="Escribe el nombre del proyecto" />
+                    <input type="text" class="form-control" v-model="busqueda"
+                      placeholder="Escribe el nombre del proyecto" />
                     <ul class="list-group mt-3" v-if="busqueda">
                       <li class="list-group-item" v-for="proyecto in resultadosFiltrados" :key="proyecto.id">
                         {{ proyecto.nombre }}
@@ -138,7 +152,8 @@
                     <img class="img-fluid" :src="proyecto.imagen" />
                   </div>
                   <div class="mt-3">
-                    <input class="form-check-input" type="radio" name="project" :id="proyecto.id" @click="irAProyecto" />
+                    <input class="form-check-input" type="radio" name="project" :id="proyecto.id"
+                      @click="irAProyecto" />
                     <label class="form-check-label label-project" :for="proyecto.id">{{ proyecto.nombre }}</label>
                   </div>
                 </div>
@@ -160,74 +175,116 @@
   </div>
 </template>
 
-<script setup>
-
-import { ref, computed, onMounted, } from 'vue'
+<script>
 import { useRouter } from 'vue-router';
 import api from '@/services/api';
-const router = useRouter();
+import imgVeterinaria from '../assets/img/proyecto_veterinaria.jpg';
+import imgFinanzas from '../assets/img/proyecto_finanzas.jpg';
+import imgSoftware from '../assets/img/proyecto_software.jpg';
+import imgSocial from '../assets/img/proyecto_social.jpg';
+import imgConstruccion from '../assets/img/proyecto_construccion.jpg';
+import imgInvestigacion from '../assets/img/proyecto_ambiental.jpg';
 
-import imgVeterinaria from '../assets/img/proyecto_veterinaria.jpg'
-import imgFinanzas from '../assets/img/proyecto_finanzas.jpg'
-import imgSoftware from '../assets/img/proyecto_software.jpg'
-import imgSocial from '../assets/img/proyecto_social.jpg'
-import imgConstruccion from '../assets/img/proyecto_construccion.jpg'
-import imgInvestigacion from '../assets/img/proyecto_ambiental.jpg'
-
-const proyectos = ref([
-  { id: 'project1', nombre: 'Veterinaria', imagen: imgVeterinaria },
-  { id: 'project2', nombre: 'Finanzas', imagen: imgFinanzas },
-  { id: 'project3', nombre: 'Software', imagen: imgSoftware },
-  { id: 'project4', nombre: 'Social', imagen: imgSocial },
-  { id: 'project5', nombre: 'Construcción', imagen: imgConstruccion },
-  { id: 'project6', nombre: 'Investigación', imagen: imgInvestigacion }
-])
-
-onMounted(() => {
-  document.title = "Interfaz Principal | TaskMaster Pro";
-})
-
-const proyectosChunked = computed(() => {
-  return [proyectos.value.slice(0, 3), proyectos.value.slice(3, 6)]
-})
-
-const irAProyecto = () => {
-  window.location.href = 'interfazProyecto.html'
-}
-
-const irPerfil = () => {
-  router.push('/perfil-completo');
-};
-
-const crearProyecto = () => {
-  window.location.href = 'creacionProyecto.html'
-}
-
-const confirmarCerrarSesion = async () => {
-  if (confirm("¿Estás seguro que quieres cerrar sesión?")) {
-    // Lógica para cerrar sesión, por ejemplo, redirigir a la página de login
-    const response = await api.post("/logout");
-    router.push("/iniciar-sesion");
-    alert(response.data.message);
+export default {
+  data() {
+    return {
+      proyectosInterfaz: [
+        { id: 'project1', nombre: 'Veterinaria', imagen: imgVeterinaria },
+        { id: 'project2', nombre: 'Finanzas', imagen: imgFinanzas },
+        { id: 'project3', nombre: 'Software', imagen: imgSoftware },
+        { id: 'project4', nombre: 'Social', imagen: imgSocial },
+        { id: 'project5', nombre: 'Construcción', imagen: imgConstruccion },
+        { id: 'project6', nombre: 'Investigación', imagen: imgInvestigacion }
+      ],
+      proyectos: [],
+      mostrarModalBusqueda: false,
+      busqueda: '',
+      router: useRouter()
+    }
+  },
+  computed: {
+    proyectosChunked() {
+      return [this.proyectosInterfaz.slice(0, 3), this.proyectosInterfaz.slice(3, 6)];
+    },
+    resultadosFiltrados() {
+      return this.proyectos.filter(p =>
+        p.nombre.toLowerCase().includes(this.busqueda.toLowerCase())
+      );
+    }
+  },
+  mounted() {
+    document.title = "Interfaz Principal | TaskMaster Pro";
+    this.getProjects();
+  },
+  methods: {
+    async getProjects() {
+      try {
+        const response = await api.get('/project');
+        this.proyectos = response.data.data;
+        console.log(response.data);
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          console.log(serverErrors);
+          this.$router.push('/error500');
+        }
+      }
+    },
+    redirectToEditProject(projectId) {
+      this.$router.push({ name: 'EditarProyecto', params: { id: projectId }});
+    },
+    async deleteProject(projectId) {
+      try {
+        if (confirm('¿Estás seguro que deseas eliminar este proyecto?')) {
+        const response =  await api.delete(`/project/${projectId}}`);
+        this.proyectos = this.proyectos.filter(project => project.id !== projectId);
+        console.log(response.data.message);
+        alert(response.data.message);
+      }
+      } catch (error) {
+        if(error.response && error.response.data){
+          const serverErrors = error.response.data;
+          if(serverErrors.message === 'Project not exists'){
+            console.log(serverErrors.message);
+            alert(serverErrors.message);
+          } else if (serverErrors.message === 'Proyecto no eliminado'){
+            console.log(serverErrors.message);
+            alert(serverErrors.message);
+          } else if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
+        }
+      }
+    },
+    irAProyecto() {
+      window.location.href = 'interfazProyecto.html';
+    },
+    irPerfil() {
+      this.router.push('/perfil-completo');
+    },
+    crearProyecto() {
+      window.location.href = 'creacionProyecto.html';
+    },
+    async confirmarCerrarSesion() {
+      if (confirm("¿Estás seguro que quieres cerrar sesión?")) {
+        const response = await api.post("/logout");
+        this.router.push("/iniciar-sesion");
+        alert(response.data.message);
+      }
+    },
+    cerrarModalBusqueda() {
+      this.mostrarModalBusqueda = false;
+      this.busqueda = '';
+    }
   }
 }
-
-// 🔍 Modal de búsqueda
-const mostrarModalBusqueda = ref(false)
-const busqueda = ref('')
-
-const cerrarModalBusqueda = () => {
-  mostrarModalBusqueda.value = false
-  busqueda.value = ''
-}
-
-const resultadosFiltrados = computed(() => {
-  return proyectos.value.filter(p =>
-    p.nombre.toLowerCase().includes(busqueda.value.toLowerCase())
-  )
-})
 </script>
 
 <style scoped>
-/* Puedes agregar tus estilos aquí o usar los del proyecto */
+/* Tus estilos aquí */
 </style>

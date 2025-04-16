@@ -12,10 +12,20 @@
         <div class="col-md-8">
           <h2>Mi Perfil</h2>
         </div>
-        <div class="col-md-2 d-flex justify-content-end">
-          <button class="btn btn-primary btn-cerrar-sesion me-3" @click="confirmarCerrarSesion">
-            <i class="fa-solid fa-right-to-bracket me-1"></i> Cerrar Sesión
-          </button>
+        <div class="col-md-2 d-flex justify-content-end align-items-center p-3">
+          <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-primary buton-regresar-p" @click="goBack" style="white-space: nowrap;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                <path
+                  d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+              </svg>
+              <span class="button-text">Regresar</span>
+            </button>
+            <button class="btn btn-primary btn-cerrar-sesion-p me-3" @click="confirmarCerrarSesion" style="white-space: nowrap;">
+              <i class="fa-solid fa-right-to-bracket me-1"></i> Cerrar Sesión
+            </button>
+          </div>
         </div>
       </div>
     </header>
@@ -36,7 +46,8 @@
             </div>
             <!-- Logo al lado de los botones -->
             <div class="ms-4">
-              <img src="../assets/img/logotipo.png" @click="goInterfazPrincipal" alt="Logo" class="img-fluid logo_perfil" />
+              <img src="../assets/img/logotipo.png" @click="goInterfazPrincipal" alt="Logo"
+                class="img-fluid logo_perfil" />
             </div>
           </div>
         </section>
@@ -48,7 +59,7 @@
 <script>
 import api from '@/services/api';
 export default {
-  mounted(){
+  mounted() {
     document.title = "Mi Perfil | TaskMaster Pro";
   },
   name: 'PerfilCompleto',
@@ -82,7 +93,10 @@ export default {
         alert(response.data.message);
         this.$router.push("/iniciar-sesion");
       }
-    }
+    },
+    goBack() {
+      this.$router.go(-1);
+    },
   }
 }
 </script>
