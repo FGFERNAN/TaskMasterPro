@@ -17,7 +17,7 @@ import InterfazPrincipal from '@/components/InterfazPrincipal.vue';
 import error404 from '@/components/errorPageNotFound.vue';
 import MiembrosPage from '@/components/MiembrosPage.vue';
 import EditarProyecto from '@/components/editarProyecto.vue';
-
+import CrearProyecto from '@/components/creacionProyecto.vue';
 
 
 
@@ -45,7 +45,8 @@ const routes = [
   { path: '/interfaz-principal', component: InterfazPrincipal},
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: error404},
   { path: '/miembros-page', component: MiembrosPage },
-  { path: '/editar-proyecto/:id', name: 'EditarProyecto', component: EditarProyecto, props: true}
+  { path: '/editar-proyecto/:id', name: 'EditarProyecto', component: EditarProyecto, props: true},
+  { path: '/crear-proyecto', component: CrearProyecto },
 
 ];
 

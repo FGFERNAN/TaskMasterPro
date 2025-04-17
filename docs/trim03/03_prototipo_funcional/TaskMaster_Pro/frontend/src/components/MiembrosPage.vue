@@ -34,18 +34,18 @@
             <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#" role="button"
               aria-expanded="false"><i class="fa-solid fa-folder-minus me-1"></i> Proyectos</a>
             <ul class="dropdown-menu">
-              <li>
+              <li v-for="proyecto in proyectos" :key="proyecto.id">
                 <div class="d-flex align-items-center" id="sub-menu-proyectos">
                   <a class="dropdown-item align-items-center" href="interfazProyecto.html">
-                    <i class="fa-regular fa-folder-open"></i> Veterinaria
+                    <i class="fa-regular fa-folder-open"></i> {{ proyecto.nombre }}
+                  </a>
                     <span class="ms-1">
-                      <a href="editarProyecto.html" class="link-secondary mi-link"><i class="fa-solid fa-edit"></i></a>
+                      <a @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i class="fa-solid fa-edit"></i></a>
                     </span>
                     <span class="ms-2">
-                      <a class="link-secondary mi-link" id="btn-eliminar-movil"><i
-                          class="fa-solid fa-trash me-3"></i></a>
+                      <a class="link-secondary mi-link" @click="deleteProject(proyecto.id)" id="btn-eliminar-escritorio"><i
+                        class="fa-solid fa-trash me-3"></i></a>
                     </span>
-                  </a>
                 </div>
               </li>
             </ul>
@@ -83,19 +83,18 @@
                 <i class="fa-solid fa-folder-minus me-1"></i> Proyectos
               </a>
               <ul class="dropdown-menu">
-                <li>
-                  <div class="d-flex align-items-center" id="sub-menu-proyectos">
-                    <a class="dropdown-item align-items-center" href="interfazProyecto.html">
-                      <i class="fa-regular fa-folder-open"></i> Veterinaria
+                <li v-for="proyecto in proyectos" :key="proyecto.id">
+                  <div class="d-flex align-items-center">
+                    <a class="dropdown-item" href="interfazProyecto.html">
+                      <i class="fa-regular fa-folder-open"></i> {{ proyecto.nombre }}
+                    </a>
                       <span class="ms-1">
-                        <a href="editarProyecto.html" class="link-secondary mi-link"><i
-                            class="fa-solid fa-edit"></i></a>
+                        <a @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i class="fa-solid fa-edit"></i></a>
                       </span>
                       <span class="ms-2">
-                        <a class="link-secondary mi-link" id="btn-eliminar-escritorio"><i
-                            class="fa-solid fa-trash me-3"></i></a>
+                        <a class="link-secondary mi-link" @click="deleteProject(proyecto.id)" id="btn-eliminar-escritorio"><i
+                          class="fa-solid fa-trash me-3"></i></a>
                       </span>
-                    </a>
                   </div>
                 </li>
               </ul>
@@ -164,6 +163,7 @@
 </template>
 
 <script>
+import api from '@/services/api';
 import img1 from '@/assets/img/img1.jpg';
 import img2 from '@/assets/img/img2.jpg';
 import img3 from '@/assets/img/img3.jpg';
@@ -175,9 +175,11 @@ import user5720 from '@/assets/img/user53720.jpg';
 export default {
   mounted() {
     document.title = "Miembros | TaskMaster Pro";
+    this.getProjects();
   },
   data() {
     return {
+      proyectos: [],
       members: [
         { id: 1, name: 'Fgferman02', avatar: img1 },
         { id: 2, name: 'ErikaTriana01', avatar: img2 },
@@ -208,9 +210,55 @@ export default {
     }
   },
   methods: {
+    async getProjects() {
+      try {
+        const response = await api.get('/project');
+        this.proyectos = response.data.data;
+        console.log(response.data);
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          console.log(serverErrors);
+          this.$router.push('/error500');
+        }
+      }
+    },
+    redirectToEditProject(projectId) {
+      this.$router.push({ name: 'EditarProyecto', params: { id: projectId }});
+    },
+    async deleteProject(projectId) {
+      try {
+        if (confirm('¿Estás seguro que deseas eliminar este proyecto?')) {
+        const response =  await api.delete(`/project/${projectId}}`);
+        this.proyectos = this.proyectos.filter(project => project.id !== projectId);
+        console.log(response.data.message);
+        alert(response.data.message);
+      }
+      } catch (error) {
+        if(error.response && error.response.data){
+          const serverErrors = error.response.data;
+          if(serverErrors.message === 'Project not exists'){
+            console.log(serverErrors.message);
+            alert(serverErrors.message);
+          } else if (serverErrors.message === 'Proyecto no eliminado'){
+            console.log(serverErrors.message);
+            alert(serverErrors.message);
+          } else if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
+            console.log(serverErrors.mensaje);
+            this.$router.push('/error403');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
+        }
+      }
+    },
     goBack() {
-      this.$router.go(-1);
-      window.location.href = './interfaz-proyecto';
+      this.$router.go(-1); // Navegar hacia atrás
     },
 
     // Método para redirigir a la vista de perfil

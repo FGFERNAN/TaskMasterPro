@@ -60,6 +60,7 @@ class ProjectService {
             }
             if (getProject.length != 0) {
                 var dataQry = [data.nombre, data.descripcion, data.fechaInicio, data.fechaFin, data.estado, data.prioridad, data.etiquetasID];
+                if(data.fechaInicio > data.fechaFin) throw new Error('La fecha de inicio no puede ser posterior a la fecha de fin');
                 const results = await this.db.query(`UPDATE proyectos SET nombre=?, descripcion=?, fechaInicio=?, fechaFin=?, estado=?, prioridad=?, etiquetasID=? WHERE id=?`, [...dataQry, id]);
                 if (results.length != 0) {
                     return { message: "Proyecto actualizado con exito" };
