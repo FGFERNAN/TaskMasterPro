@@ -3,7 +3,7 @@ const UserController = require("../controllers/userControllers");
 module.exports = (app) => {
 /**
  * @swagger
- * /user:
+ * /users:
  *   get:
  *     summary: Obtener todos los usuarios
  *     description: Retorna una lista con todos los usuarios registrados en la base de datos.
@@ -59,7 +59,7 @@ module.exports = (app) => {
 
 /**
  * @swagger
- * /user/{id}:
+ * /users/{id}:
  *   get:
  *     summary: Obtener un usuario por ID
  *     description: Retorna la información de un usuario según su ID.
@@ -128,7 +128,7 @@ module.exports = (app) => {
 
     /**
  * @swagger
- * /user:
+ * /users:
  *   post:
  *     summary: Crear un nuevo usuario
  *     description: Agrega un nuevo usuario a la base de datos.
@@ -176,6 +176,33 @@ module.exports = (app) => {
  *                 message:
  *                   type: string
  *                   example: Usuario creado con éxito
+ *                 data: 
+ *                   type: object
+ *                   properties:
+ *                      id:
+ *                        type: integer
+ *                        example: 1
+ *                      nombre:
+ *                        type: string
+ *                        example: Johan
+ *                      apellidos:
+ *                        type: string
+ *                        example: Garcia
+ *                      email:
+ *                        type: string
+ *                        example: johan.garcia@gmail.com
+ *                      telefono:
+ *                        type: string
+ *                        example: 3107847573
+ *                      password:
+ *                        type: string
+ *                        example: pipe1234
+ *                      rolID:
+ *                        type: integer
+ *                        example: 1
+ *                      tipo_documento:
+ *                        type: integer
+ *                        example: 2
  *       500:
  *         description: Error interno del servidor
  */
@@ -183,7 +210,7 @@ module.exports = (app) => {
 
 /**
  * @swagger
- * /user/{id}:
+ * /users/{id}:
  *   put:
  *     summary: Actualizar un usuario por ID.
  *     description: Realizar cambios a un usuario existente en la base de datos según su ID.
@@ -232,6 +259,33 @@ module.exports = (app) => {
  *                 message:
  *                   type: string
  *                   example: Usuario actualizado con exito
+ *                 data: 
+ *                   type: object
+ *                   properties:
+ *                      id:
+ *                        type: integer
+ *                        example: 1
+ *                      nombre:
+ *                        type: string
+ *                        example: Johan
+ *                      apellidos:
+ *                        type: string
+ *                        example: Garcia
+ *                      email:
+ *                        type: string
+ *                        example: johan.garcia@gmail.com
+ *                      telefono:
+ *                        type: string
+ *                        example: 3107847573
+ *                      password:
+ *                        type: string
+ *                        example: pipe1234
+ *                      rolID:
+ *                        type: integer
+ *                        example: 1
+ *                      tipo_documento:
+ *                        type: integer
+ *                        example: 2
  *       404:
  *         description: Usuario sin registrar.
  *         content:
@@ -249,7 +303,7 @@ module.exports = (app) => {
 
 /**
  * @swagger
- * /user/{id}:
+ * /users/{id}:
  *   delete:
  *     summary: Eliminar un usuario por ID
  *     description: Elimina un usuario existente de la BD según su ID.

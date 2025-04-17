@@ -39,10 +39,11 @@
                   <a class="dropdown-item" href="interfazProyecto.html"><i class="fa-regular fa-folder-open"></i>
                     {{ proyecto.nombre }}</a>
                   <span class="ms-1">
-                    <a href="editarProyecto.html" class="link-secondary mi-link"><i class="fa-solid fa-edit"></i></a>
+                    <a @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i class="fa-solid fa-edit"></i></a>
                   </span>
                   <span class="ms-2">
-                    <a class="link-secondary mi-link" id="btn-eliminar-movil"><i class="fa-solid fa-trash me-3"></i></a>
+                    <a class="link-secondary mi-link" @click="deleteProject(proyecto.id)" id="btn-eliminar-escritorio"><i
+                      class="fa-solid fa-trash me-3"></i></a>
                   </span>
                 </div>
               </li>
@@ -254,6 +255,9 @@ export default {
             console.log(serverErrors.mensaje);
             alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
             this.$router.push('/iniciar-sesion');
+          } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
+            console.log(serverErrors.mensaje);
+            this.$router.push('/error403');
           } else {
             console.log(serverErrors);
             this.$router.push('/error500');

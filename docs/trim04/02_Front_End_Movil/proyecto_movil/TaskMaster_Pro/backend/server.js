@@ -5,6 +5,8 @@ const http = require('http');
 const server = http.createServer(app);
 const logger = require('morgan');
 const cors = require('cors');
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
 //** importar las rutas**//
 
@@ -19,6 +21,27 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(passport.initialize());
 app.use(passport.session());
+
+//Configuración de Swagger
+const swaggerOptions = {
+    definition: {
+        openapi: "3.0.0",
+        info: {
+            title: "API de Gestión de Proyectos y Tareas",
+            version: "1.0.0",
+            description: "Documentación de la API con Swagger",
+        },
+        servers: [
+            {
+                url: `http://192.168.80.15:${port}`,
+            },
+        ],
+    },
+    apis: ["./routes/*.js"],
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 
 require('./config/passport')(passport);
@@ -36,6 +59,7 @@ server.listen(3000, '192.168.80.15' || 'localhost',
         console.log('Aplicacion de NodeJS ' + process.pid + ' ejecutando en ' +
             server.address().address + ' : ' + server.address().port
         );
+        console.log(`Documentación disponible en http://192.168.80.15:${port}/api-docs`);
     });
 /*Rutas*/
 app.get('/', (req, res) => {

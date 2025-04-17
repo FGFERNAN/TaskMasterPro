@@ -14,7 +14,7 @@
 export default {
     methods: {
         goHome() {
-            this.$router.push('/perfil-completo');
+            this.$router.push('/interfaz-principal');
         }
     }
 }

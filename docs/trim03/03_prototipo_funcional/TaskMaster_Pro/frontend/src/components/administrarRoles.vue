@@ -185,6 +185,9 @@ export default {
           if (serverErrors.message === 'Role not exists') {
             console.log(serverErrors.message);
             alert(serverErrors.message);
+          } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
+            console.log(serverErrors.mensaje);
+            this.$router.push('/error403');
           } else if (serverErrors.message === 'Rol no eliminado') {
             console.log(serverErrors.message);
             alert(serverErrors.message);
