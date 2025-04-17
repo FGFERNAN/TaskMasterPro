@@ -7,6 +7,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import router from './router/index';
 
 
+
 import App from './App.vue'
 
 createApp(App).mount('#app')
