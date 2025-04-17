@@ -282,11 +282,7 @@
         }
       }
     },
-    mounted() {
-      // Inicializa la lista de tareas filtradas
-      this.filteredTasks = this.tasks;
-    }
-  };
+}
   </script>
   
   <style scoped>
