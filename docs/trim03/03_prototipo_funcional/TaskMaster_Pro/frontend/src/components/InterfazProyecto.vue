@@ -29,7 +29,8 @@
         <div class="row">
           <!-- Sidebar -->
           <div class="col-md-3 custom-col d-none d-lg-block">
-            <img src="../assets/img/logos/logotipo.png" class="logo-inicio" width="300">
+            <router-link to="/interfaz-principal">
+            <img src="../assets/img/logos/logotipo.png" class="logo-inicio" width="300"></router-link>
             <ul class="nav flex-column">
               <li class="nav-item" v-for="(link, index) in menuLinks" :key="index">
                 <a class="nav-link mi-link" :href="link.href"><i :class="link.icon"></i> {{ link.name }}</a>
@@ -157,7 +158,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr v-for="task in filteredInProgressTasks" :key="task.id">
+                            <tr v-for="task in filteredInProgressTasks" :key="task.name">
                               <td>{{ task.name }}</td>
                               <td>{{ task.dueDate }}</td>
                               <td>{{ task.project }}</td>
@@ -193,7 +194,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr v-for="task in filteredCompletedTasks" :key="task.id">
+                            <tr v-for="task in filteredCompletedTasks" :key="task.name">
                               <td>{{ task.name }}</td>
                               <td>{{ task.dueDate }}</td>
                               <td>{{ task.project }}</td>
@@ -216,73 +217,82 @@
   
   
   <script>
-  export default {
-    data() {
-      return {
-        projectName: 'Veterinaria',
-        menuLinks: [
-          { name: 'Crear Proyecto', href: 'creacionProyecto.html', icon: 'fa-solid fa-folder-plus' },
-          { name: 'Utilizar Plantillas de Proyecto', href: 'plantillasProyecto.html', icon: 'fa-solid fa-folder-tree' },
-          { name: 'Mis Tareas', href: 'misTareas.html', icon: 'fa-solid fa-list-check' },
-          { name: 'Etiquetas', href: 'etiquetas.html', icon: 'fa-solid fa-tags' }
-        ],
-    searchQuery: '',
-    searchInProgress: '',
-    searchCompleted: '',
-    tasks: [
-      { id: 1, name: 'Tarea 1', dueDate: '17 de Agosto', project: 'Veterinaria', responsible: 'Andres Garzon', priority: 'Alta' },
-      { id: 2, name: 'Tarea 2', dueDate: '20 Julio', project: 'Veterinaria', responsible: 'Johan Garcia', priority: 'Media' },
-      { id: 3, name: 'Tarea 3', dueDate: '2 de Agosto', project: 'Veterinaria', responsible: 'Erika Daniela', priority: 'Baja' }
-    ],
-   
-    
-    filteredTasks: [],
-    filteredInProgressTasks: [],
-    filteredCompletedTasks: [],
-      };
+export default {
+  data() {
+    return {
+      projectName: 'Veterinaria',
+      menuLinks: [
+        { name: 'Crear Proyecto', href: 'creacionProyecto.html', icon: 'fa-solid fa-folder-plus' },
+        { name: 'Utilizar Plantillas de Proyecto', href: 'plantillasProyecto.html', icon: 'fa-solid fa-folder-tree' },
+        { name: 'Mis Tareas', href: 'misTareas.html', icon: 'fa-solid fa-list-check' },
+        { name: 'Etiquetas', href: 'etiquetas.html', icon: 'fa-solid fa-tags' }
+      ],
+      searchQuery: '',
+      searchInProgress: '',
+      searchCompleted: '',
+      tasks: [
+        { id: 1, name: 'Tarea 1', dueDate: '17 de Agosto', project: 'Veterinaria', responsible: 'Andres Garzon', priority: 'Alta' },
+        { id: 2, name: 'Tarea 2', dueDate: '20 Julio', project: 'Veterinaria', responsible: 'Johan Garcia', priority: 'Media' },
+        { id: 3, name: 'Tarea 3', dueDate: '2 de Agosto', project: 'Veterinaria', responsible: 'Erika Daniela', priority: 'Baja' }
+      ],
+      inProgressTasks: [
+        { id: 4, name: 'Tarea 4', dueDate: '5 de Agosto', project: 'Veterinaria', responsible: 'Erika Daniela', priority: 'Alta' },
+        { id: 5, name: 'Tarea 5', dueDate: '10 de Agosto', project: 'Veterinaria', responsible: 'Johan Garcia', priority: 'Media' },
+        { id: 6, name: 'Tarea 6', dueDate: '2 de Agosto', project: 'Veterinaria', responsible: 'Erika Daniela', priority: 'Baja' },
+        { id: 7, name: 'Tarea 7', dueDate: '2 de Agosto', project: 'Veterinaria', responsible: 'Erika Daniela', priority: 'Baja' }
+      ],
+      completedTasks: [
+        { id: 8, name: 'Tarea 8', dueDate: '1 de Julio', project: 'Veterinaria', responsible: 'Andres Garzon', priority: 'Alta' },
+        { id: 9, name: 'Tarea 9', dueDate: '3 de Julio', project: 'Veterinaria', responsible: 'Erika Daniela', priority: 'Baja' },
+        { id: 10, name: 'Tarea 10', dueDate: '2 de Agosto', project: 'Veterinaria', responsible: 'Erika Daniela', priority: 'Baja' }
+      ],
+      filteredTasks: [],
+      filteredInProgressTasks: [],
+      filteredCompletedTasks: [],
+    };
+  },
+  methods: {
+    filterPendingTasks() {
+      this.filteredTasks = this.tasks.filter(task =>
+        task.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
     },
-    methods: {
-  filterPendingTasks() {
-    this.filteredTasks = this.tasks.filter(task =>
-      task.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-    );
+    filterInProgressTasks() {
+      this.filteredInProgressTasks = this.inProgressTasks.filter(task =>
+        task.name.toLowerCase().includes(this.searchInProgress.toLowerCase())
+      );
+    },
+    filterCompletedTasks() {
+      this.filteredCompletedTasks = this.completedTasks.filter(task =>
+        task.name.toLowerCase().includes(this.searchCompleted.toLowerCase())
+      );
+    },
+    navigateToMembers() {
+      this.$router.push("/miembros-page");
+    },
+    irPerfil() {
+      this.$router.push("/perfil-completo");
+    },
+    navigateToCreateTask() {
+      // lógica para redirigir
+    },
+    confirmarCerrarSesion() {
+      if (confirm("¿Estás seguro de que deseas cerrar sesión?")) {
+        this.$router.push("/iniciar-sesion");
+      }
+    }
   },
-  filterInProgressTasks() {
-    this.filteredInProgressTasks = this.inProgressTasks.filter(task =>
-      task.name.toLowerCase().includes(this.searchInProgress.toLowerCase())
-    );
-  },
-  filterCompletedTasks() {
-    this.filteredCompletedTasks = this.completedTasks.filter(task =>
-      task.name.toLowerCase().includes(this.searchCompleted.toLowerCase())
-    );
-  },
-
+  
+  irAOtraVista() {
+      this.$router.push('/interfaz-principal');
+    },
   mounted() {
     this.filteredTasks = this.tasks;
-  this.filteredInProgressTasks = this.inProgressTasks;
-  this.filteredCompletedTasks = this.completedTasks;
-},
-      navigateToMembers() {
-        // Redirigir a la página de miembros
-        this.$router.push("/miembros-page");
-    
-      },
+    this.filteredInProgressTasks = this.inProgressTasks;
+    this.filteredCompletedTasks = this.completedTasks;
+  }
+};
 
-      irPerfil() {
-      this.router.push("/perfil-completo");
-    },
-      navigateToCreateTask() {
-        // Redirigir a la página de crear tarea
-      },
-      confirmarCerrarSesion() {
-        if (confirm("¿Estás seguro de que deseas cerrar sesión?")) {
-          this.$router.push("/iniciar-sesion");
-        
-        }
-      }
-    },
-}
   </script>
   
   <style scoped>
