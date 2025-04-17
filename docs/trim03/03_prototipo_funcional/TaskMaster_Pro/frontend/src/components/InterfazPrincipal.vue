@@ -135,8 +135,12 @@
                     <input type="text" class="form-control" v-model="busqueda"
                       placeholder="Escribe el nombre del proyecto" />
                     <ul class="list-group mt-3" v-if="busqueda">
-                      <li class="list-group-item" v-for="proyecto in resultadosFiltrados" :key="proyecto.id">
-                        {{ proyecto.nombre }}
+                      <li  class="list-group-item"
+  v-for="proyecto in resultadosFiltrados"
+  :key="proyecto.id"
+  @click="Proyecto(proyecto.id)"
+>
+  {{ proyecto.nombre }}
                       </li>
                     </ul>
                   </div>
@@ -204,12 +208,13 @@ export default {
     }
   },
   computed: {
+
     proyectosChunked() {
       return [this.proyectosInterfaz.slice(0, 3), this.proyectosInterfaz.slice(3, 6)];
     },
     resultadosFiltrados() {
-      return this.proyectos.filter(p =>
-        p.nombre.toLowerCase().includes(this.busqueda.toLowerCase())
+  return this.proyectosInterfaz.filter(p =>
+    p.nombre.toLowerCase().includes(this.busqueda.toLowerCase())
       );
     }
   },
@@ -281,6 +286,13 @@ export default {
         alert(response.data.message);
       }
     },
+
+    Proyecto(id) {
+    console.log("Proyecto seleccionado:", id);
+    // ejemplo: navegar a una ruta
+    this.router.push(`/proyecto/${id}`);
+    this.cerrarModalBusqueda();
+  },
     cerrarModalBusqueda() {
       this.mostrarModalBusqueda = false;
       this.busqueda = '';
