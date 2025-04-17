@@ -20,6 +20,8 @@ import EditarProyecto from '@/components/editarProyecto.vue';
 import InterfazProyecto from '@/components/InterfazProyecto.vue';
 
 
+
+
 const routes = [
   { path: '/', component: IniciarSesion }, // Ruta para iniciar sesión
   { path: '/iniciar-sesion', component: IniciarSesion },
@@ -40,7 +42,8 @@ const routes = [
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: error404},
   { path: '/miembros-page', component: MiembrosPage },
   { path: '/editar-proyecto/:id', name: 'EditarProyecto', component: EditarProyecto, props: true},
-  { path: '/interfaz-proyecto', component: InterfazProyecto }
+  { path: '/interfaz-proyecto', component: InterfazProyecto },
+  
 
 ];
 
