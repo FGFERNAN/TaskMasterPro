@@ -126,7 +126,7 @@ router.get('/', ProjectController.getAllProjects);
  *                     type: string
  *                     example: Proyecto no encontrado.
  */
-router.get('/:id', verificarPermiso('Modulo Gestion Proyecto', 'Editar Proyecto'), ProjectController.getProjectById);
+router.get('/:id', verificarPermiso('Modulo Gestion Proyecto', 'Visualizar Proyecto'), ProjectController.getProjectById);
 
 /**
  * @swagger

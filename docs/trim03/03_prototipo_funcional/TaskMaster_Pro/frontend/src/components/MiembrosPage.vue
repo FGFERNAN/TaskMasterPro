@@ -20,7 +20,7 @@
       <div class="offcanvas-body">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link mi-link" href="creacionProyecto.html"><i class="fa-solid fa-folder-plus me-1"></i> Crear
+            <a class="nav-link mi-link" @click="crearProyecto"><i class="fa-solid fa-folder-plus me-1"></i> Crear
               Proyecto</a>
           </li>
           <li class="nav-item">
@@ -36,7 +36,7 @@
             <ul class="dropdown-menu">
               <li v-for="proyecto in proyectos" :key="proyecto.id">
                 <div class="d-flex align-items-center" id="sub-menu-proyectos">
-                  <a class="dropdown-item align-items-center" href="interfazProyecto.html">
+                  <a class="dropdown-item align-items-center boton-menu-proyecto" @click="irInterfazProyecto(proyecto.id)">
                     <i class="fa-regular fa-folder-open"></i> {{ proyecto.nombre }}
                   </a>
                     <span class="ms-1">
@@ -66,7 +66,7 @@
             style="cursor: pointer;">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link mi-link" href="creacionProyecto.html"><i class="fa-solid fa-folder-plus me-1"></i>
+              <a class="nav-link mi-link" @click="crearProyecto"><i class="fa-solid fa-folder-plus me-1"></i>
                 Crear Proyecto</a>
             </li>
             <li class="nav-item">
@@ -85,7 +85,7 @@
               <ul class="dropdown-menu">
                 <li v-for="proyecto in proyectos" :key="proyecto.id">
                   <div class="d-flex align-items-center">
-                    <a class="dropdown-item" href="interfazProyecto.html">
+                    <a class="dropdown-item boton-menu-proyecto" @click="irInterfazProyecto(proyecto.id)">
                       <i class="fa-regular fa-folder-open"></i> {{ proyecto.nombre }}
                     </a>
                       <span class="ms-1">
@@ -265,14 +265,17 @@ export default {
     irPerfil() {
       this.$router.push('/perfil-completo');
     },
-
-
     irAOtraVista() {
       this.$router.push('/interfaz-principal');
     },
-    confirmarCerrarSesion() {
-      if (confirm('¿Seguro que quieres cerrar sesión ?')) {
-        window.location.href = './iniciar-sesion';
+    irInterfazProyecto(projectId) {
+      this.$router.push({ name: 'InterfazProyecto', params: { id: projectId }});
+    },
+    async confirmarCerrarSesion() {
+      if (confirm("¿Estás seguro que quieres cerrar sesión?")) {
+        const response = await api.post("/logout");
+        this.$router.push("/iniciar-sesion");
+        alert(response.data.message);
       }
     },
     removeMember(id) {
@@ -281,7 +284,10 @@ export default {
     addMember(user) {
       const randomAvatar = this.availableAvatars[Math.floor(Math.random() * this.availableAvatars.length)];
       this.members.push({ id: Date.now(), name: user.name, avatar: randomAvatar });
-    }
+    },
+    crearProyecto() {
+      this.$router.push('/crear-proyecto');
+    },
   }
 };
 

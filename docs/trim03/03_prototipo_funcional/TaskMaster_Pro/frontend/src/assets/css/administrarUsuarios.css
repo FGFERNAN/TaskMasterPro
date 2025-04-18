@@ -170,22 +170,6 @@
     color: white;
   }
   
-  .project-box {
-    border: 2px solid #000; /* Borde negro */
-    height: 13em; /* Altura del cuadro */
-    margin-bottom: 5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-  }
-  
-  .project-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Hace que la imagen se ajuste sin deformarse */
-  }
-  
   .label-project {
     cursor: pointer;
     color: #000;
@@ -194,14 +178,6 @@
   .label-project:hover {
     color: #6DA2C1;
     font-weight: bold;
-  }
-  
-  .project-container {
-    border: 2px solid #000; /* Borde del contenedor principal */
-    padding: 20px;
-    background-color: #DCD2BA; /* Color de fondo para diferenciar el contenedor */
-    margin-block-end: 3em;
-    margin-top: 2em;
   }
   
   .color-badge{

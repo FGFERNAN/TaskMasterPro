@@ -20,7 +20,7 @@
       <div class="offcanvas-body">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link mi-link" href="creacionProyecto.html"><i class="fa-solid fa-folder-plus me-1"></i> Crear
+            <a class="nav-link mi-link" @click="crearProyecto"><i class="fa-solid fa-folder-plus me-1"></i> Crear
               Proyecto</a>
           </li>
           <li class="nav-item">
@@ -36,7 +36,7 @@
             <ul class="dropdown-menu">
               <li v-for="proyecto in proyectos" :key="proyecto.id">
                 <div class="d-flex align-items-center">
-                  <a class="dropdown-item" href="interfazProyecto.html"><i class="fa-regular fa-folder-open"></i>
+                  <a class="dropdown-item boton-menu-proyecto" @click="irInterfazProyecto(proyecto.id)"><i class="fa-regular fa-folder-open"></i>
                     {{ proyecto.nombre }}</a>
                   <span class="ms-1">
                     <a @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i class="fa-solid fa-edit"></i></a>
@@ -63,12 +63,12 @@
           <img src="../assets/img/logos/logotipo.png" class="logo-inicio" width="300" />
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link mi-link" href="creacionProyecto.html"><i class="fa-solid fa-folder-plus me-1"></i>
+              <a class="nav-link mi-link" @click="crearProyecto"><i class="fa-solid fa-folder-plus me-1"></i>
                 Crear Proyecto</a>
             </li>
             <li class="nav-item">
               <a class="nav-link mi-link" href="plantillasProyecto.html"><i class="fa-solid fa-folder-tree me-1"></i>
-                Utilizar Plantillas</a>
+                Utilizar Plantillas de Proyecto</a>
             </li>
             <li class="nav-item">
               <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i> Mis
@@ -80,7 +80,7 @@
               <ul class="dropdown-menu">
                 <li v-for="proyecto in proyectos" :key="proyecto.id">
                   <div class="d-flex align-items-center">
-                    <a class="dropdown-item" href="interfazProyecto.html"><i class="fa-regular fa-folder-open"></i>
+                    <a class="dropdown-item boton-menu-proyecto" @click="irInterfazProyecto(proyecto.id)"><i class="fa-regular fa-folder-open"></i>
                       {{ proyecto.nombre }}</a>
                     <span class="ms-1">
                       <a @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i class="fa-solid fa-edit"></i></a>
@@ -117,7 +117,7 @@
               </div>
             </div>
             <div class="text-center">
-              <h3><span class="badge p-4 color-badge">¿Qué Proyecto Crearemos Hoy?</span></h3>
+              <h3><span class="badge p-4 color-badge">¿Que Proyecto Crearemos Hoy?</span></h3>
             </div>
           </header>
 
@@ -135,9 +135,9 @@
                     <input type="text" class="form-control" v-model="busqueda"
                       placeholder="Escribe el nombre del proyecto" />
                     <ul class="list-group mt-3" v-if="busqueda">
-                      <li class="list-group-item" v-for="proyecto in resultadosFiltrados" :key="proyecto.id">
+                      <a class="list-group-item boton-menu-proyecto" @click="irInterfazProyecto(proyecto.id)" v-for="proyecto in resultadosFiltrados" :key="proyecto.id">
                         {{ proyecto.nombre }}
-                      </li>
+                      </a>
                     </ul>
                   </div>
                 </div>
@@ -154,7 +154,7 @@
                   </div>
                   <div class="mt-3">
                     <input class="form-check-input" type="radio" name="project" :id="proyecto.id"
-                      @click="irAProyecto" />
+                    @click="irInterfazProyecto" />
                     <label class="form-check-label label-project" :for="proyecto.id">{{ proyecto.nombre }}</label>
                   </div>
                 </div>
@@ -265,14 +265,11 @@ export default {
         }
       }
     },
-    irAProyecto() {
-      window.location.href = 'interfazProyecto.html';
-    },
     irPerfil() {
       this.router.push('/perfil-completo');
     },
     crearProyecto() {
-      window.location.href = 'creacionProyecto.html';
+      this.router.push('/crear-proyecto');
     },
     async confirmarCerrarSesion() {
       if (confirm("¿Estás seguro que quieres cerrar sesión?")) {
@@ -284,6 +281,9 @@ export default {
     cerrarModalBusqueda() {
       this.mostrarModalBusqueda = false;
       this.busqueda = '';
+    },
+    irInterfazProyecto(projectId) {
+      this.$router.push({ name: 'InterfazProyecto', params: { id: projectId }});
     }
   }
 }

@@ -196,7 +196,7 @@ un nuevo registro de usuario en la base de datos. Aquí hay un desglose de lo qu
  *       500:
  *         description: Error interno del servidor
  */
-router.post('/',  UserController.createUser);
+router.post('/', verificarPermiso('Modulo Usuarios', 'Crear Usuario'), UserController.createUser);
 
 
 /* La función `router.put('/:id', async (req, res) => { ... }` maneja una solicitud PUT para actualizar la 
