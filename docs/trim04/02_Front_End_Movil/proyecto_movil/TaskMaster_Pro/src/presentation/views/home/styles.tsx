@@ -1,4 +1,6 @@
 import { StyleSheet } from "react-native";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 
 const homeStyles = StyleSheet.create({
     container: {
@@ -6,62 +8,36 @@ const homeStyles = StyleSheet.create({
         backgroundColor: '#E4E2DD',
     },
 
-    ImageBackground: {
-        width: '100%',
-        height: '100%',
-        opacity: 0.7,
-        bottom: '30%',
-    },
-
     form: {
-        width: '100%',
-        height: '40%',
+        width: wp('100%'),
+        height: hp('40%'),
         backgroundColor: 'white',
         position: 'absolute',
         bottom: 0,
         borderTopLeftRadius: 40,
         borderTopRightRadius: 40,
-        padding: 15,
+        padding: wp('4%'),
     },
 
     formText: {
         fontWeight: 'bold',
-        fontSize: 16,
-    },
-
-    formRegister: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        marginTop: 30,
-    },
-
-    formRegisterText: {
-        fontStyle: 'italic',
-        color: 'orange',
-        borderBottomWidth: 1,
-        borderBottomColor: 'orange',
-        fontWeight: 'bold',
-        marginLeft: 10,
+        fontSize: hp('2.0%'),
     },
 
     logoContainer: {
         position: 'absolute',
         alignSelf: 'center',
-        top: '20%',
+        top: hp('20%'),
     },
 
     logoImage: {
-        width: 400,
-        height: 200,
+        width: wp('100%'),
+        height: hp('25%'),
     },
 
-    logoText: {
-        color: 'black',
-        textAlign: 'center',
-        fontSize: 20,
-        marginTop: 10,
-        fontWeight: 'bold',
-    },
+    entrar: {
+        marginTop: hp('5%'),
+    }
 
 });
 

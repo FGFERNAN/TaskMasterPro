@@ -69,7 +69,7 @@ export const HomeScreen = ({ navigation, route }: Props) => {
                     secureTextEntry={true}
                 />
 
-                <View style={{ marginTop: 30 }}>
+                <View style={styles.entrar}>
                     <RoundedButton text='ENTRAR' onPress={() => login()}
                     />
                 </View>
