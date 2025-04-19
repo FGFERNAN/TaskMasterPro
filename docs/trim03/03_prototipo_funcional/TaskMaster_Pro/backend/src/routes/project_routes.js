@@ -59,6 +59,8 @@ const router = Router();
  */
 router.get('/', ProjectController.getAllProjects);
 
+router.get('/plantillas', ProjectController.getPlantillasProyecto);
+
 /**
  * @swagger
  * /project/{id}:
@@ -182,6 +184,8 @@ router.get('/:id', verificarPermiso('Modulo Gestion Proyecto', 'Visualizar Proye
  *         description: Error interno del servidor
  */
 router.post('/', verificarPermiso('Modulo Gestion Proyecto', 'Crear Proyecto'), ProjectController.createProject);
+
+router.post('/plantillas', verificarPermiso('Modulo Gestion Proyecto', 'Crear Proyecto'), ProjectController.createProject);
 
 /**
  * @swagger

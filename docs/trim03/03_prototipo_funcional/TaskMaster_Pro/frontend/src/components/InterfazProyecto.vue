@@ -24,7 +24,7 @@
               Proyecto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mi-link" href="plantillasProyecto.html"><i class="fa-solid fa-folder-tree me-1"></i>
+            <a class="nav-link mi-link" @click="irPlantillasProyecto"><i class="fa-solid fa-folder-tree me-1"></i>
               Utilizar Plantillas</a>
           </li>
           <li class="nav-item">
@@ -69,7 +69,7 @@
                 Crear Proyecto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mi-link" href="plantillasProyecto.html"><i class="fa-solid fa-folder-tree me-1"></i>
+              <a class="nav-link mi-link" @click="irPlantillasProyecto"><i class="fa-solid fa-folder-tree me-1"></i>
                 Utilizar Plantillas de Proyecto</a>
             </li>
             <li class="nav-item">
@@ -394,6 +394,9 @@ export default {
       this.filteredTasks = this.tasks.filter(task =>
         task.name.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
+    },
+    irPlantillasProyecto() {
+      this.router.push('/plantillas-proyecto');
     },
     filterInProgressTasks() {
       this.filteredInProgressTasks = this.inProgressTasks.filter(task =>

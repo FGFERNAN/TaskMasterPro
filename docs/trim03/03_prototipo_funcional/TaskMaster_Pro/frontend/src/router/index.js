@@ -19,7 +19,9 @@ import MiembrosPage from '@/components/MiembrosPage.vue';
 import EditarProyecto from '@/components/editarProyecto.vue';
 import InterfazProyecto from '@/components/InterfazProyecto.vue';
 import creacionProyecto from '@/components/creacionProyecto.vue';
-
+import PlantillasProyecto from '@/components/PlantillasProyecto.vue';
+import CrearPlantilla from '@/components/CrearPlantilla.vue';
+import EditarPlantilla from '@/components/EditarPlantilla.vue';
 
 
 
@@ -44,9 +46,10 @@ const routes = [
   { path: '/miembros-page', component: MiembrosPage },
   { path: '/editar-proyecto/:id', name: 'EditarProyecto', component: EditarProyecto, props: true},
   { path: '/interfaz-proyecto/:id', name: 'InterfazProyecto', component: InterfazProyecto, props: true },
-  { path: '/crear-proyecto', component: creacionProyecto }
-  
-
+  { path: '/crear-proyecto', component: creacionProyecto },
+  { path: '/plantillas-proyecto', component: PlantillasProyecto },
+  { path: '/crear-plantilla', component: CrearPlantilla},
+  { path: '/editar-plantilla/:id', name: 'EditarPlantilla', component: EditarPlantilla}
 ];
 
 const router = createRouter({

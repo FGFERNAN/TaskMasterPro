@@ -24,7 +24,7 @@
               Proyecto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mi-link" href="plantillasProyecto.html"><i class="fa-solid fa-folder-tree me-1"></i>
+            <a class="nav-link mi-link" @click="irPlantillasProyecto"><i class="fa-solid fa-folder-tree me-1"></i>
               Utilizar Plantillas de Proyecto</a>
           </li>
           <li class="nav-item">
@@ -70,7 +70,7 @@
                 Crear Proyecto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mi-link" href="plantillasProyecto.html"><i class="fa-solid fa-folder-tree me-1"></i>
+              <a class="nav-link mi-link" @click="irPlantillasProyecto"><i class="fa-solid fa-folder-tree me-1"></i>
                 Utilizar Plantillas de Proyecto</a>
             </li>
             <li class="nav-item">
@@ -264,6 +264,9 @@ export default {
     // Método para redirigir a la vista de perfil
     irPerfil() {
       this.$router.push('/perfil-completo');
+    },
+    irPlantillasProyecto() {
+      this.$router.push('/plantillas-proyecto');
     },
     irAOtraVista() {
       this.$router.push('/interfaz-principal');
