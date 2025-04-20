@@ -150,8 +150,8 @@
               <h5>Buscar miembros</h5>
               <input type="text" v-model="searchQuery" class="form-control mb-3" placeholder="Buscar miembros">
               <ul class="list-unstyled">
-                <li v-for="user in filteredUsers" :key="user.name">
-                  {{ user.name }} <a href="#" class="text-primary" @click="addMember(user)">Agregar</a>
+                <li v-for="user in filteredUsers" :key="user.email">
+                  {{ user.email }} <a href="#" class="text-primary" @click="addMember(user)">Agregar</a>
                 </li>
               </ul>
             </div>
@@ -176,6 +176,7 @@ export default {
   mounted() {
     document.title = "Miembros | TaskMaster Pro";
     this.getProjects();
+    this.getUsers();
   },
   data() {
     return {
@@ -187,14 +188,7 @@ export default {
         { id: 4, name: 'Nikob1030_', avatar: img4 }
       ],
       searchQuery: '',
-      users: [
-        { name: 'User234' },
-        { name: 'User53720' },
-        { name: 'Mariposa34' },
-        { name: 'Unicornio56' },
-        { name: 'Messielmejor' },
-        { name: 'SML16' }
-      ],
+      users: [],
       availableAvatars: [
         user234,
         messielmejor,
@@ -206,7 +200,7 @@ export default {
   },
   computed: {
     filteredUsers() {
-      return this.users.filter(user => user.name.toLowerCase().includes(this.searchQuery.toLowerCase()));
+      return this.users.filter(user => user.email.toLowerCase().includes(this.searchQuery.toLowerCase()));
     }
   },
   methods: {
@@ -220,6 +214,31 @@ export default {
           const serverErrors = error.response.data;
           console.log(serverErrors);
           this.$router.push('/error500');
+        }
+      }
+    },
+    async getUsers() {
+      try {
+        const response = await api.get('/user');
+        this.users = response.data.data;
+        console.log(response.data);
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.message === 'Error fetching users: ') {
+            console.log(serverErrors.message);
+            alert(serverErrors.message);
+          } else if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
+            console.log(serverErrors.mensaje);
+            this.$router.push('/error403');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
         }
       }
     },
@@ -286,7 +305,7 @@ export default {
     },
     addMember(user) {
       const randomAvatar = this.availableAvatars[Math.floor(Math.random() * this.availableAvatars.length)];
-      this.members.push({ id: Date.now(), name: user.name, avatar: randomAvatar });
+      this.members.push({ id: Date.now(), name: `${user.nombre}   ${user.apellidos}`, avatar: randomAvatar });
     },
     crearProyecto() {
       this.$router.push('/crear-proyecto');

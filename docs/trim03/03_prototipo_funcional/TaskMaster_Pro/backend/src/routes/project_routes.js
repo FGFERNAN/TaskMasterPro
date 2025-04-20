@@ -61,6 +61,8 @@ router.get('/', ProjectController.getAllProjects);
 
 router.get('/plantillas', ProjectController.getPlantillasProyecto);
 
+router.get('/miembros/:id', ProjectController.getProjectMembers);
+
 /**
  * @swagger
  * /project/{id}:
@@ -187,6 +189,8 @@ router.post('/', verificarPermiso('Modulo Gestion Proyecto', 'Crear Proyecto'), 
 
 router.post('/plantillas', verificarPermiso('Modulo Gestion Proyecto', 'Crear Proyecto'), ProjectController.createProject);
 
+router.post('/miembros/:id', verificarPermiso('Modulo Gestion Proyecto', 'Agregar Miembros Proyecto'), ProjectController.addMembers);
+
 /**
  * @swagger
  * /project/{id}:
@@ -294,5 +298,7 @@ router.put('/:id', verificarPermiso('Modulo Gestion Proyecto', 'Editar Proyecto'
  *       
  */
 router.delete('/:id', verificarPermiso('Modulo Gestion Proyecto', 'Eliminar Proyecto'), ProjectController.deleteProject);
+
+router.delete('/miembros/:id', verificarPermiso('Modulo Gestion Proyecto', 'Eliminar Miembros Proyecto'), ProjectController.deleteMembers);
 
 module.exports = router;

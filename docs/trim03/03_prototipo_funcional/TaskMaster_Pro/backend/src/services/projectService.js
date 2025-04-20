@@ -1,5 +1,6 @@
 const DBConnection = require('../config/dbConnection');
 const Project = require('../models/project');
+const Members = require('../models/members');
 
 class ProjectService {
     constructor() {
@@ -164,6 +165,58 @@ class ProjectService {
             throw err;
         }
     };
+
+    async addMember(projectId, userId) {
+        try {
+            const verificarMiembros = `SELECT id FROM usuarios_proyectos WHERE proyectoID = ? AND usuarioID = ?;`;
+            const miembroExiste = await this.db.query(verificarMiembros, [projectId, userId]);
+            if (miembroExiste.length > 0) {
+                throw new Error("El miembro que quieres agregar ya se encuentra asignado a este proyecto");
+            }
+            const results = await this.db.query(`INSERT INTO usuarios_proyectos (proyectoID, usuarioID) VALUES (?,?)`, [projectId, userId]);
+            if (results.length != 0) {
+                return { message: "Usuario asignado con exito" };
+            } else {
+                throw new Error("Usuario no asignado");
+            }
+        } catch (err) {
+            console.error('Error assigning user: ', err.message);
+            throw err;
+        }
+    };
+
+    async getProjectMembers(projectId) {
+        try {
+            const results = await this.db.query(`SELECT u.id, u.nombre, u.email FROM usuarios_proyectos up 
+                JOIN usuarios u ON up.usuarioID = u.id WHERE up.proyectoID = ?;`, [projectId]);
+            if (results.length === 0) throw new Error("Proyecto no encontrado");
+            return results.map(member => new Members(...Object.values(member)));
+        } catch (err) {
+            console.error('Error fetching members: ', err.message);
+            throw err;
+        }
+    };
+
+    async deleteMembers(projectId, userId) {
+        try {
+            const verificarMiembros = `SELECT id FROM usuarios_proyectos WHERE proyectoID = ? AND usuarioID = ?;`;
+            const miembroExiste = await this.db.query(verificarMiembros, [projectId, userId]);
+            if (miembroExiste.length > 0) {
+                const results = await this.db.query(`DELETE FROM usuarios_proyectos WHERE proyectoID = ? AND usuarioID = ?`, [projectId, userId]);
+                if (results.length != 0) {
+                    return { message: "Miembro eliminado con exito" };
+                } else {
+                    throw new Error("Miembro no eliminado");
+                }
+            } else {
+                throw new Error("El miembro que quieres eliminar no se encuentra asignado a este proyecto");
+            }
+
+        } catch (err) {
+            console.error('Error deleting member: ', err.message);
+            throw err;
+        }
+    }
 }
 
 module.exports = ProjectService;

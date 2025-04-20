@@ -62,6 +62,35 @@ class ProjectController {
         } catch (err) {
             res.status(400).json({ message: err.message });
         }
+    };
+
+    addMembers = async (req, res) => {
+        try {
+            const { usuarioID } = req.body;
+            const response = await this.projectService.addMember(req.params.id, usuarioID);
+            res.status(200).json(response);
+        } catch (err) {
+            res.status(500).json({ message: err.message });
+        }
+    };
+
+    getProjectMembers = async (req, res) => {
+        try {
+            const members = await this.projectService.getProjectMembers(req.params.id);
+            res.json({ message: "Method Get", data: members, status: 200 });
+        } catch (err) {
+            res.status(500).json({ message: err.message });
+        }
+    };
+
+    deleteMembers = async (req, res) => {
+        try {
+            const { usuarioID } = req.body;
+            const response = await this.projectService.deleteMembers(req.params.id, usuarioID);
+            res.status(200).json(response);
+        } catch (err) {
+            res.status(400).json({ message: err.message });
+        }
     }
 }
 
