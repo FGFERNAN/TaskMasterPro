@@ -186,8 +186,12 @@ class ProjectService {
         try {
             const verificarMiembros = `SELECT id FROM usuarios_proyectos WHERE proyectoID = ? AND usuarioID = ?;`;
             const miembroExiste = await this.db.query(verificarMiembros, [projectId, userId]);
+            const verificarProyecto = `SELECT * FROM proyectos WHERE id = ?;`;
+            const proyectoExiste = await this.db.query(verificarProyecto, [projectId]);
             if (miembroExiste.length > 0) {
                 throw new Error("El miembro que quieres agregar ya se encuentra asignado a este proyecto");
+            } else if(proyectoExiste.length === 0) {
+                throw new Error("El proyecto al que intentas agregar este miembro no existe");
             }
             const results = await this.db.query(`INSERT INTO usuarios_proyectos (proyectoID, usuarioID) VALUES (?,?)`, [projectId, userId]);
             if (results.length != 0) {

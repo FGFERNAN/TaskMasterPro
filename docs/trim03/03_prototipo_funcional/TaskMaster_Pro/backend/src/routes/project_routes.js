@@ -7,8 +7,8 @@ const router = Router();
  * @swagger
  * /project:
  *   get:
- *     summary: Obtener todos los proyectos
- *     description: Retorna una lista con todos los proyectos registrados en la base de datos.
+ *     summary: Obtener los proyectos de un usuario.
+ *     description: Retorna una lista con todos los proyectos que tenga el usuario logueado registrados en la base de datos.
  *     tags:
  *       - Proyectos
  *     responses:
@@ -57,11 +57,63 @@ const router = Router();
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/', ProjectController.getProjects);
+router.get('/', verificarPermiso('Modulo Gestion Proyecto', 'Visualizar Proyecto'), ProjectController.getProjects);
 
+/**
+ * @swagger
+ * /project/plantillas:
+ *   get:
+ *     summary: Obtener las plantillas de proyectos del sistema.
+ *     description: Retorna una lista con todos las plantillas de proyectos registradas en la base de datos.
+ *     tags:
+ *       - Proyectos
+ *     responses:
+ *       200:
+ *         description: Lista de proyectos obtenida con éxito.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                   message:
+ *                     type: string
+ *                     example: Method Get
+ *                   data:
+ *                     type: array
+ *                     items:
+ *                       type: object
+ *                       properties:
+ *                         id:
+ *                           type: integer
+ *                           example: 1
+ *                         nombre:
+ *                           type: string
+ *                           example: Veterinaria
+ *                         descripcion:
+ *                           type: string
+ *                           example: Es un proyecto para manejar el historial clinico de una veterinaria
+ *                         fechaInicio:
+ *                           type: date
+ *                           example: 2025-04-09
+ *                         fechaFin:
+ *                           type: date
+ *                           example: 2025-04-10
+ *                         estado:
+ *                           type: string
+ *                           example: Pendiente
+ *                         prioridad:
+ *                           type: string
+ *                           example: Alta
+ *                         etiquetasID:
+ *                           type: string
+ *                           example: null
+ *                   status:
+ *                     type: integer
+ *                     example: 200
+ *       500:
+ *         description: Error interno del servidor
+ */
 router.get('/plantillas', ProjectController.getPlantillasProyecto);
-
-router.get('/miembros/:id', ProjectController.getProjectMembers);
 
 /**
  * @swagger
@@ -134,6 +186,63 @@ router.get('/:id', verificarPermiso('Modulo Gestion Proyecto', 'Visualizar Proye
 
 /**
  * @swagger
+ * /project/miembros/{id}:
+ *   get:
+ *     summary: Obtener los miembros de un proyecto.
+ *     description: Retorna una lista de usuarios que estan asignados a un proyecto especifico.
+ *     tags:
+ *       - Proyectos
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID del proyecto a obtener.
+ *     responses:
+ *       200:
+ *         description: Información del proyecto obtenida con éxito.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                   message:
+ *                     type: string
+ *                     example: Method Get
+ *                   data: 
+ *                     type: object
+ *                     properties:
+ *                         id:
+ *                           type: integer
+ *                           example: 1
+ *                         nombre:
+ *                           type: string
+ *                           example: Johan
+ *                         apellidos:
+ *                           type: string
+ *                           example: Garcia
+ *                         email:
+ *                           type: string
+ *                           example: fgfernan2508@gmail.com
+ *                   status:
+ *                     type: integer
+ *                     example: 200
+ *       500:
+ *         description: Proyecto sin miembros.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                    message:
+ *                     type: string
+ *                     example: Este proyecto no tiene ningun miembro asignado.
+ */
+router.get('/miembros/:id', verificarPermiso('Modulo Gestion Proyecto', 'Visualizar Proyecto'), ProjectController.getProjectMembers);
+
+/**
+ * @swagger
  * /project:
  *   post:
  *     summary: Crear un nuevo proyecto
@@ -147,9 +256,6 @@ router.get('/:id', verificarPermiso('Modulo Gestion Proyecto', 'Visualizar Proye
  *           schema:
  *             type: object
  *             properties:
- *               id:
- *                 type: integer
- *                 example: 1
  *               nombre:
  *                 type: string
  *                 example: Veterinaria
@@ -187,8 +293,96 @@ router.get('/:id', verificarPermiso('Modulo Gestion Proyecto', 'Visualizar Proye
  */
 router.post('/', verificarPermiso('Modulo Gestion Proyecto', 'Crear Proyecto'), ProjectController.createProject);
 
+/**
+ * @swagger
+ * /project/plantillas:
+ *   post:
+ *     summary: Crear una nueva plantilla.
+ *     description: Agrega una nueva plantilla de proyeccto a la base de datos.
+ *     tags:
+ *       - Proyectos
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               nombre:
+ *                 type: string
+ *                 example: Veterinaria
+ *               descripcion:
+ *                 type: string
+ *                 example: Es un proyecto para manejar el historial clinico de una veterinaria
+ *               estado:
+ *                 type: string
+ *                 example: Pendiente
+ *               Prioridad:
+ *                 type: string
+ *                 example: Alta
+ *     responses:
+ *       201:
+ *         description: Proyecto creado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Proyecto creado con éxito
+ *       500:
+ *         description: Error interno del servidor
+ */
 router.post('/plantillas', verificarPermiso('Modulo Gestion Proyecto', 'Crear Proyecto'), ProjectController.createProject);
 
+/**
+ * @swagger
+ * /project/miembros/{id}:
+ *   post:
+ *     summary: Añadir miembros a un proyecto.
+ *     description: Agrega un usuario creado a un proyecto creado en la base de datos.
+ *     tags:
+ *       - Proyectos
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID del proyecto al que quiere agregar el miembro.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               usuarioID:
+ *                 type: integer
+ *                 example: 1030533364
+ *     responses:
+ *       200:
+ *         description: Usuario asignado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Usuario asignado con exito
+ *       500:
+ *         description: El usuario ya esta asignado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: El miembro que quieres agregar ya se encuentra asignado a este proyecto
+ */
 router.post('/miembros/:id', verificarPermiso('Modulo Gestion Proyecto', 'Agregar Miembros Proyecto'), ProjectController.addMembers);
 
 /**
@@ -299,6 +493,55 @@ router.put('/:id', verificarPermiso('Modulo Gestion Proyecto', 'Editar Proyecto'
  */
 router.delete('/:id', verificarPermiso('Modulo Gestion Proyecto', 'Eliminar Proyecto'), ProjectController.deleteProject);
 
+/**
+ * @swagger
+ * /project/miembros/{id}:
+ *   delete:
+ *     summary: Eliminar miembros a un proyecto.
+ *     description: Elimina un miembro de un proyecto creado en la base de datos.
+ *     tags:
+ *       - Proyectos
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID del proyecto al que quieres eliminar el miembro.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               usuarioID:
+ *                 type: integer
+ *                 example: 1030533364
+ *     responses:
+ *       200:
+ *         description: Usuario eliminado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Miembro eliminado con exito
+ *       400:
+ *         description: Usuario no asignado al proyecto
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: El miembro que quieres eliminar no se encuentra asignado a este proyecto
+ *       500:
+ *         description: Error interno en el servidor.
+ */
 router.delete('/miembros/:id', verificarPermiso('Modulo Gestion Proyecto', 'Eliminar Miembros Proyecto'), ProjectController.deleteMembers);
 
 module.exports = router;

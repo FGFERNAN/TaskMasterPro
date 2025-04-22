@@ -36,14 +36,16 @@
             <ul class="dropdown-menu">
               <li v-for="proyecto in proyectos" :key="proyecto.id">
                 <div class="d-flex align-items-center">
-                  <a class="dropdown-item boton-menu-proyecto" @click="irInterfazProyecto(proyecto.id)"><i class="fa-regular fa-folder-open"></i>
+                  <a class="dropdown-item boton-menu-proyecto" @click="irInterfazProyecto(proyecto.id)"><i
+                      class="fa-regular fa-folder-open"></i>
                     {{ proyecto.nombre }}</a>
                   <span class="ms-1">
-                    <a @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i class="fa-solid fa-edit"></i></a>
+                    <a @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i
+                        class="fa-solid fa-edit"></i></a>
                   </span>
                   <span class="ms-2">
-                    <a class="link-secondary mi-link" @click="deleteProject(proyecto.id)" id="btn-eliminar-escritorio"><i
-                      class="fa-solid fa-trash me-3"></i></a>
+                    <a class="link-secondary mi-link" @click="deleteProject(proyecto.id)"
+                      id="btn-eliminar-escritorio"><i class="fa-solid fa-trash me-3"></i></a>
                   </span>
                 </div>
               </li>
@@ -80,14 +82,16 @@
               <ul class="dropdown-menu">
                 <li v-for="proyecto in proyectos" :key="proyecto.id">
                   <div class="d-flex align-items-center">
-                    <a class="dropdown-item boton-menu-proyecto" @click="irInterfazProyecto(proyecto.id)"><i class="fa-regular fa-folder-open"></i>
+                    <a class="dropdown-item boton-menu-proyecto" @click="irInterfazProyecto(proyecto.id)"><i
+                        class="fa-regular fa-folder-open"></i>
                       {{ proyecto.nombre }}</a>
                     <span class="ms-1">
-                      <a @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i class="fa-solid fa-edit"></i></a>
+                      <a @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i
+                          class="fa-solid fa-edit"></i></a>
                     </span>
                     <span class="ms-2">
-                      <a class="link-secondary mi-link" @click="deleteProject(proyecto.id)" id="btn-eliminar-escritorio"><i
-                          class="fa-solid fa-trash me-3"></i></a>
+                      <a class="link-secondary mi-link" @click="deleteProject(proyecto.id)"
+                        id="btn-eliminar-escritorio"><i class="fa-solid fa-trash me-3"></i></a>
                     </span>
                   </div>
                 </li>
@@ -135,7 +139,8 @@
                     <input type="text" class="form-control" v-model="busqueda"
                       placeholder="Escribe el nombre del proyecto" />
                     <ul class="list-group mt-3" v-if="busqueda">
-                      <a class="list-group-item boton-menu-proyecto" @click="irInterfazProyecto(proyecto.id)" v-for="proyecto in resultadosFiltrados" :key="proyecto.id">
+                      <a class="list-group-item boton-menu-proyecto" @click="irInterfazProyecto(proyecto.id)"
+                        v-for="proyecto in resultadosFiltrados" :key="proyecto.id">
                         {{ proyecto.nombre }}
                       </a>
                     </ul>
@@ -150,11 +155,11 @@
               <div class="row mb-3" v-for="(fila, filaIndex) in proyectosChunked" :key="filaIndex">
                 <div class="col text-center" v-for="(proyecto, i) in fila" :key="i">
                   <div class="project-box">
-                    <img class="img-fluid" :src="proyecto.imagen" />
+                    <img class="img-fluid" :src="imagen" />
                   </div>
                   <div class="mt-3">
                     <input class="form-check-input" type="radio" name="project" :id="proyecto.id"
-                    @click="irInterfazProyecto" />
+                      @click="irInterfazProyecto(proyecto.id)" />
                     <label class="form-check-label label-project" :for="proyecto.id">{{ proyecto.nombre }}</label>
                   </div>
                 </div>
@@ -183,29 +188,28 @@ import imgVeterinaria from '../assets/img/proyecto_veterinaria.jpg';
 import imgFinanzas from '../assets/img/proyecto_finanzas.jpg';
 import imgSoftware from '../assets/img/proyecto_software.jpg';
 import imgSocial from '../assets/img/proyecto_social.jpg';
-import imgConstruccion from '../assets/img/proyecto_construccion.jpg';
 import imgInvestigacion from '../assets/img/proyecto_ambiental.jpg';
 
 export default {
   data() {
     return {
-      proyectosInterfaz: [
-        { id: 'project1', nombre: 'Veterinaria', imagen: imgVeterinaria },
-        { id: 'project2', nombre: 'Finanzas', imagen: imgFinanzas },
-        { id: 'project3', nombre: 'Software', imagen: imgSoftware },
-        { id: 'project4', nombre: 'Social', imagen: imgSocial },
-        { id: 'project5', nombre: 'Construcción', imagen: imgConstruccion },
-        { id: 'project6', nombre: 'Investigación', imagen: imgInvestigacion }
-      ],
       proyectos: [],
       mostrarModalBusqueda: false,
       busqueda: '',
+      imagen: '',
+      availableAvatars: [
+        imgVeterinaria,
+        imgFinanzas,
+        imgSoftware,
+        imgSocial,
+        imgInvestigacion
+      ],
       router: useRouter()
     }
   },
   computed: {
     proyectosChunked() {
-      return [this.proyectosInterfaz.slice(0, 3), this.proyectosInterfaz.slice(3, 6)];
+      return [this.proyectos.slice(0, 3), this.proyectos.slice(3, 6)];
     },
     resultadosFiltrados() {
       return this.proyectos.filter(p =>
@@ -222,6 +226,8 @@ export default {
       try {
         const response = await api.get('/project');
         this.proyectos = response.data.data;
+        const randomAvatar = this.availableAvatars[Math.floor(Math.random() * this.availableAvatars.length)];
+        this.imagen = randomAvatar;
         console.log(response.data);
       } catch (error) {
         if (error.response && error.response.data) {
@@ -232,23 +238,23 @@ export default {
       }
     },
     redirectToEditProject(projectId) {
-      this.$router.push({ name: 'EditarProyecto', params: { id: projectId }});
+      this.$router.push({ name: 'EditarProyecto', params: { id: projectId } });
     },
     async deleteProject(projectId) {
       try {
         if (confirm('¿Estás seguro que deseas eliminar este proyecto?')) {
-        const response =  await api.delete(`/project/${projectId}}`);
-        this.proyectos = this.proyectos.filter(project => project.id !== projectId);
-        console.log(response.data.message);
-        alert(response.data.message);
-      }
+          const response = await api.delete(`/project/${projectId}}`);
+          this.proyectos = this.proyectos.filter(project => project.id !== projectId);
+          console.log(response.data.message);
+          alert(response.data.message);
+        }
       } catch (error) {
-        if(error.response && error.response.data){
+        if (error.response && error.response.data) {
           const serverErrors = error.response.data;
-          if(serverErrors.message === 'Project not exists'){
+          if (serverErrors.message === 'Project not exists') {
             console.log(serverErrors.message);
             alert(serverErrors.message);
-          } else if (serverErrors.message === 'Proyecto no eliminado'){
+          } else if (serverErrors.message === 'Proyecto no eliminado') {
             console.log(serverErrors.message);
             alert(serverErrors.message);
           } else if (serverErrors.mensaje === 'Usuario no autenticado') {
@@ -286,7 +292,7 @@ export default {
       this.busqueda = '';
     },
     irInterfazProyecto(projectId) {
-      this.$router.push({ name: 'InterfazProyecto', params: { id: projectId }});
+      this.$router.push({ name: 'InterfazProyecto', params: { id: projectId } });
     }
   }
 }
