@@ -28,6 +28,7 @@ INSERT INTO acciones(nombre) VALUES ('Cancelar Cuenta');
 INSERT INTO acciones(nombre) VALUES ('Crear Proyecto'), ('Crear Plantillas Proyecto'), ('Definir Fechas'), ('Definir Prioridad'),
 ('Editar Proyecto'), ('Eliminar Proyecto'), ('Asignar Proyecto'), ('Cambiar Estado Proyecto'), ('Filtrar Proyecto'), ('Gestionar Permisos'),
 ('Agregar Miembros Proyecto'), ('Eliminar Miembros Proyecto');
+INSERT INTO acciones(nombre) VALUES ('Visualizar Proyecto');
 
 SELECT * FROM acciones;
 
@@ -64,6 +65,7 @@ INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (1,1,18);
 INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (1,2,19),
 (1,2,20), (1,2,21), (1,2,22), (1,2,23), (1,2,24), (1,2,25), (1,2,26),
 (1,2,27), (1,2,28), (1,2,29), (1,2,30);
+INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (1,2,31);
 
 
 ## Permisos para Lider de Proyecto
@@ -76,6 +78,7 @@ INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (2,1,18);
 INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (2,2,19),
 (2,2,20), (2,2,21), (2,2,22), (2,2,23), (2,2,24), (2,2,25), (2,2,26),
 (2,2,27), (2,2,28), (2,2,29), (2,2,30);
+INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (2,2,31);
 
 
 ## Permisos para Miembro de Proyecto
@@ -85,6 +88,7 @@ INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (3,1,17);
 INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (3,1,18);
 INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (3,2,23),
 (3,2,27);
+INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (3,2,31);
 
 
 ## Permisos para StakeHolder/Cliente
@@ -92,6 +96,7 @@ INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (3,2,23),
 INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (4,1,7);
 INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (4,1,17);
 INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (4,1,18);
+INSERT INTO permisos (rolID, moduloID, accionesID) VALUES (4,2,31);
 
 
 ## Verificar Permisos 
@@ -141,3 +146,11 @@ CREATE OR REPLACE VIEW getAllProjects AS
 SELECT p.id, p.nombre, p.descripcion, p.fechaInicio, p.fechaFin, p.estado, p.prioridad, e.nombre AS etiquetas FROM proyectos p
 	LEFT JOIN etiquetas e ON p.etiquetasID = e.id;
     
+SELECT * FROM getAllProjects WHERE fechaInicio AND fechaFIN IS NOT NULL;
+SELECT * FROM getAllProjects WHERE (fechaInicio IS NULL OR fechaInicio = '') AND (fechaFin IS NULL OR fechaFin = '');
+
+SELECT u.id, u.nombre, u.email FROM usuarios_proyectos up
+	JOIN usuarios u ON up.usuarioID = u.id WHERE up.proyectoID = 7;
+    
+SELECT p.* FROM proyectos p
+	JOIN usuarios_proyectos up ON p.id = up.proyectoID WHERE up.usuarioID = 1234567890;

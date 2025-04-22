@@ -145,6 +145,22 @@ ALTER TABLE usuarios
 ALTER TABLE usuarios
 	ADD COLUMN token VARCHAR(255) NULL,
     ADD COLUMN expiresToken DATETIME NULL;
+    
+CREATE TABLE usuarios_proyectos(
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    proyectoID INT UNSIGNED NOT NULL,
+    usuarioID INT UNSIGNED NOT NULL,
+    fechaUnion DATETIME DEFAULT current_timestamp,
+    UNIQUE KEY (proyectoID, usuarioID)
+);
+
+ALTER TABLE usuarios_proyectos
+	ADD CONSTRAINT FK_usuarios
+		FOREIGN KEY (usuarioID) REFERENCES usuarios(id) ON DELETE CASCADE;
+        
+ALTER TABLE usuarios_proyectos
+	ADD CONSTRAINT FK_proyectos
+		FOREIGN KEY (proyectoID) REFERENCES proyectos(id) ON DELETE CASCADE;
         
 CREATE TABLE tareas(
 	id INT(10) UNSIGNED,
