@@ -1,7 +1,8 @@
 class Members {
-    constructor(id, nombre, email) {
+    constructor(id, nombre, apellidos, email,) {
         this.id = id;
         this.nombre = nombre;
+        this.apellidos = apellidos;
         this.email = email;
     }
 }

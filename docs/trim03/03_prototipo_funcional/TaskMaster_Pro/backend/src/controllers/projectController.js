@@ -5,14 +5,14 @@ class ProjectController {
         this.projectService = new ProjectService();
     }
 
-    getAllProjects = async (req, res) => {
-        try {
-            const projects = await this.projectService.getAllProjects();
-            res.json({ message: "Method Get", data: projects, status: 200 });
-        } catch (err) {
-            res.status(500).json({ message: err.message });
-        }
-    };
+    // getAllProjects = async (req, res) => {
+    //     try {
+    //         const projects = await this.projectService.getAllProjects();
+    //         res.json({ message: "Method Get", data: projects, status: 200 });
+    //     } catch (err) {
+    //         res.status(500).json({ message: err.message });
+    //     }
+    // };
 
     getPlantillasProyecto = async (req, res) => {
         try {
@@ -21,7 +21,17 @@ class ProjectController {
         } catch (err) {
             res.status(500).json({ message: err.message });
         }
-    }
+    };
+
+    getProjects = async (req, res) => {
+        try {
+            const usuarioId = req.session.userId;
+            const projects = await this.projectService.getProjects(usuarioId);
+            res.json({ message: "Method Get", data: projects, status: 200 });
+        } catch(err) {
+            res.status(500).json({ message: err.message });
+        }
+    };
 
     getProjectById = async (req, res) => {
         try {
@@ -34,8 +44,9 @@ class ProjectController {
 
     createProject = async (req, res) => {
         try {
+            const usuarioId = req.session.userId;
             const isTemplate = req.path.includes('/plantillas') || req.body.isTemplate;
-            const newProject = await this.projectService.createProject(req.body, isTemplate);
+            const newProject = await this.projectService.createProject(req.body, isTemplate, usuarioId);
             res.status(201).json(newProject);
         } catch (err) {
             res.status(500).json({ message: err.message });
@@ -44,7 +55,8 @@ class ProjectController {
 
     updateProject = async (req, res) => {
         try {
-            const response = await this.projectService.updateProject(req.params.id, req.body);
+            const usuarioId = req.session.userId;
+            const response = await this.projectService.updateProject(req.params.id, req.body, usuarioId);
             // Verificar el tipo de respuesta
             if (response.message && response.message.includes('desde plantilla')) {
                 return res.status(201).json(response);

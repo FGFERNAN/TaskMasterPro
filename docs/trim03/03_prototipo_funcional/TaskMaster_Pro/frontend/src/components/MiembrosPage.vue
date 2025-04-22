@@ -36,16 +36,18 @@
             <ul class="dropdown-menu">
               <li v-for="proyecto in proyectos" :key="proyecto.id">
                 <div class="d-flex align-items-center" id="sub-menu-proyectos">
-                  <a class="dropdown-item align-items-center boton-menu-proyecto" @click="irInterfazProyecto(proyecto.id)">
+                  <a class="dropdown-item align-items-center boton-menu-proyecto"
+                    @click="irInterfazProyecto(proyecto.id)">
                     <i class="fa-regular fa-folder-open"></i> {{ proyecto.nombre }}
                   </a>
-                    <span class="ms-1">
-                      <a @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i class="fa-solid fa-edit"></i></a>
-                    </span>
-                    <span class="ms-2">
-                      <a class="link-secondary mi-link" @click="deleteProject(proyecto.id)" id="btn-eliminar-escritorio"><i
-                        class="fa-solid fa-trash me-3"></i></a>
-                    </span>
+                  <span class="ms-1">
+                    <a @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i
+                        class="fa-solid fa-edit"></i></a>
+                  </span>
+                  <span class="ms-2">
+                    <a class="link-secondary mi-link" @click="deleteProject(proyecto.id)"
+                      id="btn-eliminar-escritorio"><i class="fa-solid fa-trash me-3"></i></a>
+                  </span>
                 </div>
               </li>
             </ul>
@@ -88,13 +90,14 @@
                     <a class="dropdown-item boton-menu-proyecto" @click="irInterfazProyecto(proyecto.id)">
                       <i class="fa-regular fa-folder-open"></i> {{ proyecto.nombre }}
                     </a>
-                      <span class="ms-1">
-                        <a @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i class="fa-solid fa-edit"></i></a>
-                      </span>
-                      <span class="ms-2">
-                        <a class="link-secondary mi-link" @click="deleteProject(proyecto.id)" id="btn-eliminar-escritorio"><i
-                          class="fa-solid fa-trash me-3"></i></a>
-                      </span>
+                    <span class="ms-1">
+                      <a @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i
+                          class="fa-solid fa-edit"></i></a>
+                    </span>
+                    <span class="ms-2">
+                      <a class="link-secondary mi-link" @click="deleteProject(proyecto.id)"
+                        id="btn-eliminar-escritorio"><i class="fa-solid fa-trash me-3"></i></a>
+                    </span>
                   </div>
                 </li>
               </ul>
@@ -138,8 +141,8 @@
                 <div class="row">
                   <div class="col-md-6" v-for="member in members" :key="member.id">
                     <div class="member-card">
-                      <img :src="member.avatar" alt="User Avatar">
-                      <p><input type="radio" name="user" /> {{ member.name }}</p>
+                      <img :src="avatar" alt="User Avatar">
+                      <p><input type="radio" name="user" /> {{ member.nombre }} {{ member.apellidos }}</p>
                       <button class="btn-eliminar" @click="removeMember(member.id)">Eliminar Usuario</button>
                     </div>
                   </div>
@@ -150,7 +153,7 @@
               <h5>Buscar miembros</h5>
               <input type="text" v-model="searchQuery" class="form-control mb-3" placeholder="Buscar miembros">
               <ul class="list-unstyled">
-                <li v-for="user in filteredUsers" :key="user.email">
+                <li v-for="(user) in filteredUsers" :key="user.id">
                   {{ user.email }} <a href="#" class="text-primary" @click="addMember(user)">Agregar</a>
                 </li>
               </ul>
@@ -166,8 +169,6 @@
 import api from '@/services/api';
 import img1 from '@/assets/img/img1.jpg';
 import img2 from '@/assets/img/img2.jpg';
-import img3 from '@/assets/img/img3.jpg';
-import img4 from '@/assets/img/img4.jpg';
 import user234 from '@/assets/img/User234.jpg';
 import messielmejor from '@/assets/img/messielmejor.jpg';
 import user5720 from '@/assets/img/user53720.jpg';
@@ -175,18 +176,18 @@ import user5720 from '@/assets/img/user53720.jpg';
 export default {
   mounted() {
     document.title = "Miembros | TaskMaster Pro";
+    const projectId = this.$route.params.id;
+    this.projectId = projectId;
+    this.getProjectMembers(projectId);
     this.getProjects();
     this.getUsers();
   },
   data() {
     return {
       proyectos: [],
-      members: [
-        { id: 1, name: 'Fgferman02', avatar: img1 },
-        { id: 2, name: 'ErikaTriana01', avatar: img2 },
-        { id: 3, name: 'AndresG567', avatar: img3 },
-        { id: 4, name: 'Nikob1030_', avatar: img4 }
-      ],
+      projectId: null,
+      members: [],
+      avatar: '',
       searchQuery: '',
       users: [],
       availableAvatars: [
@@ -242,24 +243,112 @@ export default {
         }
       }
     },
-    redirectToEditProject(projectId) {
-      this.$router.push({ name: 'EditarProyecto', params: { id: projectId }});
-    },
-    async deleteProject(projectId) {
+    async addMember(user) {
       try {
-        if (confirm('¿Estás seguro que deseas eliminar este proyecto?')) {
-        const response =  await api.delete(`/project/${projectId}}`);
-        this.proyectos = this.proyectos.filter(project => project.id !== projectId);
+        const response = await api.post(`/project/miembros/${this.projectId}`, {
+          usuarioID: user.id
+        });
+        const randomAvatar = this.availableAvatars[Math.floor(Math.random() * this.availableAvatars.length)];
+        this.members.push({ id: user.id, nombre: `${user.nombre}   ${user.apellidos}`, avatar: randomAvatar });
+        console.log(response.data);
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.message === 'Usuario no asignado') {
+            console.log(serverErrors.message);
+            alert('Ingresa los parametros necesarios para realizar la creación');
+          } else if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
+            console.log(serverErrors.mensaje);
+            this.$router.push('/error403');
+          } else if (serverErrors.message === 'El miembro que quieres agregar ya se encuentra asignado a este proyecto') {
+            alert(`${serverErrors.message}`);
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
+        }
+      }
+    },
+    async removeMember(member) {
+      try {
+        if (confirm('¿Estás seguro que deseas eliminar a este miembro?')) {
+        const response =  await api.delete(`/project/miembros/${this.projectId}`, {
+          data: { usuarioID: member }
+        });
+        this.members = this.members.filter(m => m.id !== member);
         console.log(response.data.message);
         alert(response.data.message);
       }
       } catch (error) {
         if(error.response && error.response.data){
           const serverErrors = error.response.data;
-          if(serverErrors.message === 'Project not exists'){
+          if(serverErrors.message === 'El miembro que quieres eliminar no se encuentra asignado a este proyecto'){
             console.log(serverErrors.message);
             alert(serverErrors.message);
-          } else if (serverErrors.message === 'Proyecto no eliminado'){
+          } else if (serverErrors.message === 'Miembro no eliminado'){
+            console.log(serverErrors.message);
+            alert(serverErrors.message);
+          } else if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
+            console.log(serverErrors.mensaje);
+            this.$router.push('/error403');
+          } else{
+            console.log(error.response.data);
+            alert(error.response.data.message);
+          }
+        }
+      }
+    },
+    async getProjectMembers(projectId) {
+      try {
+        const response = await api.get(`/project/miembros/${projectId}`);
+        this.members = response.data.data;
+        this.avatar = img1;
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.message === 'Este proyecto no tiene ningun miembro asignado') {
+            console.log(serverErrors);
+            alert(`${serverErrors.message}`);
+          } else if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
+            console.log(serverErrors.mensaje);
+            this.$router.push('/error403');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
+        }
+      }
+    },
+    redirectToEditProject(projectId) {
+      this.$router.push({ name: 'EditarProyecto', params: { id: projectId } });
+    },
+    async deleteProject(projectId) {
+      try {
+        if (confirm('¿Estás seguro que deseas eliminar este proyecto?')) {
+          const response = await api.delete(`/project/${projectId}}`);
+          this.proyectos = this.proyectos.filter(project => project.id !== projectId);
+          console.log(response.data.message);
+          alert(response.data.message);
+        }
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.message === 'Project not exists') {
+            console.log(serverErrors.message);
+            alert(serverErrors.message);
+          } else if (serverErrors.message === 'Proyecto no eliminado') {
             console.log(serverErrors.message);
             alert(serverErrors.message);
           } else if (serverErrors.mensaje === 'Usuario no autenticado') {
@@ -276,6 +365,7 @@ export default {
         }
       }
     },
+    
     goBack() {
       this.$router.go(-1); // Navegar hacia atrás
     },
@@ -291,7 +381,7 @@ export default {
       this.$router.push('/interfaz-principal');
     },
     irInterfazProyecto(projectId) {
-      this.$router.push({ name: 'InterfazProyecto', params: { id: projectId }});
+      this.$router.push({ name: 'InterfazProyecto', params: { id: projectId } });
     },
     async confirmarCerrarSesion() {
       if (confirm("¿Estás seguro que quieres cerrar sesión?")) {
@@ -299,13 +389,6 @@ export default {
         this.$router.push("/iniciar-sesion");
         alert(response.data.message);
       }
-    },
-    removeMember(id) {
-      this.members = this.members.filter(member => member.id !== id);
-    },
-    addMember(user) {
-      const randomAvatar = this.availableAvatars[Math.floor(Math.random() * this.availableAvatars.length)];
-      this.members.push({ id: Date.now(), name: `${user.nombre}   ${user.apellidos}`, avatar: randomAvatar });
     },
     crearProyecto() {
       this.$router.push('/crear-proyecto');

@@ -57,7 +57,7 @@ const router = Router();
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/', ProjectController.getAllProjects);
+router.get('/', ProjectController.getProjects);
 
 router.get('/plantillas', ProjectController.getPlantillasProyecto);
 

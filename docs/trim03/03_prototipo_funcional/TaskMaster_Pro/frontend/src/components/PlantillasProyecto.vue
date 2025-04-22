@@ -157,7 +157,7 @@
                       @click="editarPlantilla(proyecto.id)" />
                       <label class="form-check-label label-project" :for="proyecto.id">{{ proyecto.nombre }}</label>
                       <span class="ms-3">
-                        <a class="link-secondary mi-link" @click="deleteProject(proyecto.id)" id="btn-eliminar-escritorio"><i
+                        <a class="link-secondary mi-link" @click="deleteTemplate(proyecto.id)" id="btn-eliminar-escritorio"><i
                             class="fa-solid fa-trash"></i></a>
                       </span>
                     </div>
@@ -251,6 +251,37 @@
           if (confirm('¿Estás seguro que deseas eliminar este proyecto?')) {
           const response =  await api.delete(`/project/${projectId}}`);
           this.proyectos = this.proyectos.filter(project => project.id !== projectId);
+          console.log(response.data.message);
+          alert(response.data.message);
+        }
+        } catch (error) {
+          if(error.response && error.response.data){
+            const serverErrors = error.response.data;
+            if(serverErrors.message === 'Project not exists'){
+              console.log(serverErrors.message);
+              alert(serverErrors.message);
+            } else if (serverErrors.message === 'Proyecto no eliminado'){
+              console.log(serverErrors.message);
+              alert(serverErrors.message);
+            } else if (serverErrors.mensaje === 'Usuario no autenticado') {
+              console.log(serverErrors.mensaje);
+              alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+              this.$router.push('/iniciar-sesion');
+            } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
+              console.log(serverErrors.mensaje);
+              this.$router.push('/error403');
+            } else {
+              console.log(serverErrors);
+              this.$router.push('/error500');
+            }
+          }
+        }
+      },
+      async deleteTemplate(projectId) {
+        try {
+          if (confirm('¿Estás seguro que deseas eliminar este proyecto?')) {
+          const response =  await api.delete(`/project/${projectId}}`);
+          this.proyectosInterfaz = this.proyectosInterfaz.filter(project => project.id !== projectId);
           console.log(response.data.message);
           alert(response.data.message);
         }

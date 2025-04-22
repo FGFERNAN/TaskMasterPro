@@ -43,7 +43,7 @@ const routes = [
   { path: '/error500', component: errorGeneral},
   { path: '/interfaz-principal', component: InterfazPrincipal},
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: error404},
-  { path: '/miembros-page', component: MiembrosPage },
+  { path: '/miembros-page/:id', name: 'Miembros', component: MiembrosPage, props: true },
   { path: '/editar-proyecto/:id', name: 'EditarProyecto', component: EditarProyecto, props: true},
   { path: '/interfaz-proyecto/:id', name: 'InterfazProyecto', component: InterfazProyecto, props: true },
   { path: '/crear-proyecto', component: creacionProyecto },

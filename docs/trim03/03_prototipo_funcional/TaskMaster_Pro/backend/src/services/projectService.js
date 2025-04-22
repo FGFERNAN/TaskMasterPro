@@ -7,15 +7,15 @@ class ProjectService {
         this.db = new DBConnection();
     }
 
-    async getAllProjects() {
-        try {
-            const results = await this.db.query(`SELECT * FROM getAllProjects WHERE fechaInicio AND fechaFIN IS NOT NULL;`);
-            return results.map(project => new Project(...Object.values(project)));
-        } catch (err) {
-            console.error('Error fetching projects: ', err.message);
-            throw err;
-        }
-    };
+    // async getAllProjects() {
+    //     try {
+    //         const results = await this.db.query(`SELECT * FROM getAllProjects WHERE fechaInicio AND fechaFIN IS NOT NULL;`);
+    //         return results.map(project => new Project(...Object.values(project)));
+    //     } catch (err) {
+    //         console.error('Error fetching projects: ', err.message);
+    //         throw err;
+    //     }
+    // };
 
     async getPlantillasProyecto() {
         try {
@@ -24,6 +24,15 @@ class ProjectService {
         } catch (err) {
             console.error('Error fetching projects: ', err.message);
             throw err;
+        }
+    }
+
+    async getProjects(userId) {
+        try {
+            const results = await this.db.query(`SELECT p.* FROM proyectos p JOIN usuarios_proyectos up ON p.id = up.proyectoID WHERE up.usuarioID = ?;`, [userId]);
+            return results.map(project => new Project(...Object.values(project)));
+        } catch (err) {
+            console.error('Error fetching projects: ', err.message)
         }
     }
 
@@ -38,7 +47,7 @@ class ProjectService {
         }
     };
 
-    async createProject(data, isTemplate = false) {
+    async createProject(data, isTemplate = false, userId) {
         try {
             if (!isTemplate && (data.fechaInicio || data.fechaFin)) {
                 const verificarNombre = `SELECT id FROM proyectos WHERE nombre = ? AND (fechaInicio IS NOT NULL OR fechaFin IS NOT NULL) AND id != ?;`;
@@ -59,10 +68,14 @@ class ProjectService {
                 projectData.fechaFin,
                 projectData.estado,
                 projectData.prioridad,
-                projectData.etiquetasID
+                projectData.etiquetasID,
             ];
-            var qry = `CALL insertProject(?,?,?,?,?,?,?);`;
+            var qry = `INSERT INTO proyectos(nombre, descripcion, fechaInicio, fechaFin, estado, prioridad, etiquetasID) VALUES (?, ?, ?, ?, ?, ?, ?);`;
             const results = await this.db.query(qry, dataQry);
+            const newProjectId = results.insertId;
+            if(!isTemplate && userId) {
+                await this.addMember(newProjectId, userId);
+            }
             if (results.length === 0) {
                 throw new Error("Proyecto no creado");
             }
@@ -75,7 +88,7 @@ class ProjectService {
         }
     };
 
-    async convertTemplateToProject(templateId, projectData) {
+    async convertTemplateToProject(templateId, projectData, userId) {
         try {
             // 1. Obtener la plantilla original
             const template = await this.getProjectById(templateId);
@@ -87,7 +100,7 @@ class ProjectService {
                 nombre: projectData.nombre || `Copia de ${template.nombre}`
             };
 
-            await this.createProject(newProject);
+            await this.createProject(newProject, false, userId);
 
             // 3. Devolver la plantilla original a estado "plantilla"
             await this.db.query(
@@ -102,7 +115,7 @@ class ProjectService {
         }
     }
 
-    async updateProject(id, data) {
+    async updateProject(id, data, userId) {
         try {
             const currentProject = await this.getProjectById(id);
             const isTemplate = currentProject.fechaInicio === null && currentProject.fechaFin === null;
@@ -114,7 +127,10 @@ class ProjectService {
             }
             // Si es plantilla y están agregando fechas
             if (isTemplate && (data.fechaInicio || data.fechaFin)) {
-                const newProject = await this.convertTemplateToProject(id, data);
+                if (!userId) {
+                    throw new Error("Se requiere ID de usuario para convertir plantilla a proyecto");
+                }
+                const newProject = await this.convertTemplateToProject(id, data, userId);
                 return {
                     message: "Proyecto creado desde plantilla correctamente."
                 }
@@ -187,9 +203,9 @@ class ProjectService {
 
     async getProjectMembers(projectId) {
         try {
-            const results = await this.db.query(`SELECT u.id, u.nombre, u.email FROM usuarios_proyectos up 
+            const results = await this.db.query(`SELECT u.id, u.nombre, u.apellidos, u.email FROM usuarios_proyectos up 
                 JOIN usuarios u ON up.usuarioID = u.id WHERE up.proyectoID = ?;`, [projectId]);
-            if (results.length === 0) throw new Error("Proyecto no encontrado");
+            if (results.length === 0) throw new Error("Este proyecto no tiene ningun miembro asignado");
             return results.map(member => new Members(...Object.values(member)));
         } catch (err) {
             console.error('Error fetching members: ', err.message);

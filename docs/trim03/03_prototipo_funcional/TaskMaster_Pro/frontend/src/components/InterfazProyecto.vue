@@ -122,7 +122,7 @@
                 <h2>{{ nombre }}</h2>
               </div>
               <div class="col-6 col-lg-3 col-xl-3 col-xxl-2 mb-2 mb-lg-0">
-                <button class="btn btn-secondary buton-miembros w-100" @click="navigateToMembers">
+                <button class="btn btn-secondary buton-miembros w-100" @click="navigateToMembers(id)">
                   <i class="fa-regular fa-user me-1"></i> Miembros
                 </button>
               </div>
@@ -408,8 +408,8 @@ export default {
         task.name.toLowerCase().includes(this.searchCompleted.toLowerCase())
       );
     },
-    navigateToMembers() {
-      this.$router.push("/miembros-page");
+    navigateToMembers(projectId) {
+      this.$router.push({ name: 'Miembros', params: { id: projectId } });
     },
     irPerfil() {
       this.$router.push("/perfil-completo");
@@ -418,7 +418,7 @@ export default {
       // lógica para redirigir
     },
     irInterfazProyecto(projectId) {
-      this.$router.push({ name: 'InterfazProyecto', params: { id: projectId }});
+      this.$router.push({ name: 'InterfazProyecto', params: { id: projectId } });
     },
     crearProyecto() {
       this.router.push('/crear-proyecto');
