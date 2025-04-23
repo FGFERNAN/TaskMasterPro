@@ -61,7 +61,7 @@ export const ProfileInfoScreen = ({ navigation, route }: Props) => {
                     <Text style={styles.buttonText}>Cerrar Sesión</Text>
                 </TouchableOpacity>
             </View>
-            <Text style={styles.title}>Usarios</Text>
+            <Text style={styles.title}>Usuarios</Text>
             <FlatList
                 data={users}
                 keyExtractor={(item) => item.id.toString()}

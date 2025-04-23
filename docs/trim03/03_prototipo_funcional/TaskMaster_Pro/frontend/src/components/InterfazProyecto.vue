@@ -62,7 +62,8 @@
       <div class="row">
         <!-- Sidebar para escritorio -->
         <div class="col-md-3 custom-col d-none d-lg-block">
-          <img src="../assets/img/logos/logotipo.png" class="logo-inicio" width="300" />
+          <img src="../assets/img/logos/logotipo.png" @click="irInterfazPrincipal"
+            class="logo-inicio boton-menu-proyecto" width="300" />
           <ul class="nav flex-column">
             <li class="nav-item">
               <a class="nav-link mi-link" @click="crearProyecto"><i class="fa-solid fa-folder-plus me-1"></i>
@@ -397,6 +398,9 @@ export default {
     },
     irPlantillasProyecto() {
       this.router.push('/plantillas-proyecto');
+    },
+    irInterfazPrincipal() {
+      this.router.push('/interfaz-principal');
     },
     filterInProgressTasks() {
       this.filteredInProgressTasks = this.inProgressTasks.filter(task =>
