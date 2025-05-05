@@ -135,7 +135,7 @@
             <button class="btn btn-primary buton-form mb-4" type="submit">Confirmar</button>
           </div>
           <div class="d-flex justify-content-between">
-            <button type="button" class="btn btn-danger mb-4 fw-bold">Cancelar Cuenta
+            <button type="button" @click="confirmarCancelacion" class="btn btn-danger mb-4 fw-bold">Cancelar Cuenta
             </button>
             <button type="button" @click="alterPassword"
               class="btn btn-primary buton-cambiarClave mb-4 fw-bold">Modificar Contraseña
@@ -291,6 +291,13 @@ export default {
     togglePasswordVisibility() {
       // Cambia el estado de visibilidad de la contraseña
       this.passwordVisible = !this.passwordVisible;
+    },
+    async confirmarCancelacion() {
+      if (confirm("¿Estás seguro que quieres cancelar tu cuenta?")) {
+        const response = await api.delete("/editProfile");
+        alert(response.data.message);
+        this.$router.push("/iniciar-sesion");
+      }
     },
   },
 };
