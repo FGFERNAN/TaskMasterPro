@@ -290,7 +290,3 @@ const guardarTarea = () => {
 }
 </script>
 
-<style scoped>
-@import '@/assets/css/interfazTarea.css';
-@import '@/assets/css/style.css';
-</style>
