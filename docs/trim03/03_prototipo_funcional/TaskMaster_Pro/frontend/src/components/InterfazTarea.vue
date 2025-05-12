@@ -1,4 +1,5 @@
 <template>
+     <div class="interfaz-tarea-view">
   <div class="container-fluid">
    
     <nav class="navbar navbar-expand-lg navbar-light bg-light d-lg-none">
@@ -245,6 +246,7 @@
   </div>
   </div>
   </div>
+ </div>
 </template>
 
 <script setup>
@@ -289,4 +291,5 @@ const guardarTarea = () => {
   alert('Tarea guardada con éxito')
 }
 </script>
+
 
