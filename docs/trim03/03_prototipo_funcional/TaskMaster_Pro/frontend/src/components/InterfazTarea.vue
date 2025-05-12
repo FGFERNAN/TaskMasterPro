@@ -118,8 +118,3 @@ const confirmarCerrarSesion = () => {
 }
 </script>
 
-<style scoped>
-/* Puedes importar los estilos globales desde tu main.css o mantener los scoped aquí */
-@import "@/assets/css/interfazTarea.css";
-@import "@/assets/css/style.css";
-</style>
