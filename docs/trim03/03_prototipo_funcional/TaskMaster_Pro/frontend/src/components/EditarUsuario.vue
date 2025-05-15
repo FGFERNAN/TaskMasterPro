@@ -159,10 +159,7 @@
                 :class="{ 'is-invalid': v$.rolID.$error, 'is-valid': !v$.rolID.$invalid }" v-model="rolID"
                 @blur="v$.rolID.$touch()">
                 <option value="" disabled>Seleccionar</option>
-                <option value="1">Administrador</option>
-                <option value="2">Lider de Proyecto</option>
-                <option value="3">Miembro de Proyecto</option>
-                <option value="4">Cliente/StakeHolder</option>
+                <option v-for="role in roles" :key="role.id" :value="role.id" >{{ role.nombre }}</option>
               </select>
               <div v-for="error in v$.rolID.$errors" :key="error.$uid" class="invalid-feedback">
                 {{ error.$message }}
@@ -195,6 +192,7 @@ export default {
     document.title = "Editar Usuario | TaskMaster Pro";
     const userId = this.$route.params.id;
     this.getUserById(userId);
+    this.getRole();
   },
   data() {
     return {
@@ -206,6 +204,7 @@ export default {
       id: "",
       password: "",
       rolID: "",
+      roles: [],
       backendErrors: {},
       passwordVisible: false,
     }
@@ -320,6 +319,31 @@ export default {
           } else if (serverErrors.mensaje === 'Usuario no autenticado') {
             console.log(serverErrors.mensaje);
             alert(`${serverErrors.mensaje}, debes loguearte para acceder a esta función`);
+            this.$router.push('/iniciar-sesion');
+          } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
+            console.log(serverErrors.mensaje);
+            this.$router.push('/error403');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
+        }
+      }
+    },
+    async getRole() {
+      try {
+        const response = await api.get('/role');
+        this.roles = response.data.data;
+        console.log(response.data);
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.message === 'Error fetching roles: ') {
+            console.log(serverErrors.message);
+            alert(serverErrors.message);
+          } else if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
             this.$router.push('/iniciar-sesion');
           } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
             console.log(serverErrors.mensaje);
