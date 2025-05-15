@@ -37,7 +37,7 @@ app.use(session({
     secure: false,
     httpOnly: true,
     //Tiempo de las cookies 
-    maxAge: 6000 //(6 segundos)
+    maxAge: 3600000 //(1 Hora)
   }
 }));
 
