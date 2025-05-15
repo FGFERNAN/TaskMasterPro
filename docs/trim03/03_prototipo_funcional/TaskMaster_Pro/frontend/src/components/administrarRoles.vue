@@ -191,9 +191,9 @@ export default {
           } else if (serverErrors.message === 'Rol no eliminado') {
             console.log(serverErrors.message);
             alert(serverErrors.message);
-          } else if (serverErrors.message === 'Error deleting role: ') {
-            console.log('Ocurrio un error inesperado del lado del servidor: ', serverErrors);
-            alert('Ocurrio un error inesperado del lado del servidor, revisa la consola para obtener más detalles');
+          } else if (serverErrors.message === 'ROLE_IN_USE') {
+            console.log(serverErrors);
+            alert('No se puede eliminar el rol porque está asignado a un usuario.');
           }
         }
       }
