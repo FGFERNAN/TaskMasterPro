@@ -170,12 +170,15 @@
                     d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m.256 7a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1zm3.63-4.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.043c-.612-.18-.612-1.048 0-1.229l.149-.043a.64.64 0 0 0 .38-.921l-.074-.136c-.306-.561.309-1.175.87-.87l.136.075a.64.64 0 0 0 .92-.382l.045-.149zM8 12.5c.301 0 .578-.143.78-.381.173-.181.38-.3.599-.3s.426.119.599.3c.202.238.479.381.78.381.584 0 1.057-.473 1.057-1.057 0-.24-.085-.459-.228-.638-.142-.18-.336-.311-.56-.394 0 0-.736-.383-.628-.318-.176.033-.324.136-.496.243-.211.137-.392.346-.497.582-.065.13-.111.27-.147.419-.043-.074-.085-.152-.134-.232-.015-.003-.035-.008-.05-.008s-.036.005-.05.008c-.05.08-.09.158-.134.232-.036-.149-.082-.289-.147-.419-.105-.236-.286-.445-.497-.582-.172-.107-.32-.21-.496-.243-.108-.065-.148.145-.628.318-.225.083-.418.214-.56.394-.143.179-.228.398-.228.638 0 .584.473 1.057 1.057 1.057z" />
                 </svg></span>
               <select id="rol" v-model="rolID" class="form-select border-input"
-                :class="{ 'is-invalid': v$.rolID.$error, 'is-valid': !v$.rolID.$invalid }" @blur="v$.rolID.$touch()">
+                :class="{ 'is-invalid': v$.rolID.$error || backendErrors.rolID, 'is-valid': !v$.rolID.$invalid && !backendErrors.rolID && rolID }" @blur="v$.rolID.$touch()">
                 <option value="" selected disabled>Seleccionar</option>
                 <option v-for="role in roles" :key="role.id" :value="role.id" >{{ role.nombre }}</option>
               </select>
               <div v-for="error in v$.rolID.$errors" :key="error.$uid" class="invalid-feedback">
                 {{ error.$message }}
+              </div>
+              <div v-if="backendErrors.rolID" class="invalid-feedback">
+                {{ backendErrors.rolID }}
               </div>
             </div>
           </div>
@@ -323,6 +326,9 @@ export default {
           } else if(serverErrors.message === 'El numero de documento ingresado, ya se encuentra registrado en el sistema') {
             this.backendErrors.id = `${serverErrors.message}`;
             this.v$.id.$reset();
+          } else if(serverErrors.message === 'No tienes permisos para crear usuarios administradores') {
+            this.backendErrors.rolID = `${serverErrors.message}`;
+            this.v$.rolID.$reset();
           } else {
             console.log(serverErrors);
             this.$router.push('/error500');
