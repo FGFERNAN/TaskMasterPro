@@ -8,7 +8,7 @@ Característica: Autenticacion en la pagina de TaskMaster Pro
 
   @autenticacion
 
-  Escenario: Inicio de Sesión Valido
+  Escenario: Inicio de Sesion Valido
     Dado que el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro
     Cuando ingrese las credenciales correctas (usuario y contraseña)
       | email                | password     |
