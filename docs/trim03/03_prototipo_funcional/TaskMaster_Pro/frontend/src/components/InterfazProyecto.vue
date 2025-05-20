@@ -321,8 +321,14 @@ export default {
       } catch (error) {
         if (error.response && error.response.data) {
           const serverErrors = error.response.data;
-          console.log(serverErrors);
-          this.$router.push('/error500');
+          if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
         }
       }
     },

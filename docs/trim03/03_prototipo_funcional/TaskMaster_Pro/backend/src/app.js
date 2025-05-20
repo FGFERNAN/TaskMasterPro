@@ -27,6 +27,7 @@ app.use(cors({
 }));
 app.use(express.json());
 
+//Configuración de las Cookies
 app.use(session({
   secret: 'holaMundo1234',
   resave: false,
@@ -35,7 +36,8 @@ app.use(session({
   cookie: {
     secure: false,
     httpOnly: true,
-    maxAge: 3700000
+    //Tiempo de las cookies 
+    maxAge: 3600000 //(1 Hora)
   }
 }));
 

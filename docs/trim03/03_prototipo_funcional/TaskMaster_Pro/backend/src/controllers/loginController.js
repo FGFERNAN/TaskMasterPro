@@ -14,6 +14,7 @@ class LoginController{
             const user = await this.loginService.login(req.body);
             req.session.userId = user.id;
             req.session.nombre = `${user.nombre} ${user.apellidos}`;
+            req.session.rolID = user.rolID;
             res.status(200).json(user);
         } catch(err) {
             res.status(401).json({ message: err.message });

@@ -137,7 +137,10 @@ export default {
   },
   computed: {
     filteredUser() {
-      return this.users.filter(user => user.nombre.toLowerCase().includes(this.searchQuery.toLowerCase()));
+      return this.users.filter(user => {
+        const fullName = `${user.nombre} ${user.apellidos}`.toLowerCase();
+        return fullName.includes(this.searchQuery.toLowerCase());
+      })
     }
   },
   methods: {
@@ -192,7 +195,7 @@ export default {
             alert(serverErrors.message);
           } else if (serverErrors.message === 'Usuario no eliminado'){
             console.log(serverErrors.message);
-            alert(serverErrors.message);
+            alert('No se puede eliminar un usuario administrador.');
           } else if (serverErrors.mensaje === 'Usuario no autenticado') {
             console.log(serverErrors.mensaje);
             alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
