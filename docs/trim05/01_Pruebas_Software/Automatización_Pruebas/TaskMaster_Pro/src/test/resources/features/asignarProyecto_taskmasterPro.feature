@@ -6,14 +6,18 @@ Característica: Asignacion de proyecto en la pagina de TaskMaster Pro
   Quiero poder agregar miembros a un proyecto
   Para poder repartir tareas y colaborar eficazmente para resultados más rapidos.
 
+  Antecedentes:
+    Dado que el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro
+    Cuando ingrese las credenciales correctas (usuario y contraseña)
+      | email                | password     |
+      | nikole@gmail.com     | Nikole1234*  |
+
   @AsignarProyecto
 
   Escenario: Agregar Miembro Exitosamente
-    Dado que el usuario ha iniciado sesion y tiene permisos de administrador o lider
-    Y existe al menos un proyecto creado
-    Y existe al menos un usuario registrado que pueda ser asignado al proyecto
-    Cuando seleccione un proyecto existente
-    Y selecciona la opcion miembros
-    Y hace click en el boton agregar en el usuario que desee
-    Entonces los usuarios seleccionados deben ser agregados correctamente al proyecto
-    Y reflejarse en la lista de miembros del mismo
+    Cuando seleccione un proyecto existente y selecciona la opcion miembros y hace click en el boton agregar en el usuario que desee
+    Entonces los usuarios seleccionados deben ser agregados correctamente al proyecto y reflejarse en la lista de miembros del mismo
+
+
+    #Dado que existen al menos un proyecto creado
+    #Y existe al menos un usuario registrado que pueda ser asignado al proyecto

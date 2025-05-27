@@ -154,7 +154,7 @@
             <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="fa fa-comments-o"></i> Features</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 20-05-2025 13:38</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 27-05-2025 01:47</span>
     <br style="clear:left"/>
 </div>
 
@@ -215,18 +215,36 @@ Para agregar nuevos miembros al equipo de trabajo
 
     <div class="story-title">
         <h3>Scenario:</h3>
-        <div class="scenario">Dado que el usuario ha iniciado sesion y tiene permisos de administrador o lider de proyecto<br>Y existen roles creados en el sistema para asignar al nuevo usuario<br>Y ha dado click en el boton de crear usuario<br>Cuando ingrese todos los campos del formulario de creacion de usuario<br>Y hace click en el boton guardar<br><table class='embedded'><thead><th>nombre</th><th>apellidos</th><th>correo electronico</th><th>numero celular</th><th>tipo documento</th><th>numero documento</th><th>contraseña</th><th>rol</th></thead><tbody><tr><td>&lt;nombre&gt;</td><td>&lt;apellidos&gt;</td><td>&lt;correo electronico&gt;</td><td>&lt;numero celular&gt;</td><td>&lt;tipo documento&gt;</td><td>&lt;numero documento&gt;</td><td>&lt;contraseña&gt;</td><td>&lt;rol&gt;</td></tr></tbody></table><br>Entonces el sistema debe mostrar un mensaje de usuario creado con exito<br>Y redirige a la interfaz de administrar-usuarios</div>
+        <div class="scenario">Cuando da click en el boton de crear usuario y ingrese todos los campos del formulario de creacion de usuario y hace click en el boton guardar<br><table class='embedded'><thead><th>nombre</th><th>apellidos</th><th>email</th><th>phone</th><th>id</th><th>contrasena</th></thead><tbody><tr><td>&lt;nombre&gt;</td><td>&lt;apellidos&gt;</td><td>&lt;email&gt;</td><td>&lt;phone&gt;</td><td>&lt;id&gt;</td><td>&lt;contrasena&gt;</td></tr></tbody></table><br>Entonces el sistema debe mostrar un mensaje de usuario creado con exito y redirige a la interfaz de administrar-usuarios</div>
     </div>
 
     <div id="beforetable"></div>
     <div id="contenttilttle">
         <div class="slider-wrapper theme-default">
             <div id="slider">
-                <img src="eb30b96a8d219c22935c9da1c50c54221acb3ceea4d4a6b717701bcddeaeb288.png" title=" Example: {nombre=Johan, apellidos=Garcia, correo electronico=felipe@gmail.com, numero celular=3107847573, tipo documento=Cedula, numero documento=1030533364, contrase&ntilde;a=Fg1234*, rol=administrador}" width="1925"/>
-                <img src="eb30b96a8d219c22935c9da1c50c54221acb3ceea4d4a6b717701bcddeaeb288.png" title=" Y ha dado click en el boton de crear usuario" width="1925"/>
+                <img src="eb30b96a8d219c22935c9da1c50c54221acb3ceea4d4a6b717701bcddeaeb288.png" title=" Example: {nombre=Johan, apellidos=Garcia, email=felipe@gmail.com, phone=3107847573, id=1030533364, contrasena=Fg1234*}" width="1925"/>
+                <img src="eb30b96a8d219c22935c9da1c50c54221acb3ceea4d4a6b717701bcddeaeb288.png" title=" Dado que el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro" width="1925"/>
                 <img src="eb30b96a8d219c22935c9da1c50c54221acb3ceea4d4a6b717701bcddeaeb288.png" title=" Usuario abrir pagina" width="1925"/>
                 <img src="eb30b96a8d219c22935c9da1c50c54221acb3ceea4d4a6b717701bcddeaeb288.png" title=" usuario opens the Inicio task master" width="1925"/>
-                <img src="3963fb5140307a3f2f22cba345e3461ad305a4c852d42b003ff9cee31daad325.png" title=" usuario opens the Crear proyecto task master: <span class='success-color'>SUCCESS</span>" width="1925"/>
+                <img src="eb30b96a8d219c22935c9da1c50c54221acb3ceea4d4a6b717701bcddeaeb288.png" title=" Usuario abrir pagina (completed)" width="1925"/>
+                <img src="eb30b96a8d219c22935c9da1c50c54221acb3ceea4d4a6b717701bcddeaeb288.png" title=" Dado que el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro (completed)" width="1925"/>
+                <img src="2d4d1d8a541672e0113bd910783a78956d6ca1a494f9128c12c1c8a3453b0449.png" title=" Cuando ingrese las credenciales correctas (usuario y contrase&ntilde;a)
+| email | password |
+| nikole@gmail.com | Nikole1234* |" width="1925"/>
+                <img src="2d4d1d8a541672e0113bd910783a78956d6ca1a494f9128c12c1c8a3453b0449.png" title=" Usuario autenticarse" width="1925"/>
+                <img src="2d4d1d8a541672e0113bd910783a78956d6ca1a494f9128c12c1c8a3453b0449.png" title=" usuario clicks on  Ingreso del correo electronico" width="1925"/>
+                <img src="4eba191386ba29255cabc03f1adac3746c2b8ec82975d2b41fc5ee01fbb9b81a.png" title=" usuario enters 'nikole@gmail.com' into  Ingreso del correo electronico" width="1925"/>
+                <img src="a1d1e7db3802a83dd93fad1535a6e28fd300b585edeeedc2069be608a0098662.png" title=" usuario clicks on Ingreso del password" width="1925"/>
+                <img src="bcf2ae8b482084deda6ccd4f3546a83218764f6ecdb5f4e6e590947204b99ddd.png" title=" usuario enters 'Nikole1234*' into Ingreso del password" width="1925"/>
+                <img src="de875bb0a91d9a8d2a727a4e994952127021d5f324e8d9763503b8fd265baac1.png" title=" Usuario autenticarse (completed)" width="1925"/>
+                <img src="de875bb0a91d9a8d2a727a4e994952127021d5f324e8d9763503b8fd265baac1.png" title=" Cuando ingrese las credenciales correctas (usuario y contrase&ntilde;a)
+| email | password |
+| nikole@gmail.com | Nikole1234* | (completed)" width="1925"/>
+                <img src="de875bb0a91d9a8d2a727a4e994952127021d5f324e8d9763503b8fd265baac1.png" title=" Cuando da click en el boton de crear usuario y ingrese todos los campos del formulario de creacion de usuario y hace click en el boton guardar
+| nombre | apellidos | email | phone | id | contrasena |
+| Johan | Garcia | felipe@gmail.com | 3107847573 | 1030533364 | Fg1234* |" width="1925"/>
+                <img src="de875bb0a91d9a8d2a727a4e994952127021d5f324e8d9763503b8fd265baac1.png" title=" Entonces el sistema debe mostrar un mensaje de usuario creado con exito y redirige a la interfaz de administrar-usuarios" width="1925"/>
+                <img src="de875bb0a91d9a8d2a727a4e994952127021d5f324e8d9763503b8fd265baac1.png" title=" Example: {nombre=Johan, apellidos=Garcia, email=felipe@gmail.com, phone=3107847573, id=1030533364, contrasena=Fg1234*} (completed): <span class='success-color'>SUCCESS</span>" width="1925"/>
             </div>
         </div>
 
