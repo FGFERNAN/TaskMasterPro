@@ -6,17 +6,20 @@ Característica: Creacion de proyecto en la pagina de TaskMaster Pro
   Quiero poder crear un nuevo proyecto
   Para organizar y gestionar las tareas y recursos necesarios para alcanzar los objetivos del proyecto.
 
+  Antecedentes:
+    Dado que el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro
+    Cuando ingrese las credenciales correctas (usuario y contraseña)
+      | email                | password     |
+      | nikole@gmail.com     | Nikole1234*  |
+
   @CrearProyecto
 
   Esquema del escenario: Crear Proyecto Exitosamente
-    Dado que el usuario ha iniciado sesion y tiene permisos de admin o lider de proyecto
-    Y ha dado click en el boton de crear proyecto
-    Cuando ingrese todos los campos del formulario de creacion
-    Y hace click en el boton Guardar
-      | nombre   | descripcion   | fecha inicio   | fecha fin   | estado   | prioridad   |
-      | <nombre> | <descripcion> | <fecha inicio> | <fecha fin> | <estado> | <prioridad> |
+    Cuando da click en el boton de crear proyecto y ingrese todos los campos del formulario de creacion y hace click en el boton Guardar
+      | nombre   | descripcion   |
+      | <nombre> | <descripcion> |
     Entonces el sistema debe registrar correctamente el nuevo proyecto
 
     Ejemplos:
-      | nombre      | descripcion      | fecha inicio | fecha fin  | estado     | prioridad |
-      | Veterinaria | Historial Medico | 20/05/2025   | 21/05/2025 | Completado | Alta      |
+      | nombre      | descripcion      |
+      | Veterinaria | Historial Medico |

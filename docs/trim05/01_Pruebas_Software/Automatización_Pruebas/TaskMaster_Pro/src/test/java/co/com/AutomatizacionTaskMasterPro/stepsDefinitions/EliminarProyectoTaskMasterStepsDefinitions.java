@@ -8,32 +8,11 @@ import cucumber.api.java.es.Entonces;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class EliminarProyectoTaskMasterStepsDefinitions {
-    @Dado("^que el usuario ha iniciado sesion y tiene el rol de admin o lider de proyecto$")
-    public void queElUsuarioHaIniciadoSesionYTieneElRolDeAdminOLiderDeProyecto() {
-
+    @Cuando("^seleccione un proyecto de la lista y hace click en el boton de eliminar y confirma la eliminacion del proyecto$")
+    public void seleccioneUnProyectoDeLaListaYHaceClickEnElBotonDeEliminarYConfirmaLaEliminacionDelProyecto() {
     }
 
-    @Dado("^existe al menos un proyecto creado para poder eliminarlo$")
-    public void existeAlMenosUnProyectoCreadoParaPoderEliminarlo() {
-    }
-
-    @Cuando("^seleccione un proyecto de la lista$")
-    public void seleccioneUnProyectoDeLaLista() {
-    }
-
-    @Cuando("^hace click en el boton de eliminar$")
-    public void haceClickEnElBotonDeEliminar() {
-    }
-
-    @Cuando("^confirma la eliminacion del proyecto$")
-    public void confirmaLaEliminacionDelProyecto() {
-    }
-
-    @Entonces("^el sistema muestra un mensaje de proyecto eliminado exitosamente$")
-    public void elSistemaMuestraUnMensajeDeProyectoEliminadoExitosamente() {
-    }
-
-    @Entonces("^actualiza la lista de proyectos eliminando su registro$")
-    public void actualizaLaListaDeProyectosEliminandoSuRegistro() {
+    @Entonces("^el sistema muestra un mensaje de proyecto eliminado exitosamente y actualiza la lista de proyectos eliminando su registro$")
+    public void elSistemaMuestraUnMensajeDeProyectoEliminadoExitosamenteYActualizaLaListaDeProyectosEliminandoSuRegistro() {
     }
 }
