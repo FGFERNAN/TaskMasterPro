@@ -34,18 +34,6 @@ h1 {
     font-size: calc(1.375rem + 1.5vw);
 }
 
-.buton-regresar {
-  background-color: #70482e;
-  color: white;
-  border-color: #2E7060;
-  font-weight: bold;
-}
-
-.buton-regresar:hover {
-  background-color: #204b42;
-  border-color: #2E7060 ;
-  color: #ffffff;
-}
 
   .btn-primary{
     --bs-btn-active-color: black;

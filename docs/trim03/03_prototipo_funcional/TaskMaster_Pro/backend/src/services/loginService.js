@@ -18,7 +18,7 @@ class LoginService {
             if (Object.keys(getUser).length != 0) {
                 const isMatch = await bcrypt.compare(password, getUser[0].password);
                 if (isMatch) {
-                    return { id: getUser[0].id, nombre: getUser[0].nombre, apellidos: getUser[0].apellidos, message: "Inicio de sesión exitoso" };
+                    return { id: getUser[0].id, nombre: getUser[0].nombre, apellidos: getUser[0].apellidos, rolID: getUser[0].rolID, message: "Inicio de sesión exitoso" };
                 } else {
                     throw new Error("Password Error");
                 }

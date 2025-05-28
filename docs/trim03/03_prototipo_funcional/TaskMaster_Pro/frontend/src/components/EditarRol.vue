@@ -123,6 +123,9 @@ export default {
           } else if (serverErrors.message === 'Error fetching role: ') {
             console.log(serverErrors);
             alert(`Ocurrio un error inesperado del lado del servidor: ${serverErrors.message}, vuelve a intentar más tarde`);
+          } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
+            console.log(serverErrors.mensaje);
+            this.$router.push('/error403');
           } else {
             console.log(error.reponse);
             alert(error.response.data.mensaje);
