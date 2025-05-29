@@ -207,7 +207,7 @@ export default {
       return { v$: useVuelidate() };
     },
   mounted() {
-    document.title = "Crear Usuario | TaskMaster Po";
+    document.title = "Crear Usuario | TaskMaster Pro";
     this.getRole();
   },
   data() {
