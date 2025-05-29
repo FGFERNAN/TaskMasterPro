@@ -4,7 +4,6 @@ import co.com.AutomatizacionTaskMasterPro.models.CredencialesInicioSesion;
 import co.com.AutomatizacionTaskMasterPro.questions.ValidacionLogin;
 import co.com.AutomatizacionTaskMasterPro.tasks.AbrirPagina;
 import co.com.AutomatizacionTaskMasterPro.tasks.Autenticarse;
-import cucumber.api.DataTable;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
