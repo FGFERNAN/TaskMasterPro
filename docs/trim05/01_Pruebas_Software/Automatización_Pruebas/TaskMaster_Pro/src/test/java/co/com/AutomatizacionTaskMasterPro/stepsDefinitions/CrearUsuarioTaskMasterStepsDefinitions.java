@@ -1,19 +1,25 @@
 package co.com.AutomatizacionTaskMasterPro.stepsDefinitions;
 
-import co.com.AutomatizacionTaskMasterPro.tasks.AbrirPagina;
-import cucumber.api.DataTable;
+
+import co.com.AutomatizacionTaskMasterPro.models.DatosCrearUsuario;
+import co.com.AutomatizacionTaskMasterPro.questions.ValidacionCrearUsuario;
+import co.com.AutomatizacionTaskMasterPro.tasks.CrearUsuario;
 import cucumber.api.java.es.Cuando;
-import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 
+import java.util.List;
+
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class CrearUsuarioTaskMasterStepsDefinitions {
     @Cuando("^da click en el boton de crear usuario y ingrese todos los campos del formulario de creacion de usuario y hace click en el boton guardar$")
-    public void daClickEnElBotonDeCrearUsuarioYIngreseTodosLosCamposDelFormularioDeCreacionDeUsuarioYHaceClickEnElBotonGuardar(DataTable arg1) {
+    public void daClickEnElBotonDeCrearUsuarioYIngreseTodosLosCamposDelFormularioDeCreacionDeUsuarioYHaceClickEnElBotonGuardar(List<DatosCrearUsuario> datos) {
+        theActorInTheSpotlight().attemptsTo(CrearUsuario.aute(datos));
     }
 
     @Entonces("^el sistema debe mostrar un mensaje de usuario creado con exito y redirige a la interfaz de administrar-usuarios$")
     public void elSistemaDebeMostrarUnMensajeDeUsuarioCreadoConExitoYRedirigeALaInterfazDeAdministrarUsuarios() {
+        theActorInTheSpotlight().should(seeThat(ValidacionCrearUsuario.ValidacionCrearUsuario()));
     }
 }
