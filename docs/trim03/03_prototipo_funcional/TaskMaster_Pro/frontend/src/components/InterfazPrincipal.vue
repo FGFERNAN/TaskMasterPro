@@ -82,7 +82,7 @@
               <ul class="dropdown-menu">
                 <li v-for="proyecto in proyectos" :key="proyecto.id">
                   <div class="d-flex align-items-center">
-                    <a class="dropdown-item boton-menu-proyecto" @click="irInterfazProyecto(proyecto.id)"><i
+                    <a class="dropdown-item boton-menu-proyecto" :id="proyecto.nombre" :value="proyecto.nombre" @click="irInterfazProyecto(proyecto.id)"><i
                         class="fa-regular fa-folder-open"></i>
                       {{ proyecto.nombre }}</a>
                     <span class="ms-1">
