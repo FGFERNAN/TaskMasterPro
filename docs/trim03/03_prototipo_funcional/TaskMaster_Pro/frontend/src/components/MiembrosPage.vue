@@ -142,7 +142,7 @@
                   <div class="col-md-6" v-for="member in members" :key="member.id">
                     <div class="member-card">
                       <img :src="avatar" alt="User Avatar">
-                      <p><input type="radio" name="user" /> {{ member.nombre }} {{ member.apellidos }}</p>
+                      <p><input type="radio" name="user" :id="'user-' + member.id" :value="member.nombre" /> {{ member.nombre }} {{ member.apellidos }}</p>
                       <button class="btn-eliminar" @click="removeMember(member.id)">Eliminar Usuario</button>
                     </div>
                   </div>

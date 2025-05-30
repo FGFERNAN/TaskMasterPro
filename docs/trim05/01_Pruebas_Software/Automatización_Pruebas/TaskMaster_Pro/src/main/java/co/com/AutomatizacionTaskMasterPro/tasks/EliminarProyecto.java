@@ -25,7 +25,9 @@ public class EliminarProyecto implements Task {
         actor.attemptsTo(
                 Click.on(BTN_MPROYECTOS),
                 Click.on(BTN_ELIMINAR),
-                AceptarAlerta.despuesDe(5)
+                AceptarAlerta.despuesDe(5),
+                AceptarAlerta.despuesDe(5),
+                Click.on(BTN_MPROYECTOS)
         );
     }
 }

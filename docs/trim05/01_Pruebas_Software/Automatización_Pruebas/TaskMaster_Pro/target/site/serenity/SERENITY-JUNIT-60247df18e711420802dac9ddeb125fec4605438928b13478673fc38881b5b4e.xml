@@ -1,1 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Eliminación de proyecto en la pagina de TaskMaster Pro" skipped="0" tests="1" time="12.02" timestamp="2025-05-29 04:28:48"><testcase name="Eliminar un Proyecto Exitosamente"/></testsuite>
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="Eliminación de proyecto en la pagina de TaskMaster Pro" skipped="0" tests="1" time="14.52" timestamp="2025-05-29 10:01:53"><testcase name="Eliminar un Proyecto Exitosamente"><failure message="Expected validacion eliminar proyecto&#13;&#10;Expected: is &lt;true&gt;&#13;&#10;     but: was &lt;false&gt;" type="java.lang.AssertionError">Expected validacion eliminar proyecto&#13;
+Expected: is &lt;true&gt;&#13;
+     but: was &lt;false&gt;</failure><system-err>Expected validacion eliminar proyecto&#13;
+Expected: is &lt;true&gt;&#13;
+     but: was &lt;false&gt;&#13;
+co.com.AutomatizacionTaskMasterPro.stepsDefinitions.EliminarProyectoTaskMasterStepsDefinitions.elSistemaMuestraUnMensajeDeProyectoEliminadoExitosamenteYActualizaLaListaDeProyectosEliminandoSuRegistro(EliminarProyectoTaskMasterStepsDefinitions.java:22)&#13;
+✽.el sistema muestra un mensaje de proyecto eliminado exitosamente y actualiza la lista de proyectos eliminando su registro(src/test/resources/features/eliminarProyecto_taskmasterPro.feature:19)&#13;
+</system-err></testcase></testsuite>
