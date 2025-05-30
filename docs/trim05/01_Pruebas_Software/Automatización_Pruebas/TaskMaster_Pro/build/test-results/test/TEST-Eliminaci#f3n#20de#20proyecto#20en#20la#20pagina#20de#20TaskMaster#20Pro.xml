@@ -1,37 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Eliminación de proyecto en la pagina de TaskMaster Pro" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-05-29T21:28:49" hostname="DESKTOP-9S50AII" time="12.806">
+<testsuite name="Eliminación de proyecto en la pagina de TaskMaster Pro" tests="1" skipped="0" failures="1" errors="0" timestamp="2025-05-30T03:01:53" hostname="DESKTOP-9S50AII" time="15.499">
   <properties/>
-  <testcase name="Eliminar un Proyecto Exitosamente" classname="Eliminación de proyecto en la pagina de TaskMaster Pro" time="12.806"/>
+  <testcase name="Eliminar un Proyecto Exitosamente" classname="Eliminación de proyecto en la pagina de TaskMaster Pro" time="15.499">
+    <failure message="java.lang.AssertionError: Expected validacion eliminar proyecto&#13;&#10;Expected: is &lt;true&gt;&#13;&#10;     but: was &lt;false&gt;" type="java.lang.AssertionError">java.lang.AssertionError: Expected validacion eliminar proyecto
+Expected: is &lt;true&gt;
+     but: was &lt;false&gt;
+	at net.serenitybdd.screenplay.ErrorTally.throwSummaryExceptionFrom(ErrorTally.java:36)
+	at net.serenitybdd.screenplay.ErrorTally.reportAnyErrors(ErrorTally.java:30)
+	at net.serenitybdd.screenplay.Actor.should(Actor.java:316)
+	at co.com.AutomatizacionTaskMasterPro.stepsDefinitions.EliminarProyectoTaskMasterStepsDefinitions.elSistemaMuestraUnMensajeDeProyectoEliminadoExitosamenteYActualizaLaListaDeProyectosEliminandoSuRegistro(EliminarProyectoTaskMasterStepsDefinitions.java:22)
+	at ✽.el sistema muestra un mensaje de proyecto eliminado exitosamente y actualiza la lista de proyectos eliminando su registro(src/test/resources/features/eliminarProyecto_taskmasterPro.feature:19)
+</failure>
+  </testcase>
   <system-out><![CDATA[Alerta aceptada correctamente.
 Alerta aceptada correctamente.
+Alerta aceptada correctamente.
+Texto capturado: 'Veterinaria'
 ]]></system-out>
-  <system-err><![CDATA[may. 29, 2025 4:28:50 P. M. org.openqa.selenium.remote.DesiredCapabilities chrome
+  <system-err><![CDATA[may. 29, 2025 10:01:54 P. M. org.openqa.selenium.remote.DesiredCapabilities chrome
 INFO: Using `new ChromeOptions()` is preferred to `DesiredCapabilities.chrome()`
 [Test worker] INFO net.serenitybdd.core.webdriver.driverproviders.ProvideNewDriver - Instantiating driver
 [Test worker] INFO net.serenitybdd.core.webdriver.driverproviders.ProvideNewDriver - Driver capabilities: Capabilities {acceptInsecureCerts: false, browserName: chrome, goog:chromeOptions: {args: [], extensions: [], prefs: {behavior: allow}}, loggingPrefs: org.openqa.selenium.logging..., name: proyecto, platform: ANY, unhandledPromptBehavior: ignore, version: }
-Starting ChromeDriver 136.0.7103.94 (fa0be0b33debeb378a8e6ad9c599be34e2dc3b37-refs/branch-heads/7103@{#1842}) on port 11863
+Starting ChromeDriver 136.0.7103.94 (fa0be0b33debeb378a8e6ad9c599be34e2dc3b37-refs/branch-heads/7103@{#1842}) on port 31888
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-ChromeDriver was started successfully on port 11863.
-may. 29, 2025 4:28:53 P. M. org.openqa.selenium.remote.ProtocolHandshake createSession
+ChromeDriver was started successfully on port 31888.
+may. 29, 2025 10:01:57 P. M. org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
-[1748554139.576][WARNING]: unexpected alert open: {Alert text : Inicio de sesiÃ³n exitoso}, cancelling screenshot
+[1748574124.138][WARNING]: unexpected alert open: {Alert text : Inicio de sesiÃ³n exitoso}, cancelling screenshot
 [Test worker] WARN net.thucydides.core.webdriver.WebDriverFacade - Failed to take screenshot (unexpected alert open: <unknown>
   (Session info: chrome=136.0.7103.116): 
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'DESKTOP-9S50AII', ip: '192.168.80.17', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '15.0.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.116, chrome: {chromedriverVersion: 136.0.7103.94 (fa0be0b33deb..., userDataDir: C:\Users\LENOVO\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51793}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: ignore, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 898a7c664f97acdc966794b1c816f9a8)
-[Test worker] INFO net.thucydides.core.steps.ConsoleLoggingListener - 
-        __    _____ _____ ____ _____   ____   _    ____  ____  _____ ____  
-  _     \ \  |_   _| ____/ ___|_   _| |  _ \ / \  / ___|/ ___|| ____|  _ \ 
- (_)_____| |   | | |  _| \___ \ | |   | |_) / _ \ \___ \\___ \|  _| | | | |
-  _|_____| |   | | | |___ ___) || |   |  __/ ___ \ ___) |___) | |___| |_| |
- (_)     | |   |_| |_____|____/ |_|   |_| /_/   \_\____/|____/|_____|____/ 
-        /_/                                                                
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.116, chrome: {chromedriverVersion: 136.0.7103.94 (fa0be0b33deb..., userDataDir: C:\Users\LENOVO\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51380}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: ignore, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0b1913195956864cfc3a3d92adc933ec)
+[Test worker] ERROR net.thucydides.core.steps.ConsoleLoggingListener - 
+           __  _____ _____ ____ _____   _____ _    ___ _     _____ ____  
+  _       / / |_   _| ____/ ___|_   _| |  ___/ \  |_ _| |   | ____|  _ \ 
+ (_)_____| |    | | |  _| \___ \ | |   | |_ / _ \  | || |   |  _| | | | |
+  _|_____| |    | | | |___ ___) || |   |  _/ ___ \ | || |___| |___| |_| |
+ (_)     | |    |_| |_____|____/ |_|   |_|/_/   \_\___|_____|_____|____/ 
+          \_\                                                            
 
-TEST PASSED: Eliminar un Proyecto Exitosamente
-----------------------------------------------------------------------------
+TEST FAILED: Eliminar un Proyecto Exitosamente
+--------------------------------------------------------------------------
+[Test worker] ERROR net.thucydides.core.steps.ConsoleLoggingListener - TEST FAILED AT STEP Then validacion eliminar proyecto
+[Test worker] ERROR net.thucydides.core.steps.ConsoleLoggingListener - Expected validacion eliminar proyectoExpected: is <true> but: was <false>
 ]]></system-err>
 </testsuite>
