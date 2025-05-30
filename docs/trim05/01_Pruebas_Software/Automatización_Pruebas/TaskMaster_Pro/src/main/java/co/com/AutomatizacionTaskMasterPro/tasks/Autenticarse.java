@@ -7,6 +7,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
+import net.serenitybdd.screenplay.actions.Scroll;
 
 import java.util.List;
 
@@ -31,6 +32,7 @@ public class Autenticarse implements Task {
                 Enter.theValue(credenciales.get(0).getEmail()).into(INPUT_EMAIL),
                 Click.on(INPUT_PASSWORD),
                 Enter.theValue(credenciales.get(0).getPassword()).into(INPUT_PASSWORD),
+                Scroll.to(INPUT_PASSWORD),
                 Click.on(BTN_INICIOSESION),
                 AceptarAlerta.despuesDe(5));
     }

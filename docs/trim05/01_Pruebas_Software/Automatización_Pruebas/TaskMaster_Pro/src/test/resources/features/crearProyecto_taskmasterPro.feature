@@ -16,8 +16,8 @@ Característica: Creacion de proyecto en la pagina de TaskMaster Pro
 
   Esquema del escenario: Crear Proyecto Exitosamente
     Cuando da click en el boton de crear proyecto y ingrese todos los campos del formulario de creacion y hace click en el boton Guardar
-      | nombre   | descripcion   |
-      | <nombre> | <descripcion> |
+      | nombre         | descripcion                                                          |
+      | Automatizacion | Vamos a automatizar procesos clave para la validacion de un software |
     Entonces el sistema debe registrar correctamente el nuevo proyecto
 
     Ejemplos:
