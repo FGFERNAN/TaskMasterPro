@@ -21,5 +21,5 @@ Característica: Creacion de usuario en la pagina de TaskMaster Pro
     Entonces el sistema debe mostrar un mensaje de usuario creado con exito y redirige a la interfaz de administrar-usuarios
 
     Ejemplos:
-      | nombre | apellidos | email            | phone      | id         | contrasena |
-      | Johan  | Garcia    | felipe@gmail.com | 3107847573 | 1030523678 | Fg123456*  |
+      | nombre  | apellidos | email             | phone      | id         | contrasena |
+      | Enrique | Garcia    | enrique@gmail.com | 3107847573 | 1030523678 | Fg123456*  |

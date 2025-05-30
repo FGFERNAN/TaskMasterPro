@@ -1,1 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Creacion de usuario en la pagina de TaskMaster Pro" skipped="0" tests="1" time="21.26" timestamp="2025-05-29 04:51:04"><testcase name="Crear Usuario Exitosamente"/></testsuite>
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="Creacion de usuario en la pagina de TaskMaster Pro" skipped="0" tests="1" time="23.52" timestamp="2025-05-30 12:04:36"><testcase name="Crear Usuario Exitosamente"><failure message="Expected validacion crear usuario&#13;&#10;Expected: is &lt;true&gt;&#13;&#10;     but: was &lt;false&gt;" type="java.lang.AssertionError">Expected validacion crear usuario&#13;
+Expected: is &lt;true&gt;&#13;
+     but: was &lt;false&gt;</failure><system-err>Expected validacion crear usuario&#13;
+Expected: is &lt;true&gt;&#13;
+     but: was &lt;false&gt;&#13;
+co.com.AutomatizacionTaskMasterPro.stepsDefinitions.CrearUsuarioTaskMasterStepsDefinitions.elSistemaDebeMostrarUnMensajeDeUsuarioCreadoConExitoYRedirigeALaInterfazDeAdministrarUsuarios(CrearUsuarioTaskMasterStepsDefinitions.java:23)&#13;
+✽.el sistema debe mostrar un mensaje de usuario creado con exito y redirige a la interfaz de administrar-usuarios(src/test/resources/features/crearUsuario_taskmasterPro.feature:21)&#13;
+</system-err></testcase></testsuite>
