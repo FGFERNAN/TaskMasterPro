@@ -21,5 +21,5 @@ Característica: Actualización de un proyecto existente en la pagina de TaskMas
     Entonces el sistema debe mostrar una alerta confirmando los cambios con exito y se deben ver reflejados al abrir los detalles
 
     Ejemplos:
-      | nombre      | descripcion      |
-      | Veterinaria | Historial Medico |
+      | nombre         | descripcion          |
+      | TaskMaster Pro | Gestion de Proyectos |
