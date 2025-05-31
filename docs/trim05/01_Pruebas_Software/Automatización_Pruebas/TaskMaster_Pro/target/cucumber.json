@@ -1,0 +1,128 @@
+[
+  {
+    "line": 4,
+    "elements": [
+      {
+        "line": 9,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Antecedentes",
+        "steps": [
+          {
+            "result": {
+              "duration": 27450374300,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "que el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro",
+            "match": {
+              "location": "AutenticacionTaskMasterStepsDefinitions.queElUsuarioSeEncuentraEnLaPaginaDeInicioDeSesionDeTaskMasterPro()"
+            },
+            "keyword": "Dado "
+          },
+          {
+            "result": {
+              "duration": 1843500500,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "ingrese las credenciales correctas (usuario y contraseña)",
+            "match": {
+              "location": "AutenticacionTaskMasterStepsDefinitions.ingreseLasCredencialesCorrectasUsuarioYContraseña(CredencialesInicioSesion\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "email",
+                  "password"
+                ]
+              },
+              {
+                "cells": [
+                  "fgfernan2508@gmail.com",
+                  "enriqueGR2508*"
+                ]
+              }
+            ],
+            "keyword": "Cuando "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 58702700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "PreparacionEscenario.sepUp()"
+            }
+          }
+        ],
+        "line": 25,
+        "name": "Crear Proyecto Exitosamente",
+        "description": "",
+        "id": "creacion-de-proyecto-en-la-pagina-de-taskmaster-pro;crear-proyecto-exitosamente;;2",
+        "type": "scenario",
+        "keyword": "Esquema del escenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 4354756300,
+              "status": "passed"
+            },
+            "line": 18,
+            "name": "da click en el boton de crear proyecto y ingrese todos los campos del formulario de creacion y hace click en el boton Guardar",
+            "match": {
+              "location": "CrearProyectoTaskMasterStepsDefinitions.daClickEnElBotonDeCrearProyectoYIngreseTodosLosCamposDelFormularioDeCreacionYHaceClickEnElBotonGuardar(InformacionProyecto\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "nombre",
+                  "descripcion",
+                  "fechaInicio",
+                  "fechaFin"
+                ]
+              },
+              {
+                "cells": [
+                  "Automatizacion",
+                  "Vamos a automatizar procesos clave para la validacion de un software",
+                  "30052025",
+                  "31052025"
+                ]
+              }
+            ],
+            "keyword": "Cuando "
+          },
+          {
+            "result": {
+              "duration": 281191800,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "el sistema debe registrar correctamente el nuevo proyecto",
+            "match": {
+              "location": "CrearProyectoTaskMasterStepsDefinitions.elSistemaDebeRegistrarCorrectamenteElNuevoProyecto()"
+            },
+            "keyword": "Entonces "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@CrearProyecto"
+          }
+        ]
+      }
+    ],
+    "name": "Creacion de proyecto en la pagina de TaskMaster Pro",
+    "description": "  Como usuario de TaskMaster Pro\n  Quiero poder crear un nuevo proyecto\n  Para organizar y gestionar las tareas y recursos necesarios para alcanzar los objetivos del proyecto.",
+    "id": "creacion-de-proyecto-en-la-pagina-de-taskmaster-pro",
+    "keyword": "Característica",
+    "uri": "src/test/resources/features/crearProyecto_taskmasterPro.feature",
+    "tags": []
+  }
+]

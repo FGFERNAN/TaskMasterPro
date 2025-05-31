@@ -16,7 +16,7 @@ public class ValidacionCrearProyecto implements Question<Boolean> {
     public Boolean answeredBy(Actor actor) {
         try {
             String texto = Text.of(CONFIRMACION_CREARP).viewedBy(actor).asString();
-            return "".equals(texto);
+            return "Automatizacion".equals(texto);
         } catch (Exception e) {
             logger.info("No encontró el texto o hubo otro error");
             return false;

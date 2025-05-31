@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Creacion de proyecto en la pagina de TaskMaster Pro" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-05-28T21:38:55" hostname="ANDRESGARZON" time="8.231">
+<testsuite name="Creacion de proyecto en la pagina de TaskMaster Pro" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-05-31T01:11:01" hostname="ANDRESGARZON" time="34.866">
   <properties/>
-  <testcase name="Crear Proyecto Exitosamente" classname="Creacion de proyecto en la pagina de TaskMaster Pro" time="8.231"/>
-  <system-out><![CDATA[Alerta aceptada correctamente.
+  <testcase name="Crear Proyecto Exitosamente" classname="Creacion de proyecto en la pagina de TaskMaster Pro" time="34.866"/>
+  <system-out><![CDATA[    ?[32mDado ?[0m?[32mque el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro?[0m ?[90m# AutenticacionTaskMasterStepsDefinitions.queElUsuarioSeEncuentraEnLaPaginaDeInicioDeSesionDeTaskMasterPro()?[0m
+Alerta aceptada correctamente.
+    ?[32mCuando ?[0m?[32mingrese las credenciales correctas (usuario y contraseña)?[0m                    ?[90m# AutenticacionTaskMasterStepsDefinitions.ingreseLasCredencialesCorrectasUsuarioYContraseña(CredencialesInicioSesion>)?[0m
+
+  @CrearProyecto
+  Esquema del escenario: Crear Proyecto Exitosamente                                                                                     ?[90m# src/test/resources/features/crearProyecto_taskmasterPro.feature:25?[0m
+Alerta aceptada correctamente.
+    ?[32mCuando ?[0m?[32mda click en el boton de crear proyecto y ingrese todos los campos del formulario de creacion y hace click en el boton Guardar?[0m ?[90m# CrearProyectoTaskMasterStepsDefinitions.daClickEnElBotonDeCrearProyectoYIngreseTodosLosCamposDelFormularioDeCreacionYHaceClickEnElBotonGuardar(InformacionProyecto>)?[0m
+    ?[32mEntonces ?[0m?[32mel sistema debe registrar correctamente el nuevo proyecto?[0m                                                                   ?[90m# CrearProyectoTaskMasterStepsDefinitions.elSistemaDebeRegistrarCorrectamenteElNuevoProyecto()?[0m
 ]]></system-out>
-  <system-err><![CDATA[may. 28, 2025 4:38:55 P. M. org.openqa.selenium.remote.DesiredCapabilities chrome
+  <system-err><![CDATA[may. 30, 2025 8:11:02 P. M. org.openqa.selenium.remote.DesiredCapabilities chrome
 INFO: Using `new ChromeOptions()` is preferred to `DesiredCapabilities.chrome()`
 [Test worker] INFO net.serenitybdd.core.webdriver.driverproviders.ProvideNewDriver - Instantiating driver
 [Test worker] INFO net.serenitybdd.core.webdriver.driverproviders.ProvideNewDriver - Driver capabilities: Capabilities {acceptInsecureCerts: false, browserName: chrome, goog:chromeOptions: {args: [], extensions: [], prefs: {behavior: allow}}, loggingPrefs: org.openqa.selenium.logging..., name: proyecto, platform: ANY, unhandledPromptBehavior: ignore, version: }
-Starting ChromeDriver 136.0.7103.94 (fa0be0b33debeb378a8e6ad9c599be34e2dc3b37-refs/branch-heads/7103@{#1842}) on port 42118
+Starting ChromeDriver 136.0.7103.94 (fa0be0b33debeb378a8e6ad9c599be34e2dc3b37-refs/branch-heads/7103@{#1842}) on port 6897
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-ChromeDriver was started successfully on port 42118.
-may. 28, 2025 4:38:58 P. M. org.openqa.selenium.remote.ProtocolHandshake createSession
+ChromeDriver was started successfully on port 6897.
+may. 30, 2025 8:11:04 P. M. org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
 [Test worker] INFO net.thucydides.core.steps.ConsoleLoggingListener - 
         __    _____ _____ ____ _____   ____   _    ____  ____  _____ ____  

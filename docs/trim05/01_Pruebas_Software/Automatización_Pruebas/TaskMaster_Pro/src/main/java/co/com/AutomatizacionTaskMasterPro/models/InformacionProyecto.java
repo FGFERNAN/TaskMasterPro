@@ -5,6 +5,9 @@ public class InformacionProyecto {
 
     private String descripcion;
 
+    private String fechaInicio;
+
+    private String fechaFin;
 
     public String getNombre() {
         return nombre;
@@ -18,12 +21,19 @@ public class InformacionProyecto {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion;}
 
-    public InformacionProyecto(String nombre, String descripcion) {
+    public String getFechaInicio() {return fechaInicio;}
+
+    public void setFechaInicio(String fechaInicio) { this.fechaInicio = fechaInicio;}
+
+    public String getFechaFin() {return fechaFin;}
+
+    public void setFechaFin(String fechaFin) { this.fechaFin = fechaFin;}
+    public InformacionProyecto(String nombre, String descripcion, String fechaInicio, String fechaFin) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
     }
 }
