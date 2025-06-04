@@ -13,6 +13,9 @@ public class ActualizacionProyecto extends PageObject {
     public static Target INPUT_PRIORIDAD = Target.the("Seleccione la nueva prioridad").located(By.xpath("//*[@id=\"118\"]/form/div[7]/div/div/select"));
     public static Target INPUT_FECHAFIN = Target.the("Scroll de fecha").located(By.xpath("//*[@id=\"118\"]/form/div[5]/div/div/input"));
     public static Target BTN_GUARDAR = Target.the("Boton de guardar cambios").located(By.xpath("//*[@id=\"118\"]/form/div[9]/button"));
+    public static Target INPUT_PROYECTO = Target.the("Seleccione el proyecto actualizado").located(By.xpath("/html/body/div/div/div/div[2]/div/div[2]/section/div/div[1]/div[2]/div[2]/input"));
+
+    public static Target TEXTO_CONFIRMACION = Target.the("Texto de confirmacion de cambios en el proyecto").located(By.xpath("//*[@id=\"118\"]/div[2]/div/div[2]/section/div[1]/div[1]/h2"));
 
 
 
