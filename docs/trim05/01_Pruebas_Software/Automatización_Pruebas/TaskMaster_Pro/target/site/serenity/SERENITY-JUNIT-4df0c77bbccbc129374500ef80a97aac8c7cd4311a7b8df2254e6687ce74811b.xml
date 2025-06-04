@@ -1,1 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Busqueda de proyecto en la pagina de TaskMaster Pro" skipped="1" tests="1" time="8.78" timestamp="2025-05-30 12:44:41"><testcase name="Filtrar un Proyecto Exitosamente"><skipped/></testcase></testsuite>
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Busqueda de proyecto en la pagina de TaskMaster Pro" skipped="0" tests="1" time="5.09" timestamp="2025-06-04 01:28:54"><testcase name="Filtrar un Proyecto Exitosamente"/></testsuite>

@@ -154,7 +154,7 @@
             <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="fa fa-comments-o"></i> Features</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 29-05-2025 22:01</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 04-06-2025 13:08</span>
     <br style="clear:left"/>
 </div>
 
@@ -185,7 +185,7 @@ Para mantener mi lista de proyectos organizada y actualizada.
                         <td valign="top" align="right">
                             <p class="tag">
                                 <span class="badge tag-badge" style="background:default;"
-                                    <i class="fa fa-tag"></i>&nbsp;<a class="tagLink" style="background:default;" href="d6620629ea379af941eaf42cc82f3898ef0ed4d100d812a06554fce6c99d2d59.html">Asignar Proyecto
+                                    <i class="fa fa-tag"></i>&nbsp;<a class="tagLink" style="background:default;" href="11a29eb7549fca94eb6921712d77ae36ce8c7e2da439565f63c2b9405bc5e38f.html">Eliminar Proyecto
                                     (tag)</a>
                                 </span>
                             </p>
@@ -222,7 +222,7 @@ Para mantener mi lista de proyectos organizada y actualizada.
         <div class="table">
             <div class="row">
                 <div class="col-sm-10" style="padding-left:1.5em; padding-top:0.5em; padding-bottom:0.5em;">
-                    <span class="error-message error-message-title">Assertion error: Expected validacion eliminar proyectoExpected: is (true) but: was (false)</span>
+                    <span class="error-message error-message-title">Element should be enabled exception: Expected enabled element was not enabled</span>
                 </div>
                 <div class="col-sm-2">
                     <a class="btn btn-warning details-button" data-toggle="collapse" href="#stacktraceModal-overall""
@@ -238,13 +238,20 @@ Para mantener mi lista de proyectos organizada y actualizada.
         <div class="collapse multi-collapse" id="stacktraceModal-overall">
             <div class="card">
                 <div class="card-header">
-                    <h4>java.lang.AssertionError </h4>
+                    <h4>net.thucydides.core.webdriver.exceptions.ElementShouldBeEnabledException </h4>
                 </div>
                 <div class="card-body">
                     <div>
-                        <pre>co.com.AutomatizacionTaskMasterPro.stepsDefinitions.EliminarProyectoTaskMasterStepsDefinitions.elSistemaMuestraUnMensajeDeProyectoEliminadoExitosamenteYActualizaLaListaDeProyectosEliminandoSuRegistro(EliminarProyectoTaskMasterStepsDefinitions.java:22)<br />✽.el sistema muestra un mensaje de proyecto eliminado exitosamente y actualiza la lista de proyectos eliminando su registro(src/test/resources/features/eliminarProyecto_taskmasterPro.feature:19)<br /></pre>
+                        <pre>co.com.AutomatizacionTaskMasterPro.tasks.EliminarProyecto.performAs(EliminarProyecto.java:25)<br />co.com.AutomatizacionTaskMasterPro.stepsDefinitions.EliminarProyectoTaskMasterStepsDefinitions.seleccioneUnProyectoDeLaListaYHaceClickEnElBotonDeEliminarYConfirmaLaEliminacionDelProyecto(EliminarProyectoTaskMasterStepsDefinitions.java:17)<br />cucumber.runner.Runner.runPickle(Runner.java:80)<br />worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)<br />worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)<br /></pre>
                     </div>
 
+                    <h4>
+                        Caused by: org.openqa.selenium.TimeoutException
+                    </h4>
+                    <div>
+                            <pre>Expected condition failed: waiting for By.xpath: /html/body/div/div/div/div[2]/div/div[1]/ul/li[4]/ul/li[3]/div/span[2]/a to be enabled (tried for 5 second(s) with 100 milliseconds interval)</pre>
+                        <pre>co.com.AutomatizacionTaskMasterPro.tasks.EliminarProyecto.performAs(EliminarProyecto.java :25)<br />co.com.AutomatizacionTaskMasterPro.stepsDefinitions.EliminarProyectoTaskMasterStepsDefinitions.seleccioneUnProyectoDeLaListaYHaceClickEnElBotonDeEliminarYConfirmaLaEliminacionDelProyecto(EliminarProyectoTaskMasterStepsDefinitions.java :17)<br />cucumber.runner.Runner.runPickle(Runner.java :80)<br />worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java :69)<br />worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java :74)<br /></pre>
+                    </div>
                 </div>
             </div>
         </div>
@@ -252,36 +259,33 @@ Para mantener mi lista de proyectos organizada y actualizada.
 
 
                 <div class="panel-body">
-                    <a href="pagesource10826159702556177862.html.txt" target="_blank" class="btn btn-info">HTML Source</a>
+                    <a href="pagesource12884259847925909699.html.txt" target="_blank" class="btn btn-info">HTML Source</a>
                 </div>
             </div>
         <div class="slider-wrapper theme-default">
             <div id="slider">
-                <img src="eb30b96a8d219c22935c9da1c50c54221acb3ceea4d4a6b717701bcddeaeb288.png" title=" Dado que el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro" width="1925"/>
-                <img src="eb30b96a8d219c22935c9da1c50c54221acb3ceea4d4a6b717701bcddeaeb288.png" title=" Usuario abrir pagina" width="1925"/>
-                <img src="eb30b96a8d219c22935c9da1c50c54221acb3ceea4d4a6b717701bcddeaeb288.png" title=" usuario opens the Inicio task master" width="1925"/>
-                <img src="eb30b96a8d219c22935c9da1c50c54221acb3ceea4d4a6b717701bcddeaeb288.png" title=" Usuario abrir pagina (completed)" width="1925"/>
-                <img src="eb30b96a8d219c22935c9da1c50c54221acb3ceea4d4a6b717701bcddeaeb288.png" title=" Dado que el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro (completed)" width="1925"/>
-                <img src="c67b715238e17217292ed38bc0d93f3c71b4713936eeb24a2a7a3baff900092e.png" title=" Cuando ingrese las credenciales correctas (usuario y contrase&ntilde;a)
+                <img src="f4a77e0d1c69edcd7799bd9630eb05e938eff288951556adf387bb531dfd14bc.png" title=" Dado que el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro" width="1584"/>
+                <img src="f4a77e0d1c69edcd7799bd9630eb05e938eff288951556adf387bb531dfd14bc.png" title=" Usuario abrir pagina" width="1584"/>
+                <img src="f4a77e0d1c69edcd7799bd9630eb05e938eff288951556adf387bb531dfd14bc.png" title=" usuario opens the Inicio task master" width="1584"/>
+                <img src="f4a77e0d1c69edcd7799bd9630eb05e938eff288951556adf387bb531dfd14bc.png" title=" Usuario abrir pagina (completed)" width="1584"/>
+                <img src="f4a77e0d1c69edcd7799bd9630eb05e938eff288951556adf387bb531dfd14bc.png" title=" Dado que el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro (completed)" width="1584"/>
+                <img src="198388f3415099c1b4cd8994af9f1ac9b73fb09fdfa7d7b0fec21a96410b36ac.png" title=" Cuando ingrese las credenciales correctas (usuario y contrase&ntilde;a)
 | email | password |
-| fgfernan2508@gmail.com | enriqueGR2508* |" width="1925"/>
-                <img src="c67b715238e17217292ed38bc0d93f3c71b4713936eeb24a2a7a3baff900092e.png" title=" Usuario autenticarse" width="1925"/>
-                <img src="c67b715238e17217292ed38bc0d93f3c71b4713936eeb24a2a7a3baff900092e.png" title=" usuario clicks on  Ingreso del correo electronico" width="1925"/>
-                <img src="8bcc3681acbcd9489f67da21f7b5b0469e6cee4a4e2bfefe0102e51718dc9028.png" title=" usuario enters 'fgfernan2508@gmail.com' into  Ingreso del correo electronico" width="1925"/>
-                <img src="0ce5781ee0a96fcc9b70e6bea9850f513047a5c24d4b6361a5ef344b88b40c42.png" title=" usuario clicks on Ingreso del password" width="1925"/>
-                <img src="9daea5adfb8393222ed2d5d3720fde0b0d400be7dafa041c631a8c208238c21a.png" title=" usuario enters 'enriqueGR2508*' into Ingreso del password" width="1925"/>
-                <img src="4f7a7bb50aa1724adf199bcffc6ec55319a5b6ca3745570069604adba1c0be91.png" title=" Usuario autenticarse (completed)" width="1925"/>
-                <img src="4f7a7bb50aa1724adf199bcffc6ec55319a5b6ca3745570069604adba1c0be91.png" title=" Cuando ingrese las credenciales correctas (usuario y contrase&ntilde;a)
+| fgfernan2508@gmail.com | enriqueGR2508* |" width="1584"/>
+                <img src="198388f3415099c1b4cd8994af9f1ac9b73fb09fdfa7d7b0fec21a96410b36ac.png" title=" Usuario autenticarse" width="1584"/>
+                <img src="198388f3415099c1b4cd8994af9f1ac9b73fb09fdfa7d7b0fec21a96410b36ac.png" title=" usuario clicks on  Ingreso del correo electronico" width="1584"/>
+                <img src="47fb4e2332cf14bfa3ce456d445e1791fa39c8924dac4f74456a852f5f9b7816.png" title=" usuario enters 'fgfernan2508@gmail.com' into  Ingreso del correo electronico" width="1584"/>
+                <img src="a482ecb58917e857a90228200c459849033ffb0181712757c40e91b7c0649321.png" title=" usuario clicks on Ingreso del password" width="1584"/>
+                <img src="1ff74226b789949705b31c10c5f1cb9ce9641cc42dbf6dafdf69a973daeee726.png" title=" usuario enters 'enriqueGR2508*' into Ingreso del password" width="1584"/>
+                <img src="5d2a61e0fee504007b285a06ecb9f3cea3000a38013a5ce2d3af98d50d26375f.png" title=" usuario clicks on Click Boton inicio sesion" width="1584"/>
+                <img src="5d2a61e0fee504007b285a06ecb9f3cea3000a38013a5ce2d3af98d50d26375f.png" title=" Usuario autenticarse (completed)" width="1584"/>
+                <img src="5d2a61e0fee504007b285a06ecb9f3cea3000a38013a5ce2d3af98d50d26375f.png" title=" Cuando ingrese las credenciales correctas (usuario y contrase&ntilde;a)
 | email | password |
-| fgfernan2508@gmail.com | enriqueGR2508* | (completed)" width="1925"/>
-                <img src="b332498b8c63e35d5d244d0dbc884722536777e0613b26c0bf20982fa56d26ba.png" title=" Cuando seleccione un proyecto de la lista y hace click en el boton de eliminar y confirma la eliminacion del proyecto" width="1925"/>
-                <img src="b332498b8c63e35d5d244d0dbc884722536777e0613b26c0bf20982fa56d26ba.png" title=" Usuario eliminar proyecto" width="1925"/>
-                <img src="b332498b8c63e35d5d244d0dbc884722536777e0613b26c0bf20982fa56d26ba.png" title=" usuario clicks on Boton de desplegar menu de proyectos" width="1925"/>
-                <img src="9c43279e2e9b746e8ca6553cb34eabe33b323725ff277e4cfcce73d87374c50a.png" title=" usuario clicks on Boton de desplegar menu de proyectos" width="1925"/>
-                <img src="9c43279e2e9b746e8ca6553cb34eabe33b323725ff277e4cfcce73d87374c50a.png" title=" Usuario eliminar proyecto (completed)" width="1925"/>
-                <img src="9c43279e2e9b746e8ca6553cb34eabe33b323725ff277e4cfcce73d87374c50a.png" title=" Cuando seleccione un proyecto de la lista y hace click en el boton de eliminar y confirma la eliminacion del proyecto (completed)" width="1925"/>
-                <img src="47236597cd3ca63e837c8c1e7029bd748720db20ea811e2415772a73dc1991ad.png" title=" Entonces el sistema muestra un mensaje de proyecto eliminado exitosamente y actualiza la lista de proyectos eliminando su registro" width="1925"/>
-                <img src="47236597cd3ca63e837c8c1e7029bd748720db20ea811e2415772a73dc1991ad.png" title=" Then validacion eliminar proyecto: <span class='failing-color'>FAILURE</span>" width="1925"/>
+| fgfernan2508@gmail.com | enriqueGR2508* | (completed)" width="1584"/>
+                <img src="4d0b71f16b2061a803e89cdfdc904f8d88dc53112b0019acd655b8ad3c6d64c0.png" title=" Cuando seleccione un proyecto de la lista y hace click en el boton de eliminar y confirma la eliminacion del proyecto" width="1584"/>
+                <img src="4d0b71f16b2061a803e89cdfdc904f8d88dc53112b0019acd655b8ad3c6d64c0.png" title=" Usuario eliminar proyecto" width="1584"/>
+                <img src="4d0b71f16b2061a803e89cdfdc904f8d88dc53112b0019acd655b8ad3c6d64c0.png" title=" usuario clicks on Boton de desplegar menu de proyectos" width="1584"/>
+                <img src="9b679234e8a4de1ea06009c542ecdb9b5fb1ad75c86add3fa7ca931fa94a259f.png" title=" usuario clicks on Boton de eliminar proyecto: <span class='failing-color'>FAILURE</span>" width="1584"/>
             </div>
         </div>
 
