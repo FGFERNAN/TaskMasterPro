@@ -41,7 +41,9 @@ public class EditarProyecto implements Task {
                 Scroll.to(INPUT_PRIORIDAD),
                 Scroll.to(INPUT_PRIORIDAD),
                 Scroll.to(INPUT_PRIORIDAD),
-                Click.on(BTN_GUARDAR)
+                Click.on(BTN_GUARDAR),
+                AceptarAlerta.despuesDe(5),
+                Click.on(INPUT_PROYECTO)
                 );
     }
 }

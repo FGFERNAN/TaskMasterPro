@@ -1,1 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Recuperación de contraseña en la pagina de TaskMaster Pro" skipped="1" tests="1" time="0.39" timestamp="2025-05-30 01:00:29"><testcase name="Recuperar Contraseña Exitosamente"><skipped/></testcase></testsuite>
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Recuperación de contraseña en la pagina de TaskMaster Pro" skipped="0" tests="1" time="9.35" timestamp="2025-06-03 04:28:09"><testcase name="Recuperar Contraseña Exitosamente"/></testsuite>
