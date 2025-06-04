@@ -23,16 +23,11 @@ public class EliminarMiembro implements Task {
         actor.attemptsTo(
                 Click.on(BTN_PROYECTO),
                 Click.on(BTN_MIEMBROS),
-                WaitUntil.the(BTN_ELIMINAR, isEnabled()).forNoMoreThan(10).seconds(),
+                WaitUntil.the(BTN_ELIMINAR, isEnabled()).forNoMoreThan(5).seconds(),
                 Click.on(BTN_ELIMINAR),
-
                 AceptarAlerta.despuesDe(5),
                 AceptarAlerta.despuesDe(5)
-
                 );
-
-
-
     }
 }
 

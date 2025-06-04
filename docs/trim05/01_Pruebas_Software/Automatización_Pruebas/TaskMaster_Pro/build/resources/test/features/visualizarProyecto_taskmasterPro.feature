@@ -16,8 +16,5 @@ Característica: Visualización de proyecto en la pagina de TaskMaster Pro
 
   Escenario: Visualizar un Proyecto Exitosamente
     Cuando seleccione un proyecto de la lista de proyectos en el menu
-<<<<<<< HEAD
     Entonces el sistema muestra todos los detalles del proyecto seleccionado
-=======
-    Entonces el sistema muestra todos los detalles del proyecto seleccionado
->>>>>>> Nikole
+
