@@ -154,7 +154,7 @@
             <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="fa fa-comments-o"></i> Features</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 29-05-2025 20:20</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 04-06-2025 01:37</span>
     <br style="clear:left"/>
 </div>
 
@@ -197,9 +197,9 @@ Para poder repartir tareas y colaborar eficazmente para resultados más rapidos.
                 <table class="outcome-header">
                     <tr>
                         <td colspan="2" class="test-title-bar">
-                            <span class="outcome-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon fa-2x' title='SUCCESS'></i></a></span>
+                            <span class="outcome-icon"><a href='##beforetable'><i class='fa fa-times-circle failure-icon fa-2x' title='FAILURE'></i></a></span>
                             <span class="test-case-title">
-                                <span class="success-color">Agregar Miembro Exitosamente
+                                <span class="failing-color">Agregar Miembro Exitosamente
                                     <span class="related-issue-title"></span>
                                 </span>
                             </span>
@@ -216,36 +216,76 @@ Para poder repartir tareas y colaborar eficazmente para resultados más rapidos.
 
     <div id="beforetable"></div>
     <div id="contenttilttle">
+            <div class="screenshotFailure panel panel-danger">
+
+    <div style="display:block">
+        <div class="table">
+            <div class="row">
+                <div class="col-sm-10" style="padding-left:1.5em; padding-top:0.5em; padding-bottom:0.5em;">
+                    <span class="error-message error-message-title">Element should be enabled exception: Expected enabled element was not enabled</span>
+                </div>
+                <div class="col-sm-2">
+                    <a class="btn btn-warning details-button" data-toggle="collapse" href="#stacktraceModal-overall""
+                       role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><i class="far fa-eye"></i> More details</a>
+                </div>
+             </div>
+        </div>
+    <div>
+
+    <!-- Details Section -->
+    <div class="row stacktrace-details">
+      <div class="col">
+        <div class="collapse multi-collapse" id="stacktraceModal-overall">
+            <div class="card">
+                <div class="card-header">
+                    <h4>net.thucydides.core.webdriver.exceptions.ElementShouldBeEnabledException </h4>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <pre>co.com.AutomatizacionTaskMasterPro.tasks.AsignarMiembro.performAs(AsignarMiembro.java:19)<br />co.com.AutomatizacionTaskMasterPro.stepsDefinitions.AsignarProyectoTaskMasterStepsDefinitions.seleccioneUnProyectoExistenteYSeleccionaLaOpcionMiembrosYHaceClickEnElBotonAgregarEnElUsuarioQueDesee(AsignarProyectoTaskMasterStepsDefinitions.java:18)<br />cucumber.runner.Runner.runPickle(Runner.java:80)<br />worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)<br />worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)<br /></pre>
+                    </div>
+
+                    <h4>
+                        Caused by: org.openqa.selenium.TimeoutException
+                    </h4>
+                    <div>
+                            <pre>Expected condition failed: waiting for By.xpath: //*[@id=&quot;7&quot;]/div[2]/div/div[2]/section/div[1]/div[2]/button to be enabled (tried for 5 second(s) with 100 milliseconds interval)</pre>
+                        <pre>co.com.AutomatizacionTaskMasterPro.tasks.AsignarMiembro.performAs(AsignarMiembro.java :19)<br />co.com.AutomatizacionTaskMasterPro.stepsDefinitions.AsignarProyectoTaskMasterStepsDefinitions.seleccioneUnProyectoExistenteYSeleccionaLaOpcionMiembrosYHaceClickEnElBotonAgregarEnElUsuarioQueDesee(AsignarProyectoTaskMasterStepsDefinitions.java :18)<br />cucumber.runner.Runner.runPickle(Runner.java :80)<br />worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java :69)<br />worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java :74)<br /></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+                <div class="panel-body">
+                    <a href="pagesource10601824681670436684.html.txt" target="_blank" class="btn btn-info">HTML Source</a>
+                </div>
+            </div>
         <div class="slider-wrapper theme-default">
             <div id="slider">
-                <img src="eb30b96a8d219c22935c9da1c50c54221acb3ceea4d4a6b717701bcddeaeb288.png" title=" Dado que el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro" width="1925"/>
-                <img src="eb30b96a8d219c22935c9da1c50c54221acb3ceea4d4a6b717701bcddeaeb288.png" title=" Usuario abrir pagina" width="1925"/>
-                <img src="eb30b96a8d219c22935c9da1c50c54221acb3ceea4d4a6b717701bcddeaeb288.png" title=" usuario opens the Inicio task master" width="1925"/>
-                <img src="eb30b96a8d219c22935c9da1c50c54221acb3ceea4d4a6b717701bcddeaeb288.png" title=" Usuario abrir pagina (completed)" width="1925"/>
-                <img src="eb30b96a8d219c22935c9da1c50c54221acb3ceea4d4a6b717701bcddeaeb288.png" title=" Dado que el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro (completed)" width="1925"/>
-                <img src="161a5b6ce6dfc8765560ead8c1529aa1312e95959728f87db4dedb2886540578.png" title=" Cuando ingrese las credenciales correctas (usuario y contrase&ntilde;a)
+                <img src="f4a77e0d1c69edcd7799bd9630eb05e938eff288951556adf387bb531dfd14bc.png" title=" Dado que el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro" width="1584"/>
+                <img src="f4a77e0d1c69edcd7799bd9630eb05e938eff288951556adf387bb531dfd14bc.png" title=" Usuario abrir pagina" width="1584"/>
+                <img src="f4a77e0d1c69edcd7799bd9630eb05e938eff288951556adf387bb531dfd14bc.png" title=" usuario opens the Inicio task master" width="1584"/>
+                <img src="f4a77e0d1c69edcd7799bd9630eb05e938eff288951556adf387bb531dfd14bc.png" title=" Usuario abrir pagina (completed)" width="1584"/>
+                <img src="f4a77e0d1c69edcd7799bd9630eb05e938eff288951556adf387bb531dfd14bc.png" title=" Dado que el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro (completed)" width="1584"/>
+                <img src="ad525a18373e4a637824ac1452cba3685987da51d6145569dd2aec136fbf5d07.png" title=" Cuando ingrese las credenciales correctas (usuario y contrase&ntilde;a)
 | email | password |
-| fgfernan2508@gmail.com | enriqueGR2508* |" width="1925"/>
-                <img src="161a5b6ce6dfc8765560ead8c1529aa1312e95959728f87db4dedb2886540578.png" title=" Usuario autenticarse" width="1925"/>
-                <img src="161a5b6ce6dfc8765560ead8c1529aa1312e95959728f87db4dedb2886540578.png" title=" usuario clicks on  Ingreso del correo electronico" width="1925"/>
-                <img src="8bcc3681acbcd9489f67da21f7b5b0469e6cee4a4e2bfefe0102e51718dc9028.png" title=" usuario enters 'fgfernan2508@gmail.com' into  Ingreso del correo electronico" width="1925"/>
-                <img src="eb67281759109a6d245e3936fd5e1f0618ab13fdb7f60ad4bedfe25515ac2b3f.png" title=" usuario clicks on Ingreso del password" width="1925"/>
-                <img src="9daea5adfb8393222ed2d5d3720fde0b0d400be7dafa041c631a8c208238c21a.png" title=" usuario enters 'enriqueGR2508*' into Ingreso del password" width="1925"/>
-                <img src="84ab440ec007877d2a4643f4bb66bdfb8355b74738863e8c9bd37f923bfe8ab6.png" title=" Usuario autenticarse (completed)" width="1925"/>
-                <img src="84ab440ec007877d2a4643f4bb66bdfb8355b74738863e8c9bd37f923bfe8ab6.png" title=" Cuando ingrese las credenciales correctas (usuario y contrase&ntilde;a)
+| fgfernan2508@gmail.com | enriqueGR2508* |" width="1584"/>
+                <img src="ad525a18373e4a637824ac1452cba3685987da51d6145569dd2aec136fbf5d07.png" title=" Usuario autenticarse" width="1584"/>
+                <img src="ad525a18373e4a637824ac1452cba3685987da51d6145569dd2aec136fbf5d07.png" title=" usuario clicks on  Ingreso del correo electronico" width="1584"/>
+                <img src="55ccd46d6759cc563cfb1d8da79d3ce52ff36638c419b332af732ce3653e4490.png" title=" usuario enters 'fgfernan2508@gmail.com' into  Ingreso del correo electronico" width="1584"/>
+                <img src="ee61a7158131858c9c746e930ec46161de3343143855cf1d3d19580dfb874807.png" title=" usuario clicks on Ingreso del password" width="1584"/>
+                <img src="1ff74226b789949705b31c10c5f1cb9ce9641cc42dbf6dafdf69a973daeee726.png" title=" usuario enters 'enriqueGR2508*' into Ingreso del password" width="1584"/>
+                <img src="0b489506805569bc904f2a37273f5c98c2c49dd7fcf77032c9ea286b2fe09fdd.png" title=" usuario clicks on Click Boton inicio sesion" width="1584"/>
+                <img src="0b489506805569bc904f2a37273f5c98c2c49dd7fcf77032c9ea286b2fe09fdd.png" title=" Usuario autenticarse (completed)" width="1584"/>
+                <img src="0b489506805569bc904f2a37273f5c98c2c49dd7fcf77032c9ea286b2fe09fdd.png" title=" Cuando ingrese las credenciales correctas (usuario y contrase&ntilde;a)
 | email | password |
-| fgfernan2508@gmail.com | enriqueGR2508* | (completed)" width="1925"/>
-                <img src="aedba6b00089b2f0c7bca162ebe502ee43b60a42a4d9e8e64bdc8435e6c93688.png" title=" Cuando seleccione un proyecto existente y selecciona la opcion miembros y hace click en el boton agregar en el usuario que desee" width="1925"/>
-                <img src="aedba6b00089b2f0c7bca162ebe502ee43b60a42a4d9e8e64bdc8435e6c93688.png" title=" Usuario asignar miembro" width="1925"/>
-                <img src="aedba6b00089b2f0c7bca162ebe502ee43b60a42a4d9e8e64bdc8435e6c93688.png" title=" usuario clicks on Seleccionar Proyecto" width="1925"/>
-                <img src="70bef3ec2cfb988e776bb01ec0f31a343022b399e4321a8345368711ef225ff1.png" title=" usuario clicks on Boton de miembros" width="1925"/>
-                <img src="cfbc1a55577db2f5ee893ac88a3ba672ce4490b8bfe0570d48eb462ddd08e0e4.png" title=" usuario clicks on Boton de agregar" width="1925"/>
-                <img src="830bc85f58b605d80f6e44d6cf567e2debd423ac64e2efc945b52dd014bdf250.png" title=" usuario clicks on Texto de confirmacion de miembro agregado" width="1925"/>
-                <img src="830bc85f58b605d80f6e44d6cf567e2debd423ac64e2efc945b52dd014bdf250.png" title=" Usuario asignar miembro (completed)" width="1925"/>
-                <img src="830bc85f58b605d80f6e44d6cf567e2debd423ac64e2efc945b52dd014bdf250.png" title=" Cuando seleccione un proyecto existente y selecciona la opcion miembros y hace click en el boton agregar en el usuario que desee (completed)" width="1925"/>
-                <img src="830bc85f58b605d80f6e44d6cf567e2debd423ac64e2efc945b52dd014bdf250.png" title=" Entonces los usuarios seleccionados deben ser agregados correctamente al proyecto y reflejarse en la lista de miembros del mismo" width="1925"/>
-                <img src="830bc85f58b605d80f6e44d6cf567e2debd423ac64e2efc945b52dd014bdf250.png" title=" Then validacion asignar miembro" width="1925"/>
-                <img src="830bc85f58b605d80f6e44d6cf567e2debd423ac64e2efc945b52dd014bdf250.png" title=" Entonces los usuarios seleccionados deben ser agregados correctamente al proyecto y reflejarse en la lista de miembros del mismo (completed): <span class='success-color'>SUCCESS</span>" width="1925"/>
+| fgfernan2508@gmail.com | enriqueGR2508* | (completed)" width="1584"/>
+                <img src="0d96e286f98f765d39e0085434094ba64e1683209ad2cfd31f1a7fdb251138e0.png" title=" Cuando seleccione un proyecto existente y selecciona la opcion miembros y hace click en el boton agregar en el usuario que desee" width="1584"/>
+                <img src="0d96e286f98f765d39e0085434094ba64e1683209ad2cfd31f1a7fdb251138e0.png" title=" Usuario asignar miembro" width="1584"/>
+                <img src="0d96e286f98f765d39e0085434094ba64e1683209ad2cfd31f1a7fdb251138e0.png" title=" usuario clicks on Seleccionar Proyecto" width="1584"/>
+                <img src="0d96e286f98f765d39e0085434094ba64e1683209ad2cfd31f1a7fdb251138e0.png" title=" usuario clicks on Boton de miembros: <span class='failing-color'>FAILURE</span>" width="1584"/>
             </div>
         </div>
 
