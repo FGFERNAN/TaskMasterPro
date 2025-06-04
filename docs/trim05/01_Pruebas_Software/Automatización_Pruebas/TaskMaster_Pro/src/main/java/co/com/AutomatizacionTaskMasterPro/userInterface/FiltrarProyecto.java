@@ -5,16 +5,8 @@ import net.serenitybdd.screenplay.targets.Target;
 
 public class FiltrarProyecto {
 
-    public static Target INPUT_ = Target.the("").located(By.xpath(""));
+    public static Target BTN_LUPA = Target.the("").located(By.xpath("//*[@id=\"app\"]/div/div[2]/div/div[2]/header/div[1]/div/div/i"));
 
-    public static Target INPUT_ = Target.the("").located(By.xpath(""));
-
-    public static Target INPUT_ = Target.the("").located(By.xpath(""));
-
-    public static Target INPUT_ = Target.the("").located(By.xpath(""));
-
-    public static Target INPUT_ = Target.the("").located(By.xpath(""));
-
-    public static Target INPUT_ = Target.the("").located(By.xpath(""));
+    public static Target INPUT_NOMBREPROYECTO = Target.the("").located(By.xpath("//*[@id=\"app\"]/div/div[2]/div/div[2]/section/div[1]/div/div/div[2]/input"));
 
 }
