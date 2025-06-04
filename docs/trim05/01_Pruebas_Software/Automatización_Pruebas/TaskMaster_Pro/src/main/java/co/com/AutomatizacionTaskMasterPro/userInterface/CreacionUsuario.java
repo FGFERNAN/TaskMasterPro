@@ -18,6 +18,9 @@ public class CreacionUsuario extends PageObject {
     public static Target INPUT_ROL = Target.the("Seleccione el rol").located(By.id("rol"));
     public static Target BTN_GUARDAR = Target.the("Boton de guardar").located(By.id("guardar"));
     public static Target ID_VALIDACION = Target.the("ID del usuario creado").located(By.xpath("//*[@id=\"app\"]/div/div[2]/div/div[2]/section/div[2]/table/tbody/tr[1]/td[1]"));
+    public static Target NOMBRE_VALIDACION = Target.the("Nombre del usuario creado").located(By.xpath("//*[@id=\"app\"]/div/div[2]/div/div[2]/section/div[2]/table/tbody/tr[1]/td[2]"));
+    public static Target EMAIL_VALIDACION = Target.the("Email del usuario creado").located(By.xpath("//*[@id=\"app\"]/div/div[2]/div/div[2]/section/div[2]/table/tbody/tr[1]/td[3]"));
+    public static Target ROL_VALIDACION = Target.the("Rol del usuario creado").located(By.xpath("//*[@id=\"app\"]/div/div[2]/div/div[2]/section/div[2]/table/tbody/tr[1]/td[5]/select/option"));
 
 
 
