@@ -9,10 +9,10 @@ Característica: Eliminación de proyecto en la pagina de TaskMaster Pro
   Antecedentes:
     Dado que el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro
     Cuando ingrese las credenciales correctas (usuario y contraseña)
-      | email                | password     |
-      | nikole@gmail.com     | Nikole1234*  |
+      | email                  | password       |
+      | fgfernan2508@gmail.com | enriqueGR2508* |
 
-  @AsignarProyecto
+  @EliminarProyecto
 
   Escenario: Eliminar un Proyecto Exitosamente
     Cuando seleccione un proyecto de la lista y hace click en el boton de eliminar y confirma la eliminacion del proyecto

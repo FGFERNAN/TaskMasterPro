@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Autenticacion en la pagina de TaskMaster Pro" skipped="0" tests="1" time="5.17" timestamp="2025-05-30 07:09:14"><testcase name="Inicio de Sesion Valido"/></testsuite>
+=======
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Autenticacion en la pagina de TaskMaster Pro" skipped="0" tests="1" time="11.06" timestamp="2025-06-03 04:23:19"><testcase name="Inicio de Sesion Valido"/></testsuite>
+>>>>>>> main

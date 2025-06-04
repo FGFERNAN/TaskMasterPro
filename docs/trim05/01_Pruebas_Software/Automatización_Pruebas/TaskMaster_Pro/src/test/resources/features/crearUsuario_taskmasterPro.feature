@@ -9,8 +9,8 @@ Característica: Creacion de usuario en la pagina de TaskMaster Pro
   Antecedentes:
     Dado que el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro
     Cuando ingrese las credenciales correctas (usuario y contraseña)
-      | email                | password     |
-      | nikole@gmail.com     | Nikole1234*  |
+      | email                  | password       |
+      | fgfernan2508@gmail.com | enriqueGR2508* |
 
   @CrearUsuario
 
@@ -21,5 +21,5 @@ Característica: Creacion de usuario en la pagina de TaskMaster Pro
     Entonces el sistema debe mostrar un mensaje de usuario creado con exito y redirige a la interfaz de administrar-usuarios
 
     Ejemplos:
-      | nombre | apellidos | email            | phone      | id         | contrasena |
-      | Johan  | Garcia    | felipe@gmail.com | 3107847573 | 1030533364 | Fg1234*    |
+      | nombre  | apellidos | email             | phone      | id         | contrasena |
+      | Enrique | Garcia    | enrique@gmail.com | 3107847573 | 1030523678 | Fg123456*  |

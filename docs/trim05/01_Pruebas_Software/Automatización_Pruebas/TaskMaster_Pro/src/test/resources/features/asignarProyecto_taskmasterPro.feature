@@ -9,15 +9,11 @@ Característica: Asignacion de proyecto en la pagina de TaskMaster Pro
   Antecedentes:
     Dado que el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro
     Cuando ingrese las credenciales correctas (usuario y contraseña)
-      | email                | password     |
-      | nikole@gmail.com     | Nikole1234*  |
+      | email                  | password       |
+      | fgfernan2508@gmail.com | enriqueGR2508* |
 
   @AsignarProyecto
 
   Escenario: Agregar Miembro Exitosamente
     Cuando seleccione un proyecto existente y selecciona la opcion miembros y hace click en el boton agregar en el usuario que desee
     Entonces los usuarios seleccionados deben ser agregados correctamente al proyecto y reflejarse en la lista de miembros del mismo
-
-
-    #Dado que existen al menos un proyecto creado
-    #Y existe al menos un usuario registrado que pueda ser asignado al proyecto

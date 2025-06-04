@@ -1,0 +1,17 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="Actualización de un proyecto existente en la pagina de TaskMaster Pro" skipped="0" tests="1" time="17.55" timestamp="2025-06-03 03:26:53"><testcase name="Editar Proyecto Exitosamente"><failure message="Expected validacion editar proyecto&#13;&#10;Expected: is &lt;true&gt;&#13;&#10;     but: was &lt;false&gt;" type="java.lang.AssertionError">Expected validacion editar proyecto&#13;
+Expected: is &lt;true&gt;&#13;
+     but: was &lt;false&gt;</failure><system-err>Expected validacion editar proyecto&#13;
+Expected: is &lt;true&gt;&#13;
+     but: was &lt;false&gt;&#13;
+co.com.AutomatizacionTaskMasterPro.stepsDefinitions.EditarProyectoTaskMasterStepsDefinitions.elSistemaDebeMostrarUnaAlertaConfirmandoLosCambiosConExitoYSeDebenVerReflejadosAlAbrirLosDetalles(EditarProyectoTaskMasterStepsDefinitions.java:24)&#13;
+✽.el sistema debe mostrar una alerta confirmando los cambios con exito y se deben ver reflejados al abrir los detalles(src/test/resources/features/editarProyecto_taskmasterPro.feature:21)&#13;
+=======
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="Actualización de un proyecto existente en la pagina de TaskMaster Pro" skipped="0" tests="1" time="25.77" timestamp="2025-06-04 01:07:40"><testcase name="Editar Proyecto Exitosamente"><failure message="Expected enabled element was not enabled" type="net.thucydides.core.webdriver.exceptions.ElementShouldBeEnabledException">Expected enabled element was not enabled</failure><system-err>Expected enabled element was not enabled&#13;
+co.com.AutomatizacionTaskMasterPro.tasks.EditarProyecto.performAs(EditarProyecto.java:29)&#13;
+co.com.AutomatizacionTaskMasterPro.stepsDefinitions.EditarProyectoTaskMasterStepsDefinitions.seleccionaLaOpciónDeEditarUnProyectoYActualiceLosCamposNecesariosYDeClickEnElBotonGuardar(EditarProyectoTaskMasterStepsDefinitions.java:16)&#13;
+cucumber.runner.Runner.runPickle(Runner.java:80)&#13;
+worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)&#13;
+worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)&#13;
+>>>>>>> Erika
+</system-err></testcase></testsuite>
