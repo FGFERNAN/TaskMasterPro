@@ -11,7 +11,6 @@ import net.serenitybdd.screenplay.actions.Scroll;
 
 import java.util.List;
 
-import static co.com.AutomatizacionTaskMasterPro.userInterface.Autenticacion.INPUT_PASSWORD;
 import static co.com.AutomatizacionTaskMasterPro.userInterface.CrearProyecto.*;
 
 public class ProyetoCreado implements Task {
