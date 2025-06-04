@@ -12,5 +12,9 @@ import org.junit.runner.RunWith;
         glue = {"co.com.AutomatizacionTaskMasterPro.stepsDefinitions", "co.com.AutomatizacionTaskMasterPro.utils.hooks"},
         snippets = SnippetType.CAMELCASE)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> Nikole
 public class VisualizarProyectoTaskMasterRunner {
 }
