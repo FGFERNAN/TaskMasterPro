@@ -15,7 +15,7 @@ Característica: Creacion de tarea en la pagina de TaskMaster Pro
   @CrearTarea
 
   Esquema del escenario: Crear Tarea Exitosamente
-    Cuando seleccione un proyecto y de click en el boton Crear Tarea y ingrese todos los campos del formulario y de click en el boton Guardar
+    Cuando selecciona la opción de crear una nueva tarea
       | nombre   | descripcion   |
       | <nombre> | <descripcion> |
     Entonces el sistema debe mostrar un mensaje de confirmacion registrar correctamente la nueva tarea

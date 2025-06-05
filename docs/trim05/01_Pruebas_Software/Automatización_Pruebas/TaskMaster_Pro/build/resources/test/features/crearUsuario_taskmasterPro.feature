@@ -15,7 +15,7 @@ Característica: Creacion de usuario en la pagina de TaskMaster Pro
   @CrearUsuario
 
   Esquema del escenario: Crear Usuario Exitosamente
-    Cuando da click en el boton de crear usuario y ingrese todos los campos del formulario de creacion de usuario y hace click en el boton guardar
+    Cuando selecciona la opción de crear un nuevo usuario
       | nombre   | apellidos   | email   | phone   | id   | contrasena   |
       | <nombre> | <apellidos> | <email> | <phone> | <id> | <contrasena> |
     Entonces el sistema debe mostrar un mensaje de usuario creado con exito y redirige a la interfaz de administrar-usuarios

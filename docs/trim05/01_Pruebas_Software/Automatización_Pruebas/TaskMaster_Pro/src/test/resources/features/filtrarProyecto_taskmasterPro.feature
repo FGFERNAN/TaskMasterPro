@@ -16,6 +16,5 @@ Característica: Busqueda de proyecto en la pagina de TaskMaster Pro
 
   Escenario: Filtrar un Proyecto Exitosamente
     Cuando seleccione el icono de lupa y ingrese el nombre del proyecto y lo seleccione
-    | nombre   |
     | Software |
     Entonces el sistema abre la interfaz de ese proyecto

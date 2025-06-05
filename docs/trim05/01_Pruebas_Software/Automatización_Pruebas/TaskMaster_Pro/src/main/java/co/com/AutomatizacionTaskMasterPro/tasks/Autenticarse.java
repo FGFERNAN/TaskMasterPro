@@ -33,6 +33,7 @@ public class Autenticarse implements Task {
                 Click.on(INPUT_PASSWORD),
                 Scroll.to(INPUT_PASSWORD),
                 Enter.theValue(credenciales.get(0).getPassword()).into(INPUT_PASSWORD),
+                Scroll.to(INPUT_PASSWORD),
                 Click.on(BTN_INICIOSESION),
                 AceptarAlerta.despuesDe(5));
     }

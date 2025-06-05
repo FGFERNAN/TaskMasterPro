@@ -5,8 +5,8 @@ import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 
 public class CrearTareaTaskMasterStepsDefinitions {
-    @Cuando("^seleccione un proyecto y de click en el boton Crear Tarea y ingrese todos los campos del formulario y de click en el boton Guardar$")
-    public void seleccioneUnProyectoYDeClickEnElBotonCrearTareaYIngreseTodosLosCamposDelFormularioYDeClickEnElBotonGuardar(DataTable arg1) {
+    @Cuando("^selecciona la opción de crear una nueva tarea$")
+    public void seleccionaLaOpciónDeCrearUnaNuevaTarea(DataTable arg1) {
     }
 
     @Entonces("^el sistema debe mostrar un mensaje de confirmacion registrar correctamente la nueva tarea$")

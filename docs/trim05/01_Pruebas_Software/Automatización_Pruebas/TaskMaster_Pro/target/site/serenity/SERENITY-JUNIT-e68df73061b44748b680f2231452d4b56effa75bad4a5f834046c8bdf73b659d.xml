@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Creacion de usuario en la pagina de TaskMaster Pro" skipped="0" tests="1" time="16.99" timestamp="2025-06-04 06:48:07"><testcase name="Crear Usuario Exitosamente"/></testsuite>
+=======
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Creacion de usuario en la pagina de TaskMaster Pro" skipped="1" tests="1" time="10.44" timestamp="2025-06-04 07:32:03"><testcase name="Crear Usuario Exitosamente"><skipped/></testcase></testsuite>
+>>>>>>> Felipe
