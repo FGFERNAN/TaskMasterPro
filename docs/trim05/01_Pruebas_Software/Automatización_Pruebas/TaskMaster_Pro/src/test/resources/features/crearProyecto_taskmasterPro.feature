@@ -15,7 +15,7 @@ Característica: Creacion de proyecto en la pagina de TaskMaster Pro
   @CrearProyecto
 
   Esquema del escenario: Crear Proyecto Exitosamente
-    Cuando da click en el boton de crear proyecto y ingrese todos los campos del formulario de creacion y hace click en el boton Guardar
+    Cuando selecciona la opción de crear un nuevo proyecto
       | nombre   | descripcion   | fechaInicio   | fechaFin |
       | <nombre> | <descripcion> | <fechaInicio> | <fechaFin> |
     Entonces el sistema debe registrar correctamente el nuevo proyecto

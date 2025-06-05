@@ -35,6 +35,7 @@ public class ProyetoCreado implements Task {
                 Enter.theValue(Informacion.get(0).getFechaInicio()).into(INPUT_FECHAINICIO),
                 Click.on(INPUT_FECHAFIN),
                 Enter.theValue(Informacion.get(0).getFechaFin()).into(INPUT_FECHAFIN),
+                Scroll.to(INPUT_FECHAFIN),
                 Click.on(BTN_ESTADO),
                 Click.on(BTN_ESTADO1),
                 Click.on(BTN_PRIORIDAD),

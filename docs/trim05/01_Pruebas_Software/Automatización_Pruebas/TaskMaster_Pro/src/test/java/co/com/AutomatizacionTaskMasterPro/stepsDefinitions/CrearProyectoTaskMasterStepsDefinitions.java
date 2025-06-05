@@ -18,8 +18,8 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class CrearProyectoTaskMasterStepsDefinitions {
-    @Cuando("^da click en el boton de crear proyecto y ingrese todos los campos del formulario de creacion y hace click en el boton Guardar$")
-    public void daClickEnElBotonDeCrearProyectoYIngreseTodosLosCamposDelFormularioDeCreacionYHaceClickEnElBotonGuardar(List<InformacionProyecto> Informacion) {
+    @Cuando("^selecciona la opción de crear un nuevo proyecto$")
+    public void seleccionaLaOpciónDeCrearUnNuevoProyecto(List<InformacionProyecto> Informacion) {
         theActorInTheSpotlight().attemptsTo(ProyetoCreado.Proyecto(Informacion));
     }
 

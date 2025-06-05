@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Creacion de proyecto en la pagina de TaskMaster Pro" skipped="0" tests="1" time="12.86" timestamp="2025-05-30 08:32:57"><testcase name="Crear Proyecto Exitosamente"/></testsuite>
-=======
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Creacion de proyecto en la pagina de TaskMaster Pro" skipped="0" tests="1" time="6.11" timestamp="2025-06-04 02:15:54"><testcase name="Crear Proyecto Exitosamente"/></testsuite>
->>>>>>> main
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Creacion de proyecto en la pagina de TaskMaster Pro" skipped="1" tests="1" time="8.53" timestamp="2025-06-04 07:27:55"><testcase name="Crear Proyecto Exitosamente"><skipped/></testcase></testsuite>
