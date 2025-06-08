@@ -154,7 +154,7 @@
               <input type="text" v-model="searchQuery" class="form-control mb-3" placeholder="Buscar miembros">
               <ul class="list-unstyled">
                 <li v-for="(user) in filteredUsers" :key="user.id">
-                  {{ user.email }} <a href="#" class="text-primary" @click="addMember(user)">Agregar</a>
+                  {{ user.email }} <a href="#" :id="user.id" class="text-primary" @click="addMember(user)">Agregar</a>
                 </li>
               </ul>
             </div>

@@ -7,6 +7,7 @@ public class DatosCrearUsuario {
     private String phone;
     private String id;
     private String contrasena;
+    private String rol;
 
 
     public String getNombre() {
@@ -57,12 +58,21 @@ public class DatosCrearUsuario {
         this.contrasena = contrasena;
     }
 
-    public DatosCrearUsuario(String nombre, String apellidos, String email, String phone, String id, String contrasena) {
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public DatosCrearUsuario(String nombre, String apellidos, String email, String phone, String id, String contrasena, String rol) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
         this.phone = phone;
         this.id = id;
         this.contrasena = contrasena;
+        this.rol = rol;
     }
 }

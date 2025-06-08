@@ -16,10 +16,10 @@ Característica: Creacion de usuario en la pagina de TaskMaster Pro
 
   Esquema del escenario: Crear Usuario Exitosamente
     Cuando selecciona la opción de crear un nuevo usuario
-      | nombre   | apellidos   | email   | phone   | id   | contrasena   |
-      | <nombre> | <apellidos> | <email> | <phone> | <id> | <contrasena> |
+      | nombre   | apellidos   | email   | phone   | id   | contrasena   | rol   |
+      | <nombre> | <apellidos> | <email> | <phone> | <id> | <contrasena> | <rol> |
     Entonces el sistema debe mostrar un mensaje de usuario creado con exito y redirige a la interfaz de administrar-usuarios
 
     Ejemplos:
-      | nombre  | apellidos | email             | phone      | id         | contrasena |
-      | Enrique | Garcia    | enrique@gmail.com | 3107847573 | 1030523678 | Fg123456*  |
+      | nombre  | apellidos | email             | phone | id  | contrasena | rol               |
+      | Enrique | Garcia    | enrique@gmail.com | 310   | 100 | Fg123456*  | Lider de Proyecto |

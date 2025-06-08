@@ -92,13 +92,13 @@
                 </thead>
                 <tbody>
                   <tr v-for="(user) in filteredUser" :key="user.id">
-                    <td>{{ user.id }}</td>
-                    <td>{{ user.nombre }} {{ user.apellidos }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.telefono }}</td>
+                    <td :id="user.id">{{ user.id }}</td>
+                    <td :id="user.nombre + ' ' + user.apellidos">{{ user.nombre }} {{ user.apellidos }}</td>
+                    <td :id="user.email">{{ user.email }}</td>
+                    <td :id="user.telefono">{{ user.telefono }}</td>
                     <td>
                       <select class="form-select" disabled>
-                        <option :value="user.rolID">{{ user.rolID }}</option>
+                        <option :id="user.rolID" :value="user.rolID">{{ user.rolID }}</option>
                       </select>
                     </td>
                     <td>
