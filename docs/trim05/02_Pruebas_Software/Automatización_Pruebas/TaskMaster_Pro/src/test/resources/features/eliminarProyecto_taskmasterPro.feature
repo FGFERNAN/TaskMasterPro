@@ -15,5 +15,5 @@ Característica: Eliminación de proyecto en la pagina de TaskMaster Pro
   @EliminarProyecto
 
   Escenario: Eliminar un Proyecto Exitosamente
-    Cuando seleccione un proyecto de la lista y hace click en el boton de eliminar y confirma la eliminacion del proyecto
+    Cuando seleccione la opción de eliminar un proyecto
     Entonces el sistema muestra un mensaje de proyecto eliminado exitosamente y actualiza la lista de proyectos eliminando su registro

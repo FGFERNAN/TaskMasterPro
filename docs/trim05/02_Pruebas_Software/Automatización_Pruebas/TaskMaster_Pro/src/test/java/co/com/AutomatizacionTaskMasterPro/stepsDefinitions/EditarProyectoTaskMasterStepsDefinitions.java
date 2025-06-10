@@ -14,8 +14,8 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class EditarProyectoTaskMasterStepsDefinitions {
-    @Cuando("^selecciona la opción de editar un proyecto y actualice los campos necesarios y de click en el boton Guardar$")
-    public void seleccionaLaOpciónDeEditarUnProyectoYActualiceLosCamposNecesariosYDeClickEnElBotonGuardar(List<DatosEditarProyecto> datos) {
+    @Cuando("^selecciona la opción de editar un proyecto$")
+    public void seleccionaLaOpciónDeEditarUnProyecto(List<DatosEditarProyecto> datos) {
         theActorInTheSpotlight().attemptsTo(EditarProyecto.aute(datos));
     }
 

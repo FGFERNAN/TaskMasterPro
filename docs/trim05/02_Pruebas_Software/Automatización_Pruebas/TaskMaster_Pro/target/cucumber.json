@@ -3,57 +3,10 @@
     "line": 4,
     "elements": [
       {
-        "line": 9,
-        "name": "",
-        "description": "",
-        "type": "background",
-        "keyword": "Antecedentes",
-        "steps": [
-          {
-            "result": {
-              "duration": 6257752000,
-              "status": "passed"
-            },
-            "line": 10,
-            "name": "que el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro",
-            "match": {
-              "location": "AutenticacionTaskMasterStepsDefinitions.queElUsuarioSeEncuentraEnLaPaginaDeInicioDeSesionDeTaskMasterPro()"
-            },
-            "keyword": "Dado "
-          },
-          {
-            "result": {
-              "duration": 3156899200,
-              "status": "passed"
-            },
-            "line": 11,
-            "name": "ingrese las credenciales correctas (usuario y contraseña)",
-            "match": {
-              "location": "AutenticacionTaskMasterStepsDefinitions.ingreseLasCredencialesCorrectasUsuarioYContraseña(CredencialesInicioSesion\u003e)"
-            },
-            "rows": [
-              {
-                "cells": [
-                  "email",
-                  "password"
-                ]
-              },
-              {
-                "cells": [
-                  "fgfernan2508@gmail.com",
-                  "enriqueGR2508*"
-                ]
-              }
-            ],
-            "keyword": "Cuando "
-          }
-        ]
-      },
-      {
         "before": [
           {
             "result": {
-              "duration": 99424700,
+              "duration": 107026600,
               "status": "passed"
             },
             "match": {
@@ -61,50 +14,69 @@
             }
           }
         ],
-        "line": 17,
-        "name": "Eliminar un Proyecto Exitosamente",
+        "line": 12,
+        "name": "Recuperar Contraseña Exitosamente",
         "description": "",
-        "id": "eliminación-de-proyecto-en-la-pagina-de-taskmaster-pro;eliminar-un-proyecto-exitosamente",
+        "id": "recuperación-de-contraseña-en-la-pagina-de-taskmaster-pro;recuperar-contraseña-exitosamente",
         "type": "scenario",
         "keyword": "Escenario",
         "steps": [
           {
             "result": {
-              "error_message": "net.serenitybdd.core.exceptions.SerenityManagedException: The following error occurred: java.net.ConnectException: Failed to connect to localhost/[0:0:0:0:0:0:0:1]:19826\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027DESKTOP-9S50AII\u0027, ip: \u0027192.168.80.17\u0027, os.name: \u0027Windows 10\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002715.0.1\u0027\nDriver info: driver.version: RemoteWebDriver\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:92)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)\r\n\tat org.openqa.selenium.By$ByXPath.findElement(By.java:353)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\r\n\tat net.thucydides.core.webdriver.WebDriverFacade.findElement(WebDriverFacade.java:222)\r\n\tat net.serenitybdd.core.pages.WebElementResolverByLocator.resolveForDriver(WebElementResolverByLocator.java:18)\r\n\tat net.serenitybdd.core.pages.WebElementFacadeImpl.getElement(WebElementFacadeImpl.java:221)\r\n\tat net.serenitybdd.core.pages.WebElementExpectations$3.apply(WebElementExpectations.java:63)\r\n\tat net.serenitybdd.core.pages.WebElementExpectations$3.apply(WebElementExpectations.java:55)\r\n\tat org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)\r\n\tat net.serenitybdd.core.pages.WebElementFacadeImpl.waitUntilEnabled(WebElementFacadeImpl.java:1146)\r\n\tat net.serenitybdd.core.pages.WebElementFacadeImpl.waitUntilElementAvailable(WebElementFacadeImpl.java:954)\r\n\tat net.serenitybdd.core.pages.WebElementFacadeImpl.click(WebElementFacadeImpl.java:1229)\r\n\tat net.serenitybdd.screenplay.actions.ClickOnTarget.performAs(ClickOnTarget.java:13)\r\n\tat net.serenitybdd.screenplay.actions.ClickOnTarget$ByteBuddy$qg8qnLmT.performAs$accessor$520t7OAB(Unknown Source)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)\r\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:564)\r\n\tat net.thucydides.core.steps.StepInterceptor.invokeMethod(StepInterceptor.java:488)\r\n\tat net.thucydides.core.steps.StepInterceptor.executeTestStepMethod(StepInterceptor.java:468)\r\n\tat net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:441)\r\n\tat net.thucydides.core.steps.StepInterceptor.runOrSkipMethod(StepInterceptor.java:197)\r\n\tat net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:184)\r\n\tat net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:77)\r\n\tat net.serenitybdd.screenplay.actions.ClickOnTarget$ByteBuddy$qg8qnLmT.performAs(Unknown Source)\r\n\tat net.serenitybdd.screenplay.Actor.performTask(Actor.java:248)\r\n\tat net.serenitybdd.screenplay.Actor.perform(Actor.java:229)\r\n\tat net.serenitybdd.screenplay.Actor.attemptsTo(Actor.java:175)\r\n\tat co.com.AutomatizacionTaskMasterPro.tasks.EliminarProyecto.performAs(EliminarProyecto.java:25)\r\n\tat co.com.AutomatizacionTaskMasterPro.tasks.EliminarProyecto$ByteBuddy$K77YpVQ5.performAs$accessor$xvjc7tGA(Unknown Source)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)\r\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:564)\r\n\tat net.thucydides.core.steps.StepInterceptor.invokeMethod(StepInterceptor.java:488)\r\n\tat net.thucydides.core.steps.StepInterceptor.executeTestStepMethod(StepInterceptor.java:468)\r\n\tat net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:441)\r\n\tat net.thucydides.core.steps.StepInterceptor.runOrSkipMethod(StepInterceptor.java:197)\r\n\tat net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:184)\r\n\tat net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:77)\r\n\tat co.com.AutomatizacionTaskMasterPro.tasks.EliminarProyecto$ByteBuddy$K77YpVQ5.performAs(Unknown Source)\r\n\tat net.serenitybdd.screenplay.Actor.performTask(Actor.java:248)\r\n\tat net.serenitybdd.screenplay.Actor.perform(Actor.java:229)\r\n\tat net.serenitybdd.screenplay.Actor.attemptsTo(Actor.java:175)\r\n\tat co.com.AutomatizacionTaskMasterPro.stepsDefinitions.EliminarProyectoTaskMasterStepsDefinitions.seleccioneUnProyectoDeLaListaYHaceClickEnElBotonDeEliminarYConfirmaLaEliminacionDelProyecto(EliminarProyectoTaskMasterStepsDefinitions.java:17)\r\n\tat ✽.seleccione un proyecto de la lista y hace click en el boton de eliminar y confirma la eliminacion del proyecto(src/test/resources/features/eliminarProyecto_taskmasterPro.feature:18)\r\nCaused by: java.net.ConnectException: Failed to connect to localhost/[0:0:0:0:0:0:0:1]:19826\r\n\tat okhttp3.internal.connection.RealConnection.connectSocket(RealConnection.java:247)\r\n\tat okhttp3.internal.connection.RealConnection.connect(RealConnection.java:165)\r\n\tat okhttp3.internal.connection.StreamAllocation.findConnection(StreamAllocation.java:257)\r\n\tat okhttp3.internal.connection.StreamAllocation.findHealthyConnection(StreamAllocation.java:135)\r\n\tat okhttp3.internal.connection.StreamAllocation.newStream(StreamAllocation.java:114)\r\n\tat okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.java:42)\r\n\tat okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:147)\r\n\tat okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:121)\r\n\tat okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.java:93)\r\n\tat okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:147)\r\n\tat okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:121)\r\n\tat okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.java:93)\r\n\tat okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:147)\r\n\tat okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.java:126)\r\n\tat okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:147)\r\n\tat okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:121)\r\n\tat okhttp3.RealCall.getResponseWithInterceptorChain(RealCall.java:200)\r\n\tat okhttp3.RealCall.execute(RealCall.java:77)\r\n\tat org.openqa.selenium.remote.internal.OkHttpClient.execute(OkHttpClient.java:103)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:155)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)\r\n\tat org.openqa.selenium.By$ByXPath.findElement(By.java:353)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\r\n\tat net.thucydides.core.webdriver.WebDriverFacade.findElement(WebDriverFacade.java:222)\r\n\tat net.serenitybdd.core.pages.WebElementResolverByLocator.resolveForDriver(WebElementResolverByLocator.java:18)\r\n\tat net.serenitybdd.core.pages.WebElementFacadeImpl.getElement(WebElementFacadeImpl.java:221)\r\n\tat net.serenitybdd.core.pages.WebElementExpectations$3.apply(WebElementExpectations.java:63)\r\n\tat net.serenitybdd.core.pages.WebElementExpectations$3.apply(WebElementExpectations.java:55)\r\n\tat org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)\r\n\tat net.serenitybdd.core.pages.WebElementFacadeImpl.waitUntilEnabled(WebElementFacadeImpl.java:1146)\r\n\tat net.serenitybdd.core.pages.WebElementFacadeImpl.waitUntilElementAvailable(WebElementFacadeImpl.java:954)\r\n\tat net.serenitybdd.core.pages.WebElementFacadeImpl.click(WebElementFacadeImpl.java:1229)\r\n\tat net.serenitybdd.screenplay.actions.ClickOnTarget.performAs(ClickOnTarget.java:13)\r\n\tat net.serenitybdd.screenplay.actions.ClickOnTarget$ByteBuddy$qg8qnLmT.performAs$accessor$520t7OAB(Unknown Source)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)\r\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:564)\r\n\tat net.thucydides.core.steps.StepInterceptor.invokeMethod(StepInterceptor.java:488)\r\n\tat net.thucydides.core.steps.StepInterceptor.executeTestStepMethod(StepInterceptor.java:468)\r\n\tat net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:441)\r\n\tat net.thucydides.core.steps.StepInterceptor.runOrSkipMethod(StepInterceptor.java:197)\r\n\tat net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:184)\r\n\tat net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:77)\r\n\tat net.serenitybdd.screenplay.actions.ClickOnTarget$ByteBuddy$qg8qnLmT.performAs(Unknown Source)\r\n\tat net.serenitybdd.screenplay.Actor.performTask(Actor.java:248)\r\n\tat net.serenitybdd.screenplay.Actor.perform(Actor.java:229)\r\n\tat net.serenitybdd.screenplay.Actor.attemptsTo(Actor.java:175)\r\n\tat co.com.AutomatizacionTaskMasterPro.tasks.EliminarProyecto.performAs(EliminarProyecto.java:25)\r\n\tat co.com.AutomatizacionTaskMasterPro.tasks.EliminarProyecto$ByteBuddy$K77YpVQ5.performAs$accessor$xvjc7tGA(Unknown Source)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)\r\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:564)\r\n\tat net.thucydides.core.steps.StepInterceptor.invokeMethod(StepInterceptor.java:488)\r\n\tat net.thucydides.core.steps.StepInterceptor.executeTestStepMethod(StepInterceptor.java:468)\r\n\tat net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:441)\r\n\tat net.thucydides.core.steps.StepInterceptor.runOrSkipMethod(StepInterceptor.java:197)\r\n\tat net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:184)\r\n\tat net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:77)\r\n\tat co.com.AutomatizacionTaskMasterPro.tasks.EliminarProyecto$ByteBuddy$K77YpVQ5.performAs(Unknown Source)\r\n\tat net.serenitybdd.screenplay.Actor.performTask(Actor.java:248)\r\n\tat net.serenitybdd.screenplay.Actor.perform(Actor.java:229)\r\n\tat net.serenitybdd.screenplay.Actor.attemptsTo(Actor.java:175)\r\n\tat co.com.AutomatizacionTaskMasterPro.stepsDefinitions.EliminarProyectoTaskMasterStepsDefinitions.seleccioneUnProyectoDeLaListaYHaceClickEnElBotonDeEliminarYConfirmaLaEliminacionDelProyecto(EliminarProyectoTaskMasterStepsDefinitions.java:17)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)\r\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:564)\r\n\tat cucumber.runtime.Utils$1.call(Utils.java:31)\r\n\tat cucumber.runtime.Timeout.timeout(Timeout.java:16)\r\n\tat cucumber.runtime.Utils.invoke(Utils.java:25)\r\n\tat cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:37)\r\n\tat cucumber.runtime.StepDefinitionMatch.runStep(StepDefinitionMatch.java:40)\r\n\tat cucumber.api.TestStep.executeStep(TestStep.java:102)\r\n\tat cucumber.api.TestStep.run(TestStep.java:83)\r\n\tat cucumber.api.TestCase.run(TestCase.java:58)\r\n\tat cucumber.runner.Runner.runPickle(Runner.java:80)\r\n\tat cucumber.runtime.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:140)\r\n\tat cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:68)\r\n\tat cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:23)\r\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)\r\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)\r\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)\r\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)\r\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)\r\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:363)\r\n\tat cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:73)\r\n\tat cucumber.api.junit.Cucumber.runChild(Cucumber.java:118)\r\n\tat cucumber.api.junit.Cucumber.runChild(Cucumber.java:56)\r\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)\r\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)\r\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)\r\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)\r\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)\r\n\tat cucumber.api.junit.Cucumber$1.evaluate(Cucumber.java:127)\r\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:363)\r\n\tat org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)\r\n\tat org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)\r\n\tat org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)\r\n\tat org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)\r\n\tat org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)\r\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:564)\r\n\tat org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)\r\n\tat org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)\r\n\tat org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)\r\n\tat org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)\r\n\tat com.sun.proxy.$Proxy2.processTestClass(Unknown Source)\r\n\tat org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:176)\r\n\tat org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)\r\n\tat org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)\r\n\tat org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)\r\n\tat org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)\r\n\tat org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:133)\r\n\tat org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)\r\n\tat worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)\r\n\tat worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)\r\nCaused by: java.net.ConnectException: Connection refused: no further information\r\n\tat java.base/sun.nio.ch.Net.pollConnect(Native Method)\r\n\tat java.base/sun.nio.ch.Net.pollConnectNow(Net.java:660)\r\n\tat java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:549)\r\n\tat java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597)\r\n\tat java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:333)\r\n\tat java.base/java.net.Socket.connect(Socket.java:648)\r\n\tat okhttp3.internal.platform.Platform.connectSocket(Platform.java:129)\r\n\tat okhttp3.internal.connection.RealConnection.connectSocket(RealConnection.java:245)\r\n\t... 122 more\r\n",
-              "duration": 28373376100,
-              "status": "failed"
+              "duration": 5443019400,
+              "status": "passed"
             },
-            "line": 18,
-            "name": "seleccione un proyecto de la lista y hace click en el boton de eliminar y confirma la eliminacion del proyecto",
+            "line": 13,
+            "name": "que el usuario se encuentra en la pagina de inicio de sesion",
             "match": {
-              "location": "EliminarProyectoTaskMasterStepsDefinitions.seleccioneUnProyectoDeLaListaYHaceClickEnElBotonDeEliminarYConfirmaLaEliminacionDelProyecto()"
+              "location": "RecuperarContraseñaTaskMasterStepsDefinitions.queElUsuarioSeEncuentraEnLaPaginaDeInicioDeSesion()"
             },
+            "keyword": "Dado "
+          },
+          {
+            "result": {
+              "duration": 4252877100,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "selecciona la opcion de recuperar contraseña",
+            "match": {
+              "location": "RecuperarContraseñaTaskMasterStepsDefinitions.seleccionaLaOpcionDeRecuperarContraseña(DatosRecuperarContraseña\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "fgfernan2508@gmail.com"
+                ]
+              }
+            ],
             "keyword": "Cuando "
           },
           {
             "result": {
-              "status": "skipped"
+              "duration": 279920300,
+              "status": "passed"
             },
-            "line": 19,
-            "name": "el sistema muestra un mensaje de proyecto eliminado exitosamente y actualiza la lista de proyectos eliminando su registro",
+            "line": 16,
+            "name": "el sistema debe mostrar un mensaje de confirmacion y debe llegar un email de recuperación al correo ingresado",
             "match": {
-              "location": "EliminarProyectoTaskMasterStepsDefinitions.elSistemaMuestraUnMensajeDeProyectoEliminadoExitosamenteYActualizaLaListaDeProyectosEliminandoSuRegistro()"
+              "location": "RecuperarContraseñaTaskMasterStepsDefinitions.elSistemaDebeMostrarUnMensajeDeConfirmacionYDebeLlegarUnEmailDeRecuperaciónAlCorreoIngresado()"
             },
             "keyword": "Entonces "
           }
         ],
         "tags": [
           {
-            "name": "@EliminarProyecto"
+            "name": "@RecuperarContraseña"
           }
         ]
       }
     ],
-    "name": "Eliminación de proyecto en la pagina de TaskMaster Pro",
-    "description": "  Como usuario de TaskMaster Pro\n  Quiero poder eliminar un proyecto existente\n  Para mantener mi lista de proyectos organizada y actualizada.",
-    "id": "eliminación-de-proyecto-en-la-pagina-de-taskmaster-pro",
+    "name": "Recuperación de contraseña en la pagina de TaskMaster Pro",
+    "description": "  Como usuario de TaskMaster Pro\n  Quiero poder recuperar mi contraseña\n  Para acceder nuevamente al software de gestion de proyectos",
+    "id": "recuperación-de-contraseña-en-la-pagina-de-taskmaster-pro",
     "keyword": "Característica",
-    "uri": "src/test/resources/features/eliminarProyecto_taskmasterPro.feature",
+    "uri": "src/test/resources/features/recuperarContraseña_taskmasterPro.feature",
     "tags": []
   }
 ]

@@ -2,6 +2,7 @@ package co.com.AutomatizacionTaskMasterPro.tasks;
 
 import co.com.AutomatizacionTaskMasterPro.interactions.AceptarAlerta;
 import co.com.AutomatizacionTaskMasterPro.models.DatosEditarProyecto;
+import co.com.AutomatizacionTaskMasterPro.utils.hooks.SesionVariable;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
@@ -13,6 +14,7 @@ import net.serenitybdd.screenplay.actions.SelectFromOptions;
 import java.util.List;
 
 import static co.com.AutomatizacionTaskMasterPro.userInterface.ActualizacionProyecto.*;
+import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class EditarProyecto implements Task {
     private List<DatosEditarProyecto> datos;
@@ -27,6 +29,8 @@ public class EditarProyecto implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
+                Click.on(BTN_REGRESAR),
+                Click.on(BTN_REGRESAR2),
                 Click.on(BTN_MENU_PROYECTOS),
                 Click.on(BTN_EDITAR_PROYECTO),
                 Click.on(INPUT_NOMBRE),
@@ -35,15 +39,24 @@ public class EditarProyecto implements Task {
                 Enter.theValue(datos.get(0).getDescripcion()).into(INPUT_DESCRIPCION),
                 Scroll.to(INPUT_FECHAFIN),
                 Click.on(INPUT_ESTADO),
-                SelectFromOptions.byVisibleText("En Progreso").from(INPUT_ESTADO),
+                SelectFromOptions.byVisibleText(datos.get(0).getEstado()).from(INPUT_ESTADO),
                 Click.on(INPUT_PRIORIDAD),
-                SelectFromOptions.byVisibleText("Alta").from(INPUT_PRIORIDAD),
+                SelectFromOptions.byVisibleText(datos.get(0).getPrioridad()).from(INPUT_PRIORIDAD),
                 Scroll.to(INPUT_PRIORIDAD),
                 Scroll.to(INPUT_PRIORIDAD),
                 Scroll.to(INPUT_PRIORIDAD),
                 Click.on(BTN_GUARDAR),
                 AceptarAlerta.despuesDe(5),
-                Click.on(INPUT_PROYECTO)
+                Click.on(BTN_MENU_PROYECTOS),
+                Click.on(BTN_EDITAR_PROYECTO)
                 );
+        theActorInTheSpotlight().remember(SesionVariable.nombreE.toString(), datos.get(0).getNombre());
+        theActorInTheSpotlight().remember(SesionVariable.descripcionE.toString(), datos.get(0).getDescripcion());
+        theActorInTheSpotlight().remember(SesionVariable.estado.toString(), datos.get(0).getEstado());
+        theActorInTheSpotlight().remember(SesionVariable.prioridad.toString(), datos.get(0).getPrioridad());
+
+
+
+
     }
 }

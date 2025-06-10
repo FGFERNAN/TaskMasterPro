@@ -1,11 +1,14 @@
 package co.com.AutomatizacionTaskMasterPro.questions;
 
+import co.com.AutomatizacionTaskMasterPro.utils.hooks.SesionVariable;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
+import net.serenitybdd.screenplay.questions.Attribute;
 import net.serenitybdd.screenplay.questions.Text;
 
-import static co.com.AutomatizacionTaskMasterPro.userInterface.Autenticacion.CONFIRMACION_LOGIN;
+import static co.com.AutomatizacionTaskMasterPro.userInterface.Autenticacion.*;
 import static jxl.biff.FormatRecord.logger;
+import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class ValidacionLogin implements Question<Boolean> {
     public static ValidacionLogin validacionLogin() {
@@ -14,9 +17,12 @@ public class ValidacionLogin implements Question<Boolean> {
 
     @Override
     public Boolean answeredBy(Actor actor) {
+        String correo = theActorInTheSpotlight().recall(SesionVariable.correo.toString());
+        logger.info("Correo Sesion Variable: '" + correo + "'");
         try {
-            String texto = Text.of(CONFIRMACION_LOGIN).viewedBy(actor).asString();
-            return "¿Que Proyecto Crearemos Hoy?".equals(texto);
+            String email = Attribute.of(CONFIRMACION_LOGIN).named("value").viewedBy(actor).asString();
+            logger.info("Correo capturado: '" + email + "'");
+            return email.equals(correo);
         } catch (Exception e) {
             logger.info("No encontró el texto o hubo otro error");
             return false;

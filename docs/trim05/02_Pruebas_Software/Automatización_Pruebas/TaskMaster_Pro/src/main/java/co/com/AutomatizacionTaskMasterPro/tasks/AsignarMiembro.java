@@ -6,6 +6,8 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 
+import static co.com.AutomatizacionTaskMasterPro.userInterface.ActualizacionProyecto.BTN_REGRESAR;
+import static co.com.AutomatizacionTaskMasterPro.userInterface.ActualizacionProyecto.BTN_REGRESAR2;
 import static co.com.AutomatizacionTaskMasterPro.userInterface.AsignacionMiembro.*;
 
 
@@ -17,6 +19,8 @@ public class AsignarMiembro implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
+                Click.on(BTN_REGRESAR),
+                Click.on(BTN_REGRESAR2),
                 Click.on(BTN_PROYECTO),
                 Click.on(BTN_MIEMBROS),
                 Click.on(BTN_AGREGAR),

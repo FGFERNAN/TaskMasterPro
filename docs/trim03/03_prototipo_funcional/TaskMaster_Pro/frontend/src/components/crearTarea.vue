@@ -77,7 +77,7 @@
             <div class="input-group mb-3">
               <span class="input-group-text border-input"><i class="fa-solid fa-chart-simple"></i></span>
               <select class="form-select border-input" required>
-                <option value="" style="display: none;"><label>Seleccionar</label></option>
+                <option value="" style="display: none;">Seleccionar</option>
                 <option value="1">Pendiente</option>
                 <option value="2">En Curso</option>
                 <option value="3">Terminada</option>
@@ -104,7 +104,7 @@
                 </svg>
               </span>
               <select class="form-select border-input" required>
-                <option value="" style="display: none;"><label>Seleccionar</label></option>
+                <option value="" style="display: none;">Seleccionar</option>
                 <option value="1">Alta</option>
                 <option value="2">Media</option>
                 <option value="3">Baja</option>
