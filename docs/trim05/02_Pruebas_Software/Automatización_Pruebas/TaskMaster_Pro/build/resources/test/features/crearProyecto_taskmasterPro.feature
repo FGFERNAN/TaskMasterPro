@@ -21,5 +21,5 @@ Característica: Creacion de proyecto en la pagina de TaskMaster Pro
     Entonces el sistema debe registrar correctamente el nuevo proyecto
 
     Ejemplos:
-      | nombre         | descripcion                                                          | fechaInicio | fechaFin |
-      | Automatizacion | Vamos a automatizar procesos clave para la validacion de un software | 30052025    | 31052025 |
+      | nombre   | descripcion            | fechaInicio | fechaFin |
+      | Proyecto | Este es un proyecto de | 30052025    | 31052025 |

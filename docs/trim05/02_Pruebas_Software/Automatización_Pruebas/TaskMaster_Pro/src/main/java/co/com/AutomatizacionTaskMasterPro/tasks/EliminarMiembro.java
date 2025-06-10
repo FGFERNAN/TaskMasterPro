@@ -5,6 +5,8 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 
+import static co.com.AutomatizacionTaskMasterPro.userInterface.ActualizacionProyecto.BTN_REGRESAR;
+import static co.com.AutomatizacionTaskMasterPro.userInterface.ActualizacionProyecto.BTN_REGRESAR2;
 import static co.com.AutomatizacionTaskMasterPro.userInterface.AsignacionMiembro.MIEMBRO_AGREGADO;
 import static co.com.AutomatizacionTaskMasterPro.userInterface.EliminacionMiembro.*;
 import static net.serenitybdd.screenplay.waits.WaitUntil.the;
@@ -21,6 +23,8 @@ public class EliminarMiembro implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
+                Click.on(BTN_REGRESAR),
+                Click.on(BTN_REGRESAR2),
                 Click.on(BTN_PROYECTO),
                 Click.on(BTN_MIEMBROS),
                 WaitUntil.the(BTN_ELIMINAR, isEnabled()).forNoMoreThan(5).seconds(),

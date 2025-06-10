@@ -4,5 +4,15 @@ public enum SesionVariable {
     id,
     nombre,
     email,
-    rol
+    rol,
+    nombreProyecto,
+    descripcion,
+    correo,
+    nombreE,
+    descripcionE,
+    estado,
+    prioridad,
+    nombreFiltro,
+    nombreVisualizar,
+    porcentaje
 }

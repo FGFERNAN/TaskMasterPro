@@ -143,7 +143,7 @@
                     <div class="member-card">
                       <img :src="avatar" alt="User Avatar">
                       <p><input type="radio" name="user" :id="'user-' + member.id" :value="member.nombre" /> {{ member.nombre }} {{ member.apellidos }}</p>
-                      <button class="btn-eliminar" @click="removeMember(member.id)">Eliminar Usuario</button>
+                      <button :id="'btn-' + member.id" class="btn-eliminar" @click="removeMember(member.id)">Eliminar Usuario</button>
                     </div>
                   </div>
                 </div>

@@ -15,8 +15,8 @@ import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class EliminarMiembroTaskMasterStepsDefinitions {
-    @Cuando("^seleccione un usuario asignado a un proyecto y hace click en el boton de eliminar usuario y confirma la eliminacion del miembro$")
-    public void seleccioneUnUsuarioAsignadoAUnProyectoYHaceClickEnElBotonDeEliminarUsuarioYConfirmaLaEliminacionDelMiembro() {
+    @Cuando("^seleccione un usuario asignado a un proyecto y hace click en el boton de eliminar usuario$")
+    public void seleccioneUnUsuarioAsignadoAUnProyectoYHaceClickEnElBotonDeEliminarUsuario() {
         theActorInTheSpotlight().attemptsTo(EliminarMiembro.ahora());
     }
 

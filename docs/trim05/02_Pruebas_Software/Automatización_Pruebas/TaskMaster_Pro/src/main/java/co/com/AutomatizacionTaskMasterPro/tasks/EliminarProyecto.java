@@ -12,6 +12,8 @@ import net.serenitybdd.screenplay.actions.SelectFromOptions;
 
 import java.util.List;
 
+import static co.com.AutomatizacionTaskMasterPro.userInterface.ActualizacionProyecto.BTN_REGRESAR;
+import static co.com.AutomatizacionTaskMasterPro.userInterface.ActualizacionProyecto.BTN_REGRESAR2;
 import static co.com.AutomatizacionTaskMasterPro.userInterface.EliminacionProyecto.*;
 
 
@@ -23,6 +25,8 @@ public class EliminarProyecto implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
+                Click.on(BTN_REGRESAR),
+                Click.on(BTN_REGRESAR2),
                 Click.on(BTN_MPROYECTOS),
                 Click.on(BTN_ELIMINAR),
                 AceptarAlerta.despuesDe(5),

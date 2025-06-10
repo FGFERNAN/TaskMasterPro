@@ -3,57 +3,10 @@
     "line": 4,
     "elements": [
       {
-        "line": 9,
-        "name": "",
-        "description": "",
-        "type": "background",
-        "keyword": "Antecedentes",
-        "steps": [
-          {
-            "result": {
-              "duration": 5420359200,
-              "status": "passed"
-            },
-            "line": 10,
-            "name": "que el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro",
-            "match": {
-              "location": "AutenticacionTaskMasterStepsDefinitions.queElUsuarioSeEncuentraEnLaPaginaDeInicioDeSesionDeTaskMasterPro()"
-            },
-            "keyword": "Dado "
-          },
-          {
-            "result": {
-              "duration": 2809803300,
-              "status": "passed"
-            },
-            "line": 11,
-            "name": "ingrese las credenciales correctas (usuario y contraseña)",
-            "match": {
-              "location": "AutenticacionTaskMasterStepsDefinitions.ingreseLasCredencialesCorrectasUsuarioYContraseña(CredencialesInicioSesion\u003e)"
-            },
-            "rows": [
-              {
-                "cells": [
-                  "email",
-                  "password"
-                ]
-              },
-              {
-                "cells": [
-                  "fgfernan2508@gmail.com",
-                  "enriqueGR2508*"
-                ]
-              }
-            ],
-            "keyword": "Cuando "
-          }
-        ]
-      },
-      {
         "before": [
           {
             "result": {
-              "duration": 84315900,
+              "duration": 107026600,
               "status": "passed"
             },
             "match": {
@@ -61,50 +14,69 @@
             }
           }
         ],
-        "line": 17,
-        "name": "Agregar Miembro Exitosamente",
+        "line": 12,
+        "name": "Recuperar Contraseña Exitosamente",
         "description": "",
-        "id": "asignacion-de-proyecto-en-la-pagina-de-taskmaster-pro;agregar-miembro-exitosamente",
+        "id": "recuperación-de-contraseña-en-la-pagina-de-taskmaster-pro;recuperar-contraseña-exitosamente",
         "type": "scenario",
         "keyword": "Escenario",
         "steps": [
           {
             "result": {
-              "duration": 1559585100,
+              "duration": 5443019400,
               "status": "passed"
             },
-            "line": 18,
-            "name": "hace click en el boton agregar en el usuario que desee",
+            "line": 13,
+            "name": "que el usuario se encuentra en la pagina de inicio de sesion",
             "match": {
-              "location": "AsignarProyectoTaskMasterStepsDefinitions.haceClickEnElBotonAgregarEnElUsuarioQueDesee()"
+              "location": "RecuperarContraseñaTaskMasterStepsDefinitions.queElUsuarioSeEncuentraEnLaPaginaDeInicioDeSesion()"
             },
+            "keyword": "Dado "
+          },
+          {
+            "result": {
+              "duration": 4252877100,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "selecciona la opcion de recuperar contraseña",
+            "match": {
+              "location": "RecuperarContraseñaTaskMasterStepsDefinitions.seleccionaLaOpcionDeRecuperarContraseña(DatosRecuperarContraseña\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "fgfernan2508@gmail.com"
+                ]
+              }
+            ],
             "keyword": "Cuando "
           },
           {
             "result": {
-              "duration": 266068700,
+              "duration": 279920300,
               "status": "passed"
             },
-            "line": 19,
-            "name": "los usuarios seleccionados deben ser agregados correctamente al proyecto y reflejarse en la lista de miembros del mismo",
+            "line": 16,
+            "name": "el sistema debe mostrar un mensaje de confirmacion y debe llegar un email de recuperación al correo ingresado",
             "match": {
-              "location": "AsignarProyectoTaskMasterStepsDefinitions.losUsuariosSeleccionadosDebenSerAgregadosCorrectamenteAlProyectoYReflejarseEnLaListaDeMiembrosDelMismo()"
+              "location": "RecuperarContraseñaTaskMasterStepsDefinitions.elSistemaDebeMostrarUnMensajeDeConfirmacionYDebeLlegarUnEmailDeRecuperaciónAlCorreoIngresado()"
             },
             "keyword": "Entonces "
           }
         ],
         "tags": [
           {
-            "name": "@AsignarProyecto"
+            "name": "@RecuperarContraseña"
           }
         ]
       }
     ],
-    "name": "Asignacion de proyecto en la pagina de TaskMaster Pro",
-    "description": "  Como usuario de TaskMaster Pro\n  Quiero poder agregar miembros a un proyecto\n  Para poder repartir tareas y colaborar eficazmente para resultados más rapidos.",
-    "id": "asignacion-de-proyecto-en-la-pagina-de-taskmaster-pro",
+    "name": "Recuperación de contraseña en la pagina de TaskMaster Pro",
+    "description": "  Como usuario de TaskMaster Pro\n  Quiero poder recuperar mi contraseña\n  Para acceder nuevamente al software de gestion de proyectos",
+    "id": "recuperación-de-contraseña-en-la-pagina-de-taskmaster-pro",
     "keyword": "Característica",
-    "uri": "src/test/resources/features/asignarProyecto_taskmasterPro.feature",
+    "uri": "src/test/resources/features/recuperarContraseña_taskmasterPro.feature",
     "tags": []
   }
 ]

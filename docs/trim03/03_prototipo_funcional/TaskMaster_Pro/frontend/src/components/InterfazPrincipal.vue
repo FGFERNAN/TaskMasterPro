@@ -86,12 +86,12 @@
                         class="fa-regular fa-folder-open"></i>
                       {{ proyecto.nombre }}</a>
                     <span class="ms-1">
-                      <a @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i
+                      <a :id="'edit-' + proyecto.nombre" @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i
                           class="fa-solid fa-edit"></i></a>
                     </span>
                     <span class="ms-2">
                       <a class="link-secondary mi-link" @click="deleteProject(proyecto.id)"
-                        id="btn-eliminar-escritorio"><i class="fa-solid fa-trash me-3"></i></a>
+                        :id="'btn-' + proyecto.nombre"><i class="fa-solid fa-trash me-3"></i></a>
                     </span>
                   </div>
                 </li>

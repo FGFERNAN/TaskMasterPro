@@ -18,10 +18,13 @@ public class ValidacionCrearUsuario implements Question<Boolean> {
     public Boolean answeredBy(Actor actor) {
         String userId = theActorInTheSpotlight().recall(SesionVariable.id.toString());
         logger.info("ID Sesion Variable: '" + userId + "'");
+
         String userName = theActorInTheSpotlight().recall(SesionVariable.nombre.toString());
         logger.info("Nombre Sesion Variable: '" + userName + "'");
+
         String userEmail = theActorInTheSpotlight().recall(SesionVariable.email.toString());
         logger.info("Email Sesion Variable: '" + userEmail + "'");
+
         String userRol = theActorInTheSpotlight().recall(SesionVariable.rol.toString());
         logger.info("Rol Sesion Variable: '" + userRol + "'");
 

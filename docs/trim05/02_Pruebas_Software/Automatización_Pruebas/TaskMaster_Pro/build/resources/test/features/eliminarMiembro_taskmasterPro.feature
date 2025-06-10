@@ -15,5 +15,5 @@ Característica: Eliminación de miembro de un proyecto en la pagina de TaskMast
   @EliminarMiembro
 
   Escenario: Eliminar un Miembro Exitosamente
-    Cuando seleccione un usuario asignado a un proyecto y hace click en el boton de eliminar usuario y confirma la eliminacion del miembro
+    Cuando seleccione un usuario asignado a un proyecto y hace click en el boton de eliminar usuario
     Entonces el sistema muestra un mensaje de miembro eliminado exitosamente y actualiza la lista de usuarios asignados a ese proyecto

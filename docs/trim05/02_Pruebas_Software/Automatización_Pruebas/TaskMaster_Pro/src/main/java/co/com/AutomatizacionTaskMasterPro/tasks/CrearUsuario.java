@@ -16,6 +16,8 @@ import org.apache.commons.lang3.RandomStringUtils;
 import java.util.List;
 import java.util.Random;
 
+import static co.com.AutomatizacionTaskMasterPro.userInterface.ActualizacionProyecto.BTN_REGRESAR;
+import static co.com.AutomatizacionTaskMasterPro.userInterface.ActualizacionProyecto.BTN_REGRESAR2;
 import static co.com.AutomatizacionTaskMasterPro.userInterface.CreacionUsuario.*;
 import static jxl.biff.FormatRecord.logger;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
@@ -39,7 +41,7 @@ public class CrearUsuario implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Click.on(BTN_PERFIL),
+                Click.on(BTN_REGRESAR),
                 Click.on(BTN_GUSUARIOS),
                 Click.on(BTN_CUSUARIO),
                 Click.on(INPUT_NOMBRE),
