@@ -4,6 +4,9 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.bg {
+    background-color: white;
+}
 /* Ajuste de tamaño para inputs y selects */
 .form-control, .form-select {
     padding: 1% 4%; /* Ajusta el padding interno */

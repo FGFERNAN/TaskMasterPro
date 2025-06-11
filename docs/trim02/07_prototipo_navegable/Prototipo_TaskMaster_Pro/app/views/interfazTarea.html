@@ -16,60 +16,60 @@
 <body>
     <div class="container-fluid">
         <!-- Navbar for mobile -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light d-lg-none">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
-                aria-controls="offcanvasMenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="#">Menú</a>
-        </div>
-    </nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light d-lg-none">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
+                    aria-controls="offcanvasMenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="#">Menú</a>
+            </div>
+        </nav>
 
-    <!-- Offcanvas for mobile menu -->
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menú</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <!-- Offcanvas for mobile menu -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menú</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link mi-link" href="creacionProyecto.html"><i
+                                class="fa-solid fa-folder-plus me-1"></i> Crear Proyecto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mi-link" href="plantillasProyecto.html"><i
+                                class="fa-solid fa-folder-tree me-1"></i> Utilizar Plantillas de Proyecto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i>
+                            Mis Tareas</a>
+                    </li>
+                    <li class="nav-item dropdown custom-dropdown">
+                        <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-expanded="false"><i class="fa-solid fa-folder-minus me-1"></i> Proyectos</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="d-flex align-items-center" id="sub-menu-proyectos">
+                                    <a class="dropdown-item align-items-center" href="interfazProyecto.html">
+                                        <i class="fa-regular fa-folder-open"></i> Veterinaria
+                                        <a href="editarProyecto.html" class="link-secondary ms-1 mi-link"><i
+                                                class="fa-solid fa-edit"></i></a>
+                                        <a id="buton-eliminar" class="link-secondary ms-2 mi-link"><i
+                                                class="fa-solid fa-trash me-3"></i></a>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i>
+                            Etiquetas</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="offcanvas-body">
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link mi-link" href="creacionProyecto.html"><i
-                            class="fa-solid fa-folder-plus me-1"></i> Crear Proyecto</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link mi-link" href="plantillasProyecto.html"><i
-                            class="fa-solid fa-folder-tree me-1"></i> Utilizar Plantillas de Proyecto</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i>
-                        Mis Tareas</a>
-                </li>
-                <li class="nav-item dropdown custom-dropdown">
-                    <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#" role="button"
-                        aria-expanded="false"><i class="fa-solid fa-folder-minus me-1"></i> Proyectos</a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <div class="d-flex align-items-center" id="sub-menu-proyectos">
-                                <a class="dropdown-item align-items-center" href="interfazProyecto.html">
-                                    <i class="fa-regular fa-folder-open"></i> Veterinaria
-                                    <a href="editarProyecto.html" class="link-secondary ms-1 mi-link"><i
-                                            class="fa-solid fa-edit"></i></a>
-                                    <a id="buton-eliminar" class="link-secondary ms-2 mi-link"><i
-                                            class="fa-solid fa-trash me-3"></i></a>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i>
-                        Etiquetas</a>
-                </li>
-            </ul>
-        </div>
-    </div>
         <div class="row">
             <!-- Sidebar Menu -->
             <div class="col-md-3 custom-col d-none d-lg-block">
@@ -222,6 +222,12 @@
                             </select>
                         </div>
                     </form>
+
+                    <!-- Save Button -->
+                    <div class="bottom-right-button">
+                        <button class="btn1 btn-primary">Guardar</button>
+                    </div>
+
                     <!-- Modal Comentarios -->
                     <div class="modal fade" id="modal-comentarios" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
@@ -287,7 +293,6 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary mi-buton"
                                         data-bs-dismiss="modal">Cerrar</button>
-
                                 </div>
                             </div>
                         </div>
@@ -304,21 +309,30 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="card" style="width: 100%;">
-                                        <div class="card-body mi-card" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-title="<b>Cargado:</b> 05/09/2024 <br> <b>Tamaño:</b> 12MB">
+                                        <div class="card-body mi-card" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            data-bs-html="true"
+                                            data-bs-title="<b>Cargado:</b> 05/09/2024 <br> <b>Tamaño:</b> 12MB">
                                             <h5 class="card-title">Tarea1.pdf</h5>
-                                            <h6 class="card-subtitle mb-2 text-body-secondary">PDF <button href="#" class="buton-descargar text-body-secondary">Descargar</button></h6>
+                                            <h6 class="card-subtitle mb-2 text-body-secondary">PDF <button href="#"
+                                                    class="buton-descargar text-body-secondary">Descargar</button></h6>
                                         </div>
                                     </div>
                                     <div class="card mt-3" style="width: 100%;">
-                                        <div class="card-body mi-card" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-title="<b>Cargado:</b> 15/07/2024 <br> <b>Tamaño:</b> 20MB">
+                                        <div class="card-body mi-card" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            data-bs-html="true"
+                                            data-bs-title="<b>Cargado:</b> 15/07/2024 <br> <b>Tamaño:</b> 20MB">
                                             <h5 class="card-title">wireframes.png</h5>
-                                            <h6 class="card-subtitle mb-2 text-body-secondary">PNG <button href="#" class="buton-descargar text-body-secondary">Descargar</button></h6>
+                                            <h6 class="card-subtitle mb-2 text-body-secondary">PNG <button href="#"
+                                                    class="buton-descargar text-body-secondary">Descargar</button></h6>
                                         </div>
                                     </div>
                                     <div class="card mt-3" style="width: 100%;">
-                                        <div class="card-body mi-card" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-title="<b>Cargado:</b> 30/05/2024 <br> <b>Tamaño:</b> 10MB">
+                                        <div class="card-body mi-card" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            data-bs-html="true"
+                                            data-bs-title="<b>Cargado:</b> 30/05/2024 <br> <b>Tamaño:</b> 10MB">
                                             <h5 class="card-title">carta.docx</h5>
-                                            <h6 class="card-subtitle mb-2 text-body-secondary">DOCX <button href="#" class="buton-descargar text-body-secondary">Descargar</button></h6>
+                                            <h6 class="card-subtitle mb-2 text-body-secondary">DOCX <button href="#"
+                                                    class="buton-descargar text-body-secondary">Descargar</button></h6>
                                         </div>
                                     </div>
                                 </div>
@@ -330,11 +344,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Save Button -->
-                    <div class="bottom-right-button">
-                        <button class="btn1 btn-primary">Guardar</button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -342,9 +351,9 @@
     <script>
         const butonDescargar = document.querySelectorAll('.buton-descargar');
         butonDescargar.forEach(buton => {
-            buton.addEventListener('click', () =>{
+            buton.addEventListener('click', () => {
                 let resultado = confirm('¿Deseas descargar el archivo?');
-                if(resultado){
+                if (resultado) {
                     alert('Archivo descargado exitosamente');
                 }
             })
@@ -412,7 +421,7 @@
         const tooltip = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         tooltip.forEach(tip => {
             new bootstrap.Tooltip(tip)
-        }) ;
+        });
     </script>
 </body>
 
