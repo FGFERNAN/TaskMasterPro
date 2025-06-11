@@ -3,15 +3,15 @@
     <!-- Navbar for mobile -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light d-lg-none">
       <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
-          aria-controls="offcanvasMenu">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu">
           <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="#">Menú</a>
       </div>
     </nav>
 
-    <!-- Offcanvas for mobile menu -->
+
+    <!-- Menú lateral móvil -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menú</h5>
@@ -19,16 +19,40 @@
       </div>
       <div class="offcanvas-body">
         <ul class="nav flex-column">
-          <!-- Usamos router-link para redirigir en Vue -->
           <li class="nav-item">
-            <router-link to="/perfil-completo" class="nav-link mi-link">
-              <i class="fa-solid fa-home me-1"></i> Inicio
-            </router-link>
+            <a class="nav-link mi-link" @click="crearProyecto"><i class="fa-solid fa-folder-plus me-1"></i> Crear
+              Proyecto</a>
           </li>
           <li class="nav-item">
-            <router-link to="/administrar-roles" class="nav-link mi-link">
-              <i class="fa-solid fa-user-cog me-1"></i> Roles
-            </router-link>
+            <a class="nav-link mi-link" @click="irPlantillasProyecto"><i class="fa-solid fa-folder-tree me-1"></i>
+              Utilizar Plantillas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i> Mis Tareas</a>
+          </li>
+          <li class="nav-item dropdown custom-dropdown">
+            <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#"><i
+                class="fa-solid fa-folder-minus me-1"></i> Proyectos</a>
+            <ul class="dropdown-menu">
+              <li v-for="proyecto in proyectos" :key="proyecto.id">
+                <div class="d-flex align-items-center">
+                  <a class="dropdown-item boton-menu-proyecto" @click="irInterfazProyecto(proyecto.id)"><i
+                      class="fa-regular fa-folder-open"></i>
+                    {{ proyecto.nombre }}</a>
+                  <span class="ms-1">
+                    <a @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i
+                        class="fa-solid fa-edit"></i></a>
+                  </span>
+                  <span class="ms-2">
+                    <a class="link-secondary mi-link" @click="deleteProject(proyecto.id)"
+                      id="btn-eliminar-escritorio"><i class="fa-solid fa-trash me-3"></i></a>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
           </li>
         </ul>
       </div>
@@ -92,7 +116,7 @@
                   <tr v-for="(role) in filteredRoles" :key="role.id">
                     <td>
                       <input type="radio" @click="redirectToEditRole" v-model="selectedRole" :value="role.nombre"> {{
-                      role.nombre }}
+                        role.nombre }}
                     </td>
                     <td class="description">{{ role.descripcion }}</td>
                     <td>

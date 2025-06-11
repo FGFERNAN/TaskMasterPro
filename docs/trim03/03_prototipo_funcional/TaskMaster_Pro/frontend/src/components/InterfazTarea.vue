@@ -137,7 +137,7 @@
             <!-- Botones de tarea -->
             <div class="task-buttons mb-5">
               <button class="btn-tarea">Tarea 1</button>
-              <button class="btn-danger" id="buton-eliminar-tarea">
+              <button class="btn-danger1" id="buton-eliminar-tarea">
                 <i class="fa-solid fa-trash me-1"></i> Eliminar
               </button>
             </div>
@@ -145,9 +145,9 @@
             <form>
               <!-- Nombre -->
               <div class="mb-1">
-                <label for="nombreTarea" class="form-label">Nombre:</label>
+                <label for="nombreTarea" class="form-label1">Nombre:</label>
                 <div class="input-icon-container">
-                  <input type="text" class="form-control" id="nombreTarea" v-model="nombre" />
+                  <input type="text" class="form-control1" id="nombreTarea" v-model="nombre" />
                   <div class="icon-container">
                     <div class="collapse-section">
                       <button type="button" class="collapse-toggle" data-bs-toggle="modal"
@@ -170,24 +170,24 @@
 
               <!-- Descripción -->
               <div class="mb-3">
-                <label for="descripcionTarea" class="form-label">Descripción:</label>
-                <input type="text" class="form-control" id="descripcionTarea" v-model="descripcion" />
+                <label for="descripcionTarea" class="form-label1">Descripción:</label>
+                <input type="text" class="form-control1" id="descripcionTarea" v-model="descripcion" />
               </div>
 
               <!-- Fechas -->
               <div class="mb-3">
-                <label for="fechaInicio" class="form-label">Fecha Inicio:</label>
-                <input type="date" class="form-control" id="fechaInicio" v-model="fechaInicio" />
+                <label for="fechaInicio" class="form-label1">Fecha Inicio:</label>
+                <input type="date" class="form-control1" id="fechaInicio" v-model="fechaInicio" />
               </div>
               <div class="mb-3">
-                <label for="fechaFin" class="form-label">Fecha Fin:</label>
-                <input type="date" class="form-control" id="fechaFin" v-model="fechaFin" />
+                <label for="fechaFin" class="form-label1">Fecha Fin:</label>
+                <input type="date" class="form-control1" id="fechaFin" v-model="fechaFin" />
               </div>
 
               <!-- Estado -->
               <div class="mb-3">
-                <label for="estado" class="form-label">Estado:</label>
-                <select class="form-select" id="estado" v-model="estado">
+                <label for="estado" class="form-label1">Estado:</label>
+                <select class="form-select1" id="estado" v-model="estado">
                   <option value="1">En Progreso</option>
                   <option value="2">Completado</option>
                   <option value="3">En Espera</option>
@@ -197,8 +197,8 @@
 
               <!-- Prioridad -->
               <div class="mb-3">
-                <label for="prioridad" class="form-label">Prioridad:</label>
-                <select class="form-select" id="prioridad" v-model="prioridad">
+                <label for="prioridad" class="form-label1">Prioridad:</label>
+                <select class="form-select1" id="prioridad" v-model="prioridad">
                   <option value="1">Alta</option>
                   <option value="2">Media</option>
                   <option value="3">Baja</option>
@@ -207,8 +207,8 @@
 
               <!-- Responsable -->
               <div class="mb-3">
-                <label for="responsable" class="form-label">Responsable:</label>
-                <select class="form-select" id="responsable" v-model="responsable">
+                <label for="responsable" class="form-label1">Responsable:</label>
+                <select class="form-select1" id="responsable" v-model="responsable">
                   <option value="1">Johan Garcia</option>
                   <option value="2">Nikole Bernal</option>
                   <option value="3">Andres Garzon</option>
@@ -218,7 +218,7 @@
 
             <!-- Botón Guardar -->
             <div class="bottom-right-button">
-              <button class="btn1 btn-primary" @click="guardarTarea">Guardar</button>
+              <button class="btn-primary1 btn1" @click="guardarTarea">Guardar</button>
             </div>
 
             <!-- Modal Comentarios -->
@@ -280,48 +280,60 @@
 
 </template>
 
-<script setup>
-import { ref } from 'vue'
-
-const nombre = ref('Tarea 1')
-const descripcion = ref('Realizar wireframes')
-const fechaInicio = ref('2024-02-05')
-const fechaFin = ref('2024-04-07')
-const estado = ref('1')
-const prioridad = ref('1')
-const responsable = ref('1')
-
-const comentarios = ref([
-  {
-    id: 1,
-    autor: 'Johan Garcia',
-    fecha: '12/05/2024 4:54 PM',
-    texto: 'Hola Compañeros esta tarea ya la realice.'
+<script>
+import { Tooltip } from 'bootstrap';
+export default {
+  mounted() {
+    document.title = "Interfaz Tarea | TaskMaster Pro";
+    const tooltipTriggerList = [].slice.call(
+      document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    );
+    tooltipTriggerList.forEach((tooltipTriggerEl) => {
+      new Tooltip(tooltipTriggerEl);
+    });
   },
-  {
-    id: 2,
-    autor: 'Erika Triana',
-    fecha: '02/07/2024 5:45 PM',
-    texto: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit...'
+  data() {
+    return {
+      nombre: 'Tarea 1',
+      descripcion: 'Realizar wireframes',
+      fechaInicio: '2024-02-05',
+      fechaFin: '2024-04-07',
+      estado: '1',
+      prioridad: '1',
+      responsable: '1',
+      comentarios: [
+        {
+          id: 1,
+          autor: 'Johan Garcia',
+          fecha: '12/05/2024 4:54 PM',
+          texto: 'Hola Compañeros esta tarea ya la realice.'
+        },
+        {
+          id: 2,
+          autor: 'Erika Triana',
+          fecha: '02/07/2024 5:45 PM',
+          texto: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit...'
+        },
+        {
+          id: 3,
+          autor: 'Andres Garzon',
+          fecha: '08/09/2024 2:00 PM',
+          texto: 'Lorem ipsum dolor sit amet consectetur adipisicing elit...'
+        }
+      ],
+      archivos: [
+        { nombre: 'Tarea1.pdf', tipo: 'PDF', fecha: '05/09/2024', tamano: '12MB' },
+        { nombre: 'wireframes.png', tipo: 'PNG', fecha: '15/07/2024', tamano: '20MB' },
+        { nombre: 'carta.docx', tipo: 'DOCX', fecha: '30/05/2024', tamano: '10MB' }
+      ]
+    }
   },
-  {
-    id: 3,
-    autor: 'Andres Garzon',
-    fecha: '08/09/2024 2:00 PM',
-    texto: 'Lorem ipsum dolor sit amet consectetur adipisicing elit...'
+  methods: {
+    guardarTarea() {
+      alert('Tarea guardada con éxito');
+    }
   }
-])
-
-const archivos = ref([
-  { nombre: 'Tarea1.pdf', tipo: 'PDF', fecha: '05/09/2024', tamano: '12MB' },
-  { nombre: 'wireframes.png', tipo: 'PNG', fecha: '15/07/2024', tamano: '20MB' },
-  { nombre: 'carta.docx', tipo: 'DOCX', fecha: '30/05/2024', tamano: '10MB' }
-])
-
-const guardarTarea = () => {
-  alert('Tarea guardada con éxito')
 }
-
 </script>
 <style scoped>
 @import "@/../../assets/css/interfazTarea.css";
