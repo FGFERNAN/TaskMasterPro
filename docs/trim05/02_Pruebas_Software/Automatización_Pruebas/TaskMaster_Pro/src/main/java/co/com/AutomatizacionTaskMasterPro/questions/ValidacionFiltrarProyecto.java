@@ -21,7 +21,7 @@ public class ValidacionFiltrarProyecto implements Question<Boolean> {
         logger.info("Nombre Sesion Variable: '" + projectName + "'");
         try {
             String nombre = Text.of(TEXTO_CONFIRMACION).viewedBy(actor).asString();
-            logger.info("ID capturado: '" + nombre + "'");
+            logger.info("Nombre capturado: '" + nombre + "'");
             return projectName.equals(nombre);
         } catch (Exception e) {
             logger.info("No encontró el texto o hubo otro error");

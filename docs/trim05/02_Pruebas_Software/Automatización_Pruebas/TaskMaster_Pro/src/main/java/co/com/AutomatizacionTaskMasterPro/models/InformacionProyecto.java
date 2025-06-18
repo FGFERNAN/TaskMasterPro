@@ -9,6 +9,10 @@ public class InformacionProyecto {
 
     private String fechaFin;
 
+    private String estado;
+
+    private String prioridad;
+
     public String getNombre() {
         return nombre;
     }
@@ -30,6 +34,23 @@ public class InformacionProyecto {
     public String getFechaFin() {return fechaFin;}
 
     public void setFechaFin(String fechaFin) { this.fechaFin = fechaFin;}
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getPrioridad() {
+        return prioridad;
+    }
+
+    public void setPrioridad(String prioridad) {
+        this.prioridad = prioridad;
+    }
+
     public InformacionProyecto(String nombre, String descripcion, String fechaInicio, String fechaFin) {
         this.nombre = nombre;
         this.descripcion = descripcion;

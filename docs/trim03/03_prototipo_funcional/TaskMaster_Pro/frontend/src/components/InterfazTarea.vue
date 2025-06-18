@@ -281,16 +281,18 @@
 </template>
 
 <script>
-import { Tooltip } from 'bootstrap';
+// NO importar Tooltip - usar el objeto global de Bootstrap
+// import { Tooltip } from 'bootstrap';
+
 export default {
   mounted() {
     document.title = "Interfaz Tarea | TaskMaster Pro";
-    const tooltipTriggerList = [].slice.call(
-      document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    );
-    tooltipTriggerList.forEach((tooltipTriggerEl) => {
-      new Tooltip(tooltipTriggerEl);
-    });
+    // Inicializar tooltips
+    this.initTooltips();
+  },
+  updated() {
+    // Reinicializar tooltips cuando el componente se actualice
+    this.initTooltips();
   },
   data() {
     return {
@@ -331,6 +333,33 @@ export default {
   methods: {
     guardarTarea() {
       alert('Tarea guardada con éxito');
+    },
+    initTooltips() {
+      try {
+        // Usar bootstrap global en lugar del import
+        const bootstrap = window.bootstrap;
+        if (!bootstrap) {
+          console.error('Bootstrap no está disponible globalmente');
+          return;
+        }
+
+        // Destruir tooltips existentes
+        const existingTooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        existingTooltips.forEach(element => {
+          const tooltip = bootstrap.Tooltip.getInstance(element);
+          if (tooltip) {
+            tooltip.dispose();
+          }
+        });
+        
+        // Inicializar nuevos tooltips
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        tooltipTriggerList.forEach(tooltipTriggerEl => {
+          new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+      } catch (error) {
+        console.error('Error inicializando tooltips:', error);
+      }
     }
   }
 }
