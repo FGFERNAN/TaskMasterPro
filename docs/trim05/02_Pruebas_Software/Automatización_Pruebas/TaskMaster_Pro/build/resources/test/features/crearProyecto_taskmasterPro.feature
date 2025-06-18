@@ -16,10 +16,10 @@ Característica: Creacion de proyecto en la pagina de TaskMaster Pro
 
   Esquema del escenario: Crear Proyecto Exitosamente
     Cuando selecciona la opción de crear un nuevo proyecto
-      | nombre   | descripcion   | fechaInicio   | fechaFin |
-      | <nombre> | <descripcion> | <fechaInicio> | <fechaFin> |
+      | nombre   | descripcion   | fechaInicio   | fechaFin   | estado   | prioridad   |
+      | <nombre> | <descripcion> | <fechaInicio> | <fechaFin> | <estado> | <prioridad> |
     Entonces el sistema debe registrar correctamente el nuevo proyecto
 
     Ejemplos:
-      | nombre   | descripcion            | fechaInicio | fechaFin |
-      | Proyecto | Este es un proyecto de | 30052025    | 31052025 |
+      | nombre   | descripcion            | fechaInicio | fechaFin | estado      | prioridad |
+      | Proyecto | Este es un proyecto de | 30052025    | 31052025 | En Progreso | Media     |
