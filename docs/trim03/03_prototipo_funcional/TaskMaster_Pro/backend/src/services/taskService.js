@@ -27,7 +27,41 @@ class TaskService {
         }
     };
 
-    async createTask(data) {
+    async getTaskEarring(proyectoID) {
+        try {
+            const procedure = 'CALL getTaskEarring(?)';
+            const results = await this.db.query(procedure, [proyectoID]);
+            if (results.length === 0) throw new Error('Tarea no encontrada');
+            return results.map(task => new Task(...Object.values(task)));
+        } catch (err) {
+            console.error('Error fetching tasks: ', err.message);
+            throw err;
+        }
+    };
+
+    async getTaskInProgress(proyectoID) {
+        try {
+            const procedure = 'CALL getTaskInProgress(?)';
+            const results = await this.db.query(procedure, [proyectoID]);
+            return results[0].map(task => new Task(...Object.values(task)));
+        } catch (err) {
+            console.error('Error fetching tasks: ', err.message);
+            throw err;
+        }
+    };
+
+    async getTaskFinished(proyectoID) {
+        try {
+            const procedure = 'CALL getTaskFinished(?)';
+            const results = await this.db.query(procedure, [proyectoID]);
+            return results[0].map(task => new Task(...Object.values(task)));
+        } catch (err) {
+            console.error('Error fetching tasks: ', err.message);
+            throw err;
+        }
+    }
+
+    async createTask(data, projectID) {
         try {
             const verificarNombre = `SELECT id FROM tareas WHERE nombre = ?`;
             const nombreExiste = await this.db.query(verificarNombre, [data.nombre]);
@@ -35,7 +69,7 @@ class TaskService {
                 throw new Error("El nombre ingresado ya se encuentra registrado en otra tarea activa")
             }
             if (data.fechaInicio > data.fechaFin) throw new Error('La fecha de inicio no puede ser posterior a la fecha de fin');
-            var dataQry = [data.nombre, data.descripcion, data.fechaInicio, data.fechaFin, data.estado, data.prioridad, data.proyectoID];
+            var dataQry = [data.nombre, data.descripcion, data.fechaInicio, data.fechaFin, data.estado, data.prioridad, projectID];
             var qry = `CALL insertTask(?,?,?,?,?,?,?);`;
             const results = await this.db.query(qry, dataQry);
             if (results.length === 0) {

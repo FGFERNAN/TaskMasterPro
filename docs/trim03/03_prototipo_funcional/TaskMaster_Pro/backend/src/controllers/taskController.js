@@ -8,7 +8,7 @@ class TaskController {
     getAllTasks = async (req, res) => {
         try {
             const tasks = await this.taskService.getAllTasks();
-            res.json({ message: "Method Get: ", data: tasks, status: 200});
+            res.json({ message: "Method Get: ", data: tasks, status: 200 });
         } catch (err) {
             res.status(500).json({ message: err.message });
         }
@@ -23,9 +23,36 @@ class TaskController {
         }
     };
 
+    getTaskEarring = async (req, res) => {
+        try {
+            const tasks = await this.taskService.getTaskEarring(req.params.id);
+            res.json({ message: "Method Get: ", data: tasks, status: 200 });
+        } catch (err) {
+            res.status(500).json({ message: err.message });
+        }
+    };
+
+    getTaskInProgress = async (req, res) => {
+        try {
+            const tasks = await this.taskService.getTaskInProgress(req.params.id);
+            res.json({ message: "Method Get: ", data: tasks, status: 200 });
+        } catch (err) {
+            res.status(500).json({ message: err.message });
+        }
+    };
+
+    getTaskFinished = async (req, res) => {
+        try {
+            const tasks = await this.taskService.getTaskFinished(req.params.id);
+            res.json({ message: "Method Get: ", data: tasks, status: 200 });
+        } catch (err) {
+            res.status(500).json({ message: err.message });
+        }
+    };
+
     createTask = async (req, res) => {
         try {
-            const newTask = await this.taskService.createTask(req.body);
+            const newTask = await this.taskService.createTask(req.body, req.params.id);
             res.status(201).json(newTask);
         } catch (err) {
             res.status(500).json({ message: err.message });

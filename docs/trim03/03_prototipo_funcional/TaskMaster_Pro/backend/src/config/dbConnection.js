@@ -9,7 +9,7 @@ class DBConnection {
             password: '',
             port: 3306,
             database: 'task_master',
-            connectionLimit: 50,
+            connectionLimit: 10,
         });
     }
     query(sql, args = []){

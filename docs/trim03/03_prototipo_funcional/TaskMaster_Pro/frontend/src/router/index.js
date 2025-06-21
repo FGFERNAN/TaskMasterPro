@@ -54,7 +54,7 @@ const routes = [
   { path: '/crear-plantilla', component: CrearPlantilla},
   { path: '/editar-plantilla/:id', name: 'EditarPlantilla', component: EditarPlantilla},
   { path: '/interfaz-tarea', name: 'InterfazTarea', component: InterfazTarea },
-  { path: '/crear-tarea', component: CrearTarea}
+  { path: '/crear-tarea/:id', name: 'CrearTarea', component: CrearTarea, props: true}
 ];
 
 const router = createRouter({

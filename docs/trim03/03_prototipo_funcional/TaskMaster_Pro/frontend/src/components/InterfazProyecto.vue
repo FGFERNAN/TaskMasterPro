@@ -151,7 +151,7 @@
             </div>
             <hr style="height:5px; background-color:#000; margin-top:-10px;">
             <div class="d-flex justify-content-between mb-3">
-              <button @click="navigateToCreateTask" class="btn btn-success"><i class="fa-solid fa-plus me-1"></i>
+              <button  @click="navigateToCreateTask(proyectos.id)" class="btn btn-success"><i class="fa-solid fa-plus me-1"></i>
                 Agregar Tarea</button>
             </div>
             <div class="accordion accordion-flush table-container" id="accordionExample">
@@ -166,7 +166,7 @@
                   data-bs-parent="#accordionExample">
                   <div class="accordion-body">
                     <input class="form-control custom-search-input mb-2" type="search"
-                      placeholder="Buscar en Tareas Pendientes" v-model="searchQuery" @keyup="filterPendingTasks">
+                      placeholder="Buscar en Tareas Pendientes" v-model="searchQuery">
                     <div class="table-responsive">
                       <table class="table table-bordered">
                         <thead>
@@ -179,12 +179,12 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr v-for="task in filteredTasks" :key="task.id">
-                            <td><a class="nav-link mi-link" :href="'interfazTarea.html'">{{ task.name }}</a></td>
-                            <td>{{ task.dueDate }}</td>
-                            <td>{{ task.project }}</td>
-                            <td>{{ task.responsible }}</td>
-                            <td>{{ task.priority }}</td>
+                          <tr v-for="task in filterTaskPending" :key="task.id">
+                            <td><a class="nav-link mi-link" :href="'interfazTarea.html'">{{ task.nombre }}</a></td>
+                            <td>{{ task.fechaFin }}</td>
+                            <td>{{ task.proyectoID }}</td>
+                            <td>{{ task.usuarioID }}</td>
+                            <td>{{ task.prioridad }}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -205,7 +205,7 @@
                   data-bs-parent="#accordionExample">
                   <div class="accordion-body">
                     <input class="form-control custom-search-input mb-2" v-model="searchInProgress" type="search"
-                      placeholder="Buscar en Tareas En Curso" @keyup="filterInProgressTasks">
+                      placeholder="Buscar en Tareas En Curso">
                     <div class="table-responsive">
                       <table class="table table-bordered">
                         <thead>
@@ -218,12 +218,12 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr v-for="task in filteredInProgressTasks" :key="task.name">
-                            <td>{{ task.name }}</td>
-                            <td>{{ task.dueDate }}</td>
-                            <td>{{ task.project }}</td>
-                            <td>{{ task.responsible }}</td>
-                            <td>{{ task.priority }}</td>
+                          <tr v-for="task in filterTaskInProgress" :key="task.nombre">
+                            <td>{{ task.nombre }}</td>
+                            <td>{{ task.fechaFin }}</td>
+                            <td>{{ task.proyectoID }}</td>
+                            <td>{{ task.usuarioID }}</td>
+                            <td>{{ task.prioridad }}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -244,7 +244,7 @@
                   data-bs-parent="#accordionExample">
                   <div class="accordion-body">
                     <input class="form-control custom-search-input mb-2" v-model="searchCompleted" type="search"
-                      placeholder="Buscar en Tareas Terminadas" @keyup="filterCompletedTasks">
+                      placeholder="Buscar en Tareas Terminadas" >
                     <div class="table-responsive">
                       <table class="table table-bordered">
                         <thead>
@@ -257,12 +257,12 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr v-for="task in filteredCompletedTasks" :key="task.name">
-                            <td>{{ task.name }}</td>
-                            <td>{{ task.dueDate }}</td>
-                            <td>{{ task.project }}</td>
-                            <td>{{ task.responsible }}</td>
-                            <td>{{ task.priority }}</td>
+                          <tr v-for="task in filterTaskFinished" :key="task.nombre">
+                            <td>{{ task.nombre }}</td>
+                            <td>{{ task.fechaFin }}</td>
+                            <td>{{ task.proyectoID }}</td>
+                            <td>{{ task.usuarioID }}</td>
+                            <td>{{ task.prioridad }}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -288,29 +288,30 @@ export default {
       searchQuery: '',
       searchInProgress: '',
       searchCompleted: '',
-      tasks: [
-        { id: 1, name: 'Tarea 1', dueDate: '17 de Agosto', project: 'Veterinaria', responsible: 'Andres Garzon', priority: 'Alta' },
-        { id: 2, name: 'Tarea 2', dueDate: '20 Julio', project: 'Veterinaria', responsible: 'Johan Garcia', priority: 'Media' },
-        { id: 3, name: 'Tarea 3', dueDate: '2 de Agosto', project: 'Veterinaria', responsible: 'Erika Daniela', priority: 'Baja' }
-      ],
-      inProgressTasks: [
-        { id: 4, name: 'Tarea 4', dueDate: '5 de Agosto', project: 'Veterinaria', responsible: 'Erika Daniela', priority: 'Alta' },
-        { id: 5, name: 'Tarea 5', dueDate: '10 de Agosto', project: 'Veterinaria', responsible: 'Johan Garcia', priority: 'Media' },
-        { id: 6, name: 'Tarea 6', dueDate: '2 de Agosto', project: 'Veterinaria', responsible: 'Erika Daniela', priority: 'Baja' },
-        { id: 7, name: 'Tarea 7', dueDate: '2 de Agosto', project: 'Veterinaria', responsible: 'Erika Daniela', priority: 'Baja' }
-      ],
-      completedTasks: [
-        { id: 8, name: 'Tarea 8', dueDate: '1 de Julio', project: 'Veterinaria', responsible: 'Andres Garzon', priority: 'Alta' },
-        { id: 9, name: 'Tarea 9', dueDate: '3 de Julio', project: 'Veterinaria', responsible: 'Erika Daniela', priority: 'Baja' },
-        { id: 10, name: 'Tarea 10', dueDate: '2 de Agosto', project: 'Veterinaria', responsible: 'Erika Daniela', priority: 'Baja' }
-      ],
-      filteredTasks: [],
-      filteredInProgressTasks: [],
-      filteredCompletedTasks: [],
+      tasksEarring: [],
+      inProgressTasks: [],
+      completedTasks: [],
       proyectos: [],
       nombre: '',
       router: useRouter()
     };
+  },
+  computed: {
+    filterTaskPending() {
+      return this.tasksEarring.filter(t =>
+        t.nombre.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    },
+    filterTaskInProgress() {
+      return this.inProgressTasks.filter(t =>
+        t.nombre.toLowerCase().includes(this.searchInProgress.toLowerCase())
+      );
+    },
+    filterTaskFinished() {
+      return this.completedTasks.filter(t =>
+        t.nombre.toLowerCase().includes(this.searchCompleted.toLowerCase())
+      );
+    }
   },
   methods: {
     async getProjects() {
@@ -320,6 +321,63 @@ export default {
         console.log(response.data);
       } catch (error) {
         if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
+        }
+      }
+    },
+    async getTaskEarring(proyectoID) {
+      try {
+        const response = await api.get(`/task/earring/${proyectoID}`);
+        this.tasksEarring = response.data.data;
+        console.log(response.data);
+      } catch (error) {
+         if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
+        }
+      }
+    },
+    async getTaskInProgress() {
+      try {
+        const response = await api.get('/task/inProgress');
+        this.inProgressTasks = response.data.data;
+        console.log(response.data);
+      } catch (error) {
+         if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
+        }
+      }
+    },
+    async getTaskFinished() {
+      try {
+        const response = await api.get('/task/finished');
+        this.completedTasks = response.data.data;
+        console.log(response.data);
+      } catch (error) {
+         if (error.response && error.response.data) {
           const serverErrors = error.response.data;
           if (serverErrors.mensaje === 'Usuario no autenticado') {
             console.log(serverErrors.mensaje);
@@ -397,26 +455,11 @@ export default {
         alert(response.data.message);
       }
     },
-    filterPendingTasks() {
-      this.filteredTasks = this.tasks.filter(task =>
-        task.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
-    },
     irPlantillasProyecto() {
       this.router.push('/plantillas-proyecto');
     },
     irInterfazPrincipal() {
       this.router.push('/interfaz-principal');
-    },
-    filterInProgressTasks() {
-      this.filteredInProgressTasks = this.inProgressTasks.filter(task =>
-        task.name.toLowerCase().includes(this.searchInProgress.toLowerCase())
-      );
-    },
-    filterCompletedTasks() {
-      this.filteredCompletedTasks = this.completedTasks.filter(task =>
-        task.name.toLowerCase().includes(this.searchCompleted.toLowerCase())
-      );
     },
     navigateToMembers(projectId) {
       this.$router.push({ name: 'Miembros', params: { id: projectId } });
@@ -424,8 +467,8 @@ export default {
     irPerfil() {
       this.$router.push("/perfil-completo");
     },
-    navigateToCreateTask() {
-      // lógica para redirigir
+    navigateToCreateTask(projectId) {
+      this.$router.push({ name: 'CrearTarea', params: { id: projectId } });
     },
     irInterfazProyecto(projectId) {
       this.$router.push({ name: 'InterfazProyecto', params: { id: projectId } });
@@ -451,11 +494,11 @@ export default {
   },
   mounted() {
     document.title = "Interfaz Proyecto | TaskMaster Pro";
-    this.filteredTasks = this.tasks;
-    this.filteredInProgressTasks = this.inProgressTasks;
-    this.filteredCompletedTasks = this.completedTasks;
-    this.getProjects();
     const projectId = this.$route.params.id;
+    this.getProjects();
+    this.getTaskEarring(projectId);
+    this.getTaskInProgress();
+    this.getTaskFinished();
     this.getProjectById(projectId);
   }
 };
