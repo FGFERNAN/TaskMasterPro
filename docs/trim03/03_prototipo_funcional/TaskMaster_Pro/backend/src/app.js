@@ -3,7 +3,7 @@ const cors = require('cors');
 const session = require('express-session');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
-const DBConnection = require('./config/dbConnection');
+const db = require('./config/dbConnection');
 const userRoutes = require("./routes/user_routes");
 const roleRoutes = require("./routes/role_routes");
 const moduleRoutes = require("./routes/module_routes");
@@ -13,8 +13,6 @@ const editProfile = require('./routes/editProfile_routes');
 const recoveryPassword = require('./routes/recoveryPassword_routes');
 const projectRoutes = require('./routes/project_routes');
 const taskRoutes = require('./routes/task_routes');
-
-const db = new DBConnection();
 
 
 //Declared

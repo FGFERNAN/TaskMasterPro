@@ -72,6 +72,11 @@ const router = Router();
  */
 router.get('/', verificarPermiso('Modulo Gestion Tareas', 'Visualizar Tarea'), TaskController.getAllTasks);
 
+router.get('/earring/:id', verificarPermiso('Modulo Gestion Tareas', 'Visualizar Tarea'), TaskController.getTaskEarring);
+router.get('/inProgress/:id', verificarPermiso('Modulo Gestion Tareas', 'Visualizar Tarea'), TaskController.getTaskInProgress);
+router.get('/finished/:id', verificarPermiso('Modulo Gestion Tareas', 'Visualizar Tarea'), TaskController.getTaskFinished);
+router.get('/misTareas', verificarPermiso('Modulo Gestion Tareas', 'Visualizar Tarea'), TaskController.getMyTasks);
+
 /**
  * @swagger
  * /task/{id}:
@@ -216,7 +221,7 @@ router.get('/:id', verificarPermiso('Modulo Gestion Tareas', 'Visualizar Tarea')
  *       500:
  *         description: Error interno del servidor
  */
-router.post('/', verificarPermiso('Modulo Gestion Tareas', 'Crear Tarea'), TaskController.createTask);
+router.post('/:id', verificarPermiso('Modulo Gestion Tareas', 'Crear Tarea'), TaskController.createTask);
 
 /**
  * @swagger

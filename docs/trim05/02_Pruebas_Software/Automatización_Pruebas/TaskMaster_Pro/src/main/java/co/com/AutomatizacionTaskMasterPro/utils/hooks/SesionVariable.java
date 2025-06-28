@@ -17,4 +17,8 @@ public enum SesionVariable {
     porcentaje,
     estadoCrear,
     prioridadCrear,
+    nombreTarea,
+    descripcionTarea,
+    estadoTarea,
+    prioridadTarea
 }
