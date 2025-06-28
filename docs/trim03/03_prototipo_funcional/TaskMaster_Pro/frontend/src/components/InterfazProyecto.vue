@@ -140,9 +140,9 @@
                 </ul>
               </div>
               <div class="col-12 col-lg-12 col-xxl-4 mb-2 mb-lg-0">
-                <div class="progress w-100" role="progressbar" aria-label="Success example" aria-valuenow="80"
+                <div class="progress w-100" role="progressbar" aria-label="Success example" :aria-valuenow="porcentajeNum"
                   aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar bg-success" style="width: 80%">80%</div>
+                  <div class="progress-bar bg-success" :style="{width: porcentaje }">{{ porcentaje }}</div>
                 </div>
               </div>
               <div class="etiqueta position-absolute">
@@ -151,7 +151,8 @@
             </div>
             <hr style="height:5px; background-color:#000; margin-top:-10px;">
             <div class="d-flex justify-content-between mb-3">
-              <button  @click="navigateToCreateTask(proyectos.id)" class="btn btn-success"><i class="fa-solid fa-plus me-1"></i>
+              <button @click="navigateToCreateTask(proyectos.id)" class="btn btn-success"><i
+                  class="fa-solid fa-plus me-1"></i>
                 Agregar Tarea</button>
             </div>
             <div class="accordion accordion-flush table-container" id="accordionExample">
@@ -173,16 +174,14 @@
                           <tr>
                             <th>Nombre Tarea</th>
                             <th>Fecha de Entrega</th>
-                            <th>Proyecto</th>
                             <th>Responsable</th>
                             <th>Prioridad</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr v-for="task in filterTaskPending" :key="task.id">
-                            <td><a class="nav-link mi-link" :href="'interfazTarea.html'">{{ task.nombre }}</a></td>
-                            <td>{{ task.fechaFin }}</td>
-                            <td>{{ task.proyectoID }}</td>
+                            <td><a class="nav-link mi-link" @click="irAInterfazTarea(task.proyectoID, task.id)" >{{ task.nombre }}</a></td>
+                            <td>{{ formatearFecha(task.fechaFin) }}</td>
                             <td>{{ task.usuarioID }}</td>
                             <td>{{ task.prioridad }}</td>
                           </tr>
@@ -212,16 +211,14 @@
                           <tr>
                             <th>Nombre Tarea</th>
                             <th>Fecha de Entrega</th>
-                            <th>Proyecto</th>
                             <th>Responsable</th>
                             <th>Prioridad</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr v-for="task in filterTaskInProgress" :key="task.nombre">
-                            <td>{{ task.nombre }}</td>
-                            <td>{{ task.fechaFin }}</td>
-                            <td>{{ task.proyectoID }}</td>
+                            <td><a :id="'edit-' + task.nombre" class="nav-link mi-link" @click="irAInterfazTarea(task.proyectoID, task.id)" >{{ task.nombre }}</a></td>
+                            <td>{{ formatearFecha(task.fechaFin) }}</td>
                             <td>{{ task.usuarioID }}</td>
                             <td>{{ task.prioridad }}</td>
                           </tr>
@@ -244,23 +241,21 @@
                   data-bs-parent="#accordionExample">
                   <div class="accordion-body">
                     <input class="form-control custom-search-input mb-2" v-model="searchCompleted" type="search"
-                      placeholder="Buscar en Tareas Terminadas" >
+                      placeholder="Buscar en Tareas Terminadas">
                     <div class="table-responsive">
                       <table class="table table-bordered">
                         <thead>
                           <tr>
                             <th>Nombre Tarea</th>
                             <th>Fecha de Entrega</th>
-                            <th>Proyecto</th>
                             <th>Responsable</th>
                             <th>Prioridad</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr v-for="task in filterTaskFinished" :key="task.nombre">
-                            <td>{{ task.nombre }}</td>
-                            <td>{{ task.fechaFin }}</td>
-                            <td>{{ task.proyectoID }}</td>
+                            <td><a class="nav-link mi-link" @click="irAInterfazTarea(task.proyectoID, task.id)" >{{ task.nombre }}</a></td>
+                            <td>{{ formatearFecha(task.fechaFin) }}</td>
                             <td>{{ task.usuarioID }}</td>
                             <td>{{ task.prioridad }}</td>
                           </tr>
@@ -293,6 +288,8 @@ export default {
       completedTasks: [],
       proyectos: [],
       nombre: '',
+      porcentaje: '',
+      porcentajeNum: '',
       router: useRouter()
     };
   },
@@ -314,6 +311,13 @@ export default {
     }
   },
   methods: {
+    formatearFecha(fechaISO) {
+      const fecha = new Date(fechaISO);
+      return fecha.toLocaleDateString('es-CO', {
+        day: 'numeric',
+        month: 'long'
+      });
+    },
     async getProjects() {
       try {
         const response = await api.get('/project');
@@ -339,7 +343,7 @@ export default {
         this.tasksEarring = response.data.data;
         console.log(response.data);
       } catch (error) {
-         if (error.response && error.response.data) {
+        if (error.response && error.response.data) {
           const serverErrors = error.response.data;
           if (serverErrors.mensaje === 'Usuario no autenticado') {
             console.log(serverErrors.mensaje);
@@ -352,13 +356,13 @@ export default {
         }
       }
     },
-    async getTaskInProgress() {
+    async getTaskInProgress(proyectoID) {
       try {
-        const response = await api.get('/task/inProgress');
+        const response = await api.get(`/task/inProgress/${proyectoID}`);
         this.inProgressTasks = response.data.data;
         console.log(response.data);
       } catch (error) {
-         if (error.response && error.response.data) {
+        if (error.response && error.response.data) {
           const serverErrors = error.response.data;
           if (serverErrors.mensaje === 'Usuario no autenticado') {
             console.log(serverErrors.mensaje);
@@ -371,13 +375,13 @@ export default {
         }
       }
     },
-    async getTaskFinished() {
+    async getTaskFinished(proyectoID) {
       try {
-        const response = await api.get('/task/finished');
+        const response = await api.get(`/task/finished/${proyectoID}`);
         this.completedTasks = response.data.data;
         console.log(response.data);
       } catch (error) {
-         if (error.response && error.response.data) {
+        if (error.response && error.response.data) {
           const serverErrors = error.response.data;
           if (serverErrors.mensaje === 'Usuario no autenticado') {
             console.log(serverErrors.mensaje);
@@ -455,6 +459,23 @@ export default {
         alert(response.data.message);
       }
     },
+    calculoPorcentaje() {
+      try {
+        const totalTareas = this.tasksEarring.length + this.inProgressTasks.length + this.completedTasks.length;
+        if(totalTareas === 0) {
+          this.porcentaje = '0%';
+          return;
+        }
+        const tareasCompletadas = this.completedTasks.length;
+        const reglaDeTres = (100*tareasCompletadas)/totalTareas;
+        const results = `${Math.round(reglaDeTres)}%`;
+        this.porcentaje = results;
+        this.porcentajeNum = Math.round(reglaDeTres);
+        console.log(totalTareas);
+      } catch (err) {
+        console.error('Error al calcular el porcentaje: ', err.message);
+      }
+    },
     irPlantillasProyecto() {
       this.router.push('/plantillas-proyecto');
     },
@@ -469,6 +490,9 @@ export default {
     },
     navigateToCreateTask(projectId) {
       this.$router.push({ name: 'CrearTarea', params: { id: projectId } });
+    },
+    irAInterfazTarea(projectID, taskID) {
+      this.$router.push({ name: "InterfazTarea", params: { projectId: projectID, taskId: taskID }})
     },
     irInterfazProyecto(projectId) {
       this.$router.push({ name: 'InterfazProyecto', params: { id: projectId } });
@@ -487,19 +511,24 @@ export default {
       async handler(newId) {
         if (newId) {
           await this.getProjectById(newId);
+          await this.getTaskEarring(newId);
+          await this.getTaskInProgress(newId);
+          await this.getTaskFinished(newId);
+          this.calculoPorcentaje(newId);
           // También podrías recargar otras datos dependientes del proyecto
         }
       }
     }
   },
-  mounted() {
+  async mounted() {
     document.title = "Interfaz Proyecto | TaskMaster Pro";
     const projectId = this.$route.params.id;
-    this.getProjects();
-    this.getTaskEarring(projectId);
-    this.getTaskInProgress();
-    this.getTaskFinished();
-    this.getProjectById(projectId);
+    await this.getProjects();
+    await this.getTaskEarring(projectId);
+    await this.getTaskInProgress(projectId);
+    await this.getTaskFinished(projectId);
+    await this.getProjectById(projectId);
+    this.calculoPorcentaje();
   }
 };
 

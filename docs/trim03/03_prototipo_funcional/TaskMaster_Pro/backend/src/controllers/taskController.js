@@ -50,6 +50,16 @@ class TaskController {
         }
     };
 
+    getMyTasks = async (req, res) => {
+        try {
+            const usuarioId = req.session.userId;
+            const tasks = await this.taskService.getMyTasks(usuarioId);
+            res.json({ message: "Method Get: ", data: tasks, status: 200 });
+        } catch (err) {
+            res.status(500).json({ message: err.message });
+        }
+    }
+
     createTask = async (req, res) => {
         try {
             const newTask = await this.taskService.createTask(req.body, req.params.id);

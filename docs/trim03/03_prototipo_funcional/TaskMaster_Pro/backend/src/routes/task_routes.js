@@ -75,7 +75,7 @@ router.get('/', verificarPermiso('Modulo Gestion Tareas', 'Visualizar Tarea'), T
 router.get('/earring/:id', verificarPermiso('Modulo Gestion Tareas', 'Visualizar Tarea'), TaskController.getTaskEarring);
 router.get('/inProgress/:id', verificarPermiso('Modulo Gestion Tareas', 'Visualizar Tarea'), TaskController.getTaskInProgress);
 router.get('/finished/:id', verificarPermiso('Modulo Gestion Tareas', 'Visualizar Tarea'), TaskController.getTaskFinished);
-
+router.get('/misTareas', verificarPermiso('Modulo Gestion Tareas', 'Visualizar Tarea'), TaskController.getMyTasks);
 
 /**
  * @swagger

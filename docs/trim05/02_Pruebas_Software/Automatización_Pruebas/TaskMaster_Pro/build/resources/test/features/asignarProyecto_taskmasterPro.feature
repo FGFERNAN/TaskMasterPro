@@ -16,5 +16,4 @@ Característica: Asignacion de proyecto en la pagina de TaskMaster Pro
 
   Escenario: Agregar Miembro Exitosamente
     Cuando hace click en el boton agregar en el usuario que desee
-    | Nikole   Bernal |
     Entonces los usuarios seleccionados deben ser agregados correctamente al proyecto y reflejarse en la lista de miembros del mismo

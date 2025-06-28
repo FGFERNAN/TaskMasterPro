@@ -1,16 +1,13 @@
-const DBConnection = require('../config/dbConnection');
+const db = require('../config/dbConnection');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
 const saltRounds = 10;
 
 class editProfileService {
-    constructor() {
-        this.db = new DBConnection();
-    }
     async getData(id) {
         try {
-            const results = await this.db.query(`SELECT * FROM usuarios WHERE id = ?`, [id]);
+            const results = await db.query(`SELECT * FROM usuarios WHERE id = ?`, [id]);
             if (results.length === 0) throw new Error("Usuario no encontrado");
             return new User(...Object.values(results[0]));
         } catch (err) {
@@ -20,15 +17,15 @@ class editProfileService {
     };
     async editProfile(id, data) {
         try {
-            const getUser = await this.db.query(`SELECT * FROM usuarios WHERE id = ?`, [id]);
+            const getUser = await db.query(`SELECT * FROM usuarios WHERE id = ?`, [id]);
             const verificarEmail = `SELECT id FROM usuarios WHERE email = ? AND id != ?;`;
-            const emailExiste = await this.db.query(verificarEmail, [data.email, id]);
+            const emailExiste = await db.query(verificarEmail, [data.email, id]);
             if(emailExiste.length > 0){
                 throw new Error("El correo electronico ingresado, ya se encuentra registrado en el sistema");
             }
             if (getUser.length != 0) {
                 var dataQry = [data.nombre, data.apellidos, data.email, data.telefono, data.tipo_documento];
-                const results = await this.db.query(`UPDATE usuarios SET nombre=?, apellidos=?, email=?, telefono=?, tipo_documento=? WHERE id=?`, [...dataQry, id]);
+                const results = await db.query(`UPDATE usuarios SET nombre=?, apellidos=?, email=?, telefono=?, tipo_documento=? WHERE id=?`, [...dataQry, id]);
                 if (results.length != 0) {
                     return { message: "Perfil actualizado con exito" };
                 } else {
@@ -45,7 +42,7 @@ class editProfileService {
     };
     async alterPassword(id, data) {
         try {
-            const getPassword = await this.db.query(`SELECT password FROM usuarios WHERE id = ?`, [id]);
+            const getPassword = await db.query(`SELECT password FROM usuarios WHERE id = ?`, [id]);
             if (getPassword.length != 0) {
                 const hashedDBPassword = getPassword[0].password;
                 const password = data.password;
@@ -54,7 +51,7 @@ class editProfileService {
                 if (isMatch) {
                     const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
                     var dataQry = [hashedPassword];
-                    const results = await this.db.query(`UPDATE usuarios SET password=? WHERE id=?`, [...dataQry, id]);
+                    const results = await db.query(`UPDATE usuarios SET password=? WHERE id=?`, [...dataQry, id]);
                     if (results.length != 0) {
                         return { message: "Contraseña actualizada con exito" };
                     } else {
@@ -73,9 +70,9 @@ class editProfileService {
     }
     async cancelUser(id) {
         try {
-            const getUser = await this.db.query(`SELECT * FROM usuarios WHERE id  = ?`, [id]);
+            const getUser = await db.query(`SELECT * FROM usuarios WHERE id  = ?`, [id]);
             if (getUser.length != 0) {
-                const results = await this.db.query(`DELETE FROM usuarios WHERE id = ?`, [id]);
+                const results = await db.query(`DELETE FROM usuarios WHERE id = ?`, [id]);
                 if (results.length != 0) {
                     return { message: "Cuenta cancelada con exito" };
                 } else {

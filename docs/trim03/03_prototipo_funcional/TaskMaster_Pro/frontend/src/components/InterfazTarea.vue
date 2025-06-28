@@ -60,7 +60,7 @@
       <div class="row">
         <!-- Sidebar para escritorio -->
         <div class="col-md-3 custom-col d-none d-lg-block">
-          <img src="../assets/img/logos/logotipo.png" class="logo-inicio" width="300" />
+          <img src="../assets/img/logos/logotipo.png" @click="irInterfazPrincipal" class="logo-inicio boton-menu-proyecto" width="300" />
           <ul class="nav flex-column">
             <li class="nav-item">
               <a class="nav-link mi-link" @click="crearProyecto"><i class="fa-solid fa-folder-plus me-1"></i>
@@ -113,13 +113,13 @@
                 </svg> Regresar
               </button>
               <div class="d-flex align-items-center">
-                <a href="/notificaciones" class="me-2">
+                <a class="me-2">
                   <i class="fas fa-bell"></i>
                 </a>
                 <button class="btn btn-cerrar-sesion" @click="confirmarCerrarSesion">
                   <i class="fa-solid fa-right-to-bracket me-1"></i> Cerrar Sesión
                 </button>
-                <a href="/perfil" class="btn btn-perfil">
+                <a @click="irPerfil" class="btn btn-perfil">
                   <i class="fa-solid fa-user me-1"></i> Perfil
                 </a>
               </div>
@@ -136,13 +136,13 @@
 
             <!-- Botones de tarea -->
             <div class="task-buttons mb-5">
-              <button class="btn-tarea">Tarea 1</button>
-              <button class="btn-danger1" id="buton-eliminar-tarea">
+              <button class="btn-tarea">{{ nombre }}</button>
+              <button class="btn-danger1" id="buton-eliminar-tarea" @click="eliminarTarea(id)" >
                 <i class="fa-solid fa-trash me-1"></i> Eliminar
               </button>
             </div>
 
-            <form>
+            <form @submit.prevent="updateTask" novalidate>
               <!-- Nombre -->
               <div class="mb-1">
                 <label for="nombreTarea" class="form-label1">Nombre:</label>
@@ -188,10 +188,9 @@
               <div class="mb-3">
                 <label for="estado" class="form-label1">Estado:</label>
                 <select class="form-select1" id="estado" v-model="estado">
-                  <option value="1">En Progreso</option>
-                  <option value="2">Completado</option>
-                  <option value="3">En Espera</option>
-                  <option value="4">Cancelado</option>
+                  <option value="Pendiente">Pendiente</option>
+                  <option value="En Curso">En Curso</option>
+                  <option value="Terminada">Terminada</option>
                 </select>
               </div>
 
@@ -199,27 +198,25 @@
               <div class="mb-3">
                 <label for="prioridad" class="form-label1">Prioridad:</label>
                 <select class="form-select1" id="prioridad" v-model="prioridad">
-                  <option value="1">Alta</option>
-                  <option value="2">Media</option>
-                  <option value="3">Baja</option>
+                  <option value="Alta">Alta</option>
+                  <option value="Media">Media</option>
+                  <option value="Baja">Baja</option>
                 </select>
               </div>
 
               <!-- Responsable -->
               <div class="mb-3">
                 <label for="responsable" class="form-label1">Responsable:</label>
-                <select class="form-select1" id="responsable" v-model="responsable">
-                  <option value="1">Johan Garcia</option>
-                  <option value="2">Nikole Bernal</option>
-                  <option value="3">Andres Garzon</option>
+                <select class="form-select1" id="responsable" v-model="usuarioID">
+                  <option v-for="member in members" :key="member.id" :value="member.id">{{ member.nombre + ' ' +
+                    member.apellidos }}</option>
                 </select>
               </div>
+              <!-- Botón Guardar -->
+              <div class="bottom-right-button">
+                <button type="submit" class="btn-primary1 btn1">Guardar</button>
+              </div>
             </form>
-
-            <!-- Botón Guardar -->
-            <div class="bottom-right-button">
-              <button class="btn-primary1 btn1" @click="guardarTarea">Guardar</button>
-            </div>
 
             <!-- Modal Comentarios -->
             <div class="modal fade" id="modal-comentarios" tabindex="-1" aria-hidden="true">
@@ -281,6 +278,8 @@
 </template>
 
 <script>
+import api from '@/services/api';
+import { useRouter } from 'vue-router';
 // NO importar Tooltip - usar el objeto global de Bootstrap
 // import { Tooltip } from 'bootstrap';
 
@@ -289,6 +288,12 @@ export default {
     document.title = "Interfaz Tarea | TaskMaster Pro";
     // Inicializar tooltips
     this.initTooltips();
+    this.getProjects();
+    const taskId = this.$route.params.taskId;
+    this.getTaskById(taskId);
+    const projectId = this.$route.params.projectId;
+    this.proyectoID = projectId;
+    this.getProjectMembers(projectId);
   },
   updated() {
     // Reinicializar tooltips cuando el componente se actualice
@@ -296,13 +301,18 @@ export default {
   },
   data() {
     return {
-      nombre: 'Tarea 1',
-      descripcion: 'Realizar wireframes',
-      fechaInicio: '2024-02-05',
-      fechaFin: '2024-04-07',
-      estado: '1',
-      prioridad: '1',
-      responsable: '1',
+      proyectos: [],
+      id: '',
+      nombre: '',
+      descripcion: '',
+      fechaInicio: '',
+      fechaFin: '',
+      estado: '',
+      prioridad: '',
+      usuarioID: '',
+      proyectoID: '',
+      router: useRouter(),
+      members: [],
       comentarios: [
         {
           id: 1,
@@ -331,8 +341,220 @@ export default {
     }
   },
   methods: {
-    guardarTarea() {
-      alert('Tarea guardada con éxito');
+    formatDateInput(isoDate) {
+      if (!isoDate) return ''; // Manejo de valores nulos/undefined
+
+      // Opción 1: Simple y directa (recomendada para tu caso)
+      return isoDate.split('T')[0];
+    },
+    async getProjects() {
+      try {
+        const response = await api.get('/project');
+        this.proyectos = response.data.data;
+        console.log(response.data);
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
+        }
+      }
+    },
+    async getTaskById(TaskId) {
+      try {
+        const response = await api.get(`/task/${TaskId}`);
+        this.id = response.data.data.id;
+        this.nombre = response.data.data.nombre;
+        this.descripcion = response.data.data.descripcion;
+        this.fechaInicio = this.formatDateInput(response.data.data.fechaInicio);
+        this.fechaFin = this.formatDateInput(response.data.data.fechaFin);
+        this.estado = response.data.data.estado;
+        this.prioridad = response.data.data.prioridad;
+        this.usuarioID = response.data.data.usuarioID;
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.message === 'Tarea no encontrada') {
+            console.log(serverErrors);
+            alert(`${serverErrors.message} en la base de datos`);
+          } else if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
+            console.log(serverErrors.mensaje);
+            this.$router.push('/error403');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
+        }
+      }
+    },
+    async updateTask() {
+      try {
+        const response = await api.put(`/task/${this.id}`, {
+          nombre: this.nombre,
+          descripcion: this.descripcion,
+          fechaInicio: this.fechaInicio,
+          fechaFin: this.fechaFin,
+          estado: this.estado,
+          prioridad: this.prioridad,
+          usuarioID: this.usuarioID
+        });
+        console.log(response.data);
+        alert(response.data.message);
+        this.$router.push(`/interfaz-proyecto/${this.proyectoID}`);
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.message === 'Tarea no actualizada') {
+            console.log(serverErrors);
+            alert(`${serverErrors.message}, ingresa los parametros necesarios para realizar esta acción`);
+          } else if (serverErrors.message === 'Unregistered task') {
+            console.log(serverErrors);
+            alert(`${serverErrors.message}, el proyecto que intentas actualizar no se encuentra en la base de datos.`);
+          } else if (serverErrors.message === 'La fecha de inicio no puede ser posterior a la fecha de fin') {
+            this.backendErrors.fechaFin = `${serverErrors.message}`;
+            this.backendErrors.fechaInicio = `${serverErrors.message}`;
+            this.v$.fechaFin.$reset();
+            this.v$.fechaInicio.$reset();
+          } else if (serverErrors.message === 'El nombre ingresado ya se encuentra registrado en una tarea activa en el sistema') {
+            this.backendErrors.nombre = `${serverErrors.message}`;
+            this.v$.nombre.$reset();
+          } else if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a esta función`);
+            this.$router.push('/iniciar-sesion');
+          } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
+            console.log(serverErrors.mensaje);
+            this.$router.push('/error403');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
+        }
+      }
+    },
+    async eliminarTarea(id) {
+      try {
+        if (confirm('¿Estás seguro que deseas eliminar este proyecto?')) {
+          const response = await api.delete(`/task/${id}`);
+          console.log(response.data.message);
+          alert(response.data.message);
+          this.$router.push(`/interfaz-proyecto/${this.proyectoID}`)
+        }
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.message === 'Task not exists') {
+            console.log(serverErrors.message);
+            alert(serverErrors.message);
+          } else if (serverErrors.message === 'Tarea no eliminada') {
+            console.log(serverErrors.message);
+            alert(serverErrors.message);
+          } else if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
+            console.log(serverErrors.mensaje);
+            this.$router.push('/error403');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
+        }
+      }
+    },
+    redirectToEditProject(projectId) {
+      this.$router.push({ name: 'EditarProyecto', params: { id: projectId } });
+    },
+    async deleteProject(projectId) {
+      try {
+        if (confirm('¿Estás seguro que deseas eliminar este proyecto?')) {
+          const response = await api.delete(`/project/${projectId}}`);
+          this.proyectos = this.proyectos.filter(project => project.id !== projectId);
+          console.log(response.data.message);
+          alert(response.data.message);
+        }
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.message === 'Project not exists') {
+            console.log(serverErrors.message);
+            alert(serverErrors.message);
+          } else if (serverErrors.message === 'Proyecto no eliminado') {
+            console.log(serverErrors.message);
+            alert(serverErrors.message);
+          } else if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
+            console.log(serverErrors.mensaje);
+            this.$router.push('/error403');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
+        }
+      }
+    },
+    async getProjectMembers(projectId) {
+      try {
+        const response = await api.get(`/project/miembros/${projectId}`);
+        this.members = response.data.data;
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.message === 'Este proyecto no tiene ningun miembro asignado') {
+            console.log(serverErrors);
+            alert(`${serverErrors.message}`);
+          } else if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
+            console.log(serverErrors.mensaje);
+            this.$router.push('/error403');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
+        }
+      }
+    },
+    irInterfazProyecto(projectId) {
+      this.$router.push({ name: 'InterfazProyecto', params: { id: projectId } });
+    },
+    irPlantillasProyecto() {
+      this.router.push('/plantillas-proyecto');
+    },
+    irInterfazPrincipal() {
+      this.router.push('/interfaz-principal');
+    },
+    crearProyecto() {
+      this.router.push('/crear-proyecto');
+    },
+    irPerfil() {
+      this.router.push('/perfil-completo');
+    },
+    goBack() {
+      this.$router.go(-1); // Navegar hacia atrás
+    },
+    async confirmarCerrarSesion() {
+      if (confirm("¿Estás seguro que quieres cerrar sesión?")) {
+        const response = await api.post("/logout");
+        this.router.push("/iniciar-sesion");
+        alert(response.data.message);
+      }
     },
     initTooltips() {
       try {
@@ -351,7 +573,7 @@ export default {
             tooltip.dispose();
           }
         });
-        
+
         // Inicializar nuevos tooltips
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
         tooltipTriggerList.forEach(tooltipTriggerEl => {
