@@ -62,7 +62,8 @@
       <div class="row">
         <!-- Sidebar para escritorio -->
         <div class="col-md-3 custom-col d-none d-lg-block">
-          <img src="../assets/img/logos/logotipo.png" class="logo-inicio" width="300" />
+          <img src="../assets/img/logos/logotipo.png" @click="irInterfazPrincipal"
+            class="logo-inicio boton-menu-proyecto" width="300" />
           <ul class="nav flex-column">
             <li class="nav-item">
               <a class="nav-link mi-link" @click="crearProyecto"><i class="fa-solid fa-folder-plus me-1"></i>
@@ -139,9 +140,9 @@
                 </ul>
               </div>
               <div class="col-12 col-lg-12 col-xxl-4 mb-2 mb-lg-0">
-                <div class="progress w-100" role="progressbar" aria-label="Success example" aria-valuenow="80"
+                <div class="progress w-100" role="progressbar" aria-label="Success example" :aria-valuenow="porcentajeNum"
                   aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar bg-success" style="width: 80%">80%</div>
+                  <div class="progress-bar bg-success" :style="{width: porcentaje }">{{ porcentaje }}</div>
                 </div>
               </div>
               <div class="etiqueta position-absolute">
@@ -150,7 +151,8 @@
             </div>
             <hr style="height:5px; background-color:#000; margin-top:-10px;">
             <div class="d-flex justify-content-between mb-3">
-              <button @click="navigateToCreateTask" class="btn btn-success"><i class="fa-solid fa-plus me-1"></i>
+              <button @click="navigateToCreateTask(proyectos.id)" class="btn btn-success"><i
+                  class="fa-solid fa-plus me-1"></i>
                 Agregar Tarea</button>
             </div>
             <div class="accordion accordion-flush table-container" id="accordionExample">
@@ -165,25 +167,23 @@
                   data-bs-parent="#accordionExample">
                   <div class="accordion-body">
                     <input class="form-control custom-search-input mb-2" type="search"
-                      placeholder="Buscar en Tareas Pendientes" v-model="searchQuery" @keyup="filterPendingTasks">
+                      placeholder="Buscar en Tareas Pendientes" v-model="searchQuery">
                     <div class="table-responsive">
                       <table class="table table-bordered">
                         <thead>
                           <tr>
                             <th>Nombre Tarea</th>
                             <th>Fecha de Entrega</th>
-                            <th>Proyecto</th>
                             <th>Responsable</th>
                             <th>Prioridad</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr v-for="task in filteredTasks" :key="task.id">
-                            <td><a class="nav-link mi-link" :href="'interfazTarea.html'">{{ task.name }}</a></td>
-                            <td>{{ task.dueDate }}</td>
-                            <td>{{ task.project }}</td>
-                            <td>{{ task.responsible }}</td>
-                            <td>{{ task.priority }}</td>
+                          <tr v-for="task in filterTaskPending" :key="task.id">
+                            <td><a class="nav-link mi-link" @click="irAInterfazTarea(task.proyectoID, task.id)" >{{ task.nombre }}</a></td>
+                            <td>{{ formatearFecha(task.fechaFin) }}</td>
+                            <td>{{ task.usuarioID }}</td>
+                            <td>{{ task.prioridad }}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -204,25 +204,23 @@
                   data-bs-parent="#accordionExample">
                   <div class="accordion-body">
                     <input class="form-control custom-search-input mb-2" v-model="searchInProgress" type="search"
-                      placeholder="Buscar en Tareas En Curso" @keyup="filterInProgressTasks">
+                      placeholder="Buscar en Tareas En Curso">
                     <div class="table-responsive">
                       <table class="table table-bordered">
                         <thead>
                           <tr>
                             <th>Nombre Tarea</th>
                             <th>Fecha de Entrega</th>
-                            <th>Proyecto</th>
                             <th>Responsable</th>
                             <th>Prioridad</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr v-for="task in filteredInProgressTasks" :key="task.name">
-                            <td>{{ task.name }}</td>
-                            <td>{{ task.dueDate }}</td>
-                            <td>{{ task.project }}</td>
-                            <td>{{ task.responsible }}</td>
-                            <td>{{ task.priority }}</td>
+                          <tr v-for="task in filterTaskInProgress" :key="task.nombre">
+                            <td><a :id="'edit-' + task.nombre" class="nav-link mi-link" @click="irAInterfazTarea(task.proyectoID, task.id)" >{{ task.nombre }}</a></td>
+                            <td>{{ formatearFecha(task.fechaFin) }}</td>
+                            <td>{{ task.usuarioID }}</td>
+                            <td>{{ task.prioridad }}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -243,25 +241,23 @@
                   data-bs-parent="#accordionExample">
                   <div class="accordion-body">
                     <input class="form-control custom-search-input mb-2" v-model="searchCompleted" type="search"
-                      placeholder="Buscar en Tareas Terminadas" @keyup="filterCompletedTasks">
+                      placeholder="Buscar en Tareas Terminadas">
                     <div class="table-responsive">
                       <table class="table table-bordered">
                         <thead>
                           <tr>
                             <th>Nombre Tarea</th>
                             <th>Fecha de Entrega</th>
-                            <th>Proyecto</th>
                             <th>Responsable</th>
                             <th>Prioridad</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr v-for="task in filteredCompletedTasks" :key="task.name">
-                            <td>{{ task.name }}</td>
-                            <td>{{ task.dueDate }}</td>
-                            <td>{{ task.project }}</td>
-                            <td>{{ task.responsible }}</td>
-                            <td>{{ task.priority }}</td>
+                          <tr v-for="task in filterTaskFinished" :key="task.nombre">
+                            <td><a class="nav-link mi-link" @click="irAInterfazTarea(task.proyectoID, task.id)" >{{ task.nombre }}</a></td>
+                            <td>{{ formatearFecha(task.fechaFin) }}</td>
+                            <td>{{ task.usuarioID }}</td>
+                            <td>{{ task.prioridad }}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -287,31 +283,41 @@ export default {
       searchQuery: '',
       searchInProgress: '',
       searchCompleted: '',
-      tasks: [
-        { id: 1, name: 'Tarea 1', dueDate: '17 de Agosto', project: 'Veterinaria', responsible: 'Andres Garzon', priority: 'Alta' },
-        { id: 2, name: 'Tarea 2', dueDate: '20 Julio', project: 'Veterinaria', responsible: 'Johan Garcia', priority: 'Media' },
-        { id: 3, name: 'Tarea 3', dueDate: '2 de Agosto', project: 'Veterinaria', responsible: 'Erika Daniela', priority: 'Baja' }
-      ],
-      inProgressTasks: [
-        { id: 4, name: 'Tarea 4', dueDate: '5 de Agosto', project: 'Veterinaria', responsible: 'Erika Daniela', priority: 'Alta' },
-        { id: 5, name: 'Tarea 5', dueDate: '10 de Agosto', project: 'Veterinaria', responsible: 'Johan Garcia', priority: 'Media' },
-        { id: 6, name: 'Tarea 6', dueDate: '2 de Agosto', project: 'Veterinaria', responsible: 'Erika Daniela', priority: 'Baja' },
-        { id: 7, name: 'Tarea 7', dueDate: '2 de Agosto', project: 'Veterinaria', responsible: 'Erika Daniela', priority: 'Baja' }
-      ],
-      completedTasks: [
-        { id: 8, name: 'Tarea 8', dueDate: '1 de Julio', project: 'Veterinaria', responsible: 'Andres Garzon', priority: 'Alta' },
-        { id: 9, name: 'Tarea 9', dueDate: '3 de Julio', project: 'Veterinaria', responsible: 'Erika Daniela', priority: 'Baja' },
-        { id: 10, name: 'Tarea 10', dueDate: '2 de Agosto', project: 'Veterinaria', responsible: 'Erika Daniela', priority: 'Baja' }
-      ],
-      filteredTasks: [],
-      filteredInProgressTasks: [],
-      filteredCompletedTasks: [],
+      tasksEarring: [],
+      inProgressTasks: [],
+      completedTasks: [],
       proyectos: [],
       nombre: '',
+      porcentaje: '',
+      porcentajeNum: '',
       router: useRouter()
     };
   },
+  computed: {
+    filterTaskPending() {
+      return this.tasksEarring.filter(t =>
+        t.nombre.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    },
+    filterTaskInProgress() {
+      return this.inProgressTasks.filter(t =>
+        t.nombre.toLowerCase().includes(this.searchInProgress.toLowerCase())
+      );
+    },
+    filterTaskFinished() {
+      return this.completedTasks.filter(t =>
+        t.nombre.toLowerCase().includes(this.searchCompleted.toLowerCase())
+      );
+    }
+  },
   methods: {
+    formatearFecha(fechaISO) {
+      const fecha = new Date(fechaISO);
+      return fecha.toLocaleDateString('es-CO', {
+        day: 'numeric',
+        month: 'long'
+      });
+    },
     async getProjects() {
       try {
         const response = await api.get('/project');
@@ -320,8 +326,71 @@ export default {
       } catch (error) {
         if (error.response && error.response.data) {
           const serverErrors = error.response.data;
-          console.log(serverErrors);
-          this.$router.push('/error500');
+          if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
+        }
+      }
+    },
+    async getTaskEarring(proyectoID) {
+      try {
+        const response = await api.get(`/task/earring/${proyectoID}`);
+        this.tasksEarring = response.data.data;
+        console.log(response.data);
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
+        }
+      }
+    },
+    async getTaskInProgress(proyectoID) {
+      try {
+        const response = await api.get(`/task/inProgress/${proyectoID}`);
+        this.inProgressTasks = response.data.data;
+        console.log(response.data);
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
+        }
+      }
+    },
+    async getTaskFinished(proyectoID) {
+      try {
+        const response = await api.get(`/task/finished/${proyectoID}`);
+        this.completedTasks = response.data.data;
+        console.log(response.data);
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
         }
       }
     },
@@ -390,23 +459,28 @@ export default {
         alert(response.data.message);
       }
     },
-    filterPendingTasks() {
-      this.filteredTasks = this.tasks.filter(task =>
-        task.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
+    calculoPorcentaje() {
+      try {
+        const totalTareas = this.tasksEarring.length + this.inProgressTasks.length + this.completedTasks.length;
+        if(totalTareas === 0) {
+          this.porcentaje = '0%';
+          return;
+        }
+        const tareasCompletadas = this.completedTasks.length;
+        const reglaDeTres = (100*tareasCompletadas)/totalTareas;
+        const results = `${Math.round(reglaDeTres)}%`;
+        this.porcentaje = results;
+        this.porcentajeNum = Math.round(reglaDeTres);
+        console.log(totalTareas);
+      } catch (err) {
+        console.error('Error al calcular el porcentaje: ', err.message);
+      }
     },
     irPlantillasProyecto() {
       this.router.push('/plantillas-proyecto');
     },
-    filterInProgressTasks() {
-      this.filteredInProgressTasks = this.inProgressTasks.filter(task =>
-        task.name.toLowerCase().includes(this.searchInProgress.toLowerCase())
-      );
-    },
-    filterCompletedTasks() {
-      this.filteredCompletedTasks = this.completedTasks.filter(task =>
-        task.name.toLowerCase().includes(this.searchCompleted.toLowerCase())
-      );
+    irInterfazPrincipal() {
+      this.router.push('/interfaz-principal');
     },
     navigateToMembers(projectId) {
       this.$router.push({ name: 'Miembros', params: { id: projectId } });
@@ -414,8 +488,11 @@ export default {
     irPerfil() {
       this.$router.push("/perfil-completo");
     },
-    navigateToCreateTask() {
-      // lógica para redirigir
+    navigateToCreateTask(projectId) {
+      this.$router.push({ name: 'CrearTarea', params: { id: projectId } });
+    },
+    irAInterfazTarea(projectID, taskID) {
+      this.$router.push({ name: "InterfazTarea", params: { projectId: projectID, taskId: taskID }})
     },
     irInterfazProyecto(projectId) {
       this.$router.push({ name: 'InterfazProyecto', params: { id: projectId } });
@@ -434,19 +511,24 @@ export default {
       async handler(newId) {
         if (newId) {
           await this.getProjectById(newId);
+          await this.getTaskEarring(newId);
+          await this.getTaskInProgress(newId);
+          await this.getTaskFinished(newId);
+          this.calculoPorcentaje(newId);
           // También podrías recargar otras datos dependientes del proyecto
         }
       }
     }
   },
-  mounted() {
+  async mounted() {
     document.title = "Interfaz Proyecto | TaskMaster Pro";
-    this.filteredTasks = this.tasks;
-    this.filteredInProgressTasks = this.inProgressTasks;
-    this.filteredCompletedTasks = this.completedTasks;
-    this.getProjects();
     const projectId = this.$route.params.id;
-    this.getProjectById(projectId);
+    await this.getProjects();
+    await this.getTaskEarring(projectId);
+    await this.getTaskInProgress(projectId);
+    await this.getTaskFinished(projectId);
+    await this.getProjectById(projectId);
+    this.calculoPorcentaje();
   }
 };
 

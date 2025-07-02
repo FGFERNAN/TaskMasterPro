@@ -3,7 +3,7 @@ const cors = require('cors');
 const session = require('express-session');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
-const DBConnection = require('./config/dbConnection');
+const db = require('./config/dbConnection');
 const userRoutes = require("./routes/user_routes");
 const roleRoutes = require("./routes/role_routes");
 const moduleRoutes = require("./routes/module_routes");
@@ -12,8 +12,7 @@ const logoutRoutes = require('./routes/logout_routes');
 const editProfile = require('./routes/editProfile_routes');
 const recoveryPassword = require('./routes/recoveryPassword_routes');
 const projectRoutes = require('./routes/project_routes');
-
-const db = new DBConnection();
+const taskRoutes = require('./routes/task_routes');
 
 
 //Declared
@@ -22,11 +21,12 @@ const port = 4000;
 
 //Middleware
 app.use(cors({
-  origin: 'http://localhost:8080',
+  origin: 'https://l0n9v870-8080.use2.devtunnels.ms',
   credentials: true
 }));
 app.use(express.json());
 
+//Configuración de las Cookies
 app.use(session({
   secret: 'holaMundo1234',
   resave: false,
@@ -35,7 +35,8 @@ app.use(session({
   cookie: {
     secure: false,
     httpOnly: true,
-    maxAge: 3600000
+    //Tiempo de las cookies 
+    maxAge: 3600000 //(1 Hora)
   }
 }));
 
@@ -72,6 +73,7 @@ app.use('/editProfile', editProfile);
 app.use('/session', loginRoutes);
 app.use('/recoveryPassword', recoveryPassword);
 app.use('/project', projectRoutes);
+app.use('/task', taskRoutes);
 
 /* El fragmento de código `app.listen(port,()=>{ console.log(`Listener Server http://localhost:`); });`
 configura un servidor para que escuche en un puerto específico (en este caso, el puerto 4000). Cuando el

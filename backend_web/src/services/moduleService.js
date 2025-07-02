@@ -1,14 +1,10 @@
-const DBConnection = require('../config/dbConnection');
+const db = require('../config/dbConnection');
 const Module = require('../models/module');
 
 class ModuleService{
-    constructor(){
-        this.db = new DBConnection();
-    }
-
     async getAllModules(){
         try {
-            const results = await this.db.query(`SELECT * FROM modulos`);
+            const results = await db.query(`SELECT * FROM modulos`);
             return results.map(module => new Module(...Object.values(module)));
         } catch (err) {
             console.error('Error fetching modules: ', err.message);
@@ -18,7 +14,7 @@ class ModuleService{
 
     async getModuleById(id){
         try {
-            const results = await this.db.query(`SELECT * FROM modulos WHERE id = ?`, [id]);
+            const results = await db.query(`SELECT * FROM modulos WHERE id = ?`, [id]);
             if (results.length === 0) throw new Error("Modulo no encontrado");
             return new Module(...Object.values(results[0]));
         } catch(err) {
@@ -31,7 +27,7 @@ class ModuleService{
         try {
             var dataQry = [data.nombre]; 
             var qry = `INSERT INTO modulos (nombre) VALUES(?);`;
-            const results = await this.db.query(qry, dataQry);
+            const results = await db.query(qry, dataQry);
             if (results.length === 0) {
                 throw new Error("Modulo no creado");
             }
@@ -45,10 +41,10 @@ class ModuleService{
 
     async updateModule(id, data){
         try {
-            const getModule = await this.db.query(`SELECT * FROM modulos WHERE id = ?`, [id]);
+            const getModule = await db.query(`SELECT * FROM modulos WHERE id = ?`, [id]);
             if(getModule.length != 0){
                 var dataQry = [data.nombre];
-                const results = await this.db.query(`UPDATE modulos SET nombre=? WHERE id=?`, [...dataQry, id]);
+                const results = await db.query(`UPDATE modulos SET nombre=? WHERE id=?`, [...dataQry, id]);
                 if(results.length != 0){
                     return { message: "Modulo actualizado con exito" };
                 } else {
@@ -66,9 +62,9 @@ class ModuleService{
 
     async deleteModule(id){
         try {
-            const getModule = await this.db.query(`SELECT * FROM modulos WHERE id  = ?`, [id]);
+            const getModule = await db.query(`SELECT * FROM modulos WHERE id  = ?`, [id]);
             if(getModule.length != 0){
-                const results = await this.db.query(`DELETE FROM modulos WHERE id = ?`, [id]);
+                const results = await db.query(`DELETE FROM modulos WHERE id = ?`, [id]);
                 if(results.length != 0){
                     return { message: "Modulo eliminado con exito"};
                 } else {

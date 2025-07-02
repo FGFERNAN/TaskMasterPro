@@ -1,15 +1,11 @@
-const DBConnection = require('../config/dbConnection');
+const db = require('../config/dbConnection');
 const Project = require('../models/project');
 const Members = require('../models/members');
 
 class ProjectService {
-    constructor() {
-        this.db = new DBConnection();
-    }
-
     // async getAllProjects() {
     //     try {
-    //         const results = await this.db.query(`SELECT * FROM getAllProjects WHERE fechaInicio AND fechaFIN IS NOT NULL;`);
+    //         const results = await db.query(`SELECT * FROM getAllProjects WHERE fechaInicio AND fechaFIN IS NOT NULL;`);
     //         return results.map(project => new Project(...Object.values(project)));
     //     } catch (err) {
     //         console.error('Error fetching projects: ', err.message);
@@ -19,7 +15,7 @@ class ProjectService {
 
     async getPlantillasProyecto() {
         try {
-            const results = await this.db.query(`SELECT * FROM getAllProjects WHERE (fechaInicio IS NULL OR fechaInicio = '') AND (fechaFin IS NULL OR fechaFin = '');`);
+            const results = await db.query(`SELECT * FROM getAllProjects WHERE (fechaInicio IS NULL OR fechaInicio = '') AND (fechaFin IS NULL OR fechaFin = '');`);
             return results.map(project => new Project(...Object.values(project)));
         } catch (err) {
             console.error('Error fetching projects: ', err.message);
@@ -29,7 +25,7 @@ class ProjectService {
 
     async getProjects(userId) {
         try {
-            const results = await this.db.query(`SELECT p.* FROM proyectos p JOIN usuarios_proyectos up ON p.id = up.proyectoID WHERE up.usuarioID = ?;`, [userId]);
+            const results = await db.query(`SELECT p.* FROM proyectos p JOIN usuarios_proyectos up ON p.id = up.proyectoID WHERE up.usuarioID = ?;`, [userId]);
             return results.map(project => new Project(...Object.values(project)));
         } catch (err) {
             console.error('Error fetching projects: ', err.message)
@@ -38,7 +34,7 @@ class ProjectService {
 
     async getProjectById(id) {
         try {
-            const results = await this.db.query(`SELECT * FROM proyectos WHERE id = ?`, [id]);
+            const results = await db.query(`SELECT * FROM proyectos WHERE id = ?`, [id]);
             if (results.length === 0) throw new Error("Proyecto no encontrado");
             return new Project(...Object.values(results[0]));
         } catch (err) {
@@ -51,7 +47,7 @@ class ProjectService {
         try {
             if (!isTemplate && (data.fechaInicio || data.fechaFin)) {
                 const verificarNombre = `SELECT id FROM proyectos WHERE nombre = ? AND (fechaInicio IS NOT NULL OR fechaFin IS NOT NULL) AND id != ?;`;
-                const nombreExiste = await this.db.query(verificarNombre, [data.nombre, data.id || 0]);
+                const nombreExiste = await db.query(verificarNombre, [data.nombre, data.id || 0]);
                 if (nombreExiste.length > 0) {
                     throw new Error("El nombre ingresado ya se encuentra registrado en otro proyecto activo");
                 }
@@ -71,7 +67,7 @@ class ProjectService {
                 projectData.etiquetasID,
             ];
             var qry = `INSERT INTO proyectos(nombre, descripcion, fechaInicio, fechaFin, estado, prioridad, etiquetasID) VALUES (?, ?, ?, ?, ?, ?, ?);`;
-            const results = await this.db.query(qry, dataQry);
+            const results = await db.query(qry, dataQry);
             const newProjectId = results.insertId;
             if(!isTemplate && userId) {
                 await this.addMember(newProjectId, userId);
@@ -103,7 +99,7 @@ class ProjectService {
             await this.createProject(newProject, false, userId);
 
             // 3. Devolver la plantilla original a estado "plantilla"
-            await this.db.query(
+            await db.query(
                 `UPDATE proyectos SET fechaInicio = NULL, fechaFin = NULL WHERE id = ?`,
                 [templateId]
             );
@@ -137,17 +133,17 @@ class ProjectService {
             }
             if (currentProject.fechaInicio || currentProject.fechaFin) {
                 const verificarNombre = `SELECT id FROM proyectos WHERE nombre = ? AND (fechaInicio IS NOT NULL OR fechaFin IS NOT NULL) AND id != ?;`;
-                const nombreExiste = await this.db.query(verificarNombre, [data.nombre, id]);
+                const nombreExiste = await db.query(verificarNombre, [data.nombre, id]);
                 if (nombreExiste.length > 0) {
                     throw new Error("El nombre ingresado ya se encuentra registrado en un proyecto activo en el sistema");
                 }
             }
-            const getProject = await this.db.query(`SELECT * FROM proyectos WHERE id = ?`, [id]);
+            const getProject = await db.query(`SELECT * FROM proyectos WHERE id = ?`, [id]);
 
             if (getProject.length != 0) {
                 var dataQry = [data.nombre, data.descripcion, data.fechaInicio, data.fechaFin, data.estado, data.prioridad, data.etiquetasID];
                 if (data.fechaInicio > data.fechaFin) throw new Error('La fecha de inicio no puede ser posterior a la fecha de fin');
-                const results = await this.db.query(`UPDATE proyectos SET nombre=?, descripcion=?, fechaInicio=?, fechaFin=?, estado=?, prioridad=?, etiquetasID=? WHERE id=?`, [...dataQry, id]);
+                const results = await db.query(`UPDATE proyectos SET nombre=?, descripcion=?, fechaInicio=?, fechaFin=?, estado=?, prioridad=?, etiquetasID=? WHERE id=?`, [...dataQry, id]);
                 if (results.length != 0) {
                     return { message: "Proyecto actualizado con exito" };
                 } else {
@@ -165,9 +161,9 @@ class ProjectService {
 
     async deleteProject(id) {
         try {
-            const getProject = await this.db.query(`SELECT * FROM proyectos WHERE id  = ?`, [id]);
+            const getProject = await db.query(`SELECT * FROM proyectos WHERE id  = ?`, [id]);
             if (getProject.length != 0) {
-                const results = await this.db.query(`DELETE FROM proyectos WHERE id = ?`, [id]);
+                const results = await db.query(`DELETE FROM proyectos WHERE id = ?`, [id]);
                 if (results.length != 0) {
                     return { message: "Proyecto eliminado con exito" };
                 } else {
@@ -185,15 +181,15 @@ class ProjectService {
     async addMember(projectId, userId) {
         try {
             const verificarMiembros = `SELECT id FROM usuarios_proyectos WHERE proyectoID = ? AND usuarioID = ?;`;
-            const miembroExiste = await this.db.query(verificarMiembros, [projectId, userId]);
+            const miembroExiste = await db.query(verificarMiembros, [projectId, userId]);
             const verificarProyecto = `SELECT * FROM proyectos WHERE id = ?;`;
-            const proyectoExiste = await this.db.query(verificarProyecto, [projectId]);
+            const proyectoExiste = await db.query(verificarProyecto, [projectId]);
             if (miembroExiste.length > 0) {
                 throw new Error("El miembro que quieres agregar ya se encuentra asignado a este proyecto");
             } else if(proyectoExiste.length === 0) {
                 throw new Error("El proyecto al que intentas agregar este miembro no existe");
             }
-            const results = await this.db.query(`INSERT INTO usuarios_proyectos (proyectoID, usuarioID) VALUES (?,?)`, [projectId, userId]);
+            const results = await db.query(`INSERT INTO usuarios_proyectos (proyectoID, usuarioID) VALUES (?,?)`, [projectId, userId]);
             if (results.length != 0) {
                 return { message: "Usuario asignado con exito" };
             } else {
@@ -207,7 +203,7 @@ class ProjectService {
 
     async getProjectMembers(projectId) {
         try {
-            const results = await this.db.query(`SELECT u.id, u.nombre, u.apellidos, u.email FROM usuarios_proyectos up 
+            const results = await db.query(`SELECT u.id, u.nombre, u.apellidos, u.email FROM usuarios_proyectos up 
                 JOIN usuarios u ON up.usuarioID = u.id WHERE up.proyectoID = ?;`, [projectId]);
             if (results.length === 0) throw new Error("Este proyecto no tiene ningun miembro asignado");
             return results.map(member => new Members(...Object.values(member)));
@@ -220,9 +216,9 @@ class ProjectService {
     async deleteMembers(projectId, userId) {
         try {
             const verificarMiembros = `SELECT id FROM usuarios_proyectos WHERE proyectoID = ? AND usuarioID = ?;`;
-            const miembroExiste = await this.db.query(verificarMiembros, [projectId, userId]);
+            const miembroExiste = await db.query(verificarMiembros, [projectId, userId]);
             if (miembroExiste.length > 0) {
-                const results = await this.db.query(`DELETE FROM usuarios_proyectos WHERE proyectoID = ? AND usuarioID = ?`, [projectId, userId]);
+                const results = await db.query(`DELETE FROM usuarios_proyectos WHERE proyectoID = ? AND usuarioID = ?`, [projectId, userId]);
                 if (results.length != 0) {
                     return { message: "Miembro eliminado con exito" };
                 } else {

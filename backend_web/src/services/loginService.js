@@ -1,4 +1,4 @@
-const DBConnection = require('../config/dbConnection');
+const db = require('../config/dbConnection');
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
@@ -6,19 +6,15 @@ const crypto = require('crypto');
 const saltRounds = 10;
 
 class LoginService {
-    constructor() {
-        this.db = new DBConnection();
-    }
-
     async login(data) {
         try {
             const email = data.email;
             const password = data.password;
-            const getUser = await this.db.query(`SELECT * FROM usuarios WHERE email=?`, [email]);
+            const getUser = await db.query(`SELECT * FROM usuarios WHERE email=?`, [email]);
             if (Object.keys(getUser).length != 0) {
                 const isMatch = await bcrypt.compare(password, getUser[0].password);
                 if (isMatch) {
-                    return { id: getUser[0].id, nombre: getUser[0].nombre, apellidos: getUser[0].apellidos, message: "Inicio de sesión exitoso" };
+                    return { id: getUser[0].id, nombre: getUser[0].nombre, apellidos: getUser[0].apellidos, rolID: getUser[0].rolID, message: "Inicio de sesión exitoso" };
                 } else {
                     throw new Error("Password Error");
                 }
@@ -33,7 +29,7 @@ class LoginService {
     async recoveryPassword(data) {
         try {
             const email = data.email;
-            const getUser = await this.db.query(`SELECT * FROM usuarios WHERE email = ?`, [email]);
+            const getUser = await db.query(`SELECT * FROM usuarios WHERE email = ?`, [email]);
             if (getUser.length === 0) {
                 throw new Error("El usuario no existe");
             }
@@ -41,7 +37,7 @@ class LoginService {
             const token = crypto.randomBytes(32).toString('hex');
             const expiresToken = new Date(Date.now() + 900000); // 15 minuto de validez
 
-            await this.db.query(`UPDATE usuarios SET token = ?, expiresToken = ? WHERE email = ?`, [token, expiresToken, email]);
+            await db.query(`UPDATE usuarios SET token = ?, expiresToken = ? WHERE email = ?`, [token, expiresToken, email]);
 
             // Configuración del transporte para envio de correos 
             const transporter = nodemailer.createTransport({
@@ -94,14 +90,14 @@ class LoginService {
     async resetPassword(token, data) {
         try {
             const password = data.password;
-            const user = await this.db.query(`SELECT * FROM usuarios WHERE token = ? AND expiresToken > NOW()`, [token]);
+            const user = await db.query(`SELECT * FROM usuarios WHERE token = ? AND expiresToken > NOW()`, [token]);
             if (user.length === 0) {
                 throw new Error("Token invalido o expirado");
             }
             const hashedPassword = await bcrypt.hash(password, saltRounds);
 
             // Actualizamos la contraseña en la base de datos y limpiamos el token
-            await this.db.query(`UPDATE usuarios SET password = ?, token = NULL, expiresToken = NULL WHERE id = ?`, [hashedPassword, user[0].id]);
+            await db.query(`UPDATE usuarios SET password = ?, token = NULL, expiresToken = NULL WHERE id = ?`, [hashedPassword, user[0].id]);
 
             return { message: "Contraseña restablecida exitosamente" };
         } catch (err) {

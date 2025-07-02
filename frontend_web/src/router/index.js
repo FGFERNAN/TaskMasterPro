@@ -22,6 +22,9 @@ import creacionProyecto from '@/components/creacionProyecto.vue';
 import PlantillasProyecto from '@/components/PlantillasProyecto.vue';
 import CrearPlantilla from '@/components/CrearPlantilla.vue';
 import EditarPlantilla from '@/components/EditarPlantilla.vue';
+import InterfazTarea from '@/components/InterfazTarea.vue';
+import CrearTarea from '@/components/crearTarea.vue';
+
 
 
 
@@ -49,7 +52,9 @@ const routes = [
   { path: '/crear-proyecto', component: creacionProyecto },
   { path: '/plantillas-proyecto', component: PlantillasProyecto },
   { path: '/crear-plantilla', component: CrearPlantilla},
-  { path: '/editar-plantilla/:id', name: 'EditarPlantilla', component: EditarPlantilla}
+  { path: '/editar-plantilla/:id', name: 'EditarPlantilla', component: EditarPlantilla},
+  { path: '/interfaz-tarea/:projectId/:taskId', name: 'InterfazTarea', component: InterfazTarea, props: true },
+  { path: '/crear-tarea/:id', name: 'CrearTarea', component: CrearTarea, props: true}
 ];
 
 const router = createRouter({

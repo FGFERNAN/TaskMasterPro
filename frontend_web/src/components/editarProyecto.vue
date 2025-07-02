@@ -27,7 +27,7 @@
         <div class="col-sm-10 has-validation">
           <div class="input-group mb-3">
             <span class="input-group-text border-input"><i class="fa-regular fa-folder"></i></span>
-            <input type="text" class="form-control border-input"
+            <input type="text" class="form-control border-input" :name="nombre"
               :class="{ 'is-invalid': v$.nombre.$error || backendErrors.nombre, 'is-valid': !v$.nombre.$invalid && !backendErrors.nombre && nombre }"
               v-model="nombre" @blur="v$.nombre.$touch()" />
             <div v-for="error in v$.nombre.$errors" :key="error.$uid" class="invalid-feedback">
