@@ -24,6 +24,8 @@ import CrearPlantilla from '@/components/CrearPlantilla.vue';
 import EditarPlantilla from '@/components/EditarPlantilla.vue';
 import InterfazTarea from '@/components/InterfazTarea.vue';
 import CrearTarea from '@/components/crearTarea.vue';
+import MisTareas from '@/components/MisTareas.vue';
+
 
 
 
@@ -54,7 +56,8 @@ const routes = [
   { path: '/crear-plantilla', component: CrearPlantilla},
   { path: '/editar-plantilla/:id', name: 'EditarPlantilla', component: EditarPlantilla},
   { path: '/interfaz-tarea', name: 'InterfazTarea', component: InterfazTarea },
-  { path: '/crear-tarea', component: CrearTarea}
+  { path: '/crear-tarea', component: CrearTarea},
+  { path: '/mis-tareas', component: MisTareas}
 ];
 
 const router = createRouter({
