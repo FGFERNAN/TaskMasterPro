@@ -21,7 +21,7 @@ const port = 4000;
 
 //Middleware
 app.use(cors({
-  origin: 'http://localhost:8080',
+  origin: 'https://l0n9v870-8080.use2.devtunnels.ms',
   credentials: true
 }));
 app.use(express.json());
