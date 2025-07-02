@@ -74,6 +74,327 @@ router.get('/', verificarPermiso('Modulo Gestion Tareas', 'Visualizar Tarea'), T
 
 /**
  * @swagger
+ * /task/earring/{id}:
+ *   get:
+ *     summary: Obtener una lista de todas las tareas pendientes de un proyecto.
+ *     description: Retorna la información de las tareas pendientes segun el ID del proyecto al que corresponden.
+ *     tags:
+ *       - Tareas
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID del proyecto.
+ *     responses:
+ *       200:
+ *         description: Información de las tareas obtenida con éxito.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                   message:
+ *                     type: string
+ *                     example: Method Get  
+ *                   data: 
+ *                     type: object
+ *                     properties:
+ *                         id:
+ *                           type: integer
+ *                           example: 1
+ *                         nombre:
+ *                           type: string
+ *                           example: Tarea 2
+ *                         descripcion:
+ *                           type: string
+ *                           example: Es una tarea de ejemplo
+ *                         fechaInicio:
+ *                           type: date
+ *                           example: 2025-04-09
+ *                         fechaFin:
+ *                           type: date
+ *                           example: 2025-04-10
+ *                         estado:
+ *                           type: string
+ *                           example: Pendiente
+ *                         prioridad:
+ *                           type: string
+ *                           example: Alta
+ *                         usuarioID:
+ *                           type: integer
+ *                           example: 1030533364
+ *                         proyectoID:
+ *                           type: integer
+ *                           example: 7
+ *                   status:
+ *                     type: integer
+ *                     example: 200
+ *       404:
+ *         description: Proyecto no encontrado.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                    message:
+ *                     type: string
+ *                     example: Proyecto no encontrado.
+ *       401:
+ *         description: Usuario no autenticado.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                    mensaje:
+ *                     type: string
+ *                     example: Usuario no autenticado.
+ *       500:
+ *         description: Error interno del servidor
+ */
+router.get('/earring/:id', verificarPermiso('Modulo Gestion Tareas', 'Visualizar Tarea'), TaskController.getTaskEarring);
+
+/**
+ * @swagger
+ * /task/inProgress/{id}:
+ *   get:
+ *     summary: Obtener una lista de todas las tareas en progreso de un proyecto.
+ *     description: Retorna la información de las tareas en progreso segun el ID del proyecto al que corresponden.
+ *     tags:
+ *       - Tareas
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID del proyecto.
+ *     responses:
+ *       200:
+ *         description: Información de las tareas obtenida con éxito.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                   message:
+ *                     type: string
+ *                     example: Method Get  
+ *                   data: 
+ *                     type: object
+ *                     properties:
+ *                         id:
+ *                           type: integer
+ *                           example: 1
+ *                         nombre:
+ *                           type: string
+ *                           example: Tarea 2
+ *                         descripcion:
+ *                           type: string
+ *                           example: Es una tarea de ejemplo
+ *                         fechaInicio:
+ *                           type: date
+ *                           example: 2025-04-09
+ *                         fechaFin:
+ *                           type: date
+ *                           example: 2025-04-10
+ *                         estado:
+ *                           type: string
+ *                           example: Pendiente
+ *                         prioridad:
+ *                           type: string
+ *                           example: Alta
+ *                         usuarioID:
+ *                           type: integer
+ *                           example: 1030533364
+ *                         proyectoID:
+ *                           type: integer
+ *                           example: 7
+ *                   status:
+ *                     type: integer
+ *                     example: 200
+ *       404:
+ *         description: Proyecto no encontrado.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                    message:
+ *                     type: string
+ *                     example: Proyecto no encontrado.
+ *       401:
+ *         description: Usuario no autenticado.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                    mensaje:
+ *                     type: string
+ *                     example: Usuario no autenticado.
+ *       500:
+ *         description: Error interno del servidor
+ */
+router.get('/inProgress/:id', verificarPermiso('Modulo Gestion Tareas', 'Visualizar Tarea'), TaskController.getTaskInProgress);
+
+/**
+ * @swagger
+ * /task/inProgress/{id}:
+ *   get:
+ *     summary: Obtener una lista de todas las tareas finalizadas de un proyecto.
+ *     description: Retorna la información de las tareas finalizadas segun el ID del proyecto al que corresponden.
+ *     tags:
+ *       - Tareas
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID del proyecto.
+ *     responses:
+ *       200:
+ *         description: Información de las tareas obtenida con éxito.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                   message:
+ *                     type: string
+ *                     example: Method Get  
+ *                   data: 
+ *                     type: object
+ *                     properties:
+ *                         id:
+ *                           type: integer
+ *                           example: 1
+ *                         nombre:
+ *                           type: string
+ *                           example: Tarea 2
+ *                         descripcion:
+ *                           type: string
+ *                           example: Es una tarea de ejemplo
+ *                         fechaInicio:
+ *                           type: date
+ *                           example: 2025-04-09
+ *                         fechaFin:
+ *                           type: date
+ *                           example: 2025-04-10
+ *                         estado:
+ *                           type: string
+ *                           example: Pendiente
+ *                         prioridad:
+ *                           type: string
+ *                           example: Alta
+ *                         usuarioID:
+ *                           type: integer
+ *                           example: 1030533364
+ *                         proyectoID:
+ *                           type: integer
+ *                           example: 7
+ *                   status:
+ *                     type: integer
+ *                     example: 200
+ *       404:
+ *         description: Proyecto no encontrado.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                    message:
+ *                     type: string
+ *                     example: Proyecto no encontrado.
+ *       401:
+ *         description: Usuario no autenticado.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                    mensaje:
+ *                     type: string
+ *                     example: Usuario no autenticado.
+ *       500:
+ *         description: Error interno del servidor
+ */
+router.get('/finished/:id', verificarPermiso('Modulo Gestion Tareas', 'Visualizar Tarea'), TaskController.getTaskFinished);
+
+/**
+ * @swagger
+ * /task/misTareas:
+ *   get:
+ *     summary: Obtener todas las tareas registradas en el sistema que tiene el usuario logueado.
+ *     description: Retorna una lista con todas las tareas registradas en la base de datos del sistema de un usuario logueado.
+ *     tags:
+ *       - Tareas
+ *     responses:
+ *       200:
+ *         description: Lista de tareas obtenida con éxito.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                   message:
+ *                     type: string
+ *                     example: Method Get
+ *                   data:
+ *                     type: array
+ *                     items:
+ *                       type: object
+ *                       properties:
+ *                         id:
+ *                           type: integer
+ *                           example: 1
+ *                         nombre:
+ *                           type: string
+ *                           example: Tarea 1
+ *                         descripcion:
+ *                           type: string
+ *                           example: Es una tarea de ejemplo
+ *                         fechaInicio:
+ *                           type: date
+ *                           example: 2025-04-09
+ *                         fechaFin:
+ *                           type: date
+ *                           example: 2025-04-10
+ *                         estado:
+ *                           type: string
+ *                           example: Pendiente
+ *                         prioridad:
+ *                           type: string
+ *                           example: Alta
+ *                         usuarioID:
+ *                           type: string
+ *                           example: Johan Garcia
+ *                         proyectoID:
+ *                           type: string
+ *                           example: Software
+ *                   status:
+ *                     type: integer
+ *                     example: 200
+ *       500:
+ *         description: Error interno del servidor
+ *       401:
+ *         description: Usuario no autenticado.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                    mensaje:
+ *                     type: string
+ *                     example: Usuario no autenticado.
+ */
+router.get('/misTareas', verificarPermiso('Modulo Gestion Tareas', 'Visualizar Tarea'), TaskController.getMyTasks);
+
+/**
+ * @swagger
  * /task/{id}:
  *   get:
  *     summary: Obtener una tarea por ID
@@ -132,7 +453,7 @@ router.get('/', verificarPermiso('Modulo Gestion Tareas', 'Visualizar Tarea'), T
  *                     type: integer
  *                     example: 200
  *       404:
- *         description: Proyecto no encontrado.
+ *         description: Tarea no encontrada.
  *         content:
  *           application/json:
  *             schema:
@@ -140,7 +461,7 @@ router.get('/', verificarPermiso('Modulo Gestion Tareas', 'Visualizar Tarea'), T
  *               properties:
  *                    message:
  *                     type: string
- *                     example: Proyecto no encontrado.
+ *                     example: Tarea no encontrada.
  *       401:
  *         description: Usuario no autenticado.
  *         content:
@@ -216,7 +537,7 @@ router.get('/:id', verificarPermiso('Modulo Gestion Tareas', 'Visualizar Tarea')
  *       500:
  *         description: Error interno del servidor
  */
-router.post('/', verificarPermiso('Modulo Gestion Tareas', 'Crear Tarea'), TaskController.createTask);
+router.post('/:id', verificarPermiso('Modulo Gestion Tareas', 'Crear Tarea'), TaskController.createTask);
 
 /**
  * @swagger

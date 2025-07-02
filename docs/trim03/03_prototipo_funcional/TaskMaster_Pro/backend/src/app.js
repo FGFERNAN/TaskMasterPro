@@ -3,7 +3,7 @@ const cors = require('cors');
 const session = require('express-session');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
-const DBConnection = require('./config/dbConnection');
+const db = require('./config/dbConnection');
 const userRoutes = require("./routes/user_routes");
 const roleRoutes = require("./routes/role_routes");
 const moduleRoutes = require("./routes/module_routes");
@@ -14,8 +14,6 @@ const recoveryPassword = require('./routes/recoveryPassword_routes');
 const projectRoutes = require('./routes/project_routes');
 const taskRoutes = require('./routes/task_routes');
 
-const db = new DBConnection();
-
 
 //Declared
 const app = express();
@@ -23,7 +21,7 @@ const port = 4000;
 
 //Middleware
 app.use(cors({
-  origin: 'http://localhost:8080',
+  origin: 'https://l0n9v870-8080.use2.devtunnels.ms',
   credentials: true
 }));
 app.use(express.json());

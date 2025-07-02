@@ -16,10 +16,10 @@ Característica: Creacion de tarea en la pagina de TaskMaster Pro
 
   Esquema del escenario: Crear Tarea Exitosamente
     Cuando selecciona la opción de crear una nueva tarea
-      | nombre   | descripcion   |
-      | <nombre> | <descripcion> |
+      | nombre   | descripcion   | fechaInicio   | fechaFin   | estado   | prioridad   |
+      | <nombre> | <descripcion> | <fechaInicio> | <fechaFin> | <estado> | <prioridad> |
     Entonces el sistema debe mostrar un mensaje de confirmacion registrar correctamente la nueva tarea
 
     Ejemplos:
-      | nombre          | descripcion                 |
-      | Tarea de Prueba | Esta es una tarea de prueba |
+      | nombre          | descripcion                 | fechaInicio | fechaFin | estado   | prioridad |
+      | Tarea de Prueba | Esta es una tarea de prueba | 30052025    | 31052025 | En Curso | Media     |

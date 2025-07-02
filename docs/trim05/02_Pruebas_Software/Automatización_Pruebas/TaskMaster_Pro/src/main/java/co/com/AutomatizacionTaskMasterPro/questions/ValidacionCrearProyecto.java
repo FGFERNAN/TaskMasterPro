@@ -23,6 +23,12 @@ public class ValidacionCrearProyecto implements Question<Boolean> {
         String descriptionProject = theActorInTheSpotlight().recall(SesionVariable.descripcion.toString());
         logger.info("Descripcion Sesion Variable: '" + descriptionProject + "'");
 
+        String statusProject = theActorInTheSpotlight().recall(SesionVariable.estadoCrear.toString());
+        logger.info("Estado Sesion Variable: '" + statusProject + "'");
+
+        String priorityProject = theActorInTheSpotlight().recall(SesionVariable.prioridadCrear.toString());
+        logger.info("Prioridad Sesion Variable: '" + priorityProject + "'");
+
         try {
             String nombre = Attribute.of(CONFIRMACION_NOMBRE).named("value").viewedBy(actor).asString();
             logger.info("Nombre capturado: '" + nombre + "'");
@@ -38,8 +44,8 @@ public class ValidacionCrearProyecto implements Question<Boolean> {
 
             return nombre.equals(projectName)
                     && descripcion.equals(descriptionProject)
-                    && "En Progreso".equals(estado)
-                    && "Media".equals(prioridad);
+                    && statusProject.equals(estado)
+                    && priorityProject.equals(prioridad);
         } catch (Exception e) {
             logger.info("No encontró el texto o hubo otro error");
             return false;

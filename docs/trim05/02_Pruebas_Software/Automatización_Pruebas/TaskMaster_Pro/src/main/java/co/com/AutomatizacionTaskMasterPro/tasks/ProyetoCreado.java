@@ -59,5 +59,7 @@ public class ProyetoCreado implements Task {
         );
         theActorInTheSpotlight().remember(SesionVariable.nombreProyecto.toString(), Informacion.get(0).getNombre() + letrasRandom);
         theActorInTheSpotlight().remember(SesionVariable.descripcion.toString(), Informacion.get(0).getDescripcion() + " " + descripcionRandom);
+        theActorInTheSpotlight().remember(SesionVariable.estadoCrear.toString(), Informacion.get(0).getEstado());
+        theActorInTheSpotlight().remember(SesionVariable.prioridadCrear.toString(), Informacion.get(0).getPrioridad());
     }
 }

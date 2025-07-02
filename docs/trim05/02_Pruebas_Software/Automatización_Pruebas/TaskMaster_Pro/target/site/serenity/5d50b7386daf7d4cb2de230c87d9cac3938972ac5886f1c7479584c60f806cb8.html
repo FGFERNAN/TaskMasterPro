@@ -217,7 +217,7 @@
             <a href="#"><i class="fa fa-comments-o"></i> Features</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 04-06-2025 19:30</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 28-06-2025 02:25</span>
     <br style="clear:left"/>
 </div>
 
@@ -300,7 +300,7 @@ Para desglosar el trabajo en partes manejables y asignarlas a los miembros del e
                                                                             <a style="margin-left:0.5em;padding-right: 1.5em;"
                                                                                href="21334ee82b46eb4d43830d5ddadd34cf3538c71e533fe435fbe0644a2dc13a7e.html"
                                                                                title="View test results">
-                                                                            <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
                                                                             </a>
 
                                                                         
@@ -323,7 +323,7 @@ Para desglosar el trabajo en partes manejables y asignarlas a los miembros del e
                                             <h3>Scenario details</h3>
 
                                                 <div class="scenario-docs card" id="56ed3ccadbfd0cb6eed3fee82554b3388c8dbff542e3ab0a3548318b8259c6f3">
-                                                    <div class="scenario-docs card-header pending" style="min-height:1.5em;">
+                                                    <div class="scenario-docs card-header success" style="min-height:1.5em;">
                                                         <div>
                                                             <span class="scenario-heading">
                                                                 <a href="21334ee82b46eb4d43830d5ddadd34cf3538c71e533fe435fbe0644a2dc13a7e.html" title="View test results">Crear Tarea Exitosamente</a>
@@ -331,7 +331,7 @@ Para desglosar el trabajo en partes manejables y asignarlas a los miembros del e
                                                             <span class="scenario-result-icon">
                                                                 
 
-                                                                    <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                                    <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -339,10 +339,10 @@ Para desglosar el trabajo en partes manejables y asignarlas a los miembros del e
                                                             <p><p>Cuando selecciona la opción de crear una nueva tarea</p>
 <table>
 <thead>
-<tr><th>nombre</th><th>descripcion</th></tr>
+<tr><th>nombre</th><th>descripcion</th><th>fechaInicio</th><th>fechaFin</th><th>estado</th><th>prioridad</th></tr>
 </thead>
 <tbody>
-<tr><td>{nombre}</td><td>{descripcion}</td></tr>
+<tr><td>{nombre}</td><td>{descripcion}</td><td>{fechaInicio}</td><td>{fechaFin}</td><td>{estado}</td><td>{prioridad}</td></tr>
 </tbody>
 </table>
 </p>
@@ -351,10 +351,10 @@ Para desglosar el trabajo en partes manejables y asignarlas a los miembros del e
                                                             <p><p>Examples:</p>
 <div class='example-table-in-scenario'><table>
 <thead>
-<tr><th>nombre</th><th>descripcion</th><th></th></tr>
+<tr><th>nombre</th><th>descripcion</th><th>fechaInicio</th><th>fechaFin</th><th>estado</th><th>prioridad</th><th></th></tr>
 </thead>
 <tbody>
-<tr><td>Tarea de Prueba</td><td>Esta es una tarea de prueba</td><td> </td></tr>
+<tr><td>Tarea de Prueba</td><td>Esta es una tarea de prueba</td><td>30052025</td><td>31052025</td><td>En Curso</td><td>Media</td><td> </td></tr>
 </tbody>
 </table></div>
 </p>
@@ -376,10 +376,10 @@ Para desglosar el trabajo en partes manejables y asignarlas a los miembros del e
                                             </div>
                                             <script>
 
-                                                var labels = [' ', ' ', '100%', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+                                                var labels = ['100%', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
                                                 // Our series array that contains series objects or in this case series data arrays
 
-                                                var series = [{meta: 'Passing tests (automated)', value: 0}, {meta: 'Passing tests (manual)', value: 0}, {meta: 'Pending tests (automated)', value: 1}, {meta: 'Pending tests (manual)', value: 0}, {meta: 'Ignored tests (automated)', value: 0}, {meta: 'Ignored tests (manual)', value: 0}, {meta: 'Skipped tests (automated)', value: 0}, {meta: 'Skipped tests (manual)', value: 0}, {meta: 'Failing tests (automated)', value: 0}, {meta: 'Failing tests (manual)', value: 0}, {meta: 'Broken tests (automated)', value: 0}, {meta: 'Broken tests (manual)', value: 0}, {meta: 'Compromised tests (automated)', value: 0}, {meta: 'Compromised tests (manual)', value: 0}];
+                                                var series = [{meta: 'Passing tests (automated)', value: 1}, {meta: 'Passing tests (manual)', value: 0}, {meta: 'Pending tests (automated)', value: 0}, {meta: 'Pending tests (manual)', value: 0}, {meta: 'Ignored tests (automated)', value: 0}, {meta: 'Ignored tests (manual)', value: 0}, {meta: 'Skipped tests (automated)', value: 0}, {meta: 'Skipped tests (manual)', value: 0}, {meta: 'Failing tests (automated)', value: 0}, {meta: 'Failing tests (manual)', value: 0}, {meta: 'Broken tests (automated)', value: 0}, {meta: 'Broken tests (manual)', value: 0}, {meta: 'Compromised tests (automated)', value: 0}, {meta: 'Compromised tests (manual)', value: 0}];
 
                                                 // As options we currently only set a static size of 300x200 px. We can also omit this and use aspect ratio containers
                                                 // as you saw in the previous example
@@ -416,19 +416,19 @@ Para desglosar el trabajo en partes manejables y asignarlas a los miembros del e
                                             </thead>
                                             <tbody>
                                             <tr>
-                                                                    <td class="aggregate-result-count"><i
-                                                                            class='fa fa-check-circle-o success-icon'></i>&nbsp;Passing
-                                                                    </td>
-                                                <td class="automated-stats">0</td>
-                                                <td class="automated-stats"> </td>
-                                            </tr>
-                                            <tr>
                                                                     <td class="aggregate-result-count">
-                                                                        <a href="59200b19bf3554ed742910f70b21c0d2b0479c57e3e64b6a243b8e83215d8cce.html"><i
-                                                                                class='fa fa-stop-circle-o pending-icon'></i>&nbsp;Pending</a>
+                                                                        <a href="d4e418293b4925e2da6416d1a9eaf14439bc598f1231945401c2f6b310aa9bd0.html"><i
+                                                                                class='fa fa-check-circle-o success-icon'></i>&nbsp;Passing</a>
                                                                     </td>
                                                 <td class="automated-stats">1</td>
                                                 <td class="automated-stats">100%</td>
+                                            </tr>
+                                            <tr>
+                                                                    <td class="aggregate-result-count"><i
+                                                                            class='fa fa-stop-circle-o pending-icon'></i>&nbsp;Pending
+                                                                    </td>
+                                                <td class="automated-stats">0</td>
+                                                <td class="automated-stats"> </td>
                                             </tr>
                                             <tr>
                                                                 <td class="aggregate-result-count"><i
@@ -497,11 +497,11 @@ Para desglosar el trabajo en partes manejables y asignarlas a los miembros del e
                                                     </thead>
                                                     <tbody>
                                                     <tr>
-                                                        <td>8s</td>
-                                                        <td>8ms</td>
-                                                        <td>7s</td>
-                                                        <td>7s</td>
-                                                        <td>8s</td>
+                                                        <td>20s</td>
+                                                        <td>20ms</td>
+                                                        <td>19s</td>
+                                                        <td>19s</td>
+                                                        <td>20s</td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -524,17 +524,17 @@ Para desglosar el trabajo en partes manejables y asignarlas a los miembros del e
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr class="scenario-result PENDING">
+                                                <tr class="scenario-result SUCCESS">
                                                     <td>
                                                             <a href="21334ee82b46eb4d43830d5ddadd34cf3538c71e533fe435fbe0644a2dc13a7e.html">Crear Tarea Exitosamente</a>
                                                                (1 example)
                                                     </td>
                                                     <td>2</td>
-                                                    <td>19:30:37</td>
-                                                    <td>8s 525ms</td>
+                                                    <td>02:25:36</td>
+                                                    <td>20s 169ms</td>
                                                     <td>
-                                                            <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a> <span
-                                                                style="display:none">PENDING</span>
+                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                                style="display:none">SUCCESS</span>
                                                     </td>
                                                 </tr>
                                                 </tbody>
