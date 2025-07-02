@@ -9,12 +9,12 @@
             <img src="../assets/img/User234.jpg" alt="Perfil" class="img-fluid rounded float-start m-3 border-img" />
           </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
           <h2>Mi Perfil</h2>
         </div>
-        <div class="col-md-2 d-flex justify-content-end align-items-center p-3">
+        <div class="col-md-3 d-flex justify-content-end align-items-center p-3">
           <div class="d-flex align-items-center gap-2">
-            <button class="btn btn-primary buton-regresar-p" @click="goBack" style="white-space: nowrap;">
+            <button class="btn btn-primary buton-regresar-p" @click="goInterfazPrincipal" style="white-space: nowrap;">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-caret-left-fill" viewBox="0 0 16 16">
                 <path
@@ -93,9 +93,6 @@ export default {
         alert(response.data.message);
         this.$router.push("/iniciar-sesion");
       }
-    },
-    goBack() {
-      this.$router.go(-1);
     },
   }
 }

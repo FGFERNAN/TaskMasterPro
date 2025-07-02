@@ -113,7 +113,7 @@ router.get('/', verificarPermiso('Modulo Gestion Proyecto', 'Visualizar Proyecto
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/plantillas', ProjectController.getPlantillasProyecto);
+router.get('/plantillas', verificarPermiso('Modulo Gestion Proyecto', 'Visualizar Proyecto'), ProjectController.getPlantillasProyecto);
 
 /**
  * @swagger

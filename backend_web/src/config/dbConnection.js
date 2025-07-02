@@ -1,45 +1,43 @@
+// db.js
 const mysql = require('mysql');
 
+const pool = mysql.createPool({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  port: 3306,
+  database: 'task_master',
+  connectionLimit: 20,
+});
 
-class DBConnection {
-    constructor() {
-        this.pool = mysql.createPool({
-            host: 'localhost',
-            user: 'root',
-            password: '',
-            port: 3306,
-            database: 'task_master',
-            connectionLimit: 10,
-        });
-    }
-    query(sql, args = []){
-        return new Promise((resolve, reject) => {
-            this.pool.query(sql, args, (err, results) => {
-                if(err){
-                    console.error('Query error:', err.message);
-                    reject(err);
-                } else {
-                    resolve(results);
-                }
-            });
-        });
-    }
-
-    close(){
-        return new Promise((resolve, reject) => {
-            this.pool.end((err) => {
-                if(err){
-                    console.error('Error closing connection pool', err.message);
-                    reject(err);
-                } else {
-                    console.log('Connection pool closed successfully');
-                    resolve();
-                }
-            });
-        });
-    }
+function query(sql, args = []) {
+  return new Promise((resolve, reject) => {
+    pool.query(sql, args, (err, results) => {
+      if (err) {
+        console.error('Query error:', err.message);
+        reject(err);
+      } else {
+        resolve(results);
+      }
+    });
+  });
 }
 
-module.exports =  DBConnection;
+function close() {
+  return new Promise((resolve, reject) => {
+    pool.end(err => {
+      if (err) {
+        console.error('Error closing connection pool', err.message);
+        reject(err);
+      } else {
+        console.log('Connection pool closed successfully');
+        resolve();
+      }
+    });
+  });
+}
 
-
+module.exports = {
+  query,
+  close,
+};

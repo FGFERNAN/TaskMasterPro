@@ -82,16 +82,16 @@
               <ul class="dropdown-menu">
                 <li v-for="proyecto in proyectos" :key="proyecto.id">
                   <div class="d-flex align-items-center">
-                    <a class="dropdown-item boton-menu-proyecto" @click="irInterfazProyecto(proyecto.id)"><i
+                    <a class="dropdown-item boton-menu-proyecto" :id="proyecto.nombre" :value="proyecto.nombre" @click="irInterfazProyecto(proyecto.id)"><i
                         class="fa-regular fa-folder-open"></i>
                       {{ proyecto.nombre }}</a>
                     <span class="ms-1">
-                      <a @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i
+                      <a :id="'edit-' + proyecto.nombre" @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i
                           class="fa-solid fa-edit"></i></a>
                     </span>
                     <span class="ms-2">
                       <a class="link-secondary mi-link" @click="deleteProject(proyecto.id)"
-                        id="btn-eliminar-escritorio"><i class="fa-solid fa-trash me-3"></i></a>
+                        :id="'btn-' + proyecto.nombre"><i class="fa-solid fa-trash me-3"></i></a>
                     </span>
                   </div>
                 </li>
@@ -232,8 +232,14 @@ export default {
       } catch (error) {
         if (error.response && error.response.data) {
           const serverErrors = error.response.data;
-          console.log(serverErrors);
-          this.$router.push('/error500');
+          if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
         }
       }
     },

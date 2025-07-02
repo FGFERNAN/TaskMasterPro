@@ -142,8 +142,8 @@
                   <div class="col-md-6" v-for="member in members" :key="member.id">
                     <div class="member-card">
                       <img :src="avatar" alt="User Avatar">
-                      <p><input type="radio" name="user" /> {{ member.nombre }} {{ member.apellidos }}</p>
-                      <button class="btn-eliminar" @click="removeMember(member.id)">Eliminar Usuario</button>
+                      <p><input type="radio" name="user" :id="'user-' + member.id" :value="member.nombre" /> {{ member.nombre }} {{ member.apellidos }}</p>
+                      <button :id="'btn-' + member.id" class="btn-eliminar" @click="removeMember(member.id)">Eliminar Usuario</button>
                     </div>
                   </div>
                 </div>
@@ -154,7 +154,7 @@
               <input type="text" v-model="searchQuery" class="form-control mb-3" placeholder="Buscar miembros">
               <ul class="list-unstyled">
                 <li v-for="(user) in filteredUsers" :key="user.id">
-                  {{ user.email }} <a href="#" class="text-primary" @click="addMember(user)">Agregar</a>
+                  {{ user.email }} <a href="#" :id="user.id" class="text-primary" @click="addMember(user)">Agregar</a>
                 </li>
               </ul>
             </div>
