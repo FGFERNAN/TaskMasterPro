@@ -28,7 +28,7 @@
               Utilizar Plantillas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i> Mis Tareas</a>
+            <a class="nav-link mi-link" @click="irMisTareas"><i class="fa-solid fa-list-check me-1"></i> Mis Tareas</a>
           </li>
           <li class="nav-item dropdown custom-dropdown">
             <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#"><i
@@ -74,7 +74,7 @@
                 Utilizar Plantillas de Proyecto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i> Mis
+              <a class="nav-link mi-link" @click="irMisTareas"><i class="fa-solid fa-list-check me-1"></i> Mis
                 Tareas</a>
             </li>
             <li class="nav-item dropdown custom-dropdown">
@@ -490,6 +490,9 @@ export default {
     },
     navigateToCreateTask(projectId) {
       this.$router.push({ name: 'CrearTarea', params: { id: projectId } });
+    },
+    irMisTareas() {
+      this.router.push('/mis-tareas');
     },
     irAInterfazTarea(projectID, taskID) {
       this.$router.push({ name: "InterfazTarea", params: { projectId: projectID, taskId: taskID }})

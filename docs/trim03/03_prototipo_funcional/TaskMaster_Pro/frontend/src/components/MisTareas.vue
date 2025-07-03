@@ -70,7 +70,7 @@
       <div class="row">
         <!-- Sidebar desktop -->
         <div class="col-md-3 custom-col d-none d-lg-block">
-          <img src="../assets/img/logos/logotipo.png" class="logo-inicio" width="300" />
+          <img src="../assets/img/logos/logotipo.png" class="logo-inicio boton-menu-proyecto" @click="irInterfazPrincipal" width="300" />
           <ul class="nav flex-column">
             <li class="nav-item">
               <a class="nav-link mi-link" @click="crearProyecto">
@@ -89,8 +89,7 @@
             </li>
             <li class="nav-item dropdown custom-dropdown">
               <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#">
-                <i class="fa-solid fa-folder-minus me-1"></i> Proyectos
-              </a>
+                <i class="fa-solid fa-folder-minus me-1"></i> Proyectos</a>
               <ul class="dropdown-menu">
                 <li v-for="proyecto in proyectos" :key="proyecto.id">
                   <div class="d-flex align-items-center">
@@ -125,10 +124,10 @@
             <div class="header d-flex justify-content-end align-items-center p-3">
               <div class="d-flex align-items-center">
                 <a href="notificaciones.html" class="me-2"><i class="fas fa-bell"></i></a>
-                <button class="btn btn-cerrar-sesion" @click="cerrarSesion">
+                <button class="btn btn-cerrar-sesion" @click="confirmarCerrarSesion">
                   <i class="fa-solid fa-right-to-bracket me-1"></i> Cerrar Sesión
                 </button>
-                <a href="perfil.html" class="btn btn-perfil"><i class="fa-solid fa-user me-1"></i> Perfil</a>
+                <a class="btn btn-perfil" @click="irPerfil"><i class="fa-solid fa-user me-1"></i> Perfil</a>
               </div>
             </div>
 
@@ -142,7 +141,7 @@
                 <span class="input-group-text">
                   <i class="fa-solid fa-search"></i>
                 </span>
-                <input type="text" class="form-control" placeholder="Buscar en Tareas" v-model="searchTerm" />
+                <input type="text" class="form-control" placeholder="Buscar en Tareas" v-model="search" />
               </div>
 
               <div class="table-responsive">
@@ -155,13 +154,12 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(tarea, index) in tareasFiltradas" :key="index">
+                    <tr v-for="task in filterTask" :key="task.nombre">
                       <td>
-                        <a v-if="index === 0" class="nav-link mi-link" href="interfazTarea.html">{{ tarea.nombre }}</a>
-                        <span v-else>{{ tarea.nombre }}</span>
+                        <a class="nav-link mi-link" @click="irAInterfazTarea(task.proyectoID, task.id)" >{{ task.nombre }}</a>
                       </td>
-                      <td>{{ tarea.fecha }}</td>
-                      <td>{{ tarea.proyecto }}</td>
+                      <td>{{ formatearFecha(task.fechaFin) }}</td>
+                      <td>{{ task.nombreProyecto }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -173,68 +171,136 @@
     </div>
   </div>
 </template>
-<script setup>
-import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
-
-
-
-
-const searchTerm = ref('')
-const tareas = ref([
-  { nombre: 'Tarea 1', fecha: '17 de Agosto', proyecto: 'Veterinaria' },
-  { nombre: 'Tarea 2', fecha: '20 de Agosto', proyecto: 'Veterinaria' },
-  { nombre: 'Tarea 3', fecha: '2 de Agosto', proyecto: 'Veterinaria' },
-  { nombre: 'Tarea 4', fecha: '2 de Junio', proyecto: 'Veterinaria' },
-  { nombre: 'Tarea 5', fecha: '17 de Agosto', proyecto: 'TaskMaster' },
-  { nombre: 'Tarea 6', fecha: '20 de Julio', proyecto: 'TaskMaster' },
-  { nombre: 'Tarea 7', fecha: '23 de Agosto', proyecto: 'TaskMaster' },
-  { nombre: 'Tarea 8', fecha: '2 de Junio', proyecto: 'TaskMaster' },
-])
-
-const proyectos = ref([
-  { id: 1, nombre: 'Veterinaria' },
-  { id: 2, nombre: 'TaskMaster' },
-])
-
-const tareasFiltradas = computed(() =>
-  tareas.value.filter(t =>
-    Object.values(t).some(val =>
-      val.toLowerCase().includes(searchTerm.value.toLowerCase())
-    )
-  )
-)
-
-const router = useRouter()
-const cerrarSesion = () => {
-  if (confirm("¿Seguro que quieres cerrar sesión ?")) {
-    router.push('/iniciar-sesion')
+<script>
+import api from '@/services/api';
+export default {
+  data() {
+    return {
+      search: '',
+      tareas: [],
+      proyectos: []
+    };
+  },
+  computed: {
+    filterTask() {
+      return this.tareas.filter(t =>
+        t.nombre.toLowerCase().includes(this.search.toLowerCase())
+      );
+    },
+  },
+  methods: {
+    async confirmarCerrarSesion() {
+      if (confirm("¿Estás seguro que quieres cerrar sesión?")) {
+        const response = await api.post("/logout");
+        this.$router.push("/iniciar-sesion");
+        alert(response.data.message);
+      }
+    },
+    formatearFecha(fechaISO) {
+      const fecha = new Date(fechaISO);
+      return fecha.toLocaleDateString('es-CO', {
+        day: 'numeric',
+        month: 'long'
+      });
+    },
+    async getProjects() {
+      try {
+        const response = await api.get('/project');
+        this.proyectos = response.data.data;
+        console.log(response.data);
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
+        }
+      }
+    },
+    async getMyTask() {
+      try {
+        const response = await api.get(`/task/misTareas`);
+        this.tareas = response.data.data;
+        console.log(response.data);
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
+        }
+      }
+    },
+    crearProyecto() {
+      this.$router.push('/crear-proyecto');
+    },
+    irPlantillasProyecto() {
+      this.$router.push('/plantillas-proyecto');
+    },
+    irInterfazProyecto(projectId) {
+      this.$router.push({ name: 'InterfazProyecto', params: { id: projectId } });
+    },
+    irAInterfazTarea(projectID, taskID) {
+      this.$router.push({ name: "InterfazTarea", params: { projectId: projectID, taskId: taskID }})
+    },
+    irMisTareas() {
+      this.$router.push('/mis-tareas');
+    },
+    redirectToEditProject(projectId) {
+      this.$router.push({ name: 'EditarProyecto', params: { id: projectId } });
+    },
+    irPerfil() {
+      this.$router.push("/perfil-completo");
+    },
+    irInterfazPrincipal() {
+      this.$router.push('/interfaz-principal');
+    },
+    async deleteProject(projectId) {
+      try {
+        if (confirm('¿Estás seguro que deseas eliminar este proyecto?')) {
+          const response = await api.delete(`/project/${projectId}}`);
+          this.proyectos = this.proyectos.filter(project => project.id !== projectId);
+          console.log(response.data.message);
+          alert(response.data.message);
+        }
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const serverErrors = error.response.data;
+          if (serverErrors.message === 'Project not exists') {
+            console.log(serverErrors.message);
+            alert(serverErrors.message);
+          } else if (serverErrors.message === 'Proyecto no eliminado') {
+            console.log(serverErrors.message);
+            alert(serverErrors.message);
+          } else if (serverErrors.mensaje === 'Usuario no autenticado') {
+            console.log(serverErrors.mensaje);
+            alert(`${serverErrors.mensaje}, debes loguearte para acceder a las funciones de esta ruta.`);
+            this.$router.push('/iniciar-sesion');
+          } else if (serverErrors.mensaje === 'No tienes permisos para realizar esta acción.') {
+            console.log(serverErrors.mensaje);
+            this.$router.push('/error403');
+          } else {
+            console.log(serverErrors);
+            this.$router.push('/error500');
+          }
+        }
+      }
+    },
+  },
+  async mounted() {
+    document.title = "Mis Tareas | TaskMaster Pro";
+    await this.getProjects();
+    await this.getMyTask();
   }
-}
-
-const crearProyecto = () => {
-  router.push('/crear-proyecto')
-}
-
-const irPlantillasProyecto = () => {
-  router.push('/plantillas-proyecto')
-}
-
-const irInterfazProyecto = (id) => {
-  router.push(`/proyecto/${id}`)
-}
-const irMisTareas = () => {
-  router.push('/mis-tareas')
-}
-const redirectToEditProject = (id) => {
-  router.push(`/proyecto/${id}/editar`)
-}
-
-const deleteProject = (id) => {
-  if (confirm('¿Deseas eliminar este proyecto?')) {
-   
-    console.log('Proyecto eliminado:', id)
-  }
-}
-
+};
 </script>
