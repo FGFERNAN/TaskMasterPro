@@ -210,7 +210,7 @@ export default {
       this.$router.go(-1);
     },
     goToCrearCampo() {
-      location.href = '../../app/views/crearCampo.html'
+      this.$router.push('/crear-campo');
     },
     async handleSubmit() {
       const isValid = await this.v$.$validate();

@@ -2,7 +2,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.container {
+.container-m {
     display: flex;
     width: 80%;
     background-color: #fff;
@@ -17,10 +17,11 @@
     padding: 20px;
 }
 
-.sidebar h2 {
+.sidebar h3 {
     font-size: 18px;
     margin-bottom: 20px;
     color: #333;
+    font-weight: 500;
 }
 
 .search-bar {
@@ -121,7 +122,7 @@ textarea {
   }
   
     /* Estilo general del contenedor */
-.container {
+.container-m {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

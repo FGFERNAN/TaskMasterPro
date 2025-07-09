@@ -28,7 +28,7 @@
               Utilizar Plantillas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i> Mis Tareas</a>
+            <a class="nav-link mi-link" @click="irMisTareas"><i class="fa-solid fa-list-check me-1"></i> Mis Tareas</a>
           </li>
           <li class="nav-item dropdown custom-dropdown">
             <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#"><i
@@ -52,7 +52,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
+            <a class="nav-link mi-link" @click="irEtiquetas"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
           </li>
         </ul>
       </div>
@@ -74,7 +74,7 @@
                 Utilizar Plantillas de Proyecto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i> Mis
+              <a class="nav-link mi-link" @click="irMisTareas"><i class="fa-solid fa-list-check me-1"></i> Mis
                 Tareas</a>
             </li>
             <li class="nav-item dropdown custom-dropdown">
@@ -99,7 +99,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
+              <a class="nav-link mi-link" @click="irEtiquetas"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
             </li>
           </ul>
         </div>
@@ -114,7 +114,7 @@
                   <i class="fas fa-search" @click="mostrarModalBusqueda = true"
                     style="color: #2E7060; font-size: 30px;"></i>
                 </div>
-                <a href="notificaciones.html" class="me-2"><i class="fas fa-bell"></i></a>
+                <a @click="irNotificaciones" class="me-2"><i class="fas fa-bell"></i></a>
                 <button class="btn btn-cerrar-sesion-ip" @click="confirmarCerrarSesion">
                   <i class="fa-solid fa-right-to-bracket me-1"></i> Cerrar Sesión
                 </button>
@@ -353,6 +353,12 @@ export default {
     crearProyecto() {
       this.router.push('/crear-proyecto');
     },
+    irMisTareas() {
+      this.router.push('/mis-tareas');
+    },
+    irPlantillasProyecto() {
+      this.router.push('/plantillas-proyecto');
+    },
     async confirmarCerrarSesion() {
       if (confirm("¿Estás seguro que quieres cerrar sesión?")) {
         const response = await api.post("/logout");
@@ -366,6 +372,12 @@ export default {
     },
     irInterfazProyecto(projectId) {
       this.$router.push({ name: 'InterfazProyecto', params: { id: projectId } });
+    },
+    irEtiquetas() {
+      this.$router.push('/etiquetas-view');
+    },
+     irNotificaciones() {
+      this.$router.push('/notificaciones');
     }
   }
 }

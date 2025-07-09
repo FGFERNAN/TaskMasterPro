@@ -28,7 +28,7 @@
               Utilizar Plantillas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i> Mis Tareas</a>
+            <a class="nav-link mi-link" @click="irMisTareas"><i class="fa-solid fa-list-check me-1"></i> Mis Tareas</a>
           </li>
           <li class="nav-item dropdown custom-dropdown">
             <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#"><i
@@ -52,7 +52,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
+            <a class="nav-link mi-link" @click="irEtiquetas"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
           </li>
         </ul>
       </div>
@@ -74,7 +74,7 @@
                 Utilizar Plantillas de Proyecto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i> Mis
+              <a class="nav-link mi-link" @click="irMisTareas"><i class="fa-solid fa-list-check me-1"></i> Mis
                 Tareas</a>
             </li>
             <li class="nav-item dropdown custom-dropdown">
@@ -99,7 +99,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
+              <a class="nav-link mi-link" @click="irEtiquetas"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
             </li>
           </ul>
         </div>
@@ -108,7 +108,7 @@
           <header>
             <div class="header d-flex justify-content-end align-items-center p-3">
               <div class="d-flex align-items-center">
-                <a href="notificaciones.html" class="me-2">
+                <a @click="irNotificaciones" class="me-2">
                   <i class="fas fa-bell"></i>
                 </a>
                 <button class="btn btn-cerrar-sesion-ip" @click="confirmarCerrarSesion"><i
@@ -133,16 +133,16 @@
                   <i class="fa-regular fa-message me-1"></i> Mensaje
                 </button>
                 <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMessage">
-                  <li><a href="mensajesDirectos.html" class="dropdown-item"><i class="fa-solid fa-user me-1"></i>
+                  <li><a @click="irMensajeDirecto" class="dropdown-item"><i class="fa-solid fa-user me-1"></i>
                       Directo</a></li>
-                  <li><a href="mensajesGrupales.html" class="dropdown-item"><i class="fa-solid fa-users me-1"></i>
+                  <li><a @click="irMensajeGrupal" class="dropdown-item"><i class="fa-solid fa-users me-1"></i>
                       Grupal</a></li>
                 </ul>
               </div>
               <div class="col-12 col-lg-12 col-xxl-4 mb-2 mb-lg-0">
                 <div class="progress w-100" role="progressbar" aria-label="Success example" :aria-valuenow="porcentajeNum"
                   aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar bg-success" :style="{width: porcentaje }">{{ porcentaje }}</div>
+                  <div class="progress-bar" :class="color" :style="{width: porcentaje }">{{ porcentaje }}</div>
                 </div>
               </div>
               <div class="etiqueta position-absolute">
@@ -290,6 +290,7 @@ export default {
       nombre: '',
       porcentaje: '',
       porcentajeNum: '',
+      color: '',
       router: useRouter()
     };
   },
@@ -471,6 +472,13 @@ export default {
         const results = `${Math.round(reglaDeTres)}%`;
         this.porcentaje = results;
         this.porcentajeNum = Math.round(reglaDeTres);
+        if(this.porcentajeNum < 35) {
+          this.color = 'bg-danger';
+        } else if(this.porcentajeNum < 70) {
+          this.color = 'bg-warning';
+        } else if(this.porcentajeNum > 70) {
+          this.color = 'bg-success';
+        }
         console.log(totalTareas);
       } catch (err) {
         console.error('Error al calcular el porcentaje: ', err.message);
@@ -491,6 +499,9 @@ export default {
     navigateToCreateTask(projectId) {
       this.$router.push({ name: 'CrearTarea', params: { id: projectId } });
     },
+    irMisTareas() {
+      this.router.push('/mis-tareas');
+    },
     irAInterfazTarea(projectID, taskID) {
       this.$router.push({ name: "InterfazTarea", params: { projectId: projectID, taskId: taskID }})
     },
@@ -500,6 +511,18 @@ export default {
     crearProyecto() {
       this.router.push('/crear-proyecto');
     },
+    irEtiquetas() {
+      this.$router.push('/etiquetas-view');
+    },
+    irMensajeDirecto() {
+      this.$router.push('/mensajes-directos');
+    },
+    irMensajeGrupal() {
+      this.$router.push('/mensajes-grupales');
+    },
+     irNotificaciones() {
+      this.$router.push('/notificaciones');
+    }
   },
 
   irAOtraVista() {

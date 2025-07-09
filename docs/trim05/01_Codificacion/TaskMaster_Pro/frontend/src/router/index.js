@@ -24,6 +24,17 @@ import CrearPlantilla from '@/components/CrearPlantilla.vue';
 import EditarPlantilla from '@/components/EditarPlantilla.vue';
 import InterfazTarea from '@/components/InterfazTarea.vue';
 import CrearTarea from '@/components/crearTarea.vue';
+import MisTareas from '@/components/MisTareas.vue';
+import AgregarComentarios from '@/components/AgregarComentarios.vue';
+import MensajesDirectos from '@/components/MensajesDirectos.vue';
+import RegistrarTiempo from '@/components/RegistrarTiempo.vue';
+import EtiquetasView from '@/components/EtiquetasView.vue';
+import MensajesGrupales from '@/components/MensajesGrupales.vue';
+import Notificaciones from '@/components/Notificaciones.vue';
+import AdjuntarArchivos from '@/components/AdjuntarArchivos.vue';
+import CrearCampo from '@/components/CrearCampo.vue';
+import EditarCampoPersonalizado from '@/components/EditarCampoPersonalizado.vue';
+
 
 
 
@@ -53,8 +64,18 @@ const routes = [
   { path: '/plantillas-proyecto', component: PlantillasProyecto },
   { path: '/crear-plantilla', component: CrearPlantilla},
   { path: '/editar-plantilla/:id', name: 'EditarPlantilla', component: EditarPlantilla},
+  { path: '/mis-tareas', component: MisTareas},
   { path: '/interfaz-tarea/:projectId/:taskId', name: 'InterfazTarea', component: InterfazTarea, props: true },
-  { path: '/crear-tarea/:id', name: 'CrearTarea', component: CrearTarea, props: true}
+  { path: '/crear-tarea/:id', name: 'CrearTarea', component: CrearTarea, props: true},
+  { path: '/agregar-comentarios', component: AgregarComentarios},
+  { path: '/mensajes-directos', component: MensajesDirectos},
+  { path: '/registrar-tiempo', component: RegistrarTiempo},
+  { path: '/etiquetas-view', component: EtiquetasView},
+  { path: '/mensajes-grupales', component: MensajesGrupales},
+  { path: '/notificaciones', component: Notificaciones},
+  { path: '/adjuntar-archivos', component: AdjuntarArchivos},
+  { path: '/crear-campo', component: CrearCampo},
+  { path: '/editar-campo', component: EditarCampoPersonalizado}
 ];
 
 const router = createRouter({

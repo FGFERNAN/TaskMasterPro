@@ -28,7 +28,7 @@
               Utilizar Plantillas de Proyecto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i> Mis Tareas</a>
+            <a class="nav-link mi-link" @click="irMisTareas"><i class="fa-solid fa-list-check me-1"></i> Mis Tareas</a>
           </li>
           <li class="nav-item dropdown custom-dropdown">
             <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#" role="button"
@@ -53,7 +53,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
+            <a class="nav-link mi-link" @click="irEtiquetas"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
           </li>
         </ul>
       </div>
@@ -76,7 +76,7 @@
                 Utilizar Plantillas de Proyecto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i> Mis
+              <a class="nav-link mi-link" @click="irMisTareas"><i class="fa-solid fa-list-check me-1"></i> Mis
                 Tareas</a>
             </li>
             <li class="nav-item dropdown custom-dropdown">
@@ -103,7 +103,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
+              <a class="nav-link mi-link" @click="irEtiquetas"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
             </li>
           </ul>
         </div>
@@ -113,14 +113,10 @@
           <header>
             <div class="header d-flex justify-content-between align-items-center p-3">
               <button class="btn me-md-2 mt-1 btn-regresar" @click="goBack">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                  class="bi bi-caret-left-fill" viewBox="0 0 16 16">
-                  <path
-                    d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
-                </svg> Regresar
+                <i class="bi bi-caret-left-fill"></i> Regresar
               </button>
               <div class="d-flex align-items-center">
-                <a href="notificaciones.html" class="me-2">
+                <a @click="irNotificaciones" class="me-2">
                   <i class="fas fa-bell"></i> <!-- Icono de notificaciones -->
                 </a>
                 <button class="btn btn-cerrar-sesion-ip" @click="confirmarCerrarSesion">
@@ -380,8 +376,14 @@ export default {
     irAOtraVista() {
       this.$router.push('/interfaz-principal');
     },
+    irMisTareas() {
+      this.router.push('/mis-tareas');
+    },
     irInterfazProyecto(projectId) {
       this.$router.push({ name: 'InterfazProyecto', params: { id: projectId } });
+    },
+     irNotificaciones() {
+      this.$router.push('/notificaciones');
     },
     async confirmarCerrarSesion() {
       if (confirm("¿Estás seguro que quieres cerrar sesión?")) {
@@ -393,6 +395,9 @@ export default {
     crearProyecto() {
       this.$router.push('/crear-proyecto');
     },
+    irEtiquetas() {
+      this.$router.push('/etiquetas-view');
+    }
   }
 };
 

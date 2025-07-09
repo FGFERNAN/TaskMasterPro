@@ -15,12 +15,8 @@
         <div class="col-md-3 d-flex justify-content-end align-items-center p-3">
           <div class="d-flex align-items-center gap-2">
             <button class="btn btn-primary buton-regresar-p" @click="goInterfazPrincipal" style="white-space: nowrap;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-caret-left-fill" viewBox="0 0 16 16">
-                <path
-                  d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
-              </svg>
-              <span class="button-text">Regresar</span>
+              <i class="bi bi-caret-left-fill"></i> 
+              <span class="button-text"> Regresar</span>
             </button>
             <button class="btn btn-primary btn-cerrar-sesion-p me-3" @click="confirmarCerrarSesion" style="white-space: nowrap;">
               <i class="fa-solid fa-right-to-bracket me-1"></i> Cerrar Sesión
