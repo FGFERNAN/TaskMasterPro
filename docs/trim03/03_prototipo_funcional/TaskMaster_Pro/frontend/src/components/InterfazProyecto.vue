@@ -142,7 +142,7 @@
               <div class="col-12 col-lg-12 col-xxl-4 mb-2 mb-lg-0">
                 <div class="progress w-100" role="progressbar" aria-label="Success example" :aria-valuenow="porcentajeNum"
                   aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar bg-success" :style="{width: porcentaje }">{{ porcentaje }}</div>
+                  <div class="progress-bar" :class="color" :style="{width: porcentaje }">{{ porcentaje }}</div>
                 </div>
               </div>
               <div class="etiqueta position-absolute">
@@ -290,6 +290,7 @@ export default {
       nombre: '',
       porcentaje: '',
       porcentajeNum: '',
+      color: '',
       router: useRouter()
     };
   },
@@ -471,6 +472,13 @@ export default {
         const results = `${Math.round(reglaDeTres)}%`;
         this.porcentaje = results;
         this.porcentajeNum = Math.round(reglaDeTres);
+        if(this.porcentajeNum < 35) {
+          this.color = 'bg-danger';
+        } else if(this.porcentajeNum < 70) {
+          this.color = 'bg-warning';
+        } else if(this.porcentajeNum > 70) {
+          this.color = 'bg-success';
+        }
         console.log(totalTareas);
       } catch (err) {
         console.error('Error al calcular el porcentaje: ', err.message);

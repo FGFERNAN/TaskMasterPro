@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Creacion de tarea en la pagina de TaskMaster Pro" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-07-09T18:48:18" hostname="DESKTOP-9S50AII" time="14.728">
+<testsuite name="Creacion de tarea en la pagina de TaskMaster Pro" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-07-09T19:43:14" hostname="DESKTOP-9S50AII" time="21.588">
   <properties/>
-  <testcase name="Crear Tarea Exitosamente" classname="Creacion de tarea en la pagina de TaskMaster Pro" time="14.728"/>
+  <testcase name="Crear Tarea Exitosamente" classname="Creacion de tarea en la pagina de TaskMaster Pro" time="21.588"/>
   <system-out><![CDATA[    ?[32mDado ?[0m?[32mque el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro?[0m ?[90m# AutenticacionTaskMasterStepsDefinitions.queElUsuarioSeEncuentraEnLaPaginaDeInicioDeSesionDeTaskMasterPro()?[0m
 Alerta aceptada correctamente.
     ?[32mCuando ?[0m?[32mingrese las credenciales correctas (usuario y contraseña)?[0m                    ?[90m# AutenticacionTaskMasterStepsDefinitions.ingreseLasCredencialesCorrectasUsuarioYContraseña(CredencialesInicioSesion>)?[0m
@@ -10,34 +10,34 @@ Alerta aceptada correctamente.
   Esquema del escenario: Crear Tarea Exitosamente                                                      ?[90m# src/test/resources/features/crearTarea_taskmasterPro.feature:25?[0m
 Alerta aceptada correctamente.
     ?[32mCuando ?[0m?[32mselecciona la opción de crear una nueva tarea?[0m                                               ?[90m# CrearTareaTaskMasterStepsDefinitions.seleccionaLaOpciónDeCrearUnaNuevaTarea(DatosCrearTarea>)?[0m
-Nombre Sesion Variable: 'Tarea de PruebaECPOX'
-Descripcion Sesion Variable: 'Esta es una tarea de prueba ZvxvfhBZHoyOkhnvCdJv'
+Nombre Sesion Variable: 'Tarea de PruebahgBGq'
+Descripcion Sesion Variable: 'Esta es una tarea de prueba ofIeSpzgUOhvvMexbbJD'
 Estado Sesion Variable: 'En Curso'
 Prioridad Sesion Variable: 'Media'
-Nombre capturado: 'Tarea de PruebaECPOX'
-Descripcion capturada: 'Esta es una tarea de prueba ZvxvfhBZHoyOkhnvCdJv'
+Nombre capturado: 'Tarea de PruebahgBGq'
+Descripcion capturada: 'Esta es una tarea de prueba ofIeSpzgUOhvvMexbbJD'
 Estado capturado: 'En Curso'
 Prioridad capturada: 'Media'
     ?[32mEntonces ?[0m?[32mel sistema debe mostrar un mensaje de confirmacion registrar correctamente la nueva tarea?[0m ?[90m# CrearTareaTaskMasterStepsDefinitions.elSistemaDebeMostrarUnMensajeDeConfirmacionRegistrarCorrectamenteLaNuevaTarea()?[0m
 ]]></system-out>
-  <system-err><![CDATA[jul. 09, 2025 1:48:18 P. M. org.openqa.selenium.remote.DesiredCapabilities chrome
+  <system-err><![CDATA[jul. 09, 2025 2:43:15 P. M. org.openqa.selenium.remote.DesiredCapabilities chrome
 INFO: Using `new ChromeOptions()` is preferred to `DesiredCapabilities.chrome()`
 [Test worker] INFO net.serenitybdd.core.webdriver.driverproviders.ProvideNewDriver - Instantiating driver
 [Test worker] INFO net.serenitybdd.core.webdriver.driverproviders.ProvideNewDriver - Driver capabilities: Capabilities {acceptInsecureCerts: false, browserName: chrome, goog:chromeOptions: {args: [], extensions: [], prefs: {behavior: allow}}, loggingPrefs: org.openqa.selenium.logging..., name: proyecto, platform: ANY, unhandledPromptBehavior: ignore, version: }
-Starting ChromeDriver 138.0.7204.92 (f079b9bc781e3c2adb1496ea1d72812deb0ddb3d-refs/branch-heads/7204_50@{#8}) on port 42133
+Starting ChromeDriver 138.0.7204.92 (f079b9bc781e3c2adb1496ea1d72812deb0ddb3d-refs/branch-heads/7204_50@{#8}) on port 10576
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-ChromeDriver was started successfully on port 42133.
-jul. 09, 2025 1:48:19 P. M. org.openqa.selenium.remote.ProtocolHandshake createSession
+ChromeDriver was started successfully on port 10576.
+jul. 09, 2025 2:43:18 P. M. org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
-[1752086903.779][WARNING]: unexpected alert open: {Alert text : Inicio de sesiÃ³n exitoso}, cancelling screenshot
+[1752090205.928][WARNING]: unexpected alert open: {Alert text : Inicio de sesiÃ³n exitoso}, cancelling screenshot
 [Test worker] WARN net.thucydides.core.webdriver.WebDriverFacade - Failed to take screenshot (unexpected alert open: <unknown>
   (Session info: chrome=138.0.7204.97): 
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'DESKTOP-9S50AII', ip: '192.168.80.16', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '15.0.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.97, chrome: {chromedriverVersion: 138.0.7204.92 (f079b9bc781e..., userDataDir: C:\Users\LENOVO\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56423}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: ignore, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 1850d95c7a2ce46789c3540b7d8bee29)
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.97, chrome: {chromedriverVersion: 138.0.7204.92 (f079b9bc781e..., userDataDir: C:\Users\LENOVO\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58721}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: ignore, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 5fa619bd86ed47a82aacd8eb6a9ddb24)
 [Test worker] INFO net.thucydides.core.steps.ConsoleLoggingListener - 
         __    _____ _____ ____ _____   ____   _    ____  ____  _____ ____  
   _     \ \  |_   _| ____/ ___|_   _| |  _ \ / \  / ___|/ ___|| ____|  _ \ 
