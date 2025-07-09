@@ -293,7 +293,7 @@ export default {
     irPlantillasProyecto() {
       this.router.push('/plantillas-proyecto');
     },
-     irMisTareas() {
+    irMisTareas() {
       this.router.push('/mis-tareas');
     },
     cerrarModalBusqueda() {
