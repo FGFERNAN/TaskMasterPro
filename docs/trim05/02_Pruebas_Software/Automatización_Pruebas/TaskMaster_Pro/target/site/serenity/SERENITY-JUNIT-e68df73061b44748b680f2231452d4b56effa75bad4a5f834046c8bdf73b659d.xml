@@ -1,1 +1,5 @@
+<<<<<<< HEAD:docs/trim05/01_Pruebas_Software/Automatización_Pruebas/TaskMaster_Pro/target/site/serenity/SERENITY-JUNIT-e68df73061b44748b680f2231452d4b56effa75bad4a5f834046c8bdf73b659d.xml
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Creacion de usuario en la pagina de TaskMaster Pro" skipped="0" tests="1" time="32.61" timestamp="2025-06-06 09:05:18"><testcase name="Crear Usuario Exitosamente"/></testsuite>
+=======
 <?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Creacion de usuario en la pagina de TaskMaster Pro" skipped="0" tests="1" time="19.43" timestamp="2025-06-17 10:32:10"><testcase name="Crear Usuario Exitosamente"/></testsuite>
+>>>>>>> main:docs/trim05/02_Pruebas_Software/Automatización_Pruebas/TaskMaster_Pro/target/site/serenity/SERENITY-JUNIT-e68df73061b44748b680f2231452d4b56effa75bad4a5f834046c8bdf73b659d.xml
