@@ -116,7 +116,7 @@
                 <i class="bi bi-caret-left-fill"></i> Regresar
               </button>
               <div class="d-flex align-items-center">
-                <a href="notificaciones.html" class="me-2">
+                <a @click="irNotificaciones" class="me-2">
                   <i class="fas fa-bell"></i> <!-- Icono de notificaciones -->
                 </a>
                 <button class="btn btn-cerrar-sesion-ip" @click="confirmarCerrarSesion">
@@ -381,6 +381,9 @@ export default {
     },
     irInterfazProyecto(projectId) {
       this.$router.push({ name: 'InterfazProyecto', params: { id: projectId } });
+    },
+     irNotificaciones() {
+      this.$router.push('/notificaciones');
     },
     async confirmarCerrarSesion() {
       if (confirm("¿Estás seguro que quieres cerrar sesión?")) {

@@ -143,6 +143,9 @@
 
 <script>
 export default {
+  mounted() {
+    document.title = "Etiquetas | TaskMaster Pro";
+  },
   data() {
     return {
       colorNuevo: "#6DA2C1",

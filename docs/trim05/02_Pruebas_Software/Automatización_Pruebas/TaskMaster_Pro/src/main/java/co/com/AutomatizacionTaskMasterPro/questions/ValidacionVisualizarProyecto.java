@@ -6,7 +6,7 @@ import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.questions.Text;
 
 import static co.com.AutomatizacionTaskMasterPro.userInterface.VisualizarProyecto.MENSAJE_EXITO;
-import static co.com.AutomatizacionTaskMasterPro.userInterface.VisualizarProyecto.PORCENTAJE;
+import static co.com.AutomatizacionTaskMasterPro.userInterface.VisualizarProyecto.ETIQUETA;
 import static jxl.biff.FormatRecord.logger;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
@@ -19,14 +19,14 @@ public class ValidacionVisualizarProyecto implements Question<Boolean> {
         String nameProject = theActorInTheSpotlight().recall(SesionVariable.nombreVisualizar.toString());
         logger.info("Nombre Sesion Variable: '" + nameProject + "'");
 
-        String porcentaje = theActorInTheSpotlight().recall(SesionVariable.porcentaje.toString());
-        logger.info("Porcentaje Sesion Variable: '" + porcentaje + "'");
+        String porcentaje = theActorInTheSpotlight().recall(SesionVariable.etiqueta.toString());
+        logger.info("Etiqueta Sesion Variable: '" + porcentaje + "'");
         try {
             String nombre = Text.of(MENSAJE_EXITO).viewedBy(actor).asString();
             logger.info("Nombre capturado: '" + nombre + "'");
 
-            String texto = Text.of(PORCENTAJE).viewedBy(actor).asString();
-            logger.info("Porcentaje capturado: '" + texto + "'");
+            String texto = Text.of(ETIQUETA).viewedBy(actor).asString();
+            logger.info("Etiqueta capturado: '" + texto + "'");
             return nameProject.equals(nombre)
                     && porcentaje.equals(texto);
         } catch (Exception e) {

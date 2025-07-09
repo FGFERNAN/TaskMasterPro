@@ -108,7 +108,7 @@
           <header>
             <div class="header d-flex justify-content-end align-items-center p-3">
               <div class="d-flex align-items-center">
-                <a href="notificaciones.html" class="me-2">
+                <a @click="irNotificaciones" class="me-2">
                   <i class="fas fa-bell"></i>
                 </a>
                 <button class="btn btn-cerrar-sesion-ip" @click="confirmarCerrarSesion"><i
@@ -511,6 +511,9 @@ export default {
     },
     irMensajeGrupal() {
       this.$router.push('/mensajes-grupales');
+    },
+     irNotificaciones() {
+      this.$router.push('/notificaciones');
     }
   },
 

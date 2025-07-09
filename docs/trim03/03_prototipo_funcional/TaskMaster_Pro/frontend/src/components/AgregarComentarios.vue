@@ -42,33 +42,39 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+<script>
+export default {
+  mounted(){
+    document.title = "Agregar Comentarios | TaskMaster Pro";
+  },
+  data() {
+    return {
+      comentario: ''
+    };
+  },
+  methods: {
+    regresar() {
+      this.$router.back();
+    },
+    enviarComentario() {
+      if (!this.comentario.trim()) {
+        alert("El comentario no puede estar vacío.");
+        return;
+      }
 
-const comentario = ref('');
-const router = useRouter();
-
-const regresar = () => {
-  router.back();
-};
-
-const enviarComentario = () => {
-  if (!comentario.value.trim()) {
-    alert("El comentario no puede estar vacío.");
-    return;
-  }
-
-  const confirmacion = confirm("¿Está seguro de enviar el comentario?");
-  if (confirmacion) {
-    alert("Comentario enviado: " + comentario.value);
-    comentario.value = '';
-    router.push('/interfaz-tarea'); // Ajusta esta ruta si es necesario
-  } else {
-    alert("Comentario no enviado.");
+      const confirmacion = confirm("¿Está seguro de enviar el comentario?");
+      if (confirmacion) {
+        alert("Comentario enviado: " + this.comentario);
+        this.comentario = '';
+        this.$router.push('/interfaz-tarea'); // Ajusta esta ruta si es necesario
+      } else {
+        alert("Comentario no enviado.");
+      }
+    }
   }
 };
 </script>
+
 
 <style scoped>
 @import '@/assets/css/aggcomentarios.css';

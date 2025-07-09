@@ -3,30 +3,18 @@
     "line": 4,
     "elements": [
       {
-        "before": [
-          {
-            "result": {
-              "duration": 73387900,
-              "status": "passed"
-            },
-            "match": {
-              "location": "PreparacionEscenario.sepUp()"
-            }
-          }
-        ],
-        "line": 11,
-        "name": "Inicio de Sesion Valido",
+        "line": 9,
+        "name": "",
         "description": "",
-        "id": "autenticacion-en-la-pagina-de-taskmaster-pro;inicio-de-sesion-valido",
-        "type": "scenario",
-        "keyword": "Escenario",
+        "type": "background",
+        "keyword": "Antecedentes",
         "steps": [
           {
             "result": {
-              "duration": 6191940300,
+              "duration": 3825658700,
               "status": "passed"
             },
-            "line": 12,
+            "line": 10,
             "name": "que el usuario se encuentra en la pagina de inicio de sesion de TaskMaster Pro",
             "match": {
               "location": "AutenticacionTaskMasterStepsDefinitions.queElUsuarioSeEncuentraEnLaPaginaDeInicioDeSesionDeTaskMasterPro()"
@@ -35,10 +23,10 @@
           },
           {
             "result": {
-              "duration": 3155473500,
+              "duration": 2762735100,
               "status": "passed"
             },
-            "line": 13,
+            "line": 11,
             "name": "ingrese las credenciales correctas (usuario y contraseña)",
             "match": {
               "location": "AutenticacionTaskMasterStepsDefinitions.ingreseLasCredencialesCorrectasUsuarioYContraseña(CredencialesInicioSesion\u003e)"
@@ -58,32 +46,87 @@
               }
             ],
             "keyword": "Cuando "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 1186100,
+              "status": "passed"
+            },
+            "match": {
+              "location": "PreparacionEscenario.sepUp()"
+            }
+          }
+        ],
+        "line": 25,
+        "name": "Crear Tarea Exitosamente",
+        "description": "",
+        "id": "creacion-de-tarea-en-la-pagina-de-taskmaster-pro;crear-tarea-exitosamente;;2",
+        "type": "scenario",
+        "keyword": "Esquema del escenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 7011877000,
+              "status": "passed"
+            },
+            "line": 18,
+            "name": "selecciona la opción de crear una nueva tarea",
+            "match": {
+              "location": "CrearTareaTaskMasterStepsDefinitions.seleccionaLaOpciónDeCrearUnaNuevaTarea(DatosCrearTarea\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "nombre",
+                  "descripcion",
+                  "fechaInicio",
+                  "fechaFin",
+                  "estado",
+                  "prioridad"
+                ]
+              },
+              {
+                "cells": [
+                  "Tarea de Prueba",
+                  "Esta es una tarea de prueba",
+                  "30052025",
+                  "31052025",
+                  "En Curso",
+                  "Media"
+                ]
+              }
+            ],
+            "keyword": "Cuando "
           },
           {
             "result": {
-              "duration": 259404200,
+              "duration": 296609300,
               "status": "passed"
             },
-            "line": 16,
-            "name": "se debe verificar que el usuario haya sido autenticado correctamente y redirigido a la interfaz principal del sistema",
+            "line": 21,
+            "name": "el sistema debe mostrar un mensaje de confirmacion registrar correctamente la nueva tarea",
             "match": {
-              "location": "AutenticacionTaskMasterStepsDefinitions.seDebeVerificarQueElUsuarioHayaSidoAutenticadoCorrectamenteYRedirigidoALaInterfazPrincipalDelSistema()"
+              "location": "CrearTareaTaskMasterStepsDefinitions.elSistemaDebeMostrarUnMensajeDeConfirmacionRegistrarCorrectamenteLaNuevaTarea()"
             },
             "keyword": "Entonces "
           }
         ],
         "tags": [
           {
-            "name": "@autenticacion"
+            "name": "@CrearTarea"
           }
         ]
       }
     ],
-    "name": "Autenticacion en la pagina de TaskMaster Pro",
-    "description": "  Como usuario de TaskMaster Pro\n  Quiero iniciar sesion en el sistema\n  Para poder acceder a todas las funcionalidades del sistema.",
-    "id": "autenticacion-en-la-pagina-de-taskmaster-pro",
+    "name": "Creacion de tarea en la pagina de TaskMaster Pro",
+    "description": "  Como usuario de TaskMaster Pro\n  Quiero poder crear una nueva tarea\n  Para desglosar el trabajo en partes manejables y asignarlas a los miembros del equipo.",
+    "id": "creacion-de-tarea-en-la-pagina-de-taskmaster-pro",
     "keyword": "Característica",
-    "uri": "src/test/resources/features/autenticacionlogin_taskmasterPro.feature",
+    "uri": "src/test/resources/features/crearTarea_taskmasterPro.feature",
     "tags": []
   }
 ]

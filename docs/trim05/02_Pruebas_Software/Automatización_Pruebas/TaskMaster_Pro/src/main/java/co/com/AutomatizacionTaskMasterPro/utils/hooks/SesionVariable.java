@@ -14,7 +14,7 @@ public enum SesionVariable {
     prioridad,
     nombreFiltro,
     nombreVisualizar,
-    porcentaje,
+    etiqueta,
     estadoCrear,
     prioridadCrear,
     nombreTarea,

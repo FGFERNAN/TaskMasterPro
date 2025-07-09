@@ -109,7 +109,7 @@
               <button class="btn me-md-2 mt-1 btn-regresar" onclick="history.back()"><i
                   class="bi bi-caret-left-fill"></i> Regresar</button>
               <div class="d-flex align-items-center">
-                <a class="me-2">
+                <a @click="irNotificaciones" class="me-2">
                   <i class="fas fa-bell"></i>
                 </a>
                 <button class="btn btn-cerrar-sesion" @click="confirmarCerrarSesion">
@@ -556,6 +556,9 @@ export default {
     },
     irComentario() {
       this.$router.push('/agregar-comentarios');
+    },
+     irNotificaciones() {
+      this.$router.push('/notificaciones');
     },
     async confirmarCerrarSesion() {
       if (confirm("¿Estás seguro que quieres cerrar sesión?")) {

@@ -123,7 +123,7 @@
           <header>
             <div class="header d-flex justify-content-end align-items-center p-3">
               <div class="d-flex align-items-center">
-                <a href="notificaciones.html" class="me-2"><i class="fas fa-bell"></i></a>
+                <a @click="irNotificaciones" class="me-2"><i class="fas fa-bell"></i></a>
                 <button class="btn btn-cerrar-sesion" @click="confirmarCerrarSesion">
                   <i class="fa-solid fa-right-to-bracket me-1"></i> Cerrar Sesión
                 </button>
@@ -264,6 +264,9 @@ export default {
     },
     irInterfazPrincipal() {
       this.$router.push('/interfaz-principal');
+    },
+     irNotificaciones() {
+      this.$router.push('/notificaciones');
     },
     async deleteProject(projectId) {
       try {

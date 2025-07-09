@@ -114,7 +114,7 @@
                   <i class="fas fa-search" @click="mostrarModalBusqueda = true"
                     style="color: #2E7060; font-size: 30px;"></i>
                 </div>
-                <a href="notificaciones.html" class="me-2"><i class="fas fa-bell"></i></a>
+                <a @click="irNotificaciones" class="me-2"><i class="fas fa-bell"></i></a>
                 <button class="btn btn-cerrar-sesion-ip" @click="confirmarCerrarSesion">
                   <i class="fa-solid fa-right-to-bracket me-1"></i> Cerrar Sesión
                 </button>
@@ -375,6 +375,9 @@ export default {
     },
     irEtiquetas() {
       this.$router.push('/etiquetas-view');
+    },
+     irNotificaciones() {
+      this.$router.push('/notificaciones');
     }
   }
 }

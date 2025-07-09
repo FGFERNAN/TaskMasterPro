@@ -31,7 +31,7 @@ public class VisualizarProyecto implements Task {
                 Click.on(VIS_PROYECTOS)
         );
         theActorInTheSpotlight().remember(SesionVariable.nombreVisualizar.toString(), datos.get(0).getNombre());
-        theActorInTheSpotlight().remember(SesionVariable.porcentaje.toString(), datos.get(0).getPorcentaje());
+        theActorInTheSpotlight().remember(SesionVariable.etiqueta.toString(), datos.get(0).getEtiqueta());
 
     }
 }

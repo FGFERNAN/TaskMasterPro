@@ -1,9 +1,7 @@
 package co.com.AutomatizacionTaskMasterPro.stepsDefinitions;
 
-<<<<<<< HEAD:docs/trim05/01_Pruebas_Software/Automatización_Pruebas/TaskMaster_Pro/src/test/java/co/com/AutomatizacionTaskMasterPro/stepsDefinitions/VisualizarProyectoTaskMasterStepsDefinitions.java
-=======
+
 import co.com.AutomatizacionTaskMasterPro.models.DatosVisualizarProyecto;
->>>>>>> main:docs/trim05/02_Pruebas_Software/Automatización_Pruebas/TaskMaster_Pro/src/test/java/co/com/AutomatizacionTaskMasterPro/stepsDefinitions/VisualizarProyectoTaskMasterStepsDefinitions.java
 import co.com.AutomatizacionTaskMasterPro.questions.ValidacionVisualizarProyecto;
 import co.com.AutomatizacionTaskMasterPro.tasks.VisualizarProyecto;
 import cucumber.api.java.es.Cuando;

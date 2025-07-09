@@ -8,12 +8,12 @@
             <path
               d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
           </svg>
-          <span class="button-text">Regresar</span>
+          <span class="button-text"> Regresar</span>
         </button>
         <h1 class="mb-0 text-center flex-grow-1">
           <i class="fa-regular fa-file me-1"></i> Adjuntar Archivos
         </h1>
-        <img src="../../public/assets/img/logotipo.png" alt="Logo" class="img-fluid logo" />
+        <img src="../assets/img/logotipo.png" alt="Logo" class=" logo" />
       </div>
     </div>
 
@@ -42,13 +42,15 @@
 
 <script>
 export default {
-  name: 'AdjuntarArchivos',
+  mounted() {
+    document.title = "Adjuntar Archivos | TaskMaster Pro";
+  },
   data() {
     return {
       previews: [
-        { src: '../../public/assets/img/pdf.png', alt: 'Archivo 1' },
-        { src: '../../public/assets/img/png.png', alt: 'Archivo 2' },
-        { src: '../../public/assets/img/word.png', alt: 'Archivo 3' },
+        { src: require('@/assets/img/pdf.png'), alt: 'Archivo 1' },
+        { src: require('@/assets/img/png.png'), alt: 'Archivo 2' },
+        { src: require('@/assets/img/word.png'), alt: 'Archivo 3' },
       ]
     }
   },
@@ -64,7 +66,5 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css');
-@import '../../public/assets/css/adjuntarArchivos.css';
+@import "@/../../assets/css/adjuntarArchivos.css";
 </style>

@@ -11,7 +11,7 @@
           <span class="button-text">Regresar</span>
         </button>
         <h1 class="mb-0 text-center flex-grow-1">Editar Campo</h1>
-        <img src="../../public/assets/img/logotipo.png" alt="Logo" class="img-fluid logo">
+        <img src="../assets/img/logotipo.png" alt="Logo" class=" logo">
       </div>
     </div>
 
@@ -93,6 +93,7 @@
 export default {
   name: 'EditarCampoPersonalizado',
   mounted() {
+    document.title = "Editar Campo | TaskMaster Pro";
     const form = this.$refs.form;
 
     form.addEventListener('submit', event => {
@@ -120,7 +121,5 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css');
-@import '../../public/assets/css/style.css';
+@import "@/../../assets/css/style.css";
 </style>

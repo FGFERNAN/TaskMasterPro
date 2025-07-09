@@ -146,7 +146,7 @@
       <div class="row mb-4 text-center">
         <label class="col-sm-4 col-form-label">Campos Personalizados:</label>
         <div class="col-sm-6">
-          <button class="btn btn-primary buton-form" type="button" @click="$router.push('/crearCampo')">
+          <button class="btn btn-primary buton-form" type="button" @click="$router.push('/crear-campo')">
             <i class="fa-solid fa-plus"></i> Agregar
           </button>
         </div>

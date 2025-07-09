@@ -82,6 +82,7 @@ h1 {
     resize: none;
     background-color: #E4E2DD;
     box-sizing: border-box;
+    margin-bottom: 0px;
 }
 
 .btn-comentar {

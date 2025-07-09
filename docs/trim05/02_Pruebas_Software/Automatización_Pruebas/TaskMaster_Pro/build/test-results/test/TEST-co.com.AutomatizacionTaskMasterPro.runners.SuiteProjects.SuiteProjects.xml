@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="co.com.AutomatizacionTaskMasterPro.runners.SuiteProjects.SuiteProjects" tests="0" skipped="0" failures="0" errors="0" timestamp="1970-01-01T00:00:00" hostname="DESKTOP-9S50AII" time="0.0">
+  <properties/>
+  <system-out><![CDATA[Característica: Asignacion de proyecto en la pagina de TaskMaster Pro
+  Como usuario de TaskMaster Pro
+  Quiero poder agregar miembros a un proyecto
+  Para poder repartir tareas y colaborar eficazmente para resultados más rapidos.
+
+  Antecedentes:                                                                         ?[90m# src/test/resources/features/asignarProyecto_taskmasterPro.feature:9?[0m
+
+1 Scenarios (?[32m1 passed?[0m)
+4 Steps (?[32m4 passed?[0m)
+0m14,907s
+
+Característica: Eliminación de miembro de un proyecto en la pagina de TaskMaster Pro
+  Como usuario de TaskMaster Pro
+  Quiero poder eliminar un miembro asignado a un proyecto
+  Para ajustar el equipo según sea necesario.
+
+  Antecedentes:                                                                         ?[90m# src/test/resources/features/eliminarMiembro_taskmasterPro.feature:9?[0m
+
+1 Scenarios (?[32m1 passed?[0m)
+4 Steps (?[32m4 passed?[0m)
+0m48,229s
+
+Característica: Busqueda de proyecto en la pagina de TaskMaster Pro
+  Como usuario de TaskMaster Pro
+  Quiero poder buscar un proyecto existente
+  Para encontrar rápidamente el proyecto que necesito.
+
+  Antecedentes:                                                                         ?[90m# src/test/resources/features/filtrarProyecto_taskmasterPro.feature:9?[0m
+
+1 Scenarios (?[32m1 passed?[0m)
+4 Steps (?[32m4 passed?[0m)
+0m59,340s
+
+Característica: Visualización de proyecto en la pagina de TaskMaster Pro
+  Como usuario de TaskMaster Pro
+  Quiero poder visualizar los detalles de los proyectos
+  Para obtener detalles y una visión general del progreso.
+
+  Antecedentes:                                                                         ?[90m# src/test/resources/features/visualizarProyecto_taskmasterPro.feature:9?[0m
+
+1 Scenarios (?[32m1 passed?[0m)
+4 Steps (?[32m4 passed?[0m)
+1m10,564s
+
+Característica: Creacion de proyecto en la pagina de TaskMaster Pro
+  Como usuario de TaskMaster Pro
+  Quiero poder crear un nuevo proyecto
+  Para organizar y gestionar las tareas y recursos necesarios para alcanzar los objetivos del proyecto.
+
+  @CrearProyecto
+  Esquema del escenario: Crear Proyecto Exitosamente ?[90m# src/test/resources/features/crearProyecto_taskmasterPro.feature:17?[0m
+    ?[36mCuando selecciona la opción de crear un nuevo proyecto?[0m
+    ?[36mEntonces el sistema debe registrar correctamente el nuevo proyecto?[0m
+
+    Ejemplos: 
+
+  Antecedentes:                                                                         ?[90m# src/test/resources/features/crearProyecto_taskmasterPro.feature:9?[0m
+
+1 Scenarios (?[32m1 passed?[0m)
+4 Steps (?[32m4 passed?[0m)
+1m25,969s
+
+Característica: Actualización de un proyecto existente en la pagina de TaskMaster Pro
+  Como usuario de TaskMaster Pro
+  Quiero poder editar un proyecto existente
+  Para mantener la información actualizada según sea necesario
+
+  @EditarProyecto
+  Esquema del escenario: Editar Proyecto Exitosamente ?[90m# src/test/resources/features/editarProyecto_taskmasterPro.feature:17?[0m
+    ?[36mCuando selecciona la opción de editar un proyecto?[0m
+    ?[36mEntonces el sistema debe mostrar una alerta confirmando los cambios con exito y se deben ver reflejados al abrir los detalles?[0m
+
+    Ejemplos: 
+
+  Antecedentes:                                                                         ?[90m# src/test/resources/features/editarProyecto_taskmasterPro.feature:9?[0m
+
+1 Scenarios (?[32m1 passed?[0m)
+4 Steps (?[32m4 passed?[0m)
+1m41,913s
+
+Característica: Eliminación de proyecto en la pagina de TaskMaster Pro
+  Como usuario de TaskMaster Pro
+  Quiero poder eliminar un proyecto existente
+  Para mantener mi lista de proyectos organizada y actualizada.
+
+  Antecedentes:                                                                         ?[90m# src/test/resources/features/eliminarProyecto_taskmasterPro.feature:9?[0m
+
+1 Scenarios (?[32m1 passed?[0m)
+4 Steps (?[32m4 passed?[0m)
+2m13,417s
+
+Característica: Creacion de tarea en la pagina de TaskMaster Pro
+  Como usuario de TaskMaster Pro
+  Quiero poder crear una nueva tarea
+  Para desglosar el trabajo en partes manejables y asignarlas a los miembros del equipo.
+
+  @CrearTarea
+  Esquema del escenario: Crear Tarea Exitosamente ?[90m# src/test/resources/features/crearTarea_taskmasterPro.feature:17?[0m
+    ?[36mCuando selecciona la opción de crear una nueva tarea?[0m
+    ?[36mEntonces el sistema debe mostrar un mensaje de confirmacion registrar correctamente la nueva tarea?[0m
+
+    Ejemplos: 
+
+  Antecedentes:                                                                         ?[90m# src/test/resources/features/crearTarea_taskmasterPro.feature:9?[0m
+
+1 Scenarios (?[32m1 passed?[0m)
+4 Steps (?[32m4 passed?[0m)
+2m28,819s
+
+]]></system-out>
+  <system-err><![CDATA[[Test worker] INFO net.thucydides.core.steps.ConsoleLoggingListener - 
+
+-------------------------------------------------------------------------------------
+     _______. _______ .______       _______ .__   __.  __  .___________.____    ____ 
+    /       ||   ____||   _  \     |   ____||  \ |  | |  | |           |\   \  /   / 
+   |   (----`|  |__   |  |_)  |    |  |__   |   \|  | |  | `---|  |----` \   \/   /  
+    \   \    |   __|  |      /     |   __|  |  . `  | |  |     |  |       \_    _/   
+.----)   |   |  |____ |  |\  \----.|  |____ |  |\   | |  |     |  |         |  |     
+|_______/    |_______|| _| `._____||_______||__| \__| |__|     |__|         |__|    
+                                                                                     
+ News and tutorials at http://www.serenity-bdd.info                                  
+ Documentation at https://wakaleo.gitbooks.io/the-serenity-book/content/             
+ Join the Serenity Community on Rocket Chat at https://serenity-bdd.rocket.chat      
+ Serenity BDD Support and Training at http://serenity-bdd.info/#/trainingandsupport  
+ Learn Serenity BDD online at http://serenity-dojo.com                               
+-------------------------------------------------------------------------------------
+
+[Test worker] INFO net.thucydides.core.steps.ConsoleLoggingListener - Test Suite Started: Asignacion de proyecto en la pagina de TaskMaster Pro
+[Test worker] INFO net.thucydides.core.steps.ConsoleLoggingListener - Test Suite Started: Eliminación de miembro de un proyecto en la pagina de TaskMaster Pro
+[Test worker] INFO net.thucydides.core.steps.ConsoleLoggingListener - Test Suite Started: Busqueda de proyecto en la pagina de TaskMaster Pro
+[Test worker] INFO net.thucydides.core.steps.ConsoleLoggingListener - Test Suite Started: Visualización de proyecto en la pagina de TaskMaster Pro
+[Test worker] INFO net.thucydides.core.steps.ConsoleLoggingListener - Test Suite Started: Creacion de proyecto en la pagina de TaskMaster Pro
+[Test worker] INFO net.thucydides.core.steps.ConsoleLoggingListener - Test Suite Started: Actualización de un proyecto existente en la pagina de TaskMaster Pro
+[Test worker] INFO net.thucydides.core.steps.ConsoleLoggingListener - Test Suite Started: Eliminación de proyecto en la pagina de TaskMaster Pro
+[Test worker] INFO net.thucydides.core.steps.ConsoleLoggingListener - Test Suite Started: Creacion de tarea en la pagina de TaskMaster Pro
+[Test worker] INFO net.thucydides.core.steps.ConsoleLoggingListener - 
+ _____ _____ ____ _____   ____ _____  _    ____ _____ _____ ____  
+|_   _| ____/ ___|_   _| / ___|_   _|/ \  |  _ \_   _| ____|  _ \ 
+  | | |  _| \___ \ | |   \___ \ | | / _ \ | |_) || | |  _| | | | |
+  | | | |___ ___) || |    ___) || |/ ___ \|  _ < | | | |___| |_| |
+  |_| |_____|____/ |_|   |____/ |_/_/   \_\_| \_\|_| |_____|____/ 
+                                                                  
+
+TEST STARTED: Agregar Miembro Exitosamente
+-------------------------------------------------------------------(asignacion-de-proyecto-en-la-pagina-de-taskmaster-pro;agregar-miembro-exitosamente)
+[pool-2-thread-1] INFO net.thucydides.core.requirements.PackageRequirementsTagProvider - Loading requirements from package requirements at: net.thucydides.showcase.cucumber.junit
+log4j:WARN No appenders could be found for logger (freemarker.cache).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+[Test worker] INFO net.thucydides.core.steps.ConsoleLoggingListener - 
+ _____ _____ ____ _____   ____ _____  _    ____ _____ _____ ____  
+|_   _| ____/ ___|_   _| / ___|_   _|/ \  |  _ \_   _| ____|  _ \ 
+  | | |  _| \___ \ | |   \___ \ | | / _ \ | |_) || | |  _| | | | |
+  | | | |___ ___) || |    ___) || |/ ___ \|  _ < | | | |___| |_| |
+  |_| |_____|____/ |_|   |____/ |_/_/   \_\_| \_\|_| |_____|____/ 
+                                                                  
+
+TEST STARTED: Eliminar un Miembro Exitosamente
+-------------------------------------------------------------------(eliminación-de-miembro-de-un-proyecto-en-la-pagina-de-taskmaster-pro;eliminar-un-miembro-exitosamente)
+[Test worker] INFO net.thucydides.core.steps.ConsoleLoggingListener - 
+ _____ _____ ____ _____   ____ _____  _    ____ _____ _____ ____  
+|_   _| ____/ ___|_   _| / ___|_   _|/ \  |  _ \_   _| ____|  _ \ 
+  | | |  _| \___ \ | |   \___ \ | | / _ \ | |_) || | |  _| | | | |
+  | | | |___ ___) || |    ___) || |/ ___ \|  _ < | | | |___| |_| |
+  |_| |_____|____/ |_|   |____/ |_/_/   \_\_| \_\|_| |_____|____/ 
+                                                                  
+
+TEST STARTED: Filtrar un Proyecto Exitosamente
+-------------------------------------------------------------------(busqueda-de-proyecto-en-la-pagina-de-taskmaster-pro;filtrar-un-proyecto-exitosamente)
+[Test worker] INFO net.thucydides.core.steps.ConsoleLoggingListener - 
+ _____ _____ ____ _____   ____ _____  _    ____ _____ _____ ____  
+|_   _| ____/ ___|_   _| / ___|_   _|/ \  |  _ \_   _| ____|  _ \ 
+  | | |  _| \___ \ | |   \___ \ | | / _ \ | |_) || | |  _| | | | |
+  | | | |___ ___) || |    ___) || |/ ___ \|  _ < | | | |___| |_| |
+  |_| |_____|____/ |_|   |____/ |_/_/   \_\_| \_\|_| |_____|____/ 
+                                                                  
+
+TEST STARTED: Visualizar un Proyecto Exitosamente
+-------------------------------------------------------------------(visualización-de-proyecto-en-la-pagina-de-taskmaster-pro;visualizar-un-proyecto-exitosamente)
+[Test worker] INFO net.thucydides.core.steps.ConsoleLoggingListener - 
+ _____ _____ ____ _____   ____ _____  _    ____ _____ _____ ____  
+|_   _| ____/ ___|_   _| / ___|_   _|/ \  |  _ \_   _| ____|  _ \ 
+  | | |  _| \___ \ | |   \___ \ | | / _ \ | |_) || | |  _| | | | |
+  | | | |___ ___) || |    ___) || |/ ___ \|  _ < | | | |___| |_| |
+  |_| |_____|____/ |_|   |____/ |_/_/   \_\_| \_\|_| |_____|____/ 
+                                                                  
+
+TEST STARTED: Crear Proyecto Exitosamente
+-------------------------------------------------------------------(creacion-de-proyecto-en-la-pagina-de-taskmaster-pro;crear-proyecto-exitosamente)
+[Test worker] INFO net.thucydides.core.steps.ConsoleLoggingListener - 
+ _____ _____ ____ _____   ____ _____  _    ____ _____ _____ ____  
+|_   _| ____/ ___|_   _| / ___|_   _|/ \  |  _ \_   _| ____|  _ \ 
+  | | |  _| \___ \ | |   \___ \ | | / _ \ | |_) || | |  _| | | | |
+  | | | |___ ___) || |    ___) || |/ ___ \|  _ < | | | |___| |_| |
+  |_| |_____|____/ |_|   |____/ |_/_/   \_\_| \_\|_| |_____|____/ 
+                                                                  
+
+TEST STARTED: Editar Proyecto Exitosamente
+-------------------------------------------------------------------(actualización-de-un-proyecto-existente-en-la-pagina-de-taskmaster-pro;editar-proyecto-exitosamente)
+[Test worker] INFO net.thucydides.core.steps.ConsoleLoggingListener - 
+ _____ _____ ____ _____   ____ _____  _    ____ _____ _____ ____  
+|_   _| ____/ ___|_   _| / ___|_   _|/ \  |  _ \_   _| ____|  _ \ 
+  | | |  _| \___ \ | |   \___ \ | | / _ \ | |_) || | |  _| | | | |
+  | | | |___ ___) || |    ___) || |/ ___ \|  _ < | | | |___| |_| |
+  |_| |_____|____/ |_|   |____/ |_/_/   \_\_| \_\|_| |_____|____/ 
+                                                                  
+
+TEST STARTED: Eliminar un Proyecto Exitosamente
+-------------------------------------------------------------------(eliminación-de-proyecto-en-la-pagina-de-taskmaster-pro;eliminar-un-proyecto-exitosamente)
+[Test worker] INFO net.thucydides.core.steps.ConsoleLoggingListener - 
+ _____ _____ ____ _____   ____ _____  _    ____ _____ _____ ____  
+|_   _| ____/ ___|_   _| / ___|_   _|/ \  |  _ \_   _| ____|  _ \ 
+  | | |  _| \___ \ | |   \___ \ | | / _ \ | |_) || | |  _| | | | |
+  | | | |___ ___) || |    ___) || |/ ___ \|  _ < | | | |___| |_| |
+  |_| |_____|____/ |_|   |____/ |_/_/   \_\_| \_\|_| |_____|____/ 
+                                                                  
+
+TEST STARTED: Crear Tarea Exitosamente
+-------------------------------------------------------------------(creacion-de-tarea-en-la-pagina-de-taskmaster-pro;crear-tarea-exitosamente)
+]]></system-err>
+</testsuite>

@@ -2,7 +2,7 @@ package co.com.AutomatizacionTaskMasterPro.models;
 
 public class DatosVisualizarProyecto {
     private String nombre;
-    private String porcentaje;
+    private String etiqueta;
 
     public String getNombre() {
         return nombre;
@@ -12,16 +12,16 @@ public class DatosVisualizarProyecto {
         this.nombre = nombre;
     }
 
-    public String getPorcentaje() {
-        return porcentaje;
+    public String getEtiqueta() {
+        return etiqueta;
     }
 
-    public void setPorcentaje(String porcentaje) {
-        this.porcentaje = porcentaje;
+    public void setEtiqueta(String etiqueta) {
+        this.etiqueta = etiqueta;
     }
 
-    public DatosVisualizarProyecto(String nombre, String porcentaje) {
+    public DatosVisualizarProyecto(String nombre, String etiqueta) {
         this.nombre = nombre;
-        this.porcentaje = porcentaje;
+        this.etiqueta = etiqueta;
     }
 }

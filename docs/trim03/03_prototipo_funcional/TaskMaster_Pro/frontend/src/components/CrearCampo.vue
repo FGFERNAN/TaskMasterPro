@@ -8,15 +8,15 @@
             <path
               d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
           </svg>
-          <span class="button-text">Regresar</span>
+          <span class="button-text"> Regresar</span>
         </button>
         <h1 class="mb-0 text-center flex-grow-1">Agregar Campo</h1>
-        <img src="../../public/assets/img/logotipo.png" alt="Logo" class="img-fluid logo">
+        <img src="../assets/img/logotipo.png" alt="Logo" class="logo">
       </div>
     </div>
 
     <!-- Formulario -->
-    <form action="campoAgregado.html" class="container form-create-project needs-validation" novalidate ref="form">
+    <form class="container form-create-project needs-validation" novalidate ref="form">
       <div class="row mb-4"></div>
 
       <!-- Campo Nombre -->
@@ -92,6 +92,7 @@
 export default {
   name: 'CrearCampo',
   mounted() {
+    document.title = "Crear Campo | TaskMaster Pro";
     // Simula el mismo comportamiento de validación de Bootstrap
     const form = this.$refs.form;
     form.addEventListener('submit', event => {
@@ -111,7 +112,5 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css');
-@import '../../public/assets/css/style.css';
+@import "@/../../assets/css/style.css";
 </style>

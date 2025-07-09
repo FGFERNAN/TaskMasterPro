@@ -58,6 +58,7 @@ const horaFin = ref('')
 const fechaSeleccionada = ref(null)
 
 onMounted(() => {
+  document.title = "Registrar Tiempo | TaskMaster Pro";
   flatpickr("#time-start", {
     enableTime: true,
     noCalendar: true,

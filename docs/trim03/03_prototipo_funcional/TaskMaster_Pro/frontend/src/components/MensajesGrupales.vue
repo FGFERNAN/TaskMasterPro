@@ -70,6 +70,7 @@ export default {
     };
   },
   mounted() {
+    document.title = "Mensajes Grupales | TaskMaster Pro";
     this.miembrosFiltrados = this.miembros;
     this.quill = new Quill('#editor', {
       theme: 'snow',

@@ -84,12 +84,14 @@ const enviarMensaje = () => {
 };
 
 onMounted(() => {
+  document.title = "Mensajes Directos | TaskMaster Pro";
   editor.value = new Quill('#editor', {
     theme: 'snow',
     modules: {
       toolbar: '#toolbar',
     },
-  });
+  },
+);
 });
 </script>
 

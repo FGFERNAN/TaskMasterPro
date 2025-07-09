@@ -173,7 +173,13 @@ class ProjectService {
                 return { message: "Project not exists" };
             }
         } catch (err) {
-            console.error('Error deleting project: ', err.message);
+            if (err.code === 'ER_ROW_IS_REFERENCED_2') {
+                throw {
+                    code: 'P_IN_USE',
+                    message: "No se puede eliminar el proyecto porque tiene tareas asignadas",
+                };
+            }
+            console.error('Error deleting role: ', err.message);
             throw err;
         }
     };
