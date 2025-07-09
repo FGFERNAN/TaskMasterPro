@@ -69,8 +69,8 @@
             <div class="input-group mb-3">
               <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-at"></i></span>
               <input type="email" v-model="email" id="email" class="form-control border-input"
-              :class="{ 'is-invalid': v$.email.$error || backendErrors.email, 'is-valid': !v$.email.$invalid && !backendErrors.email && email }" placeholder="Email"
-                aria-label="Username" aria-describedby="basic-addon1" @blur="v$.email.$touch()" />
+                :class="{ 'is-invalid': v$.email.$error || backendErrors.email, 'is-valid': !v$.email.$invalid && !backendErrors.email && email }"
+                placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" @blur="v$.email.$touch()" />
               <div v-for="error in v$.email.$errors" :key="error.$uid" class="invalid-feedback">
                 {{ error.$message }}
               </div>
@@ -103,7 +103,9 @@
           <div class="col-sm-10">
             <div class="input-group mb-3">
               <span class="input-group-text border-input" id="basic-addon1"><i class="fa-solid fa-id-card"></i></span>
-              <select v-model="tipo_documento" id="tipo_documento" class="form-select border-input" :class="{ 'is-invalid': v$.tipo_documento.$error, 'is-valid': !v$.tipo_documento.$invalid }" @blur="v$.tipo_documento.$touch()" >
+              <select v-model="tipo_documento" id="tipo_documento" class="form-select border-input"
+                :class="{ 'is-invalid': v$.tipo_documento.$error, 'is-valid': !v$.tipo_documento.$invalid }"
+                @blur="v$.tipo_documento.$touch()">
                 <option value="" disabled>Seleccionar</option>
                 <option value="1">Tarjeta de Identidad</option>
                 <option value="2">Cédula de Ciudadanía</option>
@@ -119,8 +121,7 @@
         <!-- Foto de perfil (al final del formulario) -->
         <div class="profile-pic-container mb-4">
           <div class="profile-pic">
-            <!-- <img alt="Profile Picture" /> -->
-            <div>Foto</div>
+            <img v-if="previewUrl" :src="previewUrl" alt="Profile Picture" style="max-width: 200px;" />
             <label class="edit-icon" for="fileInput">
               <i class="fas fa-plus" id="icon-plus"></i>
             </label>
@@ -257,7 +258,7 @@ export default {
           email: this.email,
           telefono: this.telefono,
           tipo_documento: this.tipo_documento
-        }  
+        }
         );
         console.log(response.data);
         alert(response.data.message);
@@ -271,7 +272,7 @@ export default {
           } else if (serverErrors.message === 'Unregistered user') {
             console.log(serverErrors);
             alert(`${serverErrors.message}, el usuario que intentas actualizar no se encuentra en la base de datos.`);
-          }  else if (serverErrors.message === 'El correo electronico ingresado, ya se encuentra registrado en el sistema') {
+          } else if (serverErrors.message === 'El correo electronico ingresado, ya se encuentra registrado en el sistema') {
             this.backendErrors.email = 'El correo electronico ingresado, ya se encuentra registrado en el sistema';
             this.v$.email.$reset();
           } else if (serverErrors.message === 'Error updating profile: ') {

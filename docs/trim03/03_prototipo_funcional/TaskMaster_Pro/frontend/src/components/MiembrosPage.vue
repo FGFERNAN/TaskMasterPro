@@ -28,7 +28,7 @@
               Utilizar Plantillas de Proyecto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i> Mis Tareas</a>
+            <a class="nav-link mi-link" @click="irMisTareas"><i class="fa-solid fa-list-check me-1"></i> Mis Tareas</a>
           </li>
           <li class="nav-item dropdown custom-dropdown">
             <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#" role="button"
@@ -76,7 +76,7 @@
                 Utilizar Plantillas de Proyecto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i> Mis
+              <a class="nav-link mi-link" @click="irMisTareas"><i class="fa-solid fa-list-check me-1"></i> Mis
                 Tareas</a>
             </li>
             <li class="nav-item dropdown custom-dropdown">
@@ -143,7 +143,7 @@
                     <div class="member-card">
                       <img :src="avatar" alt="User Avatar">
                       <p><input type="radio" name="user" :id="'user-' + member.id" :value="member.nombre" /> {{ member.nombre }} {{ member.apellidos }}</p>
-                      <button class="btn-eliminar" @click="removeMember(member.id)">Eliminar Usuario</button>
+                      <button :id="'btn-' + member.id" class="btn-eliminar" @click="removeMember(member.id)">Eliminar Usuario</button>
                     </div>
                   </div>
                 </div>
@@ -154,7 +154,7 @@
               <input type="text" v-model="searchQuery" class="form-control mb-3" placeholder="Buscar miembros">
               <ul class="list-unstyled">
                 <li v-for="(user) in filteredUsers" :key="user.id">
-                  {{ user.email }} <a href="#" class="text-primary" @click="addMember(user)">Agregar</a>
+                  {{ user.email }} <a href="#" :id="user.id" class="text-primary" @click="addMember(user)">Agregar</a>
                 </li>
               </ul>
             </div>
@@ -379,6 +379,9 @@ export default {
     },
     irAOtraVista() {
       this.$router.push('/interfaz-principal');
+    },
+    irMisTareas() {
+      this.router.push('/mis-tareas');
     },
     irInterfazProyecto(projectId) {
       this.$router.push({ name: 'InterfazProyecto', params: { id: projectId } });

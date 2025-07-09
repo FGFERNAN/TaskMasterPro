@@ -28,7 +28,7 @@
               Utilizar Plantillas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i> Mis Tareas</a>
+            <a class="nav-link mi-link" @click="irMisTareas"><i class="fa-solid fa-list-check me-1"></i> Mis Tareas</a>
           </li>
           <li class="nav-item dropdown custom-dropdown">
             <a class="nav-link dropdown-toggle mi-link" data-bs-toggle="dropdown" href="#"><i
@@ -73,7 +73,7 @@
                 Utilizar Plantillas de Proyecto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mi-link" href="misTareas.html"><i class="fa-solid fa-list-check me-1"></i> Mis
+              <a class="nav-link mi-link" @click="irMisTareas"><i class="fa-solid fa-list-check me-1"></i> Mis
                 Tareas</a>
             </li>
             <li class="nav-item dropdown custom-dropdown">
@@ -86,12 +86,12 @@
                         class="fa-regular fa-folder-open"></i>
                       {{ proyecto.nombre }}</a>
                     <span class="ms-1">
-                      <a @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i
+                      <a :id="'edit-' + proyecto.nombre" @click="redirectToEditProject(proyecto.id)" class="link-secondary mi-link"><i
                           class="fa-solid fa-edit"></i></a>
                     </span>
                     <span class="ms-2">
                       <a class="link-secondary mi-link" @click="deleteProject(proyecto.id)"
-                        id="btn-eliminar-escritorio"><i class="fa-solid fa-trash me-3"></i></a>
+                        :id="'btn-' + proyecto.nombre"><i class="fa-solid fa-trash me-3"></i></a>
                     </span>
                   </div>
                 </li>
@@ -292,6 +292,9 @@ export default {
     },
     irPlantillasProyecto() {
       this.router.push('/plantillas-proyecto');
+    },
+    irMisTareas() {
+      this.router.push('/mis-tareas');
     },
     cerrarModalBusqueda() {
       this.mostrarModalBusqueda = false;

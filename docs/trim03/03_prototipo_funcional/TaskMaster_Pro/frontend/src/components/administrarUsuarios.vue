@@ -25,11 +25,6 @@
               <i class="fa-solid fa-home me-1"></i> Inicio
             </router-link>
           </li>
-          <li class="nav-item">
-            <router-link to="/administrar-usuarios" class="nav-link mi-link">
-              <i class="fa-solid fa-user-cog me-1"></i> Usuarios
-            </router-link>
-          </li>
         </ul>
       </div>
     </div>
@@ -43,11 +38,6 @@
             <li class="nav-item">
               <router-link to="/perfil-completo" class="nav-link mi-link">
                 <i class="fa-solid fa-home me-1"></i> Inicio
-              </router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/administrar-usuarios" class="nav-link mi-link">
-                <i class="fa-solid fa-user-cog me-1"></i> Usuarios
               </router-link>
             </li>
           </ul>
@@ -92,13 +82,13 @@
                 </thead>
                 <tbody>
                   <tr v-for="(user) in filteredUser" :key="user.id">
-                    <td>{{ user.id }}</td>
-                    <td>{{ user.nombre }} {{ user.apellidos }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.telefono }}</td>
+                    <td :id="user.id">{{ user.id }}</td>
+                    <td :id="user.nombre + ' ' + user.apellidos">{{ user.nombre }} {{ user.apellidos }}</td>
+                    <td :id="user.email">{{ user.email }}</td>
+                    <td :id="user.telefono">{{ user.telefono }}</td>
                     <td>
                       <select class="form-select" disabled>
-                        <option :value="user.rolID">{{ user.rolID }}</option>
+                        <option :id="user.rolID" :value="user.rolID">{{ user.rolID }}</option>
                       </select>
                     </td>
                     <td>

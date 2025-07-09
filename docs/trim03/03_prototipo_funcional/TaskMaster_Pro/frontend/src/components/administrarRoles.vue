@@ -1,6 +1,6 @@
 <template>
   <div class="bg-custom">
-    <!-- Navbar for mobile -->
+   <!-- Navbar for mobile -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light d-lg-none">
       <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
@@ -25,11 +25,6 @@
               <i class="fa-solid fa-home me-1"></i> Inicio
             </router-link>
           </li>
-          <li class="nav-item">
-            <router-link to="/administrar-roles" class="nav-link mi-link">
-              <i class="fa-solid fa-user-cog me-1"></i> Roles
-            </router-link>
-          </li>
         </ul>
       </div>
     </div>
@@ -44,11 +39,6 @@
             <li class="nav-item">
               <router-link to="/perfil-completo" class="nav-link mi-link">
                 <i class="fa-solid fa-home me-1"></i> Inicio
-              </router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/administrar-roles" class="nav-link mi-link">
-                <i class="fa-solid fa-user-cog me-1"></i> Roles
               </router-link>
             </li>
           </ul>
@@ -92,7 +82,7 @@
                   <tr v-for="(role) in filteredRoles" :key="role.id">
                     <td>
                       <input type="radio" @click="redirectToEditRole" v-model="selectedRole" :value="role.nombre"> {{
-                      role.nombre }}
+                        role.nombre }}
                     </td>
                     <td class="description">{{ role.descripcion }}</td>
                     <td>
@@ -166,7 +156,7 @@ export default {
       this.$router.push('crear-rol');
     },
     redirectToAssignRole() {
-      this.$router.push('/asignarRol');
+      this.$router.push('/administrar-usuarios');
     },
     redirectToEditRole(roleId) {
       this.$router.push({ name: 'EditarRol', params: { id: roleId } });

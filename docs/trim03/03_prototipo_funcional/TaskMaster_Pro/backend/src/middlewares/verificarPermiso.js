@@ -1,8 +1,7 @@
-const DBConnection = require('../config/dbConnection');
+const db = require('../config/dbConnection');
 
 const verificarPermiso = (modulo, accion) => {
     return async (req, res, next) => {
-        const db = new DBConnection();
         try {
 
             // Cambia el valor de "id" por el id del usuario que quieres probar segun su rol que tre sus repectivos permisos
