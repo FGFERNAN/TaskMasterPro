@@ -4,16 +4,20 @@
     <div class="row no-gutters header-custom">
       <div class="col-12 d-flex align-items-center justify-content-between p-3">
         <button class="btn btn-primary buton-regresar" @click="regresar">
-          <i class="bi bi-caret-left-fill"></i>
-          <span class="button-text">Regresar</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+            <path
+              d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+          </svg>
+          <span class="button-text"> Regresar</span>
         </button>
-          <img src="../assets/img/logos/logotipo.png" alt="Logo" class="img-fluid logo" />
+        <img src="../assets/img/logotipo.png" alt="Logo" class="logo" />
       </div>
     </div>
 
-    <div class="container mt-5">
+    <div class="container-m mt-5">
       <div class="sidebar">
-        <h2>📧 Mensajes Directos</h2>
+        <h3>📧 Mensajes Directos</h3>
         <input type="text" placeholder="Buscar mensaje" class="search-bar" v-model="busqueda" />
         <ul class="message-list">
           <li class="message-item" v-for="(msg, index) in mensajesFiltrados" :key="index">
@@ -90,7 +94,5 @@ onMounted(() => {
 </script>
 
 <style scoped>
-
-
-
+@import "@/../../assets/css/messages.css";
 </style>

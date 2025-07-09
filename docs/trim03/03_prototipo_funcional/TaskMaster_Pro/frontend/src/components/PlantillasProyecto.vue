@@ -52,7 +52,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
+            <a class="nav-link mi-link" @click="irEtiquetas"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
           </li>
         </ul>
       </div>
@@ -99,7 +99,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
+              <a class="nav-link mi-link" @click="irEtiquetas"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
             </li>
           </ul>
         </div>
@@ -372,6 +372,9 @@ export default {
     },
     irInterfazProyecto(projectId) {
       this.$router.push({ name: 'InterfazProyecto', params: { id: projectId } });
+    },
+    irEtiquetas() {
+      this.$router.push('/etiquetas-view');
     }
   }
 }

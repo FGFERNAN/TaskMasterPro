@@ -4,21 +4,25 @@
     <div class="row no-gutters header-custom">
       <div class="col-12 d-flex align-items-center justify-content-between p-3">
         <button class="btn btn-primary buton-regresar" @click="regresar">
-          <i class="bi bi-caret-left-fill"></i>
-          <span class="button-text">Regresar</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+            <path
+              d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+          </svg>
+          <span class="button-text"> Regresar</span>
         </button>
         <h1 class="mb-0 text-center flex-grow-1">
           <i class="fa-solid fa-tags me-1"></i> Etiquetas
         </h1>
-        <img src="@/assets/img/logotipo.png" alt="Logo" class="img-fluid logo" />
+        <img src="../assets/img/logotipo.png" alt="Logo" class="logo" />
       </div>
     </div>
 
     <!-- Formulario Crear -->
-    <div class="container">
+    <div class="container1">
       <div class="row g-5">
         <div class="col-md-6">
-          <form class="form-create-project">
+          <form class="form-create-e">
             <div class="row mb-3">
               <label class="col-sm-2 col-form-label input-nombre">Nombre:</label>
               <div class="col-sm-10 has-validation input-nombre">
@@ -40,7 +44,7 @@
               </div>
             </div>
             <div class="d-grid gap-2 col-3 mx-auto">
-              <button class="btn btn-primary buton-iniciar-sesion mb-4" type="button" @click="guardarEtiqueta">
+              <button class="btn btn-primary buton-e mb-4" type="button" @click="guardarEtiqueta">
                 Guardar
               </button>
             </div>
@@ -49,7 +53,7 @@
 
         <!-- Formulario Editar -->
         <div class="col-md-6" v-show="mostrarEditar">
-          <form class="form-create-project">
+          <form class="form-create-e">
             <div class="row mb-3">
               <label class="col-sm-2 col-form-label input-nombre">Nombre:</label>
               <div class="col-sm-10 input-nombre">
@@ -68,7 +72,7 @@
               </div>
             </div>
             <div class="d-grid gap-2 col-3 mx-auto">
-              <button class="btn btn-primary buton-iniciar-sesion mb-4" type="button" @click="guardarEditarEtiqueta">
+              <button class="btn btn-primary buton-e mb-4" type="button" @click="guardarEditarEtiqueta">
                 Guardar
               </button>
             </div>
@@ -121,7 +125,7 @@
               <div class="card-body mi-card">
                 <h5 class="card-title">{{ proyecto }}</h5>
                 <h6 class="card-subtitle mb-2 text-body-secondary">
-                  <button @click="asignarEtiqueta(proyecto)" class="buton-descargar text-body-secondary">
+                  <button data-bs-dismiss="modal" class="buton-descargar text-body-secondary">
                     Asignar
                   </button>
                 </h6>
@@ -172,10 +176,7 @@ export default {
         this.mostrarEditar = false;
       }
     },
-    asignarEtiqueta(proyecto) {
-      alert(`Etiqueta asignada a ${proyecto}`);
-      this.$router.push("/interfazProyecto");
-    },
+
   },
 };
 </script>

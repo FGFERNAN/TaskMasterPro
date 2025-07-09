@@ -41,7 +41,7 @@ h1 {
     --bs-btn-active-border-color: #DAF5E3;
   }
   
-  .form-create-project {
+  .form-create-e {
     margin-block-start: 4em;
     max-width: 100%;
     padding-left: 5%;
@@ -56,7 +56,7 @@ h1 {
   }
 
   .container1{
-    margin-left: 5%;
+    margin-left: 2%;
   }
 
   .input-nombre {
@@ -68,7 +68,7 @@ h1 {
   }
   
 
-  .buton-iniciar-sesion {
+  .buton-e {
     background-color: #2E7060;
     color: white;
     border-color: #2E7060;
@@ -76,7 +76,7 @@ h1 {
 
   }
   
-  .buton-iniciar-sesion:hover {
+  .buton-e:hover {
     background-color: #6DA2C1;
     border-color: #6DA2C1;
   }
@@ -131,7 +131,7 @@ h1 {
   .button-text {
     display: none;
 }
-.form-create-project{
+.form-create-e{
   max-width: 70%;
 }
 }
@@ -148,7 +148,7 @@ h1 {
   .logo {
     max-width: 150px;
 }
-.form-create-project{
+.form-create-e{
   max-width: 70%;
 }
   
@@ -166,7 +166,7 @@ h1 {
   .logo {
     max-width: 180px;
 }
-.form-create-project{
+.form-create-e{
   max-width: 70%;
 }
 }
@@ -183,7 +183,7 @@ h1 {
   .logo {
     max-width: 220px;
 }
-.form-create-project{
+.form-create-e{
   max-width: 60%;
 }
 .svg{

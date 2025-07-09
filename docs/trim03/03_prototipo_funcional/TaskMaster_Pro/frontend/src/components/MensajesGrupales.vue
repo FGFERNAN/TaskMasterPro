@@ -4,17 +4,21 @@
     <div class="row no-gutters header-custom">
       <div class="col-12 d-flex align-items-center justify-content-between p-3">
         <button class="btn btn-primary buton-regresar" @click="regresar">
-          <i class="bi bi-caret-left-fill"></i>
-          <span class="button-text">Regresar</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+            <path
+              d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+          </svg>
+          <span class="button-text"> Regresar</span>
         </button>
-        <img src="@/assets/img/logotipo.png" alt="Logo" class="img-fluid logo" />
+        <img src="../assets/img/logotipo.png" alt="Logo" class="logo" />
       </div>
     </div>
 
     <!-- Contenido -->
-    <div class="container mt-5">
+    <div class="container-m mt-5">
       <div class="sidebar">
-        <h2>📧 Mensajes Grupales</h2>
+        <h3>📧 Mensajes Grupales</h3>
         <input type="text" placeholder="Buscar miembro" class="search-bar" v-model="busqueda" @input="filtrarMiembros" />
         <ul class="message-list">
           <li v-for="miembro in miembrosFiltrados" :key="miembro" class="message-item" @click="mostrarMensaje(miembro)">
@@ -44,7 +48,7 @@
           <div id="editor" class="form-control" style="height: 200px;"></div>
         </div>
 
-        <button class="btn btn-primary send-button mt-2" @click="enviarMensaje">Enviar</button>
+        <button class="btn btn-primary send-button" @click="enviarMensaje">Enviar</button>
       </div>
     </div>
   </div>

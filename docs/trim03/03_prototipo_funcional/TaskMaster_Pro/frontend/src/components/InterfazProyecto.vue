@@ -52,7 +52,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
+            <a class="nav-link mi-link" @click="irEtiquetas"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
           </li>
         </ul>
       </div>
@@ -99,7 +99,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
+              <a class="nav-link mi-link" @click="irEtiquetas"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
             </li>
           </ul>
         </div>
@@ -133,9 +133,9 @@
                   <i class="fa-regular fa-message me-1"></i> Mensaje
                 </button>
                 <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMessage">
-                  <li><a href="mensajesDirectos.html" class="dropdown-item"><i class="fa-solid fa-user me-1"></i>
+                  <li><a @click="irMensajeDirecto" class="dropdown-item"><i class="fa-solid fa-user me-1"></i>
                       Directo</a></li>
-                  <li><a href="mensajesGrupales.html" class="dropdown-item"><i class="fa-solid fa-users me-1"></i>
+                  <li><a @click="irMensajeGrupal" class="dropdown-item"><i class="fa-solid fa-users me-1"></i>
                       Grupal</a></li>
                 </ul>
               </div>
@@ -503,6 +503,15 @@ export default {
     crearProyecto() {
       this.router.push('/crear-proyecto');
     },
+    irEtiquetas() {
+      this.$router.push('/etiquetas-view');
+    },
+    irMensajeDirecto() {
+      this.$router.push('/mensajes-directos');
+    },
+    irMensajeGrupal() {
+      this.$router.push('/mensajes-grupales');
+    }
   },
 
   irAOtraVista() {

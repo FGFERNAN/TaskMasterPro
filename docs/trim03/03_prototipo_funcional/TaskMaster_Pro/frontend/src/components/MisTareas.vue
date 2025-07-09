@@ -58,7 +58,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link mi-link" href="etiquetas.html">
+            <a class="nav-link mi-link" @click="irEtiquetas">
               <i class="fa-solid fa-tags me-1"></i> Etiquetas
             </a>
           </li>
@@ -111,7 +111,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link mi-link" href="etiquetas.html">
+              <a class="nav-link mi-link" @click="irEtiquetas">
                 <i class="fa-solid fa-tags me-1"></i> Etiquetas
               </a>
             </li>
@@ -296,6 +296,9 @@ export default {
         }
       }
     },
+    irEtiquetas() {
+      this.$router.push('/etiquetas-view');
+    }
   },
   async mounted() {
     document.title = "Mis Tareas | TaskMaster Pro";

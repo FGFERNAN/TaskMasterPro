@@ -53,7 +53,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
+            <a class="nav-link mi-link" @click="irEtiquetas"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
           </li>
         </ul>
       </div>
@@ -103,7 +103,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
+              <a class="nav-link mi-link" @click="irEtiquetas"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
             </li>
           </ul>
         </div>
@@ -113,11 +113,7 @@
           <header>
             <div class="header d-flex justify-content-between align-items-center p-3">
               <button class="btn me-md-2 mt-1 btn-regresar" @click="goBack">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                  class="bi bi-caret-left-fill" viewBox="0 0 16 16">
-                  <path
-                    d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
-                </svg> Regresar
+                <i class="bi bi-caret-left-fill"></i> Regresar
               </button>
               <div class="d-flex align-items-center">
                 <a href="notificaciones.html" class="me-2">
@@ -396,6 +392,9 @@ export default {
     crearProyecto() {
       this.$router.push('/crear-proyecto');
     },
+    irEtiquetas() {
+      this.$router.push('/etiquetas-view');
+    }
   }
 };
 

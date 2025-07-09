@@ -51,7 +51,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
+            <a class="nav-link mi-link" @click="irEtiquetas"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
           </li>
         </ul>
       </div>
@@ -60,7 +60,8 @@
       <div class="row">
         <!-- Sidebar para escritorio -->
         <div class="col-md-3 custom-col d-none d-lg-block">
-          <img src="../assets/img/logos/logotipo.png" @click="irInterfazPrincipal" class="logo-inicio boton-menu-proyecto" width="300" />
+          <img src="../assets/img/logos/logotipo.png" @click="irInterfazPrincipal"
+            class="logo-inicio boton-menu-proyecto" width="300" />
           <ul class="nav flex-column">
             <li class="nav-item">
               <a class="nav-link mi-link" @click="crearProyecto"><i class="fa-solid fa-folder-plus me-1"></i>
@@ -96,7 +97,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link mi-link" href="etiquetas.html"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
+              <a class="nav-link mi-link" @click="irEtiquetas"><i class="fa-solid fa-tags me-1"></i> Etiquetas</a>
             </li>
           </ul>
         </div>
@@ -105,13 +106,8 @@
         <div class="col custom-col-main mb-5">
           <header>
             <div class="header d-flex justify-content-between align-items-center p-3">
-              <button class="btn me-md-2 mt-1 btn-regresar" @click="goBack">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                  class="bi bi-caret-left-fill" viewBox="0 0 16 16">
-                  <path
-                    d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
-                </svg> Regresar
-              </button>
+              <button class="btn me-md-2 mt-1 btn-regresar" onclick="history.back()"><i
+                  class="bi bi-caret-left-fill"></i> Regresar</button>
               <div class="d-flex align-items-center">
                 <a class="me-2">
                   <i class="fas fa-bell"></i>
@@ -129,15 +125,15 @@
           <div class="main-content-container position-relative">
             <!-- Botones superiores -->
             <div class="top-right-buttons mt-5">
-              <button class="btn1">Registrar Tiempo</button>
-              <button class="btn1">Agregar Comentario</button>
+              <button class="btn1" @click="irRegistrar">Registrar Tiempo</button>
+              <button class="btn1" @click="irComentario">Agregar Comentario</button>
               <button class="btn1">Adjuntar Archivo</button>
             </div>
 
             <!-- Botones de tarea -->
             <div class="task-buttons mb-5">
               <button class="btn-tarea">{{ nombre }}</button>
-              <button class="btn-danger1" id="buton-eliminar-tarea" @click="eliminarTarea(id)" >
+              <button class="btn-danger1" id="buton-eliminar-tarea" @click="eliminarTarea(id)">
                 <i class="fa-solid fa-trash me-1"></i> Eliminar
               </button>
             </div>
@@ -551,6 +547,15 @@ export default {
     },
     irMisTareas() {
       this.router.push('/mis-tareas');
+    },
+    irEtiquetas() {
+      this.$router.push('/etiquetas-view');
+    },
+    irRegistrar() {
+      this.$router.push('/registrar-tiempo');
+    },
+    irComentario() {
+      this.$router.push('/agregar-comentarios');
     },
     async confirmarCerrarSesion() {
       if (confirm("¿Estás seguro que quieres cerrar sesión?")) {
